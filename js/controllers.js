@@ -62,6 +62,7 @@ angular.module('starter.controllers', [])
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
 .controller('SellingCtrl', function ($scope, $stateParams) {})
+.controller('TransactionCtrl', function ($scope, $stateParams) {})
 
 .controller('AboutCtrl', function ($scope, $stateParams) {})
 

@@ -111,6 +111,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             }
         })
+    .state('app.transaction', {
+            url: "/transaction",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/transaction.html",
+                    controller: 'TransactionCtrl'
+                }
+            }
+        })
         .state('app.profile', {
             url: "/profile",
             views: {
