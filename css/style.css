@@ -13,6 +13,10 @@
     height: 260px;
 }
 
+.results .item{
+    margin:0px!important;
+}
+
 .prod-info {
     padding: 10px 20px;
 }
