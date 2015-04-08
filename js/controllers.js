@@ -35,7 +35,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function ($scope) {})
     .controller('SearchCtrl', function ($scope) {})
-    .controller('ProductCtrl', function ($scope) {
+    .controller('ProductCtrl', function ($scope, $stateParams, $ionicModal) {
 
         $ionicModal.fromTemplateUrl('templates/purchase.html', {
             scope: $scope,
@@ -54,4 +54,7 @@ angular.module('starter.controllers', [])
 
 
     })
-    .controller('PlaylistCtrl', function ($scope, $stateParams) {});
+
+.controller('PlaylistCtrl', function ($scope, $stateParams) {});
+
+.controller('YourBalCtrl', function ($scope, $stateParams) {});
