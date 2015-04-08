@@ -3,3 +3,22 @@
 .list h4 {
     text-align: center;
 }
+
+.home-or {
+    position: relative;
+}
+
+hr.vertical-line {
+    position: absolute;
+    bottom: 0px;
+    z-index: -1;
+    width: 100%;
+}
+
+.home-or h6 {
+    z-index: 999999;
+    text-align: center;
+    background: #fff;
+    width: 50px;
+    margin: 10px auto;
+}
