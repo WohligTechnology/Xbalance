@@ -22,13 +22,21 @@ hr.vertical-line {
     width: 50px;
     margin: 10px auto;
 }
-.results{
-overflow-y:scroll;
-height:260px;
+
+.results {
+    overflow-y: scroll;
+    height: 260px;
 }
-.prod-info{
-    padding:10px 20px;
+
+.prod-info {
+    padding: 10px 20px;
 }
-a{
+
+a {
     text-decoration: none;
+}
+
+button.btn-small {
+    width: 48%;
+    float: right;
 }

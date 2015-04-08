@@ -61,4 +61,20 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function ($scope, $stateParams) {})
 
-.controller('YourBalCtrl', function ($scope, $stateParams) {});
+.controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {
+    $ionicModal.fromTemplateUrl('templates/purchase.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openedit = function () {
+        $scope.modal.show();
+    }
+
+    $scope.closeModal = function () {
+        $scope.modal.hide();
+    };
+
+});
