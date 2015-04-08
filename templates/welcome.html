@@ -1,8 +1,10 @@
 <ion-view>
-    <ion-content>
-        <h1 class="title">Welcome</h1>
+    <div class="bar bar-header">
+        <div class="h1 title">Welcome</div>
+    </div>
+    <ion-content class="has-header">
         <div class="welcome-img">
-            <img src="img/ionic.png">
+            <img src="img/Untitled-2.png">
         </div>
         <div>
             <label class="item item-input">
@@ -13,8 +15,11 @@
                 <span class="input-label">Password</span>
                 <input type="text" placeholder="">
             </label>
-            <button class="button button-block button-positive" type="submit">Login</button>
-            <button class="button button-block button-positive btn-smalls" type="submit">Forget Password</button>
+            <div class="padding">
+                <button class="button button-block button-positive" type="submit">Login</button>
+            </div>
+
+            <a href="#">Forget Password</a>
         </div>
     </ion-content>
 </ion-view>
