@@ -76,3 +76,11 @@ button.btn-smalls {
 .welcome-img img {
     width: 100%;
 }
+.lesspadding .item{
+    padding:5px!important;
+    
+}
+.lesspadding .item-content{
+    padding:0px!important;
+    
+}
