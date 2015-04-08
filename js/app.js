@@ -86,6 +86,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             }
         })
+        .state('welcome', {
+            url: "/welcome",
+            templateUrl: "templates/welcome.html",
+            controller: 'WelcomeCtrl'
+        })
+
 
     .state('app.balance', {
             url: "/balance",

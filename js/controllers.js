@@ -57,6 +57,8 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
+.controller('WelcomeCtrl', function ($scope, $stateParams) {})
+
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
 .controller('AboutCtrl', function ($scope, $stateParams) {})
@@ -64,7 +66,7 @@ angular.module('starter.controllers', [])
 .controller('ProfileCtrl', function ($scope, $stateParams) {})
 
 .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {
-    $ionicModal.fromTemplateUrl('templates/purchase.html', {
+    $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {

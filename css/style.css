@@ -4,23 +4,8 @@
     text-align: center;
 }
 
-.home-or {
-    position: relative;
-}
-
-hr.vertical-line {
-    position: absolute;
-    bottom: 0px;
-    z-index: -1;
-    width: 100%;
-}
-
 .home-or h6 {
-    z-index: 999999;
     text-align: center;
-    background: #fff;
-    width: 50px;
-    margin: 10px auto;
 }
 
 .results {
@@ -32,11 +17,50 @@ hr.vertical-line {
     padding: 10px 20px;
 }
 
+.welcome-img {
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+}
+
 a {
     text-decoration: none;
+    color: #000;
 }
 
 button.btn-small {
     width: 48%;
     float: right;
+}
+
+.label-name h4 {
+    padding-left: 14px;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.profile-img {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.profile-img img {
+    width: 75px;
+    height: 75px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+h1.title {
+    text-align: center;
+}
+
+button.btn-smalls {
+    width: 50%;
+}
+
+.welcome-img img {
+    width: 100%;
 }
