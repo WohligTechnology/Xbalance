@@ -22,3 +22,10 @@ hr.vertical-line {
     width: 50px;
     margin: 10px auto;
 }
+.results{
+overflow-y:scroll;
+height:260px;
+}
+.prod-info{
+    padding:10px 20px;
+}

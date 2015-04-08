@@ -57,4 +57,8 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {})
 
+.controller('FaqCtrl', function ($scope, $stateParams) {})
+
+.controller('AboutCtrl', function ($scope, $stateParams) {})
+
 .controller('YourBalCtrl', function ($scope, $stateParams) {});

@@ -39,6 +39,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
+    
+     .state('app.about', {
+        url: "/aboutus",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/aboutus.html",
+                controller: 'AboutCtrl'
+            }
+        }
+    })
+    
+      .state('app.faq', {
+        url: "/faq",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/faq.html",
+                controller: 'FaqCtrl'
+            }
+        }
+    })
 
     .state('app.browse', {
             url: "/browse",
