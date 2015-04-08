@@ -35,5 +35,6 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {})
 .controller('SearchCtrl', function($scope) {})
+.controller('ProductCtrl', function($scope) {})
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
