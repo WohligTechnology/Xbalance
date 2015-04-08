@@ -53,6 +53,14 @@ button.btn-small {
     border-radius: 100%;
 }
 
+.prod-info h4 {
+    text-align: center;
+}
+
+.prod-info p {
+    text-align: justify;
+}
+
 h1.title {
     text-align: center;
 }
