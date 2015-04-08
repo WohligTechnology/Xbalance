@@ -61,6 +61,8 @@ angular.module('starter.controllers', [])
 
 .controller('AboutCtrl', function ($scope, $stateParams) {})
 
+.controller('ProfileCtrl', function ($scope, $stateParams) {})
+
 .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {
     $ionicModal.fromTemplateUrl('templates/purchase.html', {
         scope: $scope,
