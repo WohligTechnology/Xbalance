@@ -1,131 +1,107 @@
 <ion-view view-title="Product">
     <ion-content>
         <div class="padding">
-            <!--
+        </div>
+        <!--
 <div>
     <label><b>Name:</b>
     </label><span>Nokia</span>
 </div>
 -->
-            <!--
+        <!--
             <div>
                 <label><b>Sell Balance:</b>
                 </label><span>Rs.60,000</span>
             </div>
 -->
-            <!--
+        <!--
             <h5><b>Details:</b></h5>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
 -->
 
-            <div class="list product-cont">
-                <label class="item item-input item-text-wrap">
-                    <div class="input-label">
-                        Name:
-                    </div>
-                    <div class="input">
-                        Nokia
-                    </div>
-                </label>
-                <label class="item item-input item-text-wrap">
-                    <div class="input-label">
-                        Sell Balance:
-                    </div>
-                    <div class="input">
-                        Rs.60,000
-                    </div>
-                </label>
-                <label class="item item-input item-text-wrap">
-                    <div class="input-label">
-                        Address
-                    </div>
-                    <div class="input itemproducts">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </div>
-                </label>
-                <label class="item item-input item-text-wrap">
-                    <div class="input-label">
-                        Details
-                    </div>
-                    <div class="input itemproducts">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    </div>
-                </label>
-                <label class="item item-input item-text-wrap">
-                    <h2>Shops</h2>
-                </label>
-                <label class="item item-input item-text-wrap itemproducts">
-                    <div class="input-label">
-                        <div class="img-profile">
-                            <img src="img/dookie.jpg">
-                        </div>
-                    </div>
-                    <div class="input-label">
-                        <div class="img-profile">
-                            <img src="img/dookie.jpg">
-                        </div>
-                    </div>
-                    <div class="input-label">
-                        <div class="img-profile">
-                            <img src="img/dookie.jpg">
-                        </div>
-                    </div>
-                    <!--
-               <div class="input">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</div>
--->
-                </label>
-                <label class="item item-input item-text-wrap">
-                    <h2>Products</h2>
-                </label>
-                <label class="item item-input item-text-wrap itemproducts">
-                    <div id="thumb-gallery">
-                        <div ng-repeat="oImage in aImages" class="gallery-item">
-                            <a ng-click="openModal()">
-                                <img ng-src="{{oImage.src}}" />
-                            </a>
-                        </div>
-
-                    </div>
-                    <!--end thumb-gallery-->
-                    <script id="image-modal.html" type="text/ng-template">
-                        <div class="modal image-modal transparent" ng-click="closeModal()">
-
-                            <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
-                                <ion-slide ng-repeat="oImage in aImages">
-                                    <img ng-src="{{oImage.srclg}}" class="fullscreen-image" />
-                                    <p class="info">{{oImage.msg}}</p>
-                                </ion-slide>
-                            </ion-slide-box>
-
-                        </div>
-                    </script>
-                    <!--
-                    <div class="input-label">
-                        <div class="img-profile">
-                            <img src="img/dookie.jpg">
-                        </div>
-                    </div>
-                    <div class="input-label">
-                        <div class="img-profile">
-                            <img src="img/dookie.jpg">
-                        </div>
-                    </div>
--->
-                    <!--
-               <div class="input">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</div>
--->
-                </label>
-            </div>
-            <div>
-                <div class="padding">
-                    <button class="button button-block button-outline button-balanced" ng-click="openedit();">
-                        Purchase
-                    </button>
+        <div class="list product-cont">
+            <label class="item item-input item-text-wrap">
+                <div class="input-label">
+                    Name:
                 </div>
-            </div>
+                <div class="input">
+                    Nokia
+                </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+                <div class="input-label">
+                    Sell Balance:
+                </div>
+                <div class="input">
+                    Rs.60,000
+                </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+                <div class="input-label">
+                    Address
+                </div>
+                <div class="input itemproducts">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+                <div class="input-label">
+                    Details
+                </div>
+                <div class="input itemproducts">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </div>
+            </label>
+            <label class="item item-input item-text-wrap">
+                <h2>Shops</h2>
+            </label>
+            <label class="item item-input item-text-wrap itemproducts">
+                <div class="input-label">
+                    <div class="img-profile">
+                        <img src="img/dookie.jpg">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="img-profile">
+                        <img src="img/dookie.jpg">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="img-profile">
+                        <img src="img/dookie.jpg">
+                    </div>
+                </div>
+                <!--
+               <div class="input">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</div>
+-->
+            </label>
+            <label class="item item-input item-text-wrap">
+                <h2>Products</h2>
+            </label>
+            <label class="item item-input item-text-wrap itemproducts">
+                <div class="input-label">
+                    <div class="img-profile">
+                        <img src="img/dookie.jpg">
+                    </div>
+                </div>
+                <div class="input-label">
+                    <div class="img-profile">
+                        <img src="img/dookie.jpg">
+                    </div>
+                </div>
+                <!--
+               <div class="input">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</div>
+-->
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block button-outline button-balanced" ng-click="openedit();">
+                Purchase
+            </button>
+        </div>
     </ion-content>
 </ion-view>
