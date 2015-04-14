@@ -94,7 +94,7 @@ angular.module('starter.controllers', [])
         'msg': 'Title Three'
     }];
 
-    $ionicModal.fromTemplateUrl('image-modal.html', {
+    $ionicModal.fromTemplateUrl('templates/image-modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
