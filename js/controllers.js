@@ -132,7 +132,7 @@ angular.module('starter.controllers', [])
         //            $scope.slideIndex = index;
         //        };
         //                $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
-        $ionicModal.fromTemplateUrl('templates/image-modal.html', {
+        $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function (modal) {
@@ -144,9 +144,9 @@ angular.module('starter.controllers', [])
         };
 
         $scope.closeModals = function () {
-            $scope.modal.close();
+            $scope.modal.hide();
         };
-        $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
+        $ionicModal.fromTemplateUrl('templates/image-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function (modal) {
@@ -158,7 +158,7 @@ angular.module('starter.controllers', [])
         };
 
         $scope.closeModal = function () {
-            $scope.modal.hide();
+            $scope.modals.hide();
         };
     })
     .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {

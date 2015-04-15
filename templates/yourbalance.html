@@ -1,27 +1,32 @@
-<ion-view view-title="Your Balance">
-    <ion-content>
-        <div class="row text-center">
-            <div class="col">
-             
-                    <h4>Rs.100</h4>
-               
-                <div class="label-name">
-                    <h4>Purchase Balance</h4>
-                </div>
-               
-            </div>
-            <div class="col">
-               
-                    <h4>Rs.100</h4>
-               
-                <div class="label-name">
-                    <h4>Sell Balance</h4>
-                </div>
-               
-            </div>
+<ion-view view-title="My Balance">
+    <ion-content class="padding">
+        <div class="incard pad-btm">
+            <ion-list class="lesspadding">
+                <ion-item class="">
+                    <div class="row text-center">
+                        <div class="col">
+                            <div class="balance bod-right">
+                                <h4 class="assertive">Rs.100</h4>
+                                <div class="label-name">
+                                    Purchase Balance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="balance">
+                                <h4 class="assertive">Rs.100</h4>
+
+                                <div class="label-name">
+                                    Sell Balance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-item>
+            </ion-list>
         </div>
-        <div class="padding">
-            <button class="button button-block button-outline button-balanced" ng-click="openedit();">Add Balance</button>
+        <div class="padding pull-right">
+            <button class="button button-small button-balanced" ng-click="openedit();">Add Balance</button>
         </div>
     </ion-content>
 </ion-view>

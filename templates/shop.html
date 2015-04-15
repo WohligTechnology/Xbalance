@@ -1,33 +1,33 @@
 <ion-view view-title="Shop">
     <ion-content>
-              <div class="incard pad-btm">
-        <div class="list product-cont">
-          <ion-item>
-                <div class="input-label">
-                   <h2>Nokia</h2> 
-                </div>
-                <div class="input">
-                   Rs.60,000
-                </div>
-            </ion-item>
+        <div class="incard card-shop">
+            <ion-list class="lesspadding product-cont">
+                <ion-item class="product">
+                    <h2>Nokia India</h2>
+                    <div class="pull-right balanced amount">
+                        Rs.60,000
+                    </div>
+
+                </ion-item>
+            </ion-list>
+            <label class="item item-input item-text-wrap header">
+                Address
+            </label>
             <label class="item item-input item-text-wrap">
-                <div class="input-label">
-                    Address
-                </div>
                 <div class="input itemproducts">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </div>
             </label>
+            <label class="item item-input item-text-wrap header">
+                Details
+            </label>
             <label class="item item-input item-text-wrap">
-                <div class="input-label">
-                    Details
-                </div>
                 <div class="input itemproducts">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </div>
             </label>
-            <label class="item item-input item-text-wrap">
-                <h2>Shops</h2>
+            <label class="item item-input item-text-wrap header">
+                Shops
             </label>
             <label class="item item-input item-text-wrap itemproducts">
                 <div class="input-label">
@@ -45,14 +45,9 @@
                         <img src="img/dookie.jpg">
                     </div>
                 </div>
-                <!--
-               <div class="input">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</div>
--->
             </label>
-            <label class="item item-input item-text-wrap">
-                <h2>Products</h2>
+            <label class="item item-input item-text-wrap header">
+                Products
             </label>
             <label class="item item-input item-text-wrap itemproducts">
                 <div class="input-label">
@@ -77,11 +72,14 @@
 -->
             </label>
         </div>
-        </div>
-        <div class="padding">
-            <button class="button button-block button-outline button-balanced" ng-click="openedit();">
+    </ion-content>
+
+
+    <ion-footer-bar class="footer-shop">
+        <div class="btn-shop">
+            <button class="button button-block button-balanced" ng-click="openedit();">
                 Purchase
             </button>
         </div>
-    </ion-content>
+    </ion-footer-bar>
 </ion-view>
