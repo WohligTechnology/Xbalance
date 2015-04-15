@@ -441,8 +441,8 @@ ion-item.area.item h3 {
 }
 
 ion-footer-bar.footer-shop {
-    height: 50px;
     padding: 0;
+    background: #67a759;
 }
 
 .btn-shop {
@@ -465,7 +465,7 @@ ion-item.product.item h2 {
     padding: 5px 0;
 }
 
-label.item.item-input.item-text-wrap.header {
+.incard .item.header {
     font-weight: 600;
     font-size: 16px;
     border-bottom: 1px solid rgba(221, 221, 221, 0.5);
@@ -481,4 +481,24 @@ label.item.area input {
 
 .balance.bod-right {
     border-right: 1px solid rgba(221, 221, 221, 0.6);
+}
+
+ion-footer-bar.footer-shop h4 {
+    margin: 0 auto;
+    padding-top: 12px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.sell-img img {
+    width: 100%;
+}
+
+.sell-cont {
+    padding-left: 20px;
+}
+
+label.item.item-input.item-prf input {
+    background: transparent;
+    font-size: 14px;
 }

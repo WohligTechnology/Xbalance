@@ -1,108 +1,109 @@
 <ion-view view-title="Profile">
-    <ion-content>
-        <div class="profile-img">
-            <img src="img/logo.png">
-        </div>
-        <div class="list profile-cont">
-            <label class="item item-input">
-                <div class="input-label">
-                    Name
-                </div>
-                <div class="input-label">
-                    Wohlig Technology
-                </div>
-            </label>
-            <label class="item item-input">
-                <div class="input-label">
-                    Area
-                </div>
-                <div class="input-label">
-                    Mulund
-                </div>
-            </label>
-            <label class="item item-input">
-                <div class="input-label">
-                    Category
-                </div>
-                <div class="input-label">
-                    Mobile
-                </div>
-            </label>
-            <label class="item item-input item-text-wrap">
-                <div class="input-label">
-                    Address
-                </div>
-                <div class="input itemproducts">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </div>
-            </label>
-            <label class="item item-input item-text-wrap">
-                <div class="input-label">
-                    Description
-                </div>
-                <div class="input itemproducts">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                </div>
-            </label>
-            <label class="item item-input item-text-wrap">
-                <h2>Shops</h2>
-            </label>
-            <label class="item item-input item-text-wrap itemproducts">
-                <div class="input-label">
-                    <div class="img-profile">
-                        <img src="img/dookie.jpg">
+    <ion-content class="padding">
+        <div class="incard">
+            <div class="profile-img">
+                <img src="img/logo.png">
+            </div>
+            <div class="list profile-cont">
+                <label class="item item-input item-prf">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="lname" value="Wohlig Technology" disabled>
+                </label>
+                <label class="item item-input item-prf">
+                    <div class="input-label">
+                        Area
                     </div>
-                </div>
-                <div class="input-label">
-                    <div class="img-profile">
-                        <img src="img/dookie.jpg">
+                    <input type="text" name="lname" value="Mulund" disabled>
+                </label>
+                <label class="item item-input item-prf">
+                    <div class="input-label">
+                        Category
                     </div>
-                </div>
-                <div class="input-label">
-                    <div class="img-profile">
-                        <img src="img/dookie.jpg">
+                    <input type="text" name="lname" value="Mobile" disabled>
+                </label>
+                <label class="item item-input item-text-wrap">
+                    <div class="input-label">
+                        Address
                     </div>
-                </div>
+                    <div class="input itemproducts">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                </label>
+                <label class="item item-input item-text-wrap">
+                    <div class="input-label">
+                        Description
+                    </div>
+                    <div class="input itemproducts">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </div>
+                </label>
+                <label class="item item-input item-text-wrap">
+                    <h2>Shops</h2>
+                </label>
+                <label class="item item-input item-text-wrap itemproducts">
+                    <div class="input-label">
+                        <div class="img-profile">
+                            <img src="img/dookie.jpg">
+                        </div>
+                    </div>
+                    <div class="input-label">
+                        <div class="img-profile">
+                            <img src="img/dookie.jpg">
+                        </div>
+                    </div>
+                    <div class="input-label">
+                        <div class="img-profile">
+                            <img src="img/dookie.jpg">
+                        </div>
+                    </div>
+                    <!--
+               <div class="input">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+</div>
+-->
+                </label>
+                <label class="item item-input item-text-wrap">
+                    <h2>Products</h2>
+                </label>
+                <label class="item item-input item-text-wrap itemproducts">
+                    <div class="input-label">
+                        <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
+                        </button>
+                    </div>
+                    <div class="input-label">
+                        <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
+                        </button>
+                    </div>
+                    <div class="input-label">
+                        <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
+                        </button>
+                    </div>
+                </label>
+
                 <!--
                <div class="input">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </div>
 -->
-            </label>
-            <label class="item item-input item-text-wrap">
-                <h2>Products</h2>
-            </label>
-            <label class="item item-input item-text-wrap itemproducts">
-                <div class="input-label">
-                    <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
+
+                <!--        </div>-->
+                <div class="btn-edit padding">
+                    <button class="button button-block button-balanced" ng-click="openedit();">
+                        Reset Password
                     </button>
                 </div>
-                <div class="input-label">
-                    <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
-                    </button>
-                </div>
-                <div class="input-label">
-                    <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
-                    </button>
-                </div>
-            </label>
+            </div>
         </div>
         <!--
-               <div class="input">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-</div>
--->
-
-        <!--        </div>-->
-<div class="btn-edit padding">
-    <button class="button button-block button-outline button-balanced" ng-click="openedit();">
-        Reset Password
-    </button>
-</div>        <div class="btn-edit padding">
+        <div class="btn-edit padding">
             <button class="button button-block button-outline button-balanced">
                 Edit
             </button>
         </div>
+-->
 
     </ion-content>
+    <ion-footer-bar class="footer-shop ion-item balanced">
+        <h4>Edit</h4>
+    </ion-footer-bar>
 </ion-view>
