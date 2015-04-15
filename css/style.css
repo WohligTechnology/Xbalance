@@ -10,7 +10,14 @@
  src: url('../fonts/PT_Sans-Web-Bold.ttf');
     font-weight: bold;
 }
-
+.bg-xb
+{
+    background: url('../img/login-bg.png') no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 .list h4 {
     text-align: center;
 }
@@ -36,7 +43,7 @@
     text-align: center;
     width: 60px;
     height: 60px;
-    margin: 10px auto;
+    margin: 20% auto;
 }
 
 a {
@@ -327,3 +334,34 @@ p.info {
     width: 100%;
 }
 /*modal end*/
+
+.list.login-mk {
+    padding: 15px;
+}
+
+.list.login-mk label {
+    margin-bottom: 5px;
+}
+
+.btn-login a.button {
+    margin: 0 auto;
+    padding: 3px 30px;
+}
+.forgot
+{
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.btn-login {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.forgot a {
+    color: #CCC;
+}
+
+label.item.item-input {
+    padding: 0 10px;
+}
