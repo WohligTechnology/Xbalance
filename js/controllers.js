@@ -143,23 +143,23 @@ angular.module('starter.controllers', [])
             $scope.modal.show();
         };
 
+        $scope.closeModals = function () {
+            $scope.modal.close();
+        };
+        $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modals = modal;
+        });
+
+        $scope.openpswd = function () {
+            $scope.modals.show();
+        };
+
         $scope.closeModal = function () {
             $scope.modal.hide();
-        }; 
-//    $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
-//            scope: $scope,
-//            animation: 'slide-in-up'
-//        }).then(function (modal) {
-//            $scope.modal = modal;
-//        });
-//
-//        $scope.openpswd = function () {
-//            $scope.modal.show();
-//        };
-//
-//        $scope.closeModal = function () {
-//            $scope.modal.hide();
-//        };
+        };
     })
     .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {
         $ionicModal.fromTemplateUrl('templates/addbalance.html', {
