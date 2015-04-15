@@ -4,69 +4,58 @@
     font-family: 'PT Sans;
  src: url('../fonts/PT_Sans-Web-Regular.ttf');
 }
-
 @font-face {
     font-family: 'PT Sans;
  src: url('../fonts/PT_Sans-Web-Bold.ttf');
     font-weight: bold;
 }
-.bg-xb
-{
-    background: url('../img/login-bg.png') no-repeat;
+.bg-xb {
+    background-image: url('../img/login-bg.png');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-repeat: no-repeat;
 }
 .list h4 {
     text-align: center;
 }
-
 .home-or h6 {
     text-align: center;
 }
-
 .results {
     overflow-y: scroll;
     height: 260px;
 }
-
 .results .item {
     margin: 0px!important;
 }
-
 .prod-info {
     padding: 10px 20px;
 }
-
 .welcome-img {
     text-align: center;
-    width: 60px;
-    height: 60px;
-    margin: 20% auto;
+    width: 100%;
+    height: auto;
+    margin: 50px auto 10px;
 }
-
 a {
     text-decoration: none;
     color: #000;
 }
-
 button.btn-small {
     width: 48%;
     float: right;
 }
-
 .label-name h4 {
     padding-left: 14px;
     font-weight: 300;
     font-size: 16px;
 }
-
 .profile-img {
     text-align: center;
     padding: 10px 0;
 }
-
 .profile-img img {
     width: 75px;
     height: 75px;
@@ -74,47 +63,38 @@ button.btn-small {
     -moz-border-radius: 100%;
     border-radius: 100%;
 }
-
 .prod-info h4 {
     text-align: center;
 }
-
 .prod-info p {
     text-align: justify;
 }
-
 h1.title {
     text-align: center;
 }
-
 button.btn-smalls {
     width: 50%;
 }
-
 .img-profile img {
     width: 100%;
 }
-
 .welcome-img img {
-    width: 100%;
+    width: 60%;
 }
-
-.lesspadding .item {
-    padding: 5px!important;
+.incard .item {
+    padding: 5px 10px;
+    margin: 0;
+    border: 0px;
 }
-
-.lesspadding .item-content {
+.incard .item-content {
     padding: 0px!important;
 }
-
 .list.profile-cont .item {
     padding-right: 25px;
 }
-
 .list.product-cont .item {
     padding-right: 15px;
 }
-
 .input.itemproducts {
     padding-right: 15px;
 }
@@ -124,41 +104,33 @@ button.btn-smalls {
     margin-top: 0 auto;
     max-width: 1500px;
 }
-
 .gallery-item {
     float: left;
     width: 33.33333333%;
 }
-
 .gallery-item a {
     display: block;
     margin: 5px;
     border: 1px solid #3c3c3c;
     cursor: pointer;
 }
-
 .gallery-item a img {
     display: block;
     width: 100%;
     height: auto;
 }
-
 @media only screen and (max-width: 480px) {
     /* Small desktop / ipad view: 3 tiles */
-    
     .gallery-item {
         width: 33.3%;
     }
 }
-
 body.ps-active {
     -webkit-text-size-adjust: none;
 }
-
 body.ps-active * {
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
-
 body.ps-active *:focus {
     outline: 0;
 }
@@ -195,12 +167,10 @@ div.ps-caption {
     font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
     text-align: center;
 }
-
 div.ps-caption-bottom {
     border-top: 1px solid #42403f;
     border-bottom: none;
 }
-
 div.ps-caption-content {
     padding: 13px;
 }
@@ -219,12 +189,10 @@ div.ps-toolbar {
     display: table;
     table-layout: fixed;
 }
-
 div.ps-toolbar-top {
     border-bottom: 1px solid #42403f;
     border-top: none;
 }
-
 div.ps-toolbar-close,
 div.ps-toolbar-previous,
 div.ps-toolbar-next,
@@ -232,7 +200,6 @@ div.ps-toolbar-play {
     cursor: pointer;
     display: table-cell;
 }
-
 div.ps-toolbar div div.ps-toolbar-content {
     width: 44px;
     height: 44px;
@@ -240,27 +207,21 @@ div.ps-toolbar div div.ps-toolbar-content {
     background-image: url(images/photoswipe-icons.png);
     background-repeat: no-repeat;
 }
-
 div.ps-toolbar-close div.ps-toolbar-content {
     background-position: 0 0;
 }
-
 div.ps-toolbar-previous div.ps-toolbar-content {
     background-position: -44px 0;
 }
-
 div.ps-toolbar-previous-disabled div.ps-toolbar-content {
     background-position: -44px -44px;
 }
-
 div.ps-toolbar-next div.ps-toolbar-content {
     background-position: -132px 0;
 }
-
 div.ps-toolbar-next-disabled div.ps-toolbar-content {
     background-position: -132px -44px;
 }
-
 div.ps-toolbar-play div.ps-toolbar-content {
     background-position: -88px 0;
 }
@@ -272,18 +233,15 @@ div.ps-toolbar-play div.ps-toolbar-content {
         background-image: url(images/photoswipe-icons@2x.png);
     }
 }
-
 .transparent {
     background: transparent !important;
 }
-
 .image-modal {
     width: 100% !important;
     height: 100%;
     top: 0 !important;
     left: 0 !important;
 }
-
 .fullscreen-image {
     max-width: 100%;
     max-height: 100%;
@@ -295,17 +253,14 @@ div.ps-toolbar-play div.ps-toolbar-content {
     right: 0;
     top: 0;
 }
-
 .slider {
     width: 100%;
     height: 100%;
 }
-
 .input-labelss {
     margin: 0 auto;
     padding: 3px 0;
 }
-
 .list.profile-cont .item button {
     padding: 0;
     margin: 0;
@@ -313,7 +268,6 @@ div.ps-toolbar-play div.ps-toolbar-content {
     line-height: 0;
     border: 0;
 }
-
 .list.profile-cont .item button img {
     width: 100%;
 }
@@ -338,30 +292,58 @@ p.info {
 .list.login-mk {
     padding: 15px;
 }
-
 .list.login-mk label {
     margin-bottom: 5px;
+    background: rgba(44, 51, 61, 0.5);
+    border-color: rgba(44, 51, 61, 0.55);
 }
-
 .btn-login a.button {
     margin: 0 auto;
     padding: 3px 30px;
 }
-.forgot
-{
+.forgot {
     font-size: 12px;
     padding-top: 5px;
 }
-
 .btn-login {
     text-align: center;
     padding-top: 20px;
 }
-
 .forgot a {
     color: #CCC;
 }
-
-label.item.item-input {
-    padding: 0 10px;
+.login-mk .input-label,
+.login-mk input {
+    color: white;
+}
+.incard {
+    background: white;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+}
+.header-card {
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+.incard .item.item-input {
+    padding: 5px 15px;
+    border-width: 0px;
+    margin: 0;
+}
+.headed.item {
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+}
+.balanced.amount {
+    background: #67a759;
+    color: white;
+    padding: 5px 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
 }
