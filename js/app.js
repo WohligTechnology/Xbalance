@@ -87,19 +87,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 }
             }
         })
-        .state('app.product', {
-            url: "/product",
+        .state('app.shop', {
+            url: "/shop",
             views: {
                 'menuContent': {
-                    templateUrl: "templates/product.html",
-                    controller: 'ProductCtrl'
+                    templateUrl: "templates/shop.html",
+                    controller: 'ShopCtrl'
                 }
             }
         })
-        .state('welcome', {
-            url: "/welcome",
-            templateUrl: "templates/welcome.html",
-            controller: 'WelcomeCtrl'
+        .state('login', {
+            url: "/login",
+            templateUrl: "templates/login.html",
+            controller: 'LoginCtrl'
         })
 
 
@@ -133,5 +133,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/welcome');
+    $urlRouterProvider.otherwise('/login');
 });
