@@ -283,6 +283,23 @@ div.ps-toolbar-play div.ps-toolbar-content {
     height: 100%;
 }
 
+.input-labelss {
+    margin: 0 auto;
+    padding: 3px 0;
+}
+
+.list.profile-cont .item button {
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    line-height: 0;
+    border: 0;
+}
+
+.list.profile-cont .item button img {
+    width: 100%;
+}
+/*
 p.info {
     position: absolute;
     bottom: 55px;
@@ -292,5 +309,10 @@ p.info {
     text-align: center;
     font-size: 28px;
     color: #ffffff;
+}
+*/
+
+.itemproducts a.button img {
+    width: 100%;
 }
 /*modal end*/
