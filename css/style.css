@@ -84,7 +84,10 @@ button.btn-smalls {
 .incard .item {
     padding: 5px 10px;
     margin: 0;
-    border: 0px;
+    border: 0;
+}
+ion-item.item.item-complex {
+  border: 1px solid rgba(221, 221, 221, 0.25);
 }
 .incard .item-content {
     padding: 0px!important;
@@ -339,6 +342,9 @@ p.info {
     border-bottom: 1px solid #ddd;
     font-weight: bold;
 }
+ion-item.category.item h3 {
+    font-weight: 700;
+}
 .balanced.amount {
     background: #67a759;
     color: white;
@@ -346,4 +352,25 @@ p.info {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
+}
+ion-item.area.item {
+    border-bottom: 1px solid #ddd;
+}
+ion-list.lesspadding.less-pad .item {
+  padding: 0;
+}
+ion-item.area.item h3 {
+    font-weight: 700;
+}
+.incard.pad-btm .list .item {
+    padding: 0;
+}
+
+.incard.pad-btm {
+    margin-bottom: 10px;
+}
+
+.flt-right {
+    text-align: right;
+    padding: 0 5px;
 }
