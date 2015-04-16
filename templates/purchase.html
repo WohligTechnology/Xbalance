@@ -2,7 +2,7 @@
     <ion-header-bar class="bar-royal">
         <h1 class="title">Purchase</h1>
         <div class="buttons">
-            <button class="button button-clear" ng-click="closeModal()">Close</button>
+            <button class="button button-clear" ng-click="closeModalss()">Close</button>
         </div>
     </ion-header-bar>
     <ion-content class="padding">
@@ -16,8 +16,8 @@
                         <span class="input-label">Amount:</span>
                         <input type="text" maxlength="10">
                     </label>
-                    <div class="padding">
-                        <button class="button button-block button-balanced" type="submit">Request</button>
+                    <div class="padding-horizontal">
+                        <button class="button button-block button-balanced" type="submit" ng-click="showPopup();">Request</button>
                     </div>
                 </div>
             </form>

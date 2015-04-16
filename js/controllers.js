@@ -52,7 +52,27 @@ angular.module('starter.controllers', [])
 
     })
     .controller('SearchCtrl', function ($scope) {})
-    .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal) {
+    .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
+        $scope.aImages = [{
+            'src': '../img/shop1.png',
+            //            'msg': 'Swipe me to the left. Tap/click to close'
+     }, {
+            'src': '../img/shop2.png',
+            //            'msg': ''
+      }, {
+            'src': '../img/shop3.png',
+            //            'msg': ''
+    }];
+        $scope.aImagess = [{
+            'src': '../img/product1.png',
+            //            'msg': 'Swipe me to the left. Tap/click to close'
+     }, {
+            'src': '../img/product2.png',
+            //            'msg': ''
+      }, {
+            'src': '../img/product3.png',
+            //            'msg': ''
+    }];
 
         $ionicModal.fromTemplateUrl('templates/purchase.html', {
             scope: $scope,
@@ -65,11 +85,55 @@ angular.module('starter.controllers', [])
             $scope.modal.show();
         };
 
-        $scope.closeModal = function () {
+        $scope.closeModalss = function () {
             $scope.modal.hide();
         };
 
+        $ionicModal.fromTemplateUrl('templates/image-modal.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modals = modal;
+        });
 
+        $scope.openpswd = function () {
+            $scope.modals.show();
+        };
+
+        $scope.closeModal = function () {
+            $scope.modals.hide();
+        };
+
+        $ionicModal.fromTemplateUrl('templates/image-shop.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modalss = modal;
+        });
+
+        $scope.openshops = function () {
+            $scope.modalss.show();
+        };
+
+        $scope.closeModals = function () {
+            $scope.modalss.hide();
+        };
+
+        //popup
+        $scope.showPopup = function () {
+            $scope.data = {}
+
+            // An elaborate, custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Please Wait for the Approval!</p>',
+                title: 'Your Request Sent!',
+                scope: $scope,
+
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        };
     })
 
 .controller('PlaylistCtrl', function ($scope, $stateParams) {})
@@ -78,7 +142,37 @@ angular.module('starter.controllers', [])
 
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
-.controller('SellingCtrl', function ($scope, $stateParams) {})
+.controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout) {
+        $scope.showPopup = function () {
+            $scope.data = {}
+
+            // An elaborate, custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Accepted!</p>',
+                title: 'Accept',
+                scope: $scope,
+
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        };
+        $scope.showPopups = function () {
+            $scope.data = {}
+
+            // An elaborate, custom popup
+            var myPopups = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-close-round balanced round-circle rounds-x"></h2><p>Decline!</p>',
+                title: 'Decline!',
+                scope: $scope,
+
+            });
+            $timeout(function () {
+                myPopups.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        };
+
+    })
     .controller('TransactionCtrl', function ($scope, $stateParams) {})
 
 .controller('AboutCtrl', function ($scope, $stateParams) {})
@@ -177,7 +271,7 @@ angular.module('starter.controllers', [])
             $scope.modals.hide();
         };
     })
-    .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal) {
+    .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
         $ionicModal.fromTemplateUrl('templates/addbalance.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -192,5 +286,19 @@ angular.module('starter.controllers', [])
         $scope.closeModal = function () {
             $scope.modal.hide();
         };
+        //popup
+        $scope.showPopup = function () {
+            $scope.data = {}
 
+            // An elaborate, custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+                title: 'Your Request Sent!',
+                scope: $scope,
+
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+        };
     });
