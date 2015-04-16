@@ -480,6 +480,7 @@ ion-item.product.item h2 {
     font-weight: 700;
     float: left;
     padding: 5px 0;
+    text-transform: uppercase;
 }
 
 .incard .item.header {
