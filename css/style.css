@@ -66,7 +66,8 @@ button.btn-small {
 
 .profile-img {
     text-align: center;
-    padding: 10px 0;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .profile-img img {
@@ -460,13 +461,13 @@ ion-item.product.item {
 }
 
 ion-item.product.item h2 {
-    font-weight: 700;
+    font-weight: 100;
     float: left;
     padding: 5px 0;
 }
 
 .incard .item.header {
-    font-weight: 600;
+    font-weight: 100;
     font-size: 16px;
     border-bottom: 1px solid rgba(221, 221, 221, 0.5);
 }
@@ -496,6 +497,10 @@ ion-footer-bar.footer-shop h4 {
 
 .sell-cont {
     padding-left: 20px;
+}
+
+.incard .item.header h2 {
+    font-weight: 100;
 }
 
 label.item.item-input.item-prf input {
