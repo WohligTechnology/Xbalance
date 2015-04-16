@@ -24,6 +24,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
+    .state('login', {
+        url: "/login",
+        templateUrl: "templates/login.html",
+        controller: 'LoginCtrl'
+    })
+
     .state('app', {
         url: "/app",
         abstract: true,
@@ -69,39 +75,36 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
-        .state('app.home', {
-            url: "/home",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/home.html",
-                    controller: 'HomeCtrl'
-                }
-            }
-        })
-        .state('app.selling', {
-            url: "/selling",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/selling.html",
-                    controller: 'SellingCtrl'
-                }
-            }
-        })
-        .state('app.shop', {
-            url: "/shop",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/shop.html",
-                    controller: 'ShopCtrl'
-                }
-            }
-        })
-        .state('login', {
-            url: "/login",
-            templateUrl: "templates/login.html",
-            controller: 'LoginCtrl'
-        })
 
+    .state('app.home', {
+        url: "/home",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/home.html",
+                controller: 'HomeCtrl'
+            }
+        }
+    })
+
+    .state('app.selling', {
+        url: "/selling",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/selling.html",
+                controller: 'SellingCtrl'
+            }
+        }
+    })
+
+    .state('app.shop', {
+        url: "/shop",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/shop.html",
+                controller: 'ShopCtrl'
+            }
+        }
+    })
 
     .state('app.balance', {
         url: "/balance",
@@ -112,24 +115,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
-        .state('app.transaction', {
-            url: "/transaction",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/transaction.html",
-                    controller: 'TransactionCtrl'
-                }
+
+    .state('app.transaction', {
+        url: "/transaction",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/transaction.html",
+                controller: 'TransactionCtrl'
             }
-        })
-        .state('app.profile', {
-            url: "/profile",
-            views: {
-                'menuContent': {
-                    templateUrl: "templates/profile.html",
-                    controller: 'ProfileCtrl'
-                }
+        }
+    })
+
+    .state('app.profile', {
+        url: "/profile",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/profile.html",
+                controller: 'ProfileCtrl'
             }
-        })
+        }
+    })
 
 
     // if none of the above states are matched, use this as the fallback
