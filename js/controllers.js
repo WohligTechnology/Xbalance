@@ -54,23 +54,23 @@ angular.module('starter.controllers', [])
     .controller('SearchCtrl', function ($scope) {})
     .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
         $scope.aImages = [{
-            'src': '../img/shop1.png',
+            'src': 'img/shop1.png',
             //            'msg': 'Swipe me to the left. Tap/click to close'
      }, {
-            'src': '../img/shop2.png',
+            'src': 'img/shop2.png',
             //            'msg': ''
       }, {
-            'src': '../img/shop3.png',
+            'src': 'img/shop3.png',
             //            'msg': ''
     }];
         $scope.aImagess = [{
-            'src': '../img/product1.png',
+            'src': 'img/product1.png',
             //            'msg': 'Swipe me to the left. Tap/click to close'
      }, {
-            'src': '../img/product2.png',
+            'src': 'img/product2.png',
             //            'msg': ''
       }, {
-            'src': '../img/product3.png',
+            'src': 'img/product3.png',
             //            'msg': ''
     }];
 
