@@ -7,19 +7,24 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="incard">
-            <form ng-submit="doLogin()">
+            <form ng-submit="doreset()">
                 <div class="list">
-                    <label class="item item-input header">
-                        Enter Password
-                    </label>
-                    <label class="item item-input">
+                    <!--
+<div class="item item-input header">
+    EnterNew Password
+</div>
+-->
+                    <div class="item item-input">
+                        <input type="password" placeholder="Current Password">
+                    </div>
+                    <div class="item item-input">
                         <input type="password" placeholder="New Password">
-                    </label>
-                    <label class="item item-input">
+                    </div>
+                    <div class="item item-input">
                         <input type="password" placeholder="Confirm Password">
-                    </label>
-                    <div class="padding">
-                        <button class="button button-block button-balanced" type="submit">Submit</button>
+                    </div>
+                    <div class="padding-vertical btn-rest">
+                        <button class="button button-small button-balanced" type="submit">Submit</button>
                     </div>
                 </div>
             </form>

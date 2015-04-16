@@ -3,55 +3,62 @@
         <div class="incard">
             <div class="profile-img">
                 <img src="img/logo.png">
+                <h3>Wohlig Technology</h3>
             </div>
+
             <div class="list profile-cont">
-                <label class="item item-input item-prf">
-                    <span class="input-label">Name</span>
-                    <input type="text" name="lname" value="Wohlig Technology" disabled>
-                </label>
-                <label class="item item-input item-prf">
-                    <div class="input-label">
-                        Area
-                    </div>
-                    <input type="text" name="lname" value="Mulund" disabled>
-                </label>
-                <label class="item item-input item-prf">
-                    <div class="input-label">
-                        Category
-                    </div>
-                    <input type="text" name="lname" value="Mobile" disabled>
-                </label>
-                <label class="item item-input item-text-wrap header">
+
+                <!--
+             <div class="item item-input item-prf">
+    <input type="text" name="lname" value="Wohlig Technology" disabled>
+</div>
+-->
+
+                <!--
+<div class="item item-input item-prf">
+    <div class="input-div">
+        Area
+    </div>
+    <input type="text" name="lname" value="Mulund" disabled>
+</div>
+<div class="item item-input item-prf">
+    <div class="input-div">
+        Category
+    </div>
+    <input type="text" name="lname" value="Mobile" disabled>
+</div>
+-->
+                <div class="item item-input item-text-wrap header">
                     <h2> Address</h2>
-                </label>
-                <label class="item item-input item-text-wrap">
+                </div>
+                <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </div>
-                </label>
-                <label class="item item-input item-text-wrap header">
+                </div>
+                <div class="item item-input item-text-wrap header">
                     <h2>Description</h2>
-                </label>
-                <label class="item item-input item-text-wrap">
+                </div>
+                <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </div>
-                </label>
-                <label class="item item-input item-text-wrap header">
+                </div>
+                <div class="item item-input item-text-wrap header">
                     <h2>Shops</h2>
-                </label>
-                <label class="item item-input item-text-wrap itemproducts">
-                    <div class="input-label">
+                </div>
+                <div class="item item-input item-text-wrap itemproducts">
+                    <div class="input-div">
                         <div class="img-profile">
                             <img src="img/dookie.jpg">
                         </div>
                     </div>
-                    <div class="input-label">
+                    <div class="input-div">
                         <div class="img-profile">
                             <img src="img/dookie.jpg">
                         </div>
                     </div>
-                    <div class="input-label">
+                    <div class="input-div">
                         <div class="img-profile">
                             <img src="img/dookie.jpg">
                         </div>
@@ -61,24 +68,24 @@
     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 </div>
 -->
-                </label>
-                <label class="item item-input item-text-wrap header">
+                </div>
+                <div class="item item-input item-text-wrap header">
                     <h2>Products</h2>
-                </label>
-                <label class="item item-input item-text-wrap itemproducts">
-                    <div class="input-label">
+                </div>
+                <div class="item item-input item-text-wrap itemproducts">
+                    <div class="input-div">
                         <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
                         </button>
                     </div>
-                    <div class="input-label">
+                    <div class="input-div">
                         <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
                         </button>
                     </div>
-                    <div class="input-label">
+                    <div class="input-div">
                         <button class="button" ng-click="openpswd();"><img src="img/dookie.jpg">
                         </button>
                     </div>
-                </label>
+                </div>
 
                 <!--
                <div class="input">
@@ -87,10 +94,19 @@
 -->
 
                 <!--        </div>-->
-                <div class="btn-edit padding">
-                    <button class="button button-block button-balanced" ng-click="openedit();">
-                        Reset Password
-                    </button>
+                <div class="btn-edit padding-horizontal">
+                    <div class="row">
+                        <div class="col">
+                            <button class="button button-block button-balanced prf-edit">
+                                Edit
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button class="button button-block button-assertive prf-reset" ng-click="openedit();">
+                                Reset Password
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,7 +119,9 @@
 -->
 
     </ion-content>
-    <ion-footer-bar class="footer-shop ion-item balanced">
-        <h4>Edit</h4>
-    </ion-footer-bar>
+    <!--
+<ion-footer-bar class="footer-shop ion-item balanced">
+    <h4>Edit</h4>
+</ion-footer-bar>
+-->
 </ion-view>

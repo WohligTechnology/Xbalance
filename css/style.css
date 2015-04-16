@@ -28,6 +28,13 @@
     text-align: center;
 }
 
+.input.itemproducts {
+    font-size: 12px;
+    color: #909090;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
 .results {
     overflow-y: scroll;
     height: 260px;
@@ -96,6 +103,12 @@ button.btn-smalls {
 
 .img-profile img {
     width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    padding: 0 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .welcome-img img {
@@ -278,7 +291,7 @@ div.ps-toolbar-play div.ps-toolbar-content {
 }
 
 .transparent {
-    background: transparent !important;
+    background: rgba(0, 0, 0, 0.4) !important;
 }
 
 .image-modal {
@@ -320,6 +333,10 @@ div.ps-toolbar-play div.ps-toolbar-content {
 
 .list.profile-cont .item button img {
     width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 3px;
 }
 /*
 p.info {
@@ -443,7 +460,7 @@ ion-item.area.item h3 {
 
 ion-footer-bar.footer-shop {
     padding: 0;
-    background: #67a759;
+    background: #3EB16E;
 }
 
 .btn-shop {
@@ -461,7 +478,7 @@ ion-item.product.item {
 }
 
 ion-item.product.item h2 {
-    font-weight: 100;
+    font-weight: 700;
     float: left;
     padding: 5px 0;
 }
@@ -469,7 +486,8 @@ ion-item.product.item h2 {
 .incard .item.header {
     font-weight: 100;
     font-size: 16px;
-    border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+    padding-bottom: 0px;
+    padding-top: 10px;
 }
 
 label.item.area input {
@@ -492,7 +510,10 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .sell-img img {
-    width: 100%;
+    width: 75px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .sell-cont {
@@ -500,10 +521,50 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .incard .item.header h2 {
-    font-weight: 100;
+    font-weight: bold;
+    color: #000;
+    font-size: 14px;
+    text-transform: uppercase;
 }
 
-label.item.item-input.item-prf input {
-    background: transparent;
-    font-size: 14px;
+.profile-img h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.sell-cont.trans h2 {
+    padding: 5px 0 10px 0;
+}
+
+.sell-cont h2 {
+    font-size: 18px;
+    padding: 0px 0 2px 0;
+    font-weight: bold;
+}
+
+.btn-edit.padding {
+    text-align: center;
+}
+
+.btn-rest button {
+    padding: 0 15px;
+}
+
+.btn-rest {
+    text-align: center;
+}
+
+.btn-edit button {
+    font-size: small;
+}
+
+ion-item.my-balcont.item {
+    border-bottom: 1px solid rgba(221, 221, 221, 0.4);
+}
+
+.faq-cont p {
+    padding: 10px 10px 0 10px;
+    text-align: justify;
 }
