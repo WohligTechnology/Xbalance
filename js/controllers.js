@@ -34,7 +34,23 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('HomeCtrl', function ($scope) {})
+.controller('HomeCtrl', function ($scope, $ionicModal) {
+        $ionicModal.fromTemplateUrl('templates/popsearch.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.openedit = function () {
+            $scope.modal.show();
+        };
+
+        $scope.closeModal = function () {
+            $scope.modal.hide();
+        };
+
+    })
     .controller('SearchCtrl', function ($scope) {})
     .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal) {
 

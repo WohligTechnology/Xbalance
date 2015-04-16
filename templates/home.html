@@ -1,7 +1,7 @@
 <ion-view view-title="Home">
     <ion-content class="padding">
         <div class="incard">
-           <div class="header-card">Find shops</div>
+            <div class="header-card">Find shops</div>
             <label class="item item-input area">
                 <span class="input-label">Area</span>
                 <input type="text" placeholder="Enter Your Area">
@@ -20,12 +20,16 @@
             <div class="home-or">
                 <h6>- OR -</h6>
             </div>
-            <label class="item item-input area">
-                <span class="input-label">
-                    Membership No.
-                </span>
-              <p>Please Select</p>
-            </label>
+            <!--            <div class="item item-input area">-->
+            <div class="row">
+                <div class="col">
+                    <h4>Membership No.</h4>
+                </div>
+                <div class="col">
+                    <p class="home-p" ng-click="openedit();">Please Select</p>
+                </div>
+            </div>
+            <!--            </div>-->
             <div class="padding-horizontal">
                 <a href="#/app/search">
                     <button class="button button-block button-outline button-balanced">Search</button>

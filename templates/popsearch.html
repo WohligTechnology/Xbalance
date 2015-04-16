@@ -1,0 +1,20 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-royal">
+        <h1 class="title"> Membership No.</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeModal()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <ion-list>
+            <form class="item item-input-inset only-horizontal " ng-submit="doSearch(datasearch); ">
+                <label class="item-input-wrapper ">
+                    <input type="text " placeholder="Membership No. " ng-model="datasearch " ng-change="doSearch(datasearch);" style="border: 0px;">
+                </label>
+                <button class="button button-icon ion-search " type="submit "></button>
+            </form>
+
+        </ion-list>
+
+    </ion-content>
+</ion-modal-view>

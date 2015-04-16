@@ -31,7 +31,6 @@
 .input.itemproducts {
     font-size: 12px;
     color: #909090;
-    border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
 }
 
@@ -112,7 +111,7 @@ button.btn-smalls {
 }
 
 .welcome-img img {
-    width: 60%;
+    width: 90%;
 }
 
 .incard .item {
@@ -425,7 +424,7 @@ ion-item.category.item h3 {
 }
 
 .balanced.amount {
-    background: #67a759;
+    background: #3185D7;
     color: white;
     padding: 5px 15px;
     -webkit-border-radius: 15px;
@@ -460,7 +459,7 @@ ion-item.area.item h3 {
 
 ion-footer-bar.footer-shop {
     padding: 0;
-    background: #3EB16E;
+    background: #3185D7;
 }
 
 .btn-shop {
@@ -567,4 +566,11 @@ ion-item.my-balcont.item {
 .faq-cont p {
     padding: 10px 10px 0 10px;
     text-align: justify;
+}
+
+p.home-p {
+    padding-top: 10px;
+    text-align: right;
+    padding-right: 15px;
+    cursor: pointer;
 }
