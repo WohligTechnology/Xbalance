@@ -3,10 +3,10 @@
     <name>One Stop Barter</name>
     <description>App for barter</description>
     <author href="http://www.wohlig.com" email="info@wohlig.com">Wohlig</author>
-    
+
     <gap:platform name="ios" />
     <gap:platform name="android" />
-    
+
     <preference name="phonegap-version" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
@@ -34,13 +34,12 @@
 
     <icon src="img/icon.png" />
 
-    <gap:splash src="img/splash.png" />
-
     <gap:splash src="screen/android/screen-port-hdpi.png" gap:platform="android" density="port-hdpi" />
     <gap:splash src="screen/android/screen-port-ldpi.png" gap:platform="android" density="port-ldpi" />
     <gap:splash src="screen/android/screen-port-mdpi.png" gap:platform="android" density="port-mdpi" />
     <gap:splash src="screen/android/screen-port-xhdpi.png" gap:platform="android" density="port-xhdpi" />
     <gap:splash src="screen/android/screen-port-xxhdpi.png" gap:platform="android" density="port-xxhdpi" />
+    <gap:splash src="img/splash.png" />
 
     <access origin="*" />
     <gap:plugin name="com.ionic.keyboard" />

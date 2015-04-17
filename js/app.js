@@ -136,6 +136,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
     })
 
+    .state('app.profileedit', {
+        url: "/profile/edit",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/profile-edit.html",
+                controller: 'ProfileCtrl'
+            }
+        }
+    })
+    ;
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
