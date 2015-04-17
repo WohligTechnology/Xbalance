@@ -39,7 +39,7 @@
     <gap:splash src="screen/android/screen-port-mdpi.png" gap:platform="android" density="port-mdpi" />
     <gap:splash src="screen/android/screen-port-xhdpi.png" gap:platform="android" density="port-xhdpi" />
     <gap:splash src="screen/android/screen-port-xxhdpi.png" gap:platform="android" density="port-xxhdpi" />
-    <gap:splash src="img/splash.png" />
+    <gap:splash src="screen/android/screen-port-xhdpi.png" />
 
     <access origin="*" />
     <gap:plugin name="com.ionic.keyboard" />
