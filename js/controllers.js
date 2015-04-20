@@ -1,30 +1,30 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
 })
 
-.controller('HomeCtrl', function($scope, $ionicModal) {
+.controller('HomeCtrl', function ($scope, $ionicModal) {
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modal.hide();
     };
 
 })
 
-.controller('SearchCtrl', function($scope) {})
+.controller('SearchCtrl', function ($scope) {})
 
-.controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
+.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
     $scope.aImages = [{
         'src': 'img/shop1.png',
 
@@ -49,50 +49,50 @@ angular.module('starter.controllers', [])
     $ionicModal.fromTemplateUrl('templates/purchase.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     };
 
-    $scope.closeModalss = function() {
+    $scope.closeModalss = function () {
         $scope.modal.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/image-modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modals = modal;
     });
 
-    $scope.openpswd = function() {
+    $scope.openpswd = function () {
         $scope.modals.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modals.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/image-shop.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modalss = modal;
     });
 
-    $scope.openshops = function() {
+    $scope.openshops = function () {
         $scope.modalss.show();
     };
 
-    $scope.closeModals = function() {
+    $scope.closeModals = function () {
         $scope.modalss.hide();
     };
 
     //popup
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
@@ -102,19 +102,19 @@ angular.module('starter.controllers', [])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
 })
 
 
-.controller('LoginCtrl', function($scope, $stateParams) {})
+.controller('LoginCtrl', function ($scope, $stateParams) {})
 
-.controller('FaqCtrl', function($scope, $stateParams) {})
+.controller('FaqCtrl', function ($scope, $stateParams) {})
 
-.controller('SellingCtrl', function($scope, $stateParams, $ionicPopup, $timeout) {
-    $scope.showPopup = function() {
+.controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout) {
+    $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
@@ -124,11 +124,11 @@ angular.module('starter.controllers', [])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
-    $scope.showPopups = function() {
+    $scope.showPopups = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
@@ -138,59 +138,85 @@ angular.module('starter.controllers', [])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopups.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
 
 })
 
-.controller('TransactionCtrl', function($scope, $stateParams) {
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location) {
+
+    //  DECLARATION
+    $scope.returnsactive = "active";
+    $scope.purchased = "bold";
+    //    $scope.user = [];
+
+    //  DESIGN CODE
+    $scope.changepurchase = function () {
+        $scope.purchased = "bold";
+        $scope.sale = "";
+        $scope.admin = "";
+    }
+
+    $scope.chnagesale = function () {
+        $scope.purchased = "";
+        $scope.sale = "bold";
+        $scope.admin = "";
+    }
+    $scope.chnageadmin = function () {
+        $scope.purchased = "";
+        $scope.sale = "";
+        $scope.admin = "bold";
+    }
+
+    //  GET USER DETAILS
+    //    $scope.user = MyServices.getuser();
 
 })
 
-.controller('AboutCtrl', function($scope, $stateParams) {
+.controller('AboutCtrl', function ($scope, $stateParams) {
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate) {
 
     $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal2 = modal;
     });
 
-    $scope.openPassword = function() {
+    $scope.openPassword = function () {
         $scope.oModal2.show();
     };
 
-    $scope.closePassword = function() {
+    $scope.closePassword = function () {
         $scope.oModal2.hide();
     };
 
 })
 
-.controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
+.controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
 
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     }
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modal.hide();
     };
     //popup
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
@@ -200,7 +226,7 @@ angular.module('starter.controllers', [])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
