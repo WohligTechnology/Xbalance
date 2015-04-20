@@ -1,23 +1,82 @@
 <ion-view view-title="Transaction">
-    <ion-content class="padding">
-        <div class="incard">
-            <div class="list">
-                <ion-item class="item item-thumbnail-left">
-                    <div class="row">
-                        <div class="col-25">
-                            <div class="sell-img">
-                                <img src="img/logo.png">
+    <ion-content class="">
+        <div class="button-bar bar-royal transbtn">
+            <div class="button" ng-class="purchased" ng-click="changepurchase()">
+                Purchased
+            </div>
+            <div class="button" ng-class="sale" ng-click="chnagesale()">
+                Sales
+            </div>
+            <div class="button" ng-class="admin" ng-click="chnageadmin()">
+                Admin
+            </div>
+        </div>
+        <div class="padding">
+            <div class="bold-list" ng-if="purchased=='bold'">
+                <div class="incard">
+                    <div class="list">
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date:</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-75">
-                            <div class="sell-cont trans">
-                                <h2>Wohlig Technology</h2>
-                                <p>Amount: Rs.20,000</p>
-                                <p>Date: 10th Mar 2015</p>
-                            </div>
-                        </div>
+                        </ion-item>
                     </div>
-                </ion-item>
+                </div>
+            </div>
+
+            <div class="bold-list" ng-if="sale=='bold'">
+                <div class="incard">
+                    <div class="list">
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date: 10th Mar 2015</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </div>
+                </div>
+            </div>
+            <div class="bold-list" ng-if="admin=='bold'">
+                <div class="incard">
+                    <div class="list">
+                        <ion-item class="item item-thumbnail-left trns-add">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="add-amt">
+                                        <h2>Amount Added</h2>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="addamt">
+                                        <p>Rs.20,000</p>
+                                        <p>Date: 10th Mar 2015</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </div>
+                </div>
             </div>
         </div>
     </ion-content>
