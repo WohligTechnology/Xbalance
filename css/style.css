@@ -689,12 +689,17 @@ ion-item.item-left.item h2 {
 }
 
 .add-amt h2 {
-    padding-top: 22px;
+    padding-top: 0px;
     font-size: 18px;
     padding-left: 5px;
 }
 
 .addamt p {
-    padding-top: 24px;
+    /* padding-top: 24px; */
+    
     font-size: 15px;
+}
+
+ion-item.item.item-thumbnail-left.trns-add {
+    min-height: 70px;
 }
