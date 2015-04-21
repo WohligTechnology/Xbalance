@@ -117,6 +117,8 @@ button.btn-smalls {
     padding: 5px 10px;
     margin: 0;
     border: 0;
+    /* min-height: 90px!important; */
+    /* border-bottom: 1px solid #ddd; */
 }
 
 ion-item.item.item-complex {
@@ -393,7 +395,8 @@ p.info {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
+    
     overflow: hidden;
     -webkit-box-shadow: 0 1px 1px 0 #aaa;
     -moz-box-shadow: 0 1px 1px 0 #aaa;
@@ -517,7 +520,7 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .sell-img img {
-    width: 75px;
+    width: 100%;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -542,7 +545,7 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .sell-cont.trans h2 {
-    padding: 5px 0 10px 0;
+    padding: 5px 0 0px 0;
 }
 
 .sell-cont h2 {
@@ -695,14 +698,18 @@ ion-item.item-left.item h2 {
     padding-left: 5px;
 }
 
-.addamt p {
-    /* padding-top: 24px; */
-    
-    font-size: 15px;
+.incard.transcard .item {
+    min-height: 90px!important;
+    border-bottom: 1px solid #ddd;
+    ;
 }
 
 ion-item.item.item-thumbnail-left.trns-add {
     min-height: 70px;
+}
+
+.list.amt-add {
+    text-align: center;
 }
 
 .add-amt {
