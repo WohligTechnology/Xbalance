@@ -13,8 +13,40 @@
         </div>
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
-                <div class="incard">
+                <div class="incard transcard">
                     <div class="list">
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date:</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date:</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
                         <ion-item class="item item-thumbnail-left">
                             <div class="row">
                                 <div class="col-25">
@@ -36,8 +68,40 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold'">
-                <div class="incard">
+                <div class="incard transcard">
                     <div class="list">
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date: 10th Mar 2015</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+                        <ion-item class="item item-thumbnail-left">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="img/logo.png">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <h2>Wohlig Technology</h2>
+                                        <p>Amount: Rs.20,000</p>
+                                        <p>Date: 10th Mar 2015</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
                         <ion-item class="item item-thumbnail-left">
                             <div class="row">
                                 <div class="col-25">
@@ -58,31 +122,72 @@
                 </div>
             </div>
             <div class="bold-list" ng-if="admin=='bold'">
-                <div class="incard">
-                    <div class="list">
-                        <ion-item class="item item-thumbnail-left trns-add">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="add-amt">
-                                        <p>Amount Added
-                                        </p>
-                                    </div>
-                                    <div class="addamt">
-                                        <p>Rs.20,000</p>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="add-amt">
-                                        <p>Date
-                                        </p>
-                                    </div>
-                                    <div class="addamt">
-                                        <p>10th Mar 2015</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-item>
+                <!--
+        <div class="incard">
+    <div class="list">
+        <ion-item class="item item-thumbnail-left trns-add">
+            <div class="row">
+                <div class="col">
+                    <div class="add-amt">
+                        <p>Amount Added
+                        </p>
                     </div>
+                    <div class="addamt">
+                        <p>Rs.20,000</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="add-amt">
+                        <p>Date
+                        </p>
+                    </div>
+                    <div class="addamt">
+                        <p>10th Mar 2015</p>
+                    </div>
+                </div>
+            </div>
+        </ion-item>
+    </div>
+</div>
+-->
+                <div class="incard">
+                    <ion-list class="lesspadding disable-user-behavior">
+                        <div class="list amt-add">
+                            <ion-item class="headed item">
+                                <div class="row">
+                                    <div class="col">Amount Added</div>
+                                    <div class="col">Date</div>
+                                </div>
+                            </ion-item>
+                            <ion-item href="#/app/shop" class="item item-complex">
+                                <a class="item-content" ng-href="#/app/shop" target="_self" href="#/app/shop">
+                                    <div class="row">
+                                        <div class="col">Rs 60,000</div>
+                                        <div class="col">10th Mar 2015
+                                        </div>
+                                    </div>
+                                </a>
+                            </ion-item>
+                            <ion-item href="#/app/shop" class="item item-complex">
+                                <a class="item-content" ng-href="#/app/shop" target="_self" href="#/app/shop">
+                                    <div class="row">
+                                        <div class="col">Rs 60,000</div>
+                                        <div class="col">11th Mar 2015
+                                        </div>
+                                    </div>
+                                </a>
+                            </ion-item>
+                            <ion-item href="#/app/shop" class="item item-complex">
+                                <a class="item-content" ng-href="#/app/shop" target="_self" href="#/app/shop">
+                                    <div class="row">
+                                        <div class="col">Rs 60,000</div>
+                                        <div class="col">12th Mar 2015
+                                        </div>
+                                    </div>
+                                </a>
+                            </ion-item>
+                        </div>
+                    </ion-list>
                 </div>
             </div>
         </div>
