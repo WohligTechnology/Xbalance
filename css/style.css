@@ -673,6 +673,7 @@ ion-item.item-left.item h2 {
     font-weight: bold;
     color: #3b3f42;
     font-size: 14px;
+    text-transform: uppercase;
 }
 
 .item.item-royal {
@@ -702,4 +703,17 @@ ion-item.item-left.item h2 {
 
 ion-item.item.item-thumbnail-left.trns-add {
     min-height: 70px;
+}
+
+.add-amt {
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.addamt {
+    text-align: center;
+}
+
+.add-amt p {
+    font-weight: bold;
 }
