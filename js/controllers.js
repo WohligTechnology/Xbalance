@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
@@ -109,7 +109,29 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('LoginCtrl', function ($scope, $stateParams) {})
+.controller('LoginCtrl', function ($scope, $stateParams,MyServices,$location) {
+  $.jStorage.flush();
+    
+    var logincallback=function(data,status) {
+        if(data=="false")
+        {
+            console.log(data);
+            console.log("Login Failed");
+        }
+        else
+        {
+            user=data;
+            console.log(user);
+            $.jStorage.set("user",data);
+            $location.path("#/app/home");
+        }
+            
+    };
+    
+    $scope.onlogin=function(user) {
+        MyServices.login(user,logincallback);
+    };
+})
 
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
