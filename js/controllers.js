@@ -23,7 +23,7 @@ angular.module('starter.controllers', ['myservices'])
 	var homecallback=function(data,status){
 		$scope.user=data;
 		console.log($scope.user);
-		//$location.url("/app/search");
+		$location.url("/app/search");
 	};
 //	$scope.searchclick=function(user) {
         MyServices.home("2",homecallback);
