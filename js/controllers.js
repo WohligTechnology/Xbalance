@@ -29,6 +29,18 @@ angular.module('starter.controllers', ['myservices'])
         MyServices.home("2",homecallback);
 //    };
 	
+	$scope.user2={
+	membershipno:'454'
+	};
+	
+	var searchcallback=function(data,status){
+		
+	console.log(data);
+	};
+	 $scope.memfunc = function () {
+		 MyServices.searchresult($scope.user2,searchcallback);
+        
+    };
 
 })
 //

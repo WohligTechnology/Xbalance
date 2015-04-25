@@ -16,8 +16,7 @@ myservices.factory('MyServices', function ($http) {
         $http.get(adminurl + "home?user="+user,{}).success(homecallback);
 		},
 	returnval.searchresult=function(user2,searchcallback) {
-//        console.log("Demo");
-        $http.get(adminurl + "searchresult?area="+user2.area+"&category="+user2.category,{}).success(searchcallback);
+    $http.get(adminurl + "searchresult?area="+user2.area+"&category="+user2.category+"&membershipno="+user2.membershipno,{}).success(searchcallback);
 		};		
     return returnval;
 });
