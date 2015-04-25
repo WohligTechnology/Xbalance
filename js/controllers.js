@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('HomeCtrl', function ($scope, MyServices, $ionicModal) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal,$location) {
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -23,23 +23,30 @@ angular.module('starter.controllers', ['myservices'])
 	var homecallback=function(data,status){
 		$scope.user=data;
 		console.log($scope.user);
-		$location.url("/app/search");
+//		$location.url("/app/search");
 	};
 //	$scope.searchclick=function(user) {
         MyServices.home("2",homecallback);
 //    };
 	
-	$scope.user2={
-	membershipno:'454'
-	};
+//	$scope.user2={
+//	area:'5',
+//	category:'3's
+//	};
 	
-	var searchcallback=function(data,status){
-		
-	console.log(data);
-	};
-	 $scope.memfunc = function () {
-		 MyServices.searchresult($scope.user2,searchcallback);
+	$scope.demo={};
+	$scope.setname = function(name){
+		$.jStorage.set
+		console.log(name);
+	}
+	
+	 $scope.memfunc = function (home) {
+		 MyServices.setsearch(home);
+		 console.log("area="+home.area+"category="+home.category+"membershipno="+home.membershipno);
+		 $location.url("/app/search");
+//		 MyServices.searchresult(home,searchcallback);
         
+		 
     };
 
 })
@@ -69,7 +76,21 @@ angular.module('starter.controllers', ['myservices'])
 //})
 
 
-.controller('SearchCtrl', function ($scope) {})
+.controller('SearchCtrl', function ($scope, MyServices, $ionicModal,$location) {
+
+	
+	$scope.demo = [];
+	$scope.area = JSON.parse($.jStorage.get("search").area);
+	$scope.category = JSON.parse($.jStorage.get("search").category);
+	var searchcallback=function(data,status){
+		console.log(data);
+		$scope.demo=data;
+	};
+	
+	MyServices.searchresult(searchcallback);
+        
+
+})
 
 .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout) {
     $scope.aImages = [{

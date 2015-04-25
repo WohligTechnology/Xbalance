@@ -15,8 +15,21 @@ myservices.factory('MyServices', function ($http) {
 //        console.log("Demo");
         $http.get(adminurl + "home?user="+user,{}).success(homecallback);
 		},
-	returnval.searchresult=function(user2,searchcallback) {
-    $http.get(adminurl + "searchresult?area="+user2.area+"&category="+user2.category+"&membershipno="+user2.membershipno,{}).success(searchcallback);
+		returnval.setsearch=function(search) {
+			console.log("in service");
+			console.log(search);
+			$.jStorage.set("search",search);
+			
+		},
+		returnval.getsearch=function(search) {
+			return $.jStorage.get("search");
+		},
+	returnval.searchresult=function(searchcallback) {
+			var category = JSON.parse($.jStorage.get("search").category);
+			var area = JSON.parse($.jStorage.get("search").area);
+//			var membershipno = JSON.parse($.jStorage.get("search").membershipno);
+			console.log(category);
+    $http.get(adminurl + "searchresult?area="+area.id+"&category="+category.id+"&membershipno=12345",{}).success(searchcallback);
 		};		
     return returnval;
 });

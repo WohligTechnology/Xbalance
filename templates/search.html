@@ -9,7 +9,7 @@
                             <h3>Area</h3>
                         </div>
                         <div class="col">
-                            <div class="flt-right">Mulund</div>
+                            <div class="flt-right">{{area.name}}</div>
                         </div>
                     </div>
                 </ion-item>
@@ -19,7 +19,7 @@
                             <h3>Category</h3>
                         </div>
                         <div class="col">
-                            <div class="flt-right">Mobile</div>
+                            <div class="flt-right">{{category.name}}</div>
                         </div>
                     </div>
                 </ion-item>
@@ -34,13 +34,14 @@
                         <div class="col">Sell Balance</div>
                     </div>
                 </ion-item>
-                <ion-item href="#/app/shop">
-                    <div class="row">
-                        <div class="col">Apple</div>
-                        <div class="col"><span class="balanced amount">Rs.60,000</span>
+                <ion-item href="">
+                    <div class="row" ng-repeat="r in demo.searchresult">
+                        <div class="col">{{r.name}}</div>
+                        <div class="col"><span class="balanced amount">{{r.sellbalance}}</span>
                         </div>
                     </div>
                 </ion-item>
+<!--
                 <ion-item href="#/app/shop">
                     <div class="row">
                         <div class="col">Nokia</div>
@@ -55,6 +56,7 @@
                         </div>
                     </div>
                 </ion-item>
+-->
             </ion-list>
         </div>
 

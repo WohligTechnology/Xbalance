@@ -12,21 +12,16 @@
                 <div class="input-label">
                     Area
                 </div>
-                <select>
-                    <option selected>Dharavi</option>
-                    <option>Airoli</option>
+                <select ng-model="home.area" ng-change="setname(home.area)">
+                    <option ng-repeat="areas in user.area" value="{{areas}}">{{areas.name}}</option>
                 </select>
             </label>
             <label class="item item-input item-select area">
                 <div class="input-label">
                     Catergories
                 </div>
-                <select>
-                    <option ng-repeat="categories in user.category">{{categories.name}}</option>
-<!--
-                    <option selected>Personal Computers</option>
-                    <option>Laptops</option>
--->
+                <select ng-model="home.category">
+                    <option ng-repeat="categories in user.category" value="{{categories}}">{{categories.name}}</option>
                 </select>
 
             </label>
@@ -36,7 +31,7 @@
             <!--            <div class="item item-input area">-->
             <div class="row">
                 <div class="col">
-                    <h5 class="member">Membership No.</h5>
+                    <h5 class="member" >Membership No.</h5>
                 </div>
                 <div class="col">
                     <p class="home-p" ng-click="openedit();">Please Select</p>
@@ -45,7 +40,7 @@
             <!--            </div>-->
             <div class="padding-horizontal">
 <!--                <a href="#/app/search">-->
-                    <button class="button button-block button-outline button-balanced" ng-click="memfunc();">Search</button>
+                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
 <!--                </a>-->
             </div>
         </div>
