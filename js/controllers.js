@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('HomeCtrl', function ($scope, $ionicModal) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal) {
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -19,8 +19,43 @@ angular.module('starter.controllers', ['myservices'])
     $scope.closeModal = function () {
         $scope.modal.hide();
     };
+	
+	var homecallback=function(data,status){
+		$scope.user=data;
+		console.log($scope.user);
+		//$location.url("/app/search");
+	};
+//	$scope.searchclick=function(user) {
+        MyServices.home("2",homecallback);
+//    };
+	
 
 })
+//
+//.controller('LoginCtrl', function ($scope, $stateParams,MyServices,$location) {
+//  $.jStorage.flush();
+//    
+//    var logincallback=function(data,status) {
+//        if(data=="false")
+//        {
+//            console.log(data);
+//            console.log("Login Failed");
+//        }
+//        else
+//        {
+//            user=data;
+//            console.log(user);
+//            $.jStorage.set("user",data);
+//            $location.url("/app/home");
+//        }
+//            
+//    };
+//    
+//    $scope.onlogin=function(user) {
+//        MyServices.login(user,logincallback);
+//    };
+//})
+
 
 .controller('SearchCtrl', function ($scope) {})
 
@@ -120,16 +155,16 @@ angular.module('starter.controllers', ['myservices'])
         }
         else
         {
-            user=data;
-            console.log(user);
-            $.jStorage.set("user",data);
-            $location.path("#/app/home");
+            user1=data;
+            console.log(user1);
+            $.jStorage.set("user1",data);
+            $location.url("/app/home");
         }
             
     };
     
-    $scope.onlogin=function(user) {
-        MyServices.login(user,logincallback);
+    $scope.onlogin=function(user1) {
+        MyServices.login(user1,logincallback);
     };
 })
 

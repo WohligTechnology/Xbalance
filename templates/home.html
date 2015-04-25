@@ -11,9 +11,11 @@
                     Catergories
                 </div>
                 <select>
-                    <option>Mobile</option>
+                    <option ng-repeat="categories in user.category">{{categories.name}}</option>
+<!--
                     <option selected>Personal Computers</option>
                     <option>Laptops</option>
+-->
                 </select>
 
             </label>
@@ -32,7 +34,7 @@
             <!--            </div>-->
             <div class="padding-horizontal">
                 <a href="#/app/search">
-                    <button class="button button-block button-outline button-balanced">Search</button>
+                    <button class="button button-block button-outline button-balanced" ng-click="searchclick();">Search</button>
                 </a>
             </div>
         </div>
