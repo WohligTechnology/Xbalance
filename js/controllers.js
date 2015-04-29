@@ -69,6 +69,19 @@ MyServices.logout(logoutcallback);
     $scope.closeModal = function () {
         $scope.modal.hide();
     };
+	$scope.d={};
+		//shop search through membershipno
+	var shopprofilecallback=function(data,status){
+		$scope.ps=data;
+		console.log($scope.ps);
+	};
+	 $scope.memclick=function(d){
+		 $scope.content=d.searchresult[0].id;
+		MyServices.profile($scope.content,shopprofilecallback);
+       $location.url("/app/shop");
+
+	};
+	
 	
 	var homecallback=function(data,status){
 		$scope.user=data;
@@ -121,7 +134,7 @@ MyServices.logout(logoutcallback);
 })
 
 .controller('SearchCtrl', function ($scope, MyServices, $ionicModal,$location) {
-
+//shop search through area and category
 	
 	$scope.demo = [];
 	$scope.area = JSON.parse($.jStorage.get("search").area);
@@ -145,6 +158,9 @@ MyServices.logout(logoutcallback);
 	MyServices.profile(r.id,shopprofilecallback);
 		$location.url("/app/shop");
 	};  
+	
+
+	
 
 })
 
