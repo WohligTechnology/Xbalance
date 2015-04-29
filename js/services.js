@@ -54,8 +54,16 @@ myservices.factory('MyServices', function ($http) {
 		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
 	},
 	returnval.yourbalance=function(u,yourbalancecallback){
-		 $http.get(adminurl + "transaction?user="+u,{}).success(yourbalancecallback);	
+		 $http.get(adminurl + "yourbalance?user="+JSON.parse(u),{}).success(yourbalancecallback);	
+	},
+	returnval.mem=function(c,memcallback){
+			console.log("searchresult?area=''&category=''&membershipno="+c);
+		 $http.get(adminurl + "searchresult?area=''&category=''&membershipno="+c,{}).success(memcallback);	
+	},
+	returnval.logout=function(logoutcallback){
+		 $http.get(adminurl + "logout",{}).success(logoutcallback);	
 	};
+	
     return returnval;
 });
 

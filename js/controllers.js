@@ -24,16 +24,33 @@ MyServices.sellingapproval($scope.user,sellingapprovalcallback);}
 
 
 //your balance
-var yourbalancecallback=function(){
-//$scope.bal=$.jStorage.get("demo");
-//	console.log($scope.bal);
+var yourbalancecallback=function(data,status){
+
+	if(data=="false")
+        {
+           
+            console.log("no data");
+        }
+        else
+        {
+           console.log(data);
+			$scope.pb=data;
+//            $location.url("/app/selling");
+        }
 }
 $scope.yourbalance=function(){
 	$scope.bal=$.jStorage.get("user1");
 	console.log($scope.bal);
-//MyServices.yourbalance(,yourbalancecallback);
+MyServices.yourbalance($scope.bal,yourbalancecallback);
 }
-
+//log out
+var logoutcallback=function(){
+console.log("you have logged out");
+}
+$scope.out=function(){
+MyServices.logout(logoutcallback);
+	$location.url("/login");
+}
 
 })
 
@@ -77,10 +94,29 @@ $scope.yourbalance=function(){
 		 MyServices.setsearch(home);
 		 console.log("area="+home.area+"category="+home.category+"membershipno="+home.membershipno);
 		 $location.url("/app/search");
-//		 MyServices.searchresult(home,searchcallback);
-        
-		 
+//		 MyServices.searchresult(home,searchcallback); 
     };
+	//	//shop select from membershipno
+	var memcallback=function(data,status){
+	if(data=="false")
+        {
+           
+            console.log("no data");
+        }
+        else
+        {
+           
+			$scope.d=data;
+			console.log($scope.d);
+        }
+	}
+	
+	$scope.mid=function(m){
+//		console.log(m.membershipno);
+		MyServices.mem(m.membershipno,memcallback);
+	}
+		
+
 
 })
 
@@ -113,6 +149,7 @@ $scope.yourbalance=function(){
 })
 
 .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices) {
+
 	$scope.shop=$.jStorage.get("sp");
 	console.log($scope.shop);
 	$scope.pid = [];
@@ -154,7 +191,9 @@ $scope.yourbalance=function(){
 //
 //        });
 	};
+
     $scope.aImages = [{
+		
         'src': 'img/shop1.png',
 
     }, {
