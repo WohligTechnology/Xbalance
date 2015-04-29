@@ -74,6 +74,7 @@ MyServices.logout(logoutcallback);
 	var shopprofilecallback=function(data,status){
 		$scope.ps=data;
 		console.log($scope.ps);
+		$location.url("/app/shop");
 	};
 	 $scope.memclick=function(d){
 		 $scope.content=d.searchresult[0].id;
