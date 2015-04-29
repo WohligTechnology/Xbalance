@@ -1,6 +1,7 @@
 angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout,MyServices,$location) {
+	//selling approval
 	var sellingapprovalcallback=function(data,status){
 	if(data=="false")
         {
@@ -20,6 +21,18 @@ angular.module('starter.controllers', ['myservices'])
 $scope.sell=function(){
 	
 MyServices.sellingapproval($scope.user,sellingapprovalcallback);}
+
+
+//your balance
+var yourbalancecallback=function(){
+//$scope.bal=$.jStorage.get("demo");
+//	console.log($scope.bal);
+}
+$scope.yourbalance=function(){
+	$scope.bal=$.jStorage.get("user1");
+	console.log($scope.bal);
+//MyServices.yourbalance(,yourbalancecallback);
+}
 
 
 })
@@ -80,6 +93,7 @@ MyServices.sellingapproval($scope.user,sellingapprovalcallback);}
 	var searchcallback=function(data,status){
 		console.log(data);
 		$scope.demo=data;
+		$.jStorage.set("demo",data);
 	};
 	
 	MyServices.searchresult(searchcallback);

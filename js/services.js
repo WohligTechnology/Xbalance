@@ -53,8 +53,8 @@ myservices.factory('MyServices', function ($http) {
 	returnval.transaction=function(u,transactioncallback){
 		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
 	},
-	returnval.yourbalance=function(u,transactioncallback){
-		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
+	returnval.yourbalance=function(u,yourbalancecallback){
+		 $http.get(adminurl + "transaction?user="+u,{}).success(yourbalancecallback);	
 	};
     return returnval;
 });
