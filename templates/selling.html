@@ -11,14 +11,14 @@
                         </div>
                         <div class="col-75">
                             <div class="sell-cont">
-                                <h2>Wohlig Technology</h2>
-                                <p>Amount: Rs.10,000</p>
+                                <h2>{{sell.sellingapproval.shopname}}</h2>
+                                <p>Amount: {{sell.sellingapproval.amount}}</p>
 
-                                <button class="button button-small button-outline button-balanced" ng-click="showPopup();">
+                                <button class="button button-small button-outline button-balanced" ng-click="accept();">
                                     Accept
                                 </button>
 
-                                <button class="button button-small button-outline button-assertive" ng-click=" showPopups();">
+                                <button class="button button-small button-outline button-assertive" ng-click=" decline();">
                                     Decline
                                 </button>
                             </div>

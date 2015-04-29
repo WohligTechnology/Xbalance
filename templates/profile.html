@@ -8,22 +8,22 @@
             <div class="list profile-cont">
                 <ion-item class="item-left">
                     <h2>Area</h2>
-                    <div class="pull-right item-right">
-                        Mulund
+                    <div class="pull-right item-right"  >
+                       {{sp.shopprofile[0].area}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Category</h2>
                     <div class="pull-right item-right">
-                        Mobile
+                        {{sp.shopprofile[0].category}}
                     </div>
                 </ion-item>
-                <div class="item item-input item-text-wrap header">
+                <div class="item item-input item-text-wrap header" >
                     <h2> Address</h2>
                 </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-                        Apple Store, CST, Mumbai-400 001.
+						{{sp.shopprofile[0].address}}
                     </div>
                 </div>
                 <div class="item item-input item-text-wrap header">
@@ -31,36 +31,38 @@
                 </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-                        The Apple Store is a chain of retail stores owned and operated by Apple Inc., dealing with computers and consumer electronics.
+                        {{sp.shopprofile[0].description}}
                     </div>
                 </div>
                 <ion-item class="item-left">
                     <h2>Cell Number</h2>
-                    <div class="pull-right item-right">
-                        9892999999
+                    <div class="pull-right item-right" >
+                        {{sp.shopprofile[0].shopcontact1}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Landline No.</h2>
                     <div class="pull-right item-right">
-                        022 25454565
+                        {{sp.shopprofile[0].shopcontact1}}
                     </div>
                 </ion-item>
+<!--
                 <ion-item class="item-left numbers">
                     <div class="pull-right item-right">
                         022 25454565
                     </div>
                 </ion-item>
+-->
                 <ion-item class="item-left">
                     <h2>Email Id</h2>
                     <div class="pull-right item-right">
-                        sohan@gmail.com
+                         {{sp.shopprofile[0].shopemail}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Website</h2>
                     <div class="pull-right item-right">
-                        http://www.apple.com/
+                        {{sp.shopprofile[0].website}}
                     </div>
                 </ion-item>
                 <div class="item item-input item-text-wrap header">
@@ -74,7 +76,7 @@
                     </div>
                     <div class="input-div">
                         <div class="img-profile">
-                            <img src="img/add.png">
+                            {{shopprofile.shopphoto}}
                         </div>
                     </div>
                     <div class="input-div">
@@ -90,7 +92,7 @@
                 <div class="item item-input item-text-wrap itemproducts">
                     <div class="input-div">
                         <div class="img-profile">
-                            <img src="img/add.png">
+                            {{sp.shopprofile[0].productphoto}}
                         </div>
                     </div>
                     <div class="input-div">
@@ -111,7 +113,7 @@
                 <div class="btn-edit padding-horizontal">
                     <div class="row">
                         <div class="col">
-                            <a class="button button-block button-balanced prf-edit" href="#/app/profile/edit">
+                            <a class="button button-block button-balanced prf-edit" ng-click="editpro();" href="#/app/profile/edit">
                                 Edit
                             </a>
                         </div>

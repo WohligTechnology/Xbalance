@@ -34,8 +34,8 @@
                         <div class="col">Sell Balance</div>
                     </div>
                 </ion-item>
-                <ion-item href="">
-                    <div class="row" ng-repeat="r in demo.searchresult">
+                <ion-item  href="" ng-click="shopclick(r);" value="{{r.id}}" ng-repeat="r in demo.searchresult">
+                    <div class="row" >
                         <div class="col">{{r.name}}</div>
                         <div class="col"><span class="balanced amount">{{r.sellbalance}}</span>
                         </div>

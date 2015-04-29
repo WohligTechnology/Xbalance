@@ -30,6 +30,32 @@ myservices.factory('MyServices', function ($http) {
 //			var membershipno = JSON.parse($.jStorage.get("search").membershipno);
 			console.log(category);
     $http.get(adminurl + "searchresult?area="+area.id+"&category="+category.id+"&membershipno=12345",{}).success(searchcallback);
-		};		
+		},		
+	returnval.profile=function(shop,shopprofilecallback){
+			console.log(shop);
+	 $http.get(adminurl + "shopprofile?user="+shop,{}).success(shopprofilecallback);
+	
+	},
+	
+	returnval.balanceadd=function(user,a,balanceaddcallback){
+//			console.log("addbalance?user="+JSON.parse(user)+"&amount="+a);
+		 $http.get(adminurl + "addbalance?user="+JSON.parse(user)+"&amount="+a,{}).success(balanceaddcallback);	
+	},
+	returnval.sellingapproval=function(sell,sellingapprovalcallback){
+		 $http.get(adminurl + "sellingapproval?user="+JSON.parse(sell),{}).success(sellingapprovalcallback);	
+	},
+	returnval.accepted=function(user,a,acceptedcallback){
+		 $http.get(adminurl + "accepted?user="+user+"&amount="+a,{}).success(acceptedcallback);	
+	},
+	returnval.decline=function(id,declinecallback){
+		 $http.get(adminurl + "decline?id="+id,{}).success(declinecallback);	
+	},
+	returnval.transaction=function(u,transactioncallback){
+		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
+	},
+	returnval.yourbalance=function(u,transactioncallback){
+		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
+	};
     return returnval;
 });
+

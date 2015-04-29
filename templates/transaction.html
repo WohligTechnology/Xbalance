@@ -1,13 +1,13 @@
 <ion-view view-title="Transaction">
     <ion-content class="">
         <div class="button-bar bar-royal transbtn">
-            <div class="button" ng-class="purchased" ng-click="changepurchase()">
+            <div class="button" ng-class="purchased" ng-click="purchase();">
                 Purchased
             </div>
-            <div class="button" ng-class="sale" ng-click="chnagesale()">
+            <div class="button" ng-class="sale" ng-click="sale();">
                 Sales
             </div>
-            <div class="button" ng-class="admin" ng-click="chnageadmin()">
+            <div class="button" ng-class="admin" ng-click="adm();">
                 Admin
             </div>
         </div>
@@ -24,8 +24,8 @@
                                 </div>
                                 <div class="col-75">
                                     <div class="sell-cont trans">
-                                        <h2>Wohlig Technology</h2>
-                                        <p>Amount: Rs.20,000</p>
+                                        <h2>{{trans.shopprofile[0].shopname}}</h2>
+                                        <p>Amount: {{trans.shopprofile[0].amount}}</p>
                                         <p>Date:</p>
                                     </div>
                                 </div>
