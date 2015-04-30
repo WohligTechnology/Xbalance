@@ -12,13 +12,13 @@
                 <div class="input-label">
                     Area
                 </div>
-                <select ng-model="home.area" ng-change="setname(home.area)">
+                <select ng-model="home.area">
                     <option ng-repeat="areas in user.area" value="{{areas}}">{{areas.name}}</option>
                 </select>
             </label>
             <label class="item item-input item-select area">
                 <div class="input-label">
-                    Catergories
+                    Categories
                 </div>
                 <select ng-model="home.category">
                     <option ng-repeat="categories in user.category" value="{{categories}}">{{categories.name}}</option>
@@ -34,7 +34,8 @@
                     <h5 class="member" >Membership No.</h5>
                 </div>
                 <div class="col">
-                    <p class="home-p" ng-click="openedit();">Please Select</p>
+<!--                    <p class="home-p" ng-click="openedit();">Please Select</p>-->
+                    <input type="text" id="normal-field"  ng-model="home.membershipno">
                 </div>
             </div>
             <!--            </div>-->

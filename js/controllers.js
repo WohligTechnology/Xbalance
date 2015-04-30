@@ -1,6 +1,20 @@
 angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout,MyServices,$location) {
+	//home
+	
+		var homecallback=function(data,status){
+		$scope.user=data;
+		console.log($scope.user);
+		$location.url("/app/search");
+	};
+	
+	$scope.homecall=function() {
+		$scope.user=$.jStorage.get("user1");
+		console.log($scope.user);
+        MyServices.home($scope.user,homecallback);
+    };
+	
 	//selling approval
 	var sellingapprovalcallback=function(data,status){
 	if(data=="false")
@@ -71,26 +85,41 @@ MyServices.logout(logoutcallback);
     };
 	$scope.d={};
 		//shop search through membershipno
-	var shopprofilecallback=function(data,status){
-		$scope.ps=data;
-		console.log($scope.ps);
-		$location.url("/app/shop");
-	};
-	 $scope.memclick=function(d){
-		 $scope.content=d.searchresult[0].id;
-		MyServices.profile($scope.content,shopprofilecallback);
-       $location.url("/app/shop");
-
-	};
-	
-	
-	var homecallback=function(data,status){
-		$scope.user=data;
-		console.log($scope.user);
-//		$location.url("/app/search");
-	};
-//	$scope.searchclick=function(user) {
-        MyServices.home("2",homecallback);
+//	var shopprofilecallback=function(data,status){
+//		$scope.ps=data;
+//		console.log($scope.ps);
+//		$location.url("/app/shop");
+//	};
+//	 $scope.memclick=function(d){
+//		 $scope.content=d.searchresult[0].id;
+//		MyServices.profile($scope.content,shopprofilecallback);
+//       $location.url("/app/shop");
+//
+//	};
+//	
+//		var shopprofilecallback=function(data,status){
+//		$scope.sp=data;
+//		console.log($scope.sp);
+//		$location.url("/app/shop");
+//	};
+//    $scope.shopclick=function(r){
+//		$scope.rs=r;
+//		console.log($scope.rs.searchresult[0].id);
+//		
+//	MyServices.profile($scope.rs.searchresult[0].id,shopprofilecallback);
+////		$location.url("/app/shop");
+//	};
+//	$scope.user={};
+//	var homecallback=function(data,status){
+//		$scope.user=data;
+//		console.log($scope.user);
+////		$location.url("/app/search");
+//	};
+//	
+//	$scope.homecall=function() {
+//		$scope.user=$.jStorage.get("user1");
+//		console.log($scope.user);
+////        MyServices.home(user1,homecallback);
 //    };
 	
 //	$scope.user2={
@@ -98,57 +127,59 @@ MyServices.logout(logoutcallback);
 //	category:'3's
 //	};
 	
-	$scope.demo={};
-	$scope.setname = function(name){
-		$.jStorage.set
-		console.log(name);
-	}
+//	$scope.demo={};
+//	$scope.setname = function(name){
+//		$.jStorage.set
+//		console.log(name);
+//	}
 	
-	 $scope.memfunc = function (home) {
-		 MyServices.setsearch(home);
-		 console.log("area="+home.area+"category="+home.category+"membershipno="+home.membershipno);
-		 $location.url("/app/search");
-//		 MyServices.searchresult(home,searchcallback); 
-    };
-	//	//shop select from membershipno
-	var memcallback=function(data,status){
-	if(data=="false")
-        {
-           
-            console.log("no data");
-        }
-        else
-        {
-           
-			$scope.d=data;
-			console.log($scope.d);
-        }
-	}
-	
-	$scope.mid=function(m){
-//		console.log(m.membershipno);
-		MyServices.mem(m.membershipno,memcallback);
-	}
-		
-
-
+	 $scope.memfunc = function(home) {
+	 $scope.searchrslt=home;
+		 console.log( $scope.searchrslt);
+	 }
+	 	
+////		 console.log()
+//////		 MyServices.setsearch(home);
+////		 console.log("area="+home.area+"category="+home.category+"membershipno="+home.membershipno);
+////		 $location.url("/app/search");
+////		 MyServices.searchresult(home,searchcallback); 
+//    };
+//	//	//shop select from membershipno
+//	var memcallback=function(data,status){
+//	if(data=="false")
+//        {
+//           
+//            console.log("no data");
+//        }
+//        else
+//        {
+//           
+//			$scope.r=data;
+//			console.log($scope.r);
+//        }
+//	}
+//	
+//	$scope.mid=function(m){
+////		console.log(m.membershipno);
+//		MyServices.mem(m.membershipno,memcallback);
+//	}
 })
 
 .controller('SearchCtrl', function ($scope, MyServices, $ionicModal,$location) {
 //shop search through area and category
 	
 	$scope.demo = [];
-	$scope.area = JSON.parse($.jStorage.get("search").area);
-	$scope.category = JSON.parse($.jStorage.get("search").category);
+//	$scope.area = JSON.parse($.jStorage.get("search").area);
+//	$scope.category = JSON.parse($.jStorage.get("search").category);
 	var searchcallback=function(data,status){
 		console.log(data);
 		$scope.demo=data;
 		$.jStorage.set("demo",data);
 	};
 	
-	MyServices.searchresult(searchcallback);
+//	MyServices.searchresult(searchcallback);
 	
-	var shopprofilecallback=function(data,status){
+var shopprofilecallback=function(data,status){
 		$scope.sp=data;
 		$.jStorage.set("sp",data);
 		console.log($scope.sp);
@@ -159,16 +190,12 @@ MyServices.logout(logoutcallback);
 	MyServices.profile(r.id,shopprofilecallback);
 		$location.url("/app/shop");
 	};  
-	
-
-	
-
 })
 
 .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices) {
 
 	$scope.shop=$.jStorage.get("sp");
-	console.log($scope.shop);
+//	console.log($scope.shop);
 	$scope.pid = [];
 	
 		var shopprofilecallback=function(data,status){
@@ -307,8 +334,12 @@ MyServices.logout(logoutcallback);
         }
         else
         {
+//			console.log(data);
+			data=data.replace('"',"");
+//			console.log(data);
+			data=parseInt(data);
+			console.log(data);
             user1=data;
-            console.log(user1);
             $.jStorage.set("user1",data);
             $location.url("/app/home");
         }
