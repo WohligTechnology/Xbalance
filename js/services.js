@@ -24,16 +24,45 @@ myservices.factory('MyServices', function ($http) {
 //		returnval.getsearch=function(search) {
 //			return $.jStorage.get("search");
 //		},
-	returnval.searchresult=function(searchcallback) {
-			console.log(category);
-    $http.get(adminurl + "searchresult?area="+area.id+"&category="+category.id+"&membershipno=12345",{}).success(searchcallback);
+	returnval.searchresult=function(area,category,membershipno,searchcallback) {
+			console.log("searchresult?area="+area+"&category="+category+"&membershipno="+membershipno);
+    $http.get(adminurl + "searchresult?area="+area+"&category="+category+"&membershipno="+membershipno,{}).success(searchcallback);
 		},		
+    returnval.getareacategory=function(area,category,getareacategorycallback) {
+			console.log("getareacategory?area="+area+"&category="+category);
+    $http.get(adminurl + "getareacategory?area="+area+"&category="+category,{}).success(getareacategorycallback);
+		},
 	returnval.profile=function(shop,shopprofilecallback){
-			console.log(shop);
 	 $http.get(adminurl + "shopprofile?user="+shop,{}).success(shopprofilecallback);
 	
 	},
-	
+//		 updateprofile:function(profile)
+//          {
+//             return $http({
+//                url: admin_url + "json/updateprofile",
+//                method: "POST",
+//                data: {
+//					address: "Navimumbai"
+//					area: null
+//					category: "Personal computer"
+//					description: "Pancharatna Navimumbai"
+//					id: "14"
+//					productphoto: "kmkdjkfabjv"
+//					purchasebalance: "hdjfbrbh"
+//					shopcontact1: "5457845848"
+//					shopcontact2: "5454545"
+//					shopemail: "hdjjdhb@gmail.com"
+//					shopname: "garam masala"
+//					shopphoto: "erjhjewj"
+//					website: "www.abc.com"
+//                }
+//            });
+//          },	
+			
+//	returnval.updateprofile=function(id,p,updateprofilecallback){
+//			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
+//	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
+//	},
 	returnval.balanceadd=function(user,a,balanceaddcallback){
 //			console.log("addbalance?user="+JSON.parse(user)+"&amount="+a);
 		 $http.get(adminurl + "addbalance?user="+JSON.parse(user)+"&amount="+a,{}).success(balanceaddcallback);	
@@ -57,10 +86,18 @@ myservices.factory('MyServices', function ($http) {
 			console.log("searchresult?area=''&category=''&membershipno="+c);
 		 $http.get(adminurl + "searchresult?area=''&category=''&membershipno="+c,{}).success(memcallback);	
 	},
+			returnval.purchaserequest=function(userfrom,userto,amount,purchaserequestcallback){
+		 $http.get(adminurl + "purchaserequest?userfrom="+userfrom+"&userto="+userto+"&amount="+amount,{}).success(purchaserequestcallback);	
+	},
+		returnval.changepassword=function(id,pass,changepasswordcallback){
+$http.get(adminurl + "changepassword?id="+id+"&oldpassword="+pass.oldpassword+"&newpassword="+pass.newpassword+"&confirmpassword="+pass.confirmpassword,{}).success(changepasswordcallback);	
+	},	
 	returnval.logout=function(logoutcallback){
 		 $http.get(adminurl + "logout",{}).success(logoutcallback);	
 	};
 	
     return returnval;
 });
+
+
 

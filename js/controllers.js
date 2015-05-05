@@ -1,20 +1,7 @@
 angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout,MyServices,$location) {
-	//home
-	
-		var homecallback=function(data,status){
-		$scope.user=data;
-		console.log($scope.user);
-		$location.url("/app/search");
-	};
-	
-	$scope.homecall=function() {
-		$scope.user=$.jStorage.get("user1");
-		console.log($scope.user);
-        MyServices.home($scope.user,homecallback);
-    };
-	
+
 	//selling approval
 	var sellingapprovalcallback=function(data,status){
 	if(data=="false")
@@ -69,7 +56,27 @@ MyServices.logout(logoutcallback);
 })
 
 .controller('HomeCtrl', function ($scope, MyServices, $ionicModal,$location) {
-    $ionicModal.fromTemplateUrl('templates/popsearch.html', {
+	//home page
+		var homecallback=function(data,status){
+		$scope.user=data;
+		console.log($scope.user);
+//		$location.url("/app/search");
+	};
+	$scope.user=$.jStorage.get("user1");
+        MyServices.home($scope.user,homecallback);
+	
+	
+	//search shop
+	
+	 $scope.memfunc = function(home) {
+		 console.log(home);
+		 $location.url("/app/search/"+home.area+"/"+home.category+"/"+home.membershipno);
+		
+	 }
+	
+	
+    
+	$ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
@@ -84,6 +91,9 @@ MyServices.logout(logoutcallback);
         $scope.modal.hide();
     };
 	$scope.d={};
+	
+	
+	
 		//shop search through membershipno
 //	var shopprofilecallback=function(data,status){
 //		$scope.ps=data;
@@ -132,12 +142,9 @@ MyServices.logout(logoutcallback);
 //		$.jStorage.set
 //		console.log(name);
 //	}
-	
-	 $scope.memfunc = function(home) {
-	 $scope.searchrslt=home;
-		 console.log( $scope.searchrslt);
-	 }
+//
 	 	
+	
 ////		 console.log()
 //////		 MyServices.setsearch(home);
 ////		 console.log("area="+home.area+"category="+home.category+"membershipno="+home.membershipno);
@@ -165,8 +172,22 @@ MyServices.logout(logoutcallback);
 //	}
 })
 
-.controller('SearchCtrl', function ($scope, MyServices, $ionicModal,$location) {
+.controller('SearchCtrl', function ($scope, MyServices, $ionicModal,$location,$stateParams) {
 //shop search through area and category
+	console.log($stateParams);
+	var searchcallback=function(data,status){
+	$scope.shops=data;
+		console.log($scope.shops);
+	
+	}
+	 MyServices.searchresult($stateParams.area,$stateParams.category,$stateParams.membershipno,searchcallback);
+	var getareacategorycallback=function(data,status){
+	$scope.recall=data;
+		console.log($scope.recall);
+	}
+	 MyServices.getareacategory($stateParams.area,$stateParams.category,getareacategorycallback);
+	
+	
 	
 	$scope.demo = [];
 //	$scope.area = JSON.parse($.jStorage.get("search").area);
@@ -179,34 +200,38 @@ MyServices.logout(logoutcallback);
 	
 //	MyServices.searchresult(searchcallback);
 	
-var shopprofilecallback=function(data,status){
-		$scope.sp=data;
-		$.jStorage.set("sp",data);
-		console.log($scope.sp);
-//		$location.url("/app/search");
-	};
-    $scope.shopclick=function(r){
-		console.log(r.id);
-	MyServices.profile(r.id,shopprofilecallback);
-		$location.url("/app/shop");
-	};  
+//var shopprofilecallback=function(data,status){
+//		$scope.sp=data;
+//		console.log($scope.sp);
+////		$location.url("/app/search");
+//	};
+//    $scope.shopclick=function(shop){
+//		console.log(shop.id);
+//	MyServices.profile(shop.id,shopprofilecallback);
+//		$location.url("/app/shop");
+//	};  
 })
 
-.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices) {
-
-	$scope.shop=$.jStorage.get("sp");
+.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices,$stateParams) {
+	var shopprofilecallback=function(data,status){
+	$scope.profile=data;
+		console.log($scope.profile);
+	}
+	shopid=$stateParams.id;
+	console.log(shopid);
+	MyServices.profile(shopid,shopprofilecallback);
+//	$scope.shop=$.jStorage.get("sp");
 //	console.log($scope.shop);
-	$scope.pid = [];
-	
-		var shopprofilecallback=function(data,status){
-	console.log(data);
-	};
-	$scope.callpurchase=function(shop){
-	MyServices.profile($scope.shop.shopprofile[0].id,shopprofilecallback);
+//	$scope.pid = [];
+//	
+//		var shopprofilecallback=function(data,status){
+//	console.log(data);
+//	};
+	$scope.callpurchase=function(profile){
 		$scope.modal.show();
 	};
 	
-	var balanceaddcallback=function(data,status){
+	var purchaserequestcallback=function(data,status){
 		
 		if(data=="false")
         {
@@ -223,17 +248,24 @@ var shopprofilecallback=function(data,status){
 	
 		$scope.amt=amount;
 		console.log($scope.amt);
-		$scope.pid=$.jStorage.get("sp");
-		console.log($scope.pid.shopprofile[0].id);
-		MyServices.balanceadd($scope.pid.shopprofile[0].id,amount,balanceaddcallback);
-//		  var myPopup = $ionicPopup.show({
+		$scope.userfrom=$.jStorage.get("user1");
+//		console.log($scope.pid.shopprofile[0].id);
+		MyServices.purchaserequest($scope.userfrom,shopid,amount,purchaserequestcallback);
+//		 //popup
+//    $scope.showPopup = function () {
+//        $scope.data = {}
+//       //  An elaborate, custom popup
+//        var myPopup = $ionicPopup.show({
 //            template: '<div class="text-center">
 //			<h2 class="ion-checkmark-round balanced round-circle">
 //			</h2><p>Please Wait for the Approval!</p>',
 //            title: 'Your Request Sent!',
 //            scope: $scope,
-//
 //        });
+//        $timeout(function () {
+//            myPopup.close(); //close the popup after 3 seconds for some reason
+//        }, 1500);
+//    };
 	};
 
     $scope.aImages = [{
@@ -303,23 +335,7 @@ var shopprofilecallback=function(data,status){
         $scope.modalss.hide();
     };
 
-    //popup
-    $scope.showPopup = function () {
-        $scope.data = {}
-
-        // An elaborate, custom popup
-//        var myPopup = $ionicPopup.show({
-//            template: '<div class="text-center">
-//			<h2 class="ion-checkmark-round balanced round-circle">
-//			</h2><p>Please Wait for the Approval!</p>',
-//            title: 'Your Request Sent!',
-//            scope: $scope,
-//
-//        });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 1500);
-    };
+   
 })
 
 
@@ -464,17 +480,45 @@ $scope.trans=$.jStorage.get("sp");
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate) {
-
-    $scope.sp=$.jStorage.get("sp");
-	console.log("In profile");
-	console.log($scope.sp);
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate,MyServices) {
+// shop profile
+	$scope.pro=$.jStorage.get("user1");
+	$scope.epro={};
 	
-	$scope.editpro=function(){
-	$scope.sp=$.jStorage.get("sp");
-		console.log("In edit profile");
-	console.log($scope.sp);
+	var shopprofilecallback=function(data,status){
+		
+		$scope.profile=data.shopprofile[0];
 	}
+//	console.log("Pro="+$scope.pro);
+	MyServices.profile($scope.pro,shopprofilecallback);
+	//edit profile
+	$scope.editpro=function(profile){
+		$scope.epro=profile;
+		console.log($scope.epro.shopname);
+	}
+//    $scope.sp=$.jStorage.get("sp");
+//	console.log("In profile");
+////	console.log($scope.sp);
+////	
+//	var updateprofilecallback=function(data,status){
+//	if(data=="false")
+//        {
+//           
+//            console.log("no data");
+//        }
+//        else
+//        {
+//           console.log(data);
+//        }
+//	}
+//	$scope.profileupdate=function(profile){
+//	$scope.updatedata=profile;
+//		console.log($scope.updatedata);
+//		$scope.id=$.jStorage.get("user1");
+////		console.log($scope.id);
+//		MyServices.profile($scope.id,$scope.updatedata,updateprofilecallback);
+		
+//	}
 	$ionicModal.fromTemplateUrl('templates/resetpswd.html', {
         id: '2',
         scope: $scope,
@@ -490,7 +534,16 @@ $scope.trans=$.jStorage.get("sp");
     $scope.closePassword = function () {
         $scope.oModal2.hide();
     };
-
+var changepasswordcallback=function(data,status){
+	$scope.p=data;
+console.log($scope.p);
+}
+	$scope.changepass=function(pass){
+		$scope.passwrd=pass;
+		$scope.id=$.jStorage.get("user1");
+	$scope.passwrd=pass;
+		MyServices.changepassword($scope.id,$scope.passwrd,changepasswordcallback)
+	}
 })
 
 .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices) {

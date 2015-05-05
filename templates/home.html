@@ -13,7 +13,7 @@
                     Area
                 </div>
                 <select ng-model="home.area">
-                    <option ng-repeat="areas in user.area" value="{{areas}}">{{areas.name}}</option>
+                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                 </select>
             </label>
             <label class="item item-input item-select area">
@@ -21,7 +21,7 @@
                     Categories
                 </div>
                 <select ng-model="home.category">
-                    <option ng-repeat="categories in user.category" value="{{categories}}">{{categories.name}}</option>
+                    <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
                 </select>
 
             </label>

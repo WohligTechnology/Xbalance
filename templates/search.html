@@ -9,7 +9,7 @@
                             <h3>Area</h3>
                         </div>
                         <div class="col">
-                            <div class="flt-right">{{area.name}}</div>
+                            <div class="flt-right">{{recall.area.name}}</div>
                         </div>
                     </div>
                 </ion-item>
@@ -19,7 +19,7 @@
                             <h3>Category</h3>
                         </div>
                         <div class="col">
-                            <div class="flt-right">{{category.name}}</div>
+                            <div class="flt-right">{{recall.category.name}}</div>
                         </div>
                     </div>
                 </ion-item>
@@ -34,10 +34,10 @@
                         <div class="col">Sell Balance</div>
                     </div>
                 </ion-item>
-                <ion-item  href="" ng-click="shopclick(r);" value="{{r.id}}" ng-repeat="r in demo.searchresult">
+                <ion-item  href="#/app/shop/{{shop.id}}" ng-click="shopclick(shop);" ng-repeat="shop in shops.searchresult ">
                     <div class="row" >
-                        <div class="col">{{r.name}}</div>
-                        <div class="col"><span class="balanced amount">{{r.sellbalance}}</span>
+                        <div class="col">{{shop.name}}</div>
+                        <div class="col"><span class="balanced amount">{{shop.sellbalance}}</span>
                         </div>
                     </div>
                 </ion-item>

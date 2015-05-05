@@ -9,32 +9,32 @@
                             <div class="holder">Edit</div>
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Name">
+                            <input type="text" placeholder="Name" ng-model="profile.shopname">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Area" value="{{sp.shopprofile[0].area}}">
+                            <input type="text" placeholder="Area" ng-model="profile.area" value="">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Category" value="{{sp.shopprofile[0].category}}">
+                            <input type="text" placeholder="Category" ng-model="profile.category" value="">
                         </div>
                         <div class="item item-input">
-                            <textarea placeholder="Address" value="{{sp.shopprofile[0].address}}"></textarea>
+                            <textarea placeholder="Address" ng-model="profile.address" value=""></textarea>
                         </div>
                         <div class="item item-input">
-                            <textarea placeholder="Description" value="{{sp.shopprofile[0].description}}"></textarea>
+                            <textarea placeholder="Description" ng-model="profile.description" value=""></textarea>
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Mobile No." value="{{sp.shopprofile[0].shopcontact1}}">
+                            <input type="text" placeholder="Mobile No." ng-model="profile.shopcontact1" value="">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Landline No." value="{{sp.shopprofile[0].shopcontact2}}">
+                            <input type="text" placeholder="Landline No." ng-model="profile.shopcontact2" value="">
                         </div>
                       
                         <div class="item item-input">
-                            <input type="text" placeholder="Email Id" type=email value="{{sp.shopprofile[0].shopemail}}">
+                            <input type="text" placeholder="Email Id" type=email ng-model="profile.shopprofile[0].shopemail" value="">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Website" type=email value="{{sp.shopprofile[0].website}}">
+                            <input type="text" placeholder="Website" type=email ng-model="profile.shopprofile[0].website" value="">
                         </div>
                         <div class="item item-input item-text-wrap header">
                             <h2>Shops Photos</h2>
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div class="padding-horizontal btn-rest">
-                            <button class="button button-block button-balanced" type="submit">Save</button>
+                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);">Save</button>
                         </div>
                     </div>
                 </form>

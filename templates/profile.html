@@ -7,15 +7,15 @@
             </div>
             <div class="list profile-cont">
                 <ion-item class="item-left">
-                    <h2>Area</h2>{{sp.shopprofile[0].area}}
+                    <h2>Area</h2>
                     <div class="pull-right item-right"  >
-                       {{sp.shopprofile[0].area}}
+                       {{profile.area}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Category</h2>
                     <div class="pull-right item-right">
-                        {{sp.shopprofile[0].category}}
+                        {{profile.category}}
                     </div>
                 </ion-item>
                 <div class="item item-input item-text-wrap header" >
@@ -23,7 +23,7 @@
                 </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-						{{sp.shopprofile[0].address}}
+						{{profile.address}}
                     </div>
                 </div>
                 <div class="item item-input item-text-wrap header">
@@ -31,19 +31,19 @@
                 </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-                        {{sp.shopprofile[0].description}}
+                        {{profile.description}}
                     </div>
                 </div>
                 <ion-item class="item-left">
                     <h2>Cell Number</h2>
                     <div class="pull-right item-right" >
-                        {{sp.shopprofile[0].shopcontact1}}
+                        {{profile.shopcontact1}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Landline No.</h2>
                     <div class="pull-right item-right">
-                        {{sp.shopprofile[0].shopcontact1}}
+                        {{profile.shopcontact1}}
                     </div>
                 </ion-item>
 <!--
@@ -56,13 +56,13 @@
                 <ion-item class="item-left">
                     <h2>Email Id</h2>
                     <div class="pull-right item-right">
-                         {{sp.shopprofile[0].shopemail}}
+                         {{profile.shopemail}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
                     <h2>Website</h2>
                     <div class="pull-right item-right">
-                        {{sp.shopprofile[0].website}}
+                        {{profile.website}}
                     </div>
                 </ion-item>
                 <div class="item item-input item-text-wrap header">
@@ -81,7 +81,7 @@
                     </div>
                     <div class="input-div">
                         <div class="img-profile">
-                            {{shopprofile.shopphoto}}
+                            {{profile.shopphoto}}
                         </div>
                     </div>
                     <div class="input-div">
@@ -97,7 +97,7 @@
                 <div class="item item-input item-text-wrap itemproducts">
                     <div class="input-div">
                         <div class="img-profile">
-                            {{sp.shopprofile[0].productphoto}}
+                            {{profile.productphoto}}
                         </div>
                     </div>
                     <div class="input-div">
@@ -123,7 +123,7 @@
                 <div class="btn-edit padding-horizontal">
                     <div class="row">
                         <div class="col">
-                            <a class="button button-block button-balanced prf-edit" ng-click="editpro();" href="#/app/profile/edit">
+                            <a class="button button-block button-balanced prf-edit" ng-click="editpro(profile);" href="#/app/profile/edit">
                                 Edit
                             </a>
                         </div>

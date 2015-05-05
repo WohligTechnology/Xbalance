@@ -10,16 +10,16 @@
             <form ng-submit="doreset()">
                 <div class="list">
                     <div class="item item-input">
-                        <input type="password" placeholder="Current Password" ng-model="password">
+                        <input type="password" placeholder="Current Password" ng-model="pass.oldpassword">
                     </div>
                     <div class="item item-input">
-                        <input type="password" placeholder="New Password" ng-model="newpassword">
+                        <input type="password" placeholder="New Password" ng-model="pass.newpassword">
                     </div>
                     <div class="item item-input">
-                        <input type="password" placeholder="Confirm Password" ng-model="confirmpassword">
+                        <input type="password" placeholder="Confirm Password" ng-model="pass.confirmpassword">
                     </div>
                     <div class="padding-horizontal btn-rest">
-                        <button class="button button-block button-balanced" type="submit">Submit</button>
+                        <button class="button button-block button-balanced" ng-click="changepass(pass);" type="submit">Submit</button>
                     </div>
                 </div>
             </form>
