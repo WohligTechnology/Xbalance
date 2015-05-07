@@ -1,6 +1,6 @@
 <ion-view view-title="Selling Approval">
     <ion-content class="padding">
-        <div class="incard">
+        <div class="incard" ng-repeat="r in req">
             <div class="list">
                 <ion-item class="item item-thumbnail-left">
                     <div class="row">
@@ -9,16 +9,16 @@
                                 <img src="img/logo.png">
                             </div>
                         </div>
-                        <div class="col-75">
+                        <div class="col-75" ng->
                             <div class="sell-cont">
-                                <h2>{{sell.sellingapproval.shopname}}</h2>
-                                <p>Amount: {{sell.sellingapproval.amount}}</p>
+                                <h2>{{r.shopname}}</h2>
+                                <p>Amount: {{r.amount}}</p>
 
-                                <button class="button button-small button-outline button-balanced" ng-click="accept();">
+                                <button class="button button-small button-outline button-balanced" ng-click="accept(r);">
                                     Accept
                                 </button>
 
-                                <button class="button button-small button-outline button-assertive" ng-click=" decline();">
+                                <button class="button button-small button-outline button-assertive" ng-click=" decline(r);">
                                     Decline
                                 </button>
                             </div>

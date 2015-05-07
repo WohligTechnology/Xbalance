@@ -1,6 +1,7 @@
 var adminbase = "http://localhost/osb/";
 var adminurl=adminbase+"index.php/json/";
 var myservices = angular.module('myservices', []);
+var imgpath=adminbase+"uploads/";
 //var user=$.jStorage.get("user");
 
 myservices.factory('MyServices', function ($http) {
@@ -36,46 +37,66 @@ myservices.factory('MyServices', function ($http) {
 	 $http.get(adminurl + "shopprofile?user="+shop,{}).success(shopprofilecallback);
 	
 	},
-//		 updateprofile:function(profile)
-//          {
-//             return $http({
-//                url: admin_url + "json/updateprofile",
-//                method: "POST",
-//                data: {
-//					address: "Navimumbai"
-//					area: null
-//					category: "Personal computer"
-//					description: "Pancharatna Navimumbai"
-//					id: "14"
-//					productphoto: "kmkdjkfabjv"
-//					purchasebalance: "hdjfbrbh"
-//					shopcontact1: "5457845848"
-//					shopcontact2: "5454545"
-//					shopemail: "hdjjdhb@gmail.com"
-//					shopname: "garam masala"
-//					shopphoto: "erjhjewj"
-//					website: "www.abc.com"
-//                }
-//            });
-//          },	
+			returnval.shopphoto=function(id,shopphotocallback){
+	 $http.get(adminurl + "shopphoto?id="+id,{}).success(shopphotocallback);
+	},
+				returnval.shopproductphoto=function(id,shopproductphotocallback){
+	 $http.get(adminurl + "shopproductphoto?id="+id,{}).success(shopproductphotocallback);
+	},
+//				returnval.shopproduct=function(id,shopproductcallback){
+//	 $http.get(adminurl + "shopproduct?id="+id,{}).success(shopproductcallback);
+//	
+//	},
+		 returnval.	updateprofile=function(id,profile,updateprofilecallback)
+          {
+//			console.log(profile);
+              $http({
+                url: adminurl + "updateprofile",
+                method: "POST",
+                data: {
+					'address': profile.address,
+					'area': profile.area,
+					'category': profile.category,
+					'description': profile.description,
+					'id': id,
+					'productphoto': profile.productphoto,
+					'purchasebalance': profile.purchasebalance,
+					'shopcontact1': profile.shopcontact1,
+					'shopcontact2': profile.shopcontact2,
+					'shopemail': profile.shopemail,
+					'shopname': profile.shopname,
+					'shopphoto': profile.shopphoto,
+					'website': profile.website
+                }
+            }).success(updateprofilecallback);
+          },	
 			
 //	returnval.updateprofile=function(id,p,updateprofilecallback){
 //			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
 //	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
 //	},
 	returnval.balanceadd=function(user,a,balanceaddcallback){
-//			console.log("addbalance?user="+JSON.parse(user)+"&amount="+a);
-		 $http.get(adminurl + "addbalance?user="+JSON.parse(user)+"&amount="+a,{}).success(balanceaddcallback);	
+			console.log("addbalance?user="+user+"&amount="+a);
+		 $http.get(adminurl + "addbalance?user="+user+"&amount="+a,{}).success(balanceaddcallback);	
 	},
 	returnval.sellingapproval=function(sell,sellingapprovalcallback){
-		 $http.get(adminurl + "sellingapproval?user="+JSON.parse(sell),{}).success(sellingapprovalcallback);	
+		 $http.get(adminurl + "sellingapproval?user="+sell,{}).success(sellingapprovalcallback);	
 	},
-	returnval.accepted=function(user,a,acceptedcallback){
-		 $http.get(adminurl + "accepted?user="+user+"&amount="+a,{}).success(acceptedcallback);	
+	returnval.acceptreason=function(id,reason,acceptreasoncallback) {
+    $http.get(adminurl + "acceptreason?id="+id+"&reason="+reason,{}).success(acceptreasoncallback);
+		},
+	returnval.accepted=function(userfrom,userto,amount,acceptedcallback){
+		 $http.get(adminurl + "accepted?userfrom="+userfrom+"&userto="+userto+"&amount="+amount,{}).success(acceptedcallback);	
+	},
+	returnval.acceptstatus=function(id,acceptstatuscallback){
+		 $http.get(adminurl + "acceptstatus?id="+id,{}).success(acceptstatuscallback);	
 	},
 	returnval.decline=function(id,declinecallback){
 		 $http.get(adminurl + "decline?id="+id,{}).success(declinecallback);	
 	},
+	returnval.declinereason=function(id,reason,declinereasoncallback) {
+    $http.get(adminurl + "declinereason?id="+id+"&reason="+reason,{}).success(declinereasoncallback);
+		},
 	returnval.transaction=function(u,transactioncallback){
 		 $http.get(adminurl + "transaction?user="+u,{}).success(transactioncallback);	
 	},

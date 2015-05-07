@@ -401,6 +401,7 @@ p.info {
     -webkit-box-shadow: 0 1px 1px 0 #aaa;
     -moz-box-shadow: 0 1px 1px 0 #aaa;
     box-shadow: 0 1px 1px 0 #aaa;
+	margin-bottom: 10px;
 }
 
 .header-card {

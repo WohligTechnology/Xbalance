@@ -68,38 +68,23 @@
                 <div class="item item-input item-text-wrap header">
                     <h2>Shops Photos</h2>
                 </div>
-                <div class="item item-input item-text-wrap itemproducts">
-                    <div class="input-div">
+                <div class="item item-input item-text-wrap itemproducts" >
+                    <div class="input-div" ng-repeat="p in pic">
                         <div class="img-profile">
-                            <img src="img/add.png">
+                            <img ng-src="{{p.photo}}">
                         </div>
                     </div>                 
-                        <div class="input-div">
-                        <div class="img-profile">
-                            <img src="img/add.png">
-                        </div>
-                    </div>
-                    <div class="input-div">
-                        <div class="img-profile">
-                            {{profile.shopphoto}}
-                        </div>
-                    </div>
-                    <div class="input-div">
-                        <div class="img-profile">
-                            <img src="img/add.png">
-                        </div>
-                    </div>
-
                 </div>
                 <div class="item item-input item-text-wrap header">
                     <h2>Products Photos</h2>
                 </div>
                 <div class="item item-input item-text-wrap itemproducts">
-                    <div class="input-div">
+                    <div class="input-div" ng-repeat="i in image">
                         <div class="img-profile">
-                            {{profile.productphoto}}
+                        <img ng-src="{{i.photo}}">
                         </div>
                     </div>
+<!--
                     <div class="input-div">
                         <div class="img-profile">
                             <img src="img/add.png">
@@ -115,6 +100,7 @@
                             <img src="img/add.png">
                         </div>
                     </div>
+-->
                 </div>
 
 

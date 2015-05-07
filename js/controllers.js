@@ -2,26 +2,6 @@ angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout,MyServices,$location) {
 
-	//selling approval
-	var sellingapprovalcallback=function(data,status){
-	if(data=="false")
-        {
-           
-            console.log("no data");
-        }
-        else
-        {
-           console.log(data);
-          $scope.sell=data;
-			$.jStorage.set("s",$scope.sell);
-            $location.url("/app/selling");
-        }
-	
-	}
-	$scope.user=$.jStorage.get("user1");
-$scope.sell=function(){
-	
-MyServices.sellingapproval($scope.user,sellingapprovalcallback);}
 
 
 //your balance
@@ -220,13 +200,25 @@ MyServices.logout(logoutcallback);
 	shopid=$stateParams.id;
 	console.log(shopid);
 	MyServices.profile(shopid,shopprofilecallback);
-//	$scope.shop=$.jStorage.get("sp");
-//	console.log($scope.shop);
-//	$scope.pid = [];
-//	
-//		var shopprofilecallback=function(data,status){
-//	console.log(data);
-//	};
+	var shopphotocallback=function(data,status){
+	$scope.shoppic=data;
+		console.log($scope.shoppic);
+		for (var i = 0; i < $scope.shoppic.length; i++) {
+            $scope.shoppic[i].photo = imgpath + $scope.shoppic[i].photo;
+        }
+		console.log($scope.shoppic);
+	}
+	var shopproductphotocallback=function(data,status){
+	$scope.img=data;
+		for (var i = 0; i < $scope.img.length; i++) {
+            $scope.img[i].photo = imgpath + $scope.img[i].photo;
+        }
+		console.log($scope.img);
+	}
+	MyServices.shopphoto(shopid,shopphotocallback);
+	MyServices.shopproductphoto(shopid,shopproductphotocallback);
+	
+	
 	$scope.callpurchase=function(profile){
 		$scope.modal.show();
 	};
@@ -242,6 +234,14 @@ MyServices.logout(logoutcallback);
         {
            console.log("balance added");
         }
+		var myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Please Wait for the Approval!</p>',
+            title: 'Your Request Sent!',
+            scope: $scope,
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
 	};
 	
 	$scope.sendamt=function(amount){
@@ -370,34 +370,29 @@ MyServices.logout(logoutcallback);
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
 .controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout,MyServices) {
+	
+		//SELLING APPROVAL
+	
+	var sellingapprovalcallback=function(data,status){
+	$scope.req=data.sellingapproval;
+	console.log($scope.req);
+	}
+	$scope.sell=$.jStorage.get("user1");
+		console.log($scope.sell);
+	MyServices.sellingapproval($scope.sell,sellingapprovalcallback);
     $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
-        var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Accepted!</p>',
-            title: 'Accept',
-            scope: $scope,
-
-        });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 1500);
+       
     };
     $scope.showPopups = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
-        var myPopups = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-close-round balanced round-circle rounds-x"></h2><p>Decline!</p>',
-            title: 'Decline!',
-            scope: $scope,
 
-        });
-        $timeout(function () {
-            myPopups.close(); //close the popup after 3 seconds for some reason
-        }, 1500);
     };
+	var myPopup = '';
 	var acceptedcallback=function(data,status){
 	if(data=="false")
         {
@@ -408,14 +403,50 @@ MyServices.logout(logoutcallback);
         {
            console.log("accepted");
            console.log(data);
+			$scope.insertid=data;
+			console.log($scope.insertid);
+			myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><input type="text" ng-model="accept.text"><button class="button button-small button-outline button-balanced" ng-click="acceptApp(accept.text);">Accept</button><p>Accepted!</p>',
+            title: 'Accept',
+            scope: $scope,
+
+        });
+//        $timeout(function () {
+//            myPopup.close(); //close the popup after 3 seconds for some reason
+//        }, 5000);
         }
 }
-$scope.accept=function(){
-	sd=$.jStorage.get("s");
-	console.log(sd);
-MyServices.accepted(sd.sellingapproval.id,sd.sellingapproval.amount,acceptedcallback);
+	
+	var acceptreasoncallback=function(data,status){
+	if(data=="false")
+        {
+           
+            console.log("Reason not accepted");
+        }
+        else
+        {
+           console.log("reason accepted")
+	
+	}
+	}
+	$scope.acceptApp = function (text){
+		console.log(text);
+		MyServices.acceptreason($scope.insertid,text,acceptreasoncallback);
+		 myPopup.close();
+	}
+	var acceptstatuscallback=function(data,status){
+	console.log(data);
+	}
+$scope.accept=function(r){
+    $scope.sd=r;
+//	console.log($scope.sd.amount);
+	$scope.userfrom=$.jStorage.get("user1");
+//	console.log($scope.userfrom);
+	
+MyServices.accepted($scope.userfrom,$scope.sd.id,$scope.sd.amount,acceptedcallback);
+MyServices.acceptstatus($scope.sd.id,acceptstatuscallback);
 }
-
+//
 	var declinecallback=function(data,status){
 	if(data=="false")
         {
@@ -425,27 +456,55 @@ MyServices.accepted(sd.sellingapproval.id,sd.sellingapproval.amount,acceptedcall
         else
         {
            console.log("declined");
-           console.log(data);
+//           console.log(data);
+			$scope.declineid=data;
+			console.log($scope.declineid);
+			myPopups = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-close-round balanced round-circle rounds-x"></h2><input type="text" ng-model="decline.text"><button class="button button-small button-outline button-balanced" ng-click="declineApp(decline.text);">Decline</button><p>Decline!</p>',
+            title: 'Decline!',
+            scope: $scope,
+
+        });
+//        $timeout(function () {
+//            myPopups.close(); //close the popup after 3 seconds for some reason
+//        }, 2000);
         }
 	}
-	$scope.decline=function(){
-		sd=$.jStorage.get("s");
-	MyServices.decline(sd.sellingapproval.id,declinecallback);
+	$scope.decline=function(r){
+	$scope.dec=r;
+	MyServices.decline($scope.dec.id,declinecallback);
 	};
 	
+// decline reason
+
+var declinereasoncallback=function(data,status){
+		if(data=="false")
+        {
+           
+            console.log("No reason");
+        }
+        else
+        {
+           console.log("got the reason");
+			console.log(data);
+		}
+		}
+		$scope.declineApp=function(text){
+		console.log(text);
+		MyServices.declinereason($scope.declineid,text,declinereasoncallback);
+		}
 
 })
 
-.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location) {
-$scope.trans=$.jStorage.get("sp");
-	console.log($scope.trans);
-	
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location,MyServices) {
+//	
 	var transactioncallback=function(data,status){
-	console.log(data);
+	$scope.t=data;
+		console.log($scope.t);
 	}
-	$scope.purchase=function(){
-	MyServices.transaction(sd.sellingapproval.id,transactioncallback);
-	}
+	$scope.trans=$.jStorage.get("user1");
+	MyServices.transaction($scope.trans,transactioncallback);
+	
 	
     //  DECLARATION
     $scope.returnsactive = "active";
@@ -480,45 +539,61 @@ $scope.trans=$.jStorage.get("sp");
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate,MyServices) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate,MyServices,$http) {
 // shop profile
 	$scope.pro=$.jStorage.get("user1");
 	$scope.epro={};
-	
+	var shopphotocallback=function(data,status){
+		$scope.pic=data;
+		console.log($scope.pic);
+		for (var i = 0; i < $scope.pic.length; i++) {
+            $scope.pic[i].photo = imgpath + $scope.pic[i].photo;
+        }
+		console.log($scope.pic);
+	}
+	var shopproductphotocallback=function(data,status){
+	$scope.image=data;
+		for (var i = 0; i < $scope.image.length; i++) {
+            $scope.image[i].photo = imgpath + $scope.image[i].photo;
+        }
+		console.log($scope.image);
+	}
 	var shopprofilecallback=function(data,status){
 		
 		$scope.profile=data.shopprofile[0];
 	}
 //	console.log("Pro="+$scope.pro);
 	MyServices.profile($scope.pro,shopprofilecallback);
+	MyServices.shopphoto($scope.pro,shopphotocallback);	
+	MyServices.shopproductphoto($scope.pro,shopproductphotocallback);	
 	//edit profile
 	$scope.editpro=function(profile){
 		$scope.epro=profile;
-		console.log($scope.epro.shopname);
+		console.log($scope.epro);
 	}
 //    $scope.sp=$.jStorage.get("sp");
 //	console.log("In profile");
 ////	console.log($scope.sp);
 ////	
-//	var updateprofilecallback=function(data,status){
-//	if(data=="false")
-//        {
-//           
-//            console.log("no data");
-//        }
-//        else
-//        {
-//           console.log(data);
-//        }
-//	}
-//	$scope.profileupdate=function(profile){
-//	$scope.updatedata=profile;
-//		console.log($scope.updatedata);
-//		$scope.id=$.jStorage.get("user1");
-////		console.log($scope.id);
-//		MyServices.profile($scope.id,$scope.updatedata,updateprofilecallback);
+	var updateprofilecallback=function(data,status){
+	if(data=="false")
+        {
+           
+            console.log("no data");
+        }
+        else
+        {
+           console.log("Updated");
+        }
+	}
+	$scope.profileupdate=function(profile){
+	$scope.updatedata=profile;
+		console.log($scope.updatedata);
+		$scope.id=$.jStorage.get("user1");
+		console.log($scope.id);
+		MyServices.updateprofile($scope.id,$scope.updatedata,updateprofilecallback);
 		
-//	}
+	}
 	$ionicModal.fromTemplateUrl('templates/resetpswd.html', {
         id: '2',
         scope: $scope,
@@ -537,6 +612,7 @@ $scope.trans=$.jStorage.get("sp");
 var changepasswordcallback=function(data,status){
 	$scope.p=data;
 console.log($scope.p);
+	 $scope.oModal2.hide();
 }
 	$scope.changepass=function(pass){
 		$scope.passwrd=pass;
@@ -547,7 +623,34 @@ console.log($scope.p);
 })
 
 .controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout,MyServices) {
+	var balanceaddcallback=function(data,status){
+	if(data=="false")
+        {
+           
+            console.log("balance not added");
+        }
+        else
+        {
+           console.log("balance added");
+            // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+            title: 'Your Request Sent!',
+            scope: $scope,
 
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 1500);
+//            $location.url("/app/home");
+        }
+	};
+	$scope.user=$.jStorage.get("user1");
+	$scope.addbalance=function(amount){
+	$scope.a=amount;
+		console.log($scope.a);
+		 MyServices.balanceadd($scope.user,$scope.a,balanceaddcallback);
+	};
 //	$scope.amount = 0;
 	
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
@@ -579,23 +682,5 @@ console.log($scope.p);
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
-	var balanceaddcallback=function(data,status){
-	if(data=="false")
-        {
-           
-            console.log("balance not added");
-        }
-        else
-        {
-           console.log("balance added");
-           
-//            $location.url("/app/home");
-        }
-	};
-	$scope.user=$.jStorage.get("user1");
-	$scope.addbalance=function(amount){
-	$scope.a=amount;
-		console.log($scope.a);
-		 MyServices.balanceadd($scope.user,$scope.a,balanceaddcallback);
-	};
+
 });
