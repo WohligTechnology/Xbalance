@@ -2,16 +2,18 @@ var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
-var user={};
+var user = {};
 //var user=$.jStorage.get("user");
 
 myservices.factory('MyServices', function($http) {
 
+    user = $.jStorage.get("user");
     var returnval = {};
     returnval.login = function(user1, logincallback) {
         //        console.log("Demo");
         $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password, {}).success(logincallback);
     },
+
 
     returnval.home = function(user, homecallback) {
         //        console.log("Demo");
@@ -81,20 +83,8 @@ myservices.factory('MyServices', function($http) {
     returnval.sellingapproval = function(sell, sellingapprovalcallback) {
         $http.get(adminurl + "sellingapproval?user=" + sell, {}).success(sellingapprovalcallback);
     },
-    returnval.acceptreason = function(id, reason, acceptreasoncallback) {
-        $http.get(adminurl + "acceptreason?id=" + id + "&reason=" + reason, {}).success(acceptreasoncallback);
-    },
-    returnval.accepted = function(userfrom, userto, amount, acceptedcallback) {
-        $http.get(adminurl + "accepted?userfrom=" + userfrom + "&userto=" + userto + "&amount=" + amount, {}).success(acceptedcallback);
-    },
-    returnval.acceptstatus = function(id, acceptstatuscallback) {
-        $http.get(adminurl + "acceptstatus?id=" + id, {}).success(acceptstatuscallback);
-    },
-    returnval.decline = function(id, declinecallback) {
-        $http.get(adminurl + "decline?id=" + id, {}).success(declinecallback);
-    },
-    returnval.declinereason = function(id, reason, declinereasoncallback) {
-        $http.get(adminurl + "declinereason?id=" + id + "&reason=" + reason, {}).success(declinereasoncallback);
+    returnval.accepted = function(id, reason, status,acceptstatuscallback) {
+        $http.get(adminurl + "accepted?id=" + id + "&reason=" + reason + "&status=" + status, {}).success(acceptstatuscallback);
     },
     returnval.transaction = function(u, transactioncallback) {
         $http.get(adminurl + "transaction?user=" + u, {}).success(transactioncallback);
@@ -106,8 +96,8 @@ myservices.factory('MyServices', function($http) {
         console.log("searchresult?area=''&category=''&membershipno=" + c);
         $http.get(adminurl + "searchresult?area=''&category=''&membershipno=" + c, {}).success(memcallback);
     },
-    returnval.purchaserequest = function(userfrom, userto, amount, purchaserequestcallback) {
-        $http.get(adminurl + "purchaserequest?userfrom=" + userfrom + "&userto=" + userto + "&amount=" + amount, {}).success(purchaserequestcallback);
+    returnval.purchaserequest = function(userfrom, userto, amount, reason, purchaserequestcallback) {
+        $http.get(adminurl + "purchaserequest?userfrom=" + userfrom + "&userto=" + userto + "&amount=" + amount + "&reason=" + reason, {}).success(purchaserequestcallback);
     },
     returnval.changepassword = function(id, pass, changepasswordcallback) {
         $http.get(adminurl + "changepassword?id=" + id + "&oldpassword=" + pass.oldpassword + "&newpassword=" + pass.newpassword + "&confirmpassword=" + pass.confirmpassword, {}).success(changepasswordcallback);

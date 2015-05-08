@@ -1,3 +1,5 @@
+var globalfunctionapproval = {};
+
 angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location) {
@@ -18,6 +20,16 @@ angular.module('starter.controllers', ['myservices'])
         console.log($scope.bal);
         MyServices.yourbalance($scope.bal, yourbalancecallback);
     }
+    $scope.approvalcount = 0;
+    var sellingapprovalcallback = function(data, status) {
+        $scope.approvalcount = data.sellingapproval.length;
+        console.log(data.sellingapproval.length);
+    }
+    $scope.sell = $.jStorage.get("user1");
+    MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+    globalfunctionapproval = function() {
+        MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+    };
 
 })
 
@@ -150,11 +162,34 @@ angular.module('starter.controllers', ['myservices'])
 })
 
 .controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams) {
+
+
+    function purchaseoverlimit() {
+        var myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Purchase is Overlimit!</p>',
+            title: 'OverLimit Purchase!',
+            scope: $scope,
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    }
+
+
+    $scope.purchaselimit = parseFloat(user.purchasebalance);
+    $scope.userpurchasebalance = parseFloat(user.purchasebalance);
     var shopprofilecallback = function(data, status) {
         $scope.profile = data;
+
+        var newsalesbalance = parseFloat($scope.profile.salesbalance);
+        if (newsalesbalance < $scope.purchaselimit) {
+            $scope.purchaselimit = newsalesbalance;
+        }
         console.log($scope.profile);
     }
     shopid = $stateParams.id;
+    $scope.shopid = $stateParams.id;
+    $scope.userid = user.id;
     console.log(shopid);
     MyServices.profile(shopid, shopprofilecallback);
     var shopphotocallback = function(data, status) {
@@ -165,6 +200,7 @@ angular.module('starter.controllers', ['myservices'])
         }
         console.log($scope.shoppic);
     }
+    $scope.amount = 1000;
     var shopproductphotocallback = function(data, status) {
         $scope.img = data;
         for (var i = 0; i < $scope.img.length; i++) {
@@ -198,28 +234,24 @@ angular.module('starter.controllers', ['myservices'])
         }, 2000);
     };
 
-    $scope.sendamt = function(amount) {
 
-        $scope.amt = amount;
-        console.log($scope.amt);
-        $scope.userfrom = $.jStorage.get("user1");
-        //		console.log($scope.pid.shopprofile[0].id);
-        MyServices.purchaserequest($scope.userfrom, shopid, amount, purchaserequestcallback);
-        //		 //popup
-        //    $scope.showPopup = function () {
-        //        $scope.data = {}
-        //       //  An elaborate, custom popup
-        //        var myPopup = $ionicPopup.show({
-        //            template: '<div class="text-center">
-        //			<h2 class="ion-checkmark-round balanced round-circle">
-        //			</h2><p>Please Wait for the Approval!</p>',
-        //            title: 'Your Request Sent!',
-        //            scope: $scope,
-        //        });
-        //        $timeout(function () {
-        //            myPopup.close(); //close the popup after 3 seconds for some reason
-        //        }, 1500);
-        //    };
+
+
+
+    $scope.sendamt = function(amount, reason) {
+
+        amount = parseFloat(amount);
+        if (amount > $scope.purchaselimit) {
+            purchaseoverlimit();
+        } else {
+
+            $scope.amt = amount;
+            console.log($scope.amt);
+            $scope.userfrom = $.jStorage.get("user1");
+            //		console.log($scope.pid.shopprofile[0].id);
+            MyServices.purchaserequest($scope.userfrom, shopid, amount, reason, purchaserequestcallback);
+        }
+        $scope.modal.hide();
     };
 
     $scope.aImages = [{
@@ -339,13 +371,16 @@ angular.module('starter.controllers', ['myservices'])
 
 .controller('FaqCtrl', function($scope, $stateParams) {})
 
-.controller('SellingCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices) {
+.controller('SellingCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
+
+
 
     //SELLING APPROVAL
 
     var sellingapprovalcallback = function(data, status) {
         $scope.req = data.sellingapproval;
         console.log($scope.req);
+        $ionicLoading.hide();
     }
     $scope.sell = $.jStorage.get("user1");
     console.log($scope.sell);
@@ -356,101 +391,31 @@ angular.module('starter.controllers', ['myservices'])
         // An elaborate, custom popup
 
     };
-    $scope.showPopups = function() {
-        $scope.data = {}
 
-        // An elaborate, custom popup
-
-    };
-    var myPopup = '';
-    var acceptedcallback = function(data, status) {
-        if (data == "false") {
-
-            console.log("Not accepted");
-        } else {
-            console.log("accepted");
-            console.log(data);
-            $scope.insertid = data;
-            console.log($scope.insertid);
-            myPopup = $ionicPopup.show({
-                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><input type="text" ng-model="accept.text"><button class="button button-small button-outline button-balanced" ng-click="acceptApp(accept.text);">Accept</button><p>Accepted!</p>',
-                title: 'Accept',
-                scope: $scope,
-
-            });
-            //        $timeout(function () {
-            //            myPopup.close(); //close the popup after 3 seconds for some reason
-            //        }, 5000);
-        }
-    }
-
-    var acceptreasoncallback = function(data, status) {
-        if (data == "false") {
-
-            console.log("Reason not accepted");
-        } else {
-            console.log("reason accepted")
-
-        }
-    }
-    $scope.acceptApp = function(text) {
-        console.log(text);
-        MyServices.acceptreason($scope.insertid, text, acceptreasoncallback);
-        myPopup.close();
-    }
     var acceptstatuscallback = function(data, status) {
         console.log(data);
+        MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+        globalfunctionapproval();
+
     }
-    $scope.accept = function(r) {
-        $scope.sd = r;
-        //	console.log($scope.sd.amount);
-        $scope.userfrom = $.jStorage.get("user1");
-        //	console.log($scope.userfrom);
+    $scope.reason = "";
+    $scope.accept = function(r, reason) {
 
-        MyServices.accepted($scope.userfrom, $scope.sd.id, $scope.sd.amount, acceptedcallback);
-        MyServices.acceptstatus($scope.sd.id, acceptstatuscallback);
+        console.log(r);
+        MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
+        $ionicLoading.show({
+            template: 'Please wait...'
+        });
     }
-    //
-    var declinecallback = function(data, status) {
-        if (data == "false") {
-
-            console.log("Not decline");
-        } else {
-            console.log("declined");
-            //           console.log(data);
-            $scope.declineid = data;
-            console.log($scope.declineid);
-            myPopups = $ionicPopup.show({
-                template: '<div class="text-center"><h2 class="ion-close-round balanced round-circle rounds-x"></h2><input type="text" ng-model="decline.text"><button class="button button-small button-outline button-balanced" ng-click="declineApp(decline.text);">Decline</button><p>Decline!</p>',
-                title: 'Decline!',
-                scope: $scope,
-
-            });
-            //        $timeout(function () {
-            //            myPopups.close(); //close the popup after 3 seconds for some reason
-            //        }, 2000);
-        }
+    $scope.decline = function(r, reason) {
+        console.log("Decline");
+        console.log(r);
+        MyServices.accepted(r.id, reason, 2, acceptstatuscallback);
+        $ionicLoading.show({
+            template: 'Please wait...'
+        });
     }
-    $scope.decline = function(r) {
-        $scope.dec = r;
-        MyServices.decline($scope.dec.id, declinecallback);
-    };
 
-    // decline reason
-
-    var declinereasoncallback = function(data, status) {
-        if (data == "false") {
-
-            console.log("No reason");
-        } else {
-            console.log("got the reason");
-            console.log(data);
-        }
-    }
-    $scope.declineApp = function(text) {
-        console.log(text);
-        MyServices.declinereason($scope.declineid, text, declinereasoncallback);
-    }
 
 })
 
@@ -513,7 +478,7 @@ angular.module('starter.controllers', ['myservices'])
     var shopprofilecallback = function(data, status) {
 
         $scope.profile = data.shopprofile[0];
-        console.log("logo=" + $scope.profile.shoplogo);
+        console.log($scope.profile);
     }
 
     MyServices.profile($scope.pro, shopprofilecallback);

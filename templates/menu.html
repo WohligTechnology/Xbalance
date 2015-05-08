@@ -28,7 +28,7 @@
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/selling">
                     <span>Selling Approvals</span>
-                    <span class="badge badge-assertive">1</span>
+                    <span ng-hide="approvalcount==0" class="badge badge-assertive">{{approvalcount}}</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/transaction">
                     <span>Transaction History</span>

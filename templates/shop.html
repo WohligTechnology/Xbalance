@@ -3,9 +3,9 @@
         <div class="incard card-shop">
             <ion-list class="lesshopadding product-cont">
                 <ion-item class="product">
-                    <h2>{{profile.shopprofile[0].shopname}}</h2>
+                    <h2>{{profile.shopname}}</h2>
                     <div class="pull-right balanced amount">
-                       {{profile.shopprofile[0].salesbalance}}
+                       {{profile.salesbalance}}
                     </div>
 
                 </ion-item>
@@ -13,13 +13,13 @@
             <ion-item class="item-left">
                 <h2>Area</h2>
                 <div class="pull-right item-right">
-                    {{profile.shopprofile[0].area}}
+                    {{profile.area}}
                 </div>
             </ion-item>
             <ion-item class="item-left">
                 <h2>Category</h2>
                 <div class="pull-right item-right">
-                    {{profile.shopprofile[0].category}}
+                    {{profile.category}}
                 </div>
             </ion-item>
             <div class="item item-input item-text-wrap header">
@@ -27,7 +27,7 @@
             </div>
             <div class="item item-input item-text-wrap">
                 <div class="input itemproducts">
-                   {{profile.shopprofile[0].address}}
+                   {{profile.address}}
                 </div>
             </div>
             <div class="item item-input item-text-wrap header">
@@ -35,19 +35,19 @@
             </div>
             <div class="item item-input item-text-wrap">
                 <div class="input itemproducts">
-                    {{profile.shopprofile[0].description}}
+                    {{profile.description}}
                 </div>
             </div>
             <ion-item class="item-left">
                 <h2>Cell Number</h2>
                 <div class="pull-right item-right">
-                    {{profile.shopprofile[0].shopcontact1}}
+                    {{profile.shopcontact1}}
                 </div>
             </ion-item>
             <ion-item class="item-left">
                 <h2>Landline No.</h2>
                 <div class="pull-right item-right">
-                     {{profile.shopprofile[0].shopcontact2}}
+                     {{profile.shopcontact2}}
                 </div>
             </ion-item>
 <!--
@@ -60,13 +60,13 @@
             <ion-item class="item-left">
                 <h2>Email Id</h2>
                 <div class="pull-right item-right">
-                    {{profile.shopprofile[0].shopemail}}
+                    {{profile.shopemail}}
                 </div>
             </ion-item>
             <ion-item class="item-left">
                 <h2>Website</h2>
                 <div class="pull-right item-right">
-                    {{profile.shopprofile[0].website}}
+                    {{profile.website}}
                 </div>
             </ion-item>
             <div class="item item-input item-text-wrap itemimage">
@@ -106,7 +106,7 @@
             </div>
         </div>
     </ion-content>
-    <ion-footer-bar class="footer-shop ion-item balanced" ng-click="callpurchase(profile);">
+    <ion-footer-bar class="footer-shop ion-item balanced" ng-click="callpurchase(profile);" ng-if="shopid!=userid">
         <h4>Purchase</h4>
     </ion-footer-bar>
 </ion-view>
