@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-	$ionicConfigProvider.views.maxCache(0);
+    $ionicConfigProvider.views.maxCache(0);
     $stateProvider
 
     .state('login', {
@@ -71,9 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     .state('app.browse', {
         url: "/browse",
         views: {
-            'menuContent': {
-                templateUrl: "templates/browse.html"
-            }
+            'menuContent': {}
         }
     })
 
@@ -145,10 +143,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 controller: 'ProfileCtrl'
             }
         }
-    })
-    ;
+    });
 
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/app/home');
+})
+
+.filter('serverimage', function() {
+    return function(image) {
+        return imgpath + image;
+    };
 });

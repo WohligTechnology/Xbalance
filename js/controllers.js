@@ -18,39 +18,88 @@ angular.module('starter.controllers', ['myservices'])
         console.log($scope.bal);
         MyServices.yourbalance($scope.bal, yourbalancecallback);
     }
-    //log out
-    var logoutcallback = function() {
-        console.log("you have logged out");
-    }
-    $scope.out = function() {
-        MyServices.logout(logoutcallback);
-        $location.url("/login");
-    }
 
 })
 
-.controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location) {
+.controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout) {
     //home page
+    $scope.home = {
+        area: "",
+        category: "",
+        membershipno: ""
+    };
+
+    var userid = $.jStorage.get("user1");
+    if (!userid) {
+        $location.url("/login");
+    }
+
     var homecallback = function(data, status) {
         $scope.user = data;
-        console.log($scope.user);
+
+        $.jStorage.set("user", data.userdetails);
+        user = data.userdetails;
         //		$location.url("/app/search");
     };
     $scope.user = $.jStorage.get("user1");
     MyServices.home($scope.user, homecallback);
 
+    function onmembershipid(shopid) {
+        if (shopid) {
+            $location.url("/app/shop/" + shopid);
+        } else {
+            $scope.showPopup();
+        }
+    };
+
+
+    $scope.showPopup = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">No Such Membership Number Exists.</p>',
+            title: 'No Match Found!',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+
+    $scope.showPopupNoBalance = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your Purchase Balance is too low.</p>',
+            title: 'Low Purchase Balance',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
 
     //search shop
 
     $scope.memfunc = function(home) {
-      
-        if(home)
-        {
-            $location.url("/app/search/" + home.area + "/" + home.category + "/" + home.membershipno);
-        }
-        else 
-        {
-            $location.url("/app/search/0/0");
+
+        purchasebalance = parseFloat(user.purchasebalance);
+        if (purchasebalance > 0) {
+            if (home.membershipno != "") {
+                MyServices.getshopidmebership(home.membershipno, onmembershipid);
+            } else {
+                var area = 0;
+                var category = 0;
+                if (home.area != "") {
+                    area = home.area;
+                }
+                if (category != "") {
+                    category = home.category;
+                }
+                $location.url("/app/search/" + home.area + "/" + home.category);
+            }
+        } else {
+            $scope.showPopupNoBalance();
         }
 
     }
@@ -76,16 +125,15 @@ angular.module('starter.controllers', ['myservices'])
 })
 
 .controller('SearchCtrl', function($scope, MyServices, $ionicModal, $location, $stateParams) {
-   
+
     var searchcallback = function(data, status) {
         $scope.shops = data;
-        console.log($scope.shops);
 
     }
     MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.membershipno, searchcallback);
     var getareacategorycallback = function(data, status) {
         $scope.recall = data;
-        console.log($scope.recall);
+        console.log(data);
     }
     MyServices.getareacategory($stateParams.area, $stateParams.category, getareacategorycallback);
 
@@ -98,7 +146,7 @@ angular.module('starter.controllers', ['myservices'])
         $.jStorage.set("demo", data);
     };
 
-  
+
 })
 
 .controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams) {
@@ -244,14 +292,19 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-
-.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location) {
+.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout) {
     $.jStorage.flush();
+
+    $scope.user1 = {
+        membershipno: "",
+        password: ""
+    };
 
     var logincallback = function(data, status) {
         if (data == "false") {
             console.log(data);
             console.log("Login Failed");
+            $scope.showPopup();
         } else {
             //			console.log(data);
             data = data.replace('"', "");
@@ -264,6 +317,20 @@ angular.module('starter.controllers', ['myservices'])
         }
 
     };
+
+    $scope.showPopup = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Incorrect Membership Number or Password.</p>',
+            title: 'Login Failed',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+
 
     $scope.onlogin = function(user1) {
         MyServices.login(user1, logincallback);
@@ -437,17 +504,11 @@ angular.module('starter.controllers', ['myservices'])
     var shopphotocallback = function(data, status) {
         $scope.pic = data;
         console.log($scope.pic);
-        for (var i = 0; i < $scope.pic.length; i++) {
-            $scope.pic[i].photo = imgpath + $scope.pic[i].photo;
-        }
-        console.log($scope.pic);
+
     }
     var shopproductphotocallback = function(data, status) {
         $scope.image = data;
-        for (var i = 0; i < $scope.image.length; i++) {
-            $scope.image[i].photo = imgpath + $scope.image[i].photo;
-        }
-        console.log($scope.image);
+
     }
     var shopprofilecallback = function(data, status) {
 

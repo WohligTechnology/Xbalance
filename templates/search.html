@@ -1,9 +1,9 @@
 <ion-view view-title="Search Result" class="bar-royal">
     <ion-content class="padding">
 
-        <div class="incard pad-btm">
+        <div class="incard pad-btm" ng-if="recall.area.name || recall.category.name">
             <ion-list class="lesspadding">
-                <ion-item class="area">
+                <ion-item class="area" ng-if="recall.area.name">
                     <div class="row">
                         <div class="col">
                             <h3>Area</h3>
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                 </ion-item>
-                <ion-item class="category">
+                <ion-item class="category" ng-if="recall.category.name">
                     <div class="row">
                         <div class="col">
                             <h3>Category</h3>
@@ -27,37 +27,22 @@
         </div>
 
         <div class="incard">
-            <ion-list class="lesspadding">
+            <ion-list class="lesspadding" ng-if="shops.length>0">
                 <ion-item class="headed">
                     <div class="row">
                         <div class="col">Name</div>
                         <div class="col">Sell Balance</div>
                     </div>
                 </ion-item>
-                <ion-item  href="#/app/shop/{{shop.id}}" ng-click="shopclick(shop);" ng-repeat="shop in shops.searchresult ">
-                    <div class="row" >
+                <ion-item href="#/app/shop/{{shop.id}}" ng-click="shopclick(shop);" ng-repeat="shop in shops ">
+                    <div class="row">
                         <div class="col">{{shop.name}}</div>
                         <div class="col"><span class="balanced amount">{{shop.sellbalance}}</span>
                         </div>
                     </div>
                 </ion-item>
-<!--
-                <ion-item href="#/app/shop">
-                    <div class="row">
-                        <div class="col">Nokia</div>
-                        <div class="col"><span class="balanced amount">Rs.50,000</span>
-                        </div>
-                    </div>
-                </ion-item>
-                <ion-item href="#/app/shop">
-                    <div class="row">
-                        <div class="col">Samsung</div>
-                        <div class="col"><span class="balanced amount">Rs.40,000</span>
-                        </div>
-                    </div>
-                </ion-item>
--->
             </ion-list>
+            <h5 ng-if="shops.length==0" style="text-align:center;">No Shop Found</h5>
         </div>
 
     </ion-content>

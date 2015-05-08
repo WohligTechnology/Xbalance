@@ -2,6 +2,7 @@ var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
+var user={};
 //var user=$.jStorage.get("user");
 
 myservices.factory('MyServices', function($http) {
@@ -26,7 +27,6 @@ myservices.factory('MyServices', function($http) {
     //			return $.jStorage.get("search");
     //		},
     returnval.searchresult = function(area, category, membershipno, searchcallback) {
-        console.log("searchresult?area=" + area + "&category=" + category + "&membershipno=" + membershipno);
         $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&membershipno=" + membershipno, {}).success(searchcallback);
     },
     returnval.getareacategory = function(area, category, getareacategorycallback) {
@@ -115,6 +115,11 @@ myservices.factory('MyServices', function($http) {
     returnval.logout = function(logoutcallback) {
         $http.get(adminurl + "logout", {}).success(logoutcallback);
     };
-
+    returnval.getshopidmebership = function(data, callback) {
+        $http.get(adminurl + "shopprofilemem?mem=" + data).success(function(data) {
+            console.log(data.id);
+            callback(data.id)
+        });
+    };
     return returnval;
 });
