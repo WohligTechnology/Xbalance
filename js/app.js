@@ -39,7 +39,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.search', {
-        url: "/search/:area/:category/:membershipno",
+        url: "/search/:area/:category",
         views: {
             'menuContent': {
                 templateUrl: "templates/search.html",
