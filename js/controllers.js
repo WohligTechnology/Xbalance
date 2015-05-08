@@ -477,7 +477,7 @@ angular.module('starter.controllers', ['myservices'])
     }
     var shopprofilecallback = function(data, status) {
 
-        $scope.profile = data.shopprofile[0];
+        $scope.profile = data;
         console.log($scope.profile);
     }
 
