@@ -20,12 +20,13 @@
                 </ion-item>
                 <div class="item item-input item-text-wrap header" >
                     <h2> Address</h2>
-                </div>
+                    </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
 						{{profile.address}}
                     </div>
                 </div>
+                 
                 <div class="item item-input item-text-wrap header">
                     <h2>Description</h2>
                 </div>
@@ -69,7 +70,7 @@
                     <h2>Shops Photos</h2>
                 </div>
                 <div class="item item-input item-text-wrap itemproducts" >
-                    <div class="input-div" ng-repeat="p in pic">
+                    <div class="input-div" ng-repeat="p in pic" ng-click="openshop();">
                         <div class="img-profile">
                             <img ng-src="{{p.photo|serverimage}}">
                         </div>
@@ -79,7 +80,7 @@
                     <h2>Products Photos</h2>
                 </div>
                 <div class="item item-input item-text-wrap itemproducts">
-                    <div class="input-div" ng-repeat="i in image">
+                    <div class="input-div" ng-repeat="i in image" ng-click="openpswds();">
                         <div class="img-profile">
                         <img ng-src="{{i.photo|serverimage}}">
                         </div>

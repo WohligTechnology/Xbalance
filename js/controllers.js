@@ -475,16 +475,31 @@ angular.module('starter.controllers', ['myservices'])
         $scope.image = data;
 
     }
+	var getallcategory1callback=function(data,status){
+	$scope.cat=data;
+		console.log($scope.cat);
+	}
+	var updatecatcallback=function(data,status){
+	console.log(data);
+	}
+	$scope.updatecat=function(c){
+	$scope.cats=c;
+		console.log($scope.cats);
+	MyServices.updatecat(user.id,$scope.cats,updatecatcallback);
+	}
     var shopprofilecallback = function(data, status) {
 
         $scope.profile = data;
         console.log($scope.profile);
+		MyServices.getallcategory1(getallcategory1callback);
+
     }
 
     MyServices.profile($scope.pro, shopprofilecallback);
     MyServices.shopphoto($scope.pro, shopphotocallback);
     MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     //edit profile
+	
     $scope.editpro = function(profile) {
         $scope.epro = profile;
         console.log($scope.epro);
@@ -535,6 +550,37 @@ angular.module('starter.controllers', ['myservices'])
         $scope.passwrd = pass;
         MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
     }
+	
+    $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modals = modal;
+    });
+
+    $scope.openpswds = function() {
+        $scope.modals.show();
+    };
+
+    $scope.closeModal = function() {
+        $scope.modals.hide();
+    };
+
+    $ionicModal.fromTemplateUrl('templates/image-shop1.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modalss = modal;
+    });
+
+    $scope.openshop = function() {
+        $scope.modalss.show();
+    };
+
+    $scope.closeModals = function() {
+        $scope.modalss.hide();
+    };
+	
 })
 
 .controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices) {

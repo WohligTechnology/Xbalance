@@ -5,7 +5,7 @@
                 <form ng-submit="">
                     <div class="list">
                         <div class="profile-img">
-                            <img src="{{profile.shoplogo}}">
+                            <img src="{{profile.shoplogo|serverimage}}">
                             <div class="holder">Edit</div>
                         </div>
                         <div class="item item-input">
@@ -15,7 +15,10 @@
                             <input type="text" placeholder="Area" ng-model="profile.area" value="">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Category" ng-model="profile.category" value="">
+                        <select ng-model="c">
+                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                </select>
+<!--                            <input type="text" placeholder="Category" ng-model="profile.category" value="">-->
                         </div>
                         <div class="item item-input">
                             <textarea placeholder="Address" ng-model="profile.address" value=""></textarea>
@@ -84,7 +87,7 @@
                             </div>
                         </div>
                         <div class="padding-horizontal btn-rest">
-                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);">Save</button>
+                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(c);">Save</button>
                         </div>
                     </div>
                 </form>

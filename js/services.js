@@ -28,6 +28,10 @@ myservices.factory('MyServices', function($http) {
     //		returnval.getsearch=function(search) {
     //			return $.jStorage.get("search");
     //		},
+		returnval.getallcategory1 = function(getallcategory1callback) {
+        $http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);
+
+    },
     returnval.searchresult = function(area, category, membershipno, searchcallback) {
         $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&membershipno=" + membershipno, {}).success(searchcallback);
     },
@@ -76,6 +80,10 @@ myservices.factory('MyServices', function($http) {
     //			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
     //	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
     //	},
+		 returnval.updatecat = function(user,id, updatecatcallback) {
+		console.log("updatecat?user=" + user + "&id=" + id);
+        $http.get(adminurl + "updatecat?user=" + user + "&id=" + id, {}).success(updatecatcallback);
+    }
     returnval.balanceadd = function(user, a, balanceaddcallback) {
         console.log("addbalance?user=" + user + "&amount=" + a);
         $http.get(adminurl + "addbalance?user=" + user + "&amount=" + a, {}).success(balanceaddcallback);
