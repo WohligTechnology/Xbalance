@@ -561,8 +561,9 @@ var declinereasoncallback=function(data,status){
 	var shopprofilecallback=function(data,status){
 		
 		$scope.profile=data.shopprofile[0];
+		console.log("logo="+$scope.profile.shoplogo);
 	}
-//	console.log("Pro="+$scope.pro);
+	
 	MyServices.profile($scope.pro,shopprofilecallback);
 	MyServices.shopphoto($scope.pro,shopphotocallback);	
 	MyServices.shopproductphoto($scope.pro,shopproductphotocallback);	
