@@ -50,13 +50,7 @@
                      {{profile.shopcontact2}}
                 </div>
             </ion-item>
-<!--
-            <ion-item class="item-left numbers">
-                <div class="pull-right item-right">
-                    022 25454565
-                </div>
-            </ion-item>
--->
+
             <ion-item class="item-left">
                 <h2>Email Id</h2>
                 <div class="pull-right item-right">
@@ -71,38 +65,20 @@
             </ion-item>
             <div class="item item-input item-text-wrap itemimage">
                 <div class="input-div" ng-repeat="s in shoppic">
-                    <button class="button" ng-click="openpswd();"><img ng-src="{{s.photo}}">
+                    <button class="button" ng-click="openpswd();"><img ng-src="{{s.photo|serverimage}}">
                     </button>
                 </div>
-<!--
-                <div class="input-div">
-                    <button class="button" ng-click="openpswd();"><img src="img/shop2.png">
-                    </button>
-                </div>
-                <div class="input-div">
-                    <button class="button" ng-click="openpswd();"><img src="img/shop3.png">
-                    </button>
-                </div>
--->
+
             </div>
             <div class="item item-input item-text-wrap header">
                 <h2>  Products Photos</h2>
             </div>
             <div class="item item-input item-text-wrap itemimage">
                 <div class="input-div" ng-repeat="i in img">
-                    <button class="button" ng-click="openshops();"><img ng-src="{{i.photo}}">
+                    <button class="button" ng-click="openshops();"><img ng-src="{{i.photo|serverimage}}">
                     </button>
                 </div>
-<!--
-                <div class="input-div">
-                    <button class="button" ng-click="openshops();"><img src="img/product2.png">
-                    </button>
-                </div>
-                <div class="input-div">
-                    <button class="button" ng-click="openshops();"><img src="img/product3.png">
-                    </button>
-                </div>
--->
+
             </div>
         </div>
     </ion-content>

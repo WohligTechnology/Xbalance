@@ -194,19 +194,12 @@ angular.module('starter.controllers', ['myservices'])
     MyServices.profile(shopid, shopprofilecallback);
     var shopphotocallback = function(data, status) {
         $scope.shoppic = data;
-        console.log($scope.shoppic);
-        for (var i = 0; i < $scope.shoppic.length; i++) {
-            $scope.shoppic[i].photo = imgpath + $scope.shoppic[i].photo;
-        }
-        console.log($scope.shoppic);
+      
     }
     $scope.amount = 1000;
     var shopproductphotocallback = function(data, status) {
         $scope.img = data;
-        for (var i = 0; i < $scope.img.length; i++) {
-            $scope.img[i].photo = imgpath + $scope.img[i].photo;
-        }
-        console.log($scope.img);
+       
     }
     MyServices.shopphoto(shopid, shopphotocallback);
     MyServices.shopproductphoto(shopid, shopproductphotocallback);
@@ -306,6 +299,7 @@ angular.module('starter.controllers', ['myservices'])
         $scope.modals.hide();
     };
 
+    
     $ionicModal.fromTemplateUrl('templates/image-shop.html', {
         scope: $scope,
         animation: 'slide-in-up'
