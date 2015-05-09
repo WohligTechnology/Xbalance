@@ -32,6 +32,10 @@ myservices.factory('MyServices', function($http) {
         $http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);
 
     },
+		returnval.getarea = function(getareacallback) {
+        $http.get(adminurl + "getarea", {}).success(getareacallback);
+
+    },
     returnval.searchresult = function(area, category, membershipno, searchcallback) {
         $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&membershipno=" + membershipno, {}).success(searchcallback);
     },
@@ -54,24 +58,19 @@ myservices.factory('MyServices', function($http) {
     //	
     //	},
     returnval.updateprofile = function(id, profile, updateprofilecallback) {
-        //			console.log(profile);
+//        			console.log(profile);
         $http({
             url: adminurl + "updateprofile",
             method: "POST",
             data: {
+				 'id': id,
+				'shopname': profile.shopname,
                 'address': profile.address,
-                'area': profile.area,
-                'category': profile.category,
                 'description': profile.description,
-                'id': id,
-                'productphoto': profile.productphoto,
-                'purchasebalance': profile.purchasebalance,
                 'shopcontact1': profile.shopcontact1,
                 'shopcontact2': profile.shopcontact2,
-                'shopemail': profile.shopemail,
-                'shopname': profile.shopname,
-                'shopphoto': profile.shopphoto,
-                'website': profile.website
+				'shopemail': profile.shopemail,
+				'website': profile.website   
             }
         }).success(updateprofilecallback);
     },
@@ -81,8 +80,12 @@ myservices.factory('MyServices', function($http) {
     //	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
     //	},
 		 returnval.updatecat = function(user,id, updatecatcallback) {
-		console.log("updatecat?user=" + user + "&id=" + id);
+//		console.log("updatecat?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatecat?user=" + user + "&id=" + id, {}).success(updatecatcallback);
+    }
+		 returnval.updatearea = function(user,id, updateareacallback) {
+//		console.log("updatearea?user=" + user + "&id=" + id);
+        $http.get(adminurl + "updatearea?user=" + user + "&id=" + id, {}).success(updateareacallback);
     }
     returnval.balanceadd = function(user, a, balanceaddcallback) {
         console.log("addbalance?user=" + user + "&amount=" + a);

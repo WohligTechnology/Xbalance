@@ -12,13 +12,14 @@
                             <input type="text" placeholder="Name" ng-model="profile.shopname">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Area" ng-model="profile.area" value="">
+                             <select ng-model="a">
+                        <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
+                        </select>
                         </div>
                         <div class="item item-input">
                         <select ng-model="c">
-                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                </select>
-<!--                            <input type="text" placeholder="Category" ng-model="profile.category" value="">-->
+                        <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                        </select>                           
                         </div>
                         <div class="item item-input">
                             <textarea placeholder="Address" ng-model="profile.address" value=""></textarea>
@@ -87,7 +88,7 @@
                             </div>
                         </div>
                         <div class="padding-horizontal btn-rest">
-                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(c);">Save</button>
+                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(c);updatearea(a);">Save</button>
                         </div>
                     </div>
                 </form>

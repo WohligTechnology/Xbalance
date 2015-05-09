@@ -456,7 +456,7 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate, MyServices, $http) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate, MyServices, $http,$location) {
     // shop profile
     $scope.pro = $.jStorage.get("user1");
     $scope.epro = {};
@@ -481,11 +481,24 @@ angular.module('starter.controllers', ['myservices'])
 		console.log($scope.cats);
 	MyServices.updatecat(user.id,$scope.cats,updatecatcallback);
 	}
+	var getareacallback=function(data,status){
+	console.log(data);
+		$scope.areas=data;
+	}
+	var updateareacallback=function(data,status){
+	console.log(data);
+	}
+	$scope.updatearea=function(a){
+	$scope.ar=a;
+		console.log($scope.ar);
+		MyServices.updatearea(user.id,$scope.ar,updateareacallback);
+	}
     var shopprofilecallback = function(data, status) {
 
         $scope.profile = data;
         console.log($scope.profile);
 		MyServices.getallcategory1(getallcategory1callback);
+		MyServices.getarea(getareacallback);
 
     }
 
@@ -516,6 +529,7 @@ angular.module('starter.controllers', ['myservices'])
         $scope.id = $.jStorage.get("user1");
         console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
+		$location.url("/app/profile");
 
     }
     $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
