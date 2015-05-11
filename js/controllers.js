@@ -647,6 +647,8 @@ angular.module('starter.controllers', ['myservices'])
         MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback);
     };
     //	$scope.amount = 0;
+    $scope.amount=1000;
+    $scope.percent=parseFloat(user.percentpayment);
 
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,

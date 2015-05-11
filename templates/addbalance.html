@@ -10,8 +10,13 @@
             <form ng-submit="doLogin()">
                 <div class="list">
                     <label class="item item-input">
-                        <span class="input-label">Amount:</span>
+                        <span class="input-label">Amount in Barter:</span>
                         <input type="text" ng-model="amount">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Amount in INR:</span>
+                        <span>{{amount*percent/100|number:2}}</span>    
+                        
                     </label>
                     <div class="padding-horizontal">
                         <button class="button button-block button-balanced" type="submit" ng-click="addbalance(amount);">Add Balance</button>
