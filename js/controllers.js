@@ -456,7 +456,7 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicSlideBoxDelegate, MyServices, $http,$location) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal,$ionicPopup,$timeout, $ionicSlideBoxDelegate, MyServices, $http,$location) {
     // shop profile
     $scope.pro = $.jStorage.get("user1");
     $scope.epro = {};
@@ -521,6 +521,7 @@ angular.module('starter.controllers', ['myservices'])
             console.log("no data");
         } else {
             console.log("Updated");
+			$scope.showeditPopup();
         }
     }
     $scope.profileupdate = function(profile) {
@@ -529,9 +530,23 @@ angular.module('starter.controllers', ['myservices'])
         $scope.id = $.jStorage.get("user1");
         console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
+		
 		$location.url("/app/profile");
 
     }
+	
+	 $scope.showeditPopup = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your profile has been updated successfully!!!</p>',
+            title: 'Profile Updated',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
     $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
         id: '2',
         scope: $scope,
@@ -550,6 +565,7 @@ angular.module('starter.controllers', ['myservices'])
     var changepasswordcallback = function(data, status) {
         $scope.p = data;
         console.log($scope.p);
+		$scope.showpasswordPopup();
         $scope.oModal2.hide();
     }
     $scope.changepass = function(pass) {
@@ -558,6 +574,19 @@ angular.module('starter.controllers', ['myservices'])
         $scope.passwrd = pass;
         MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
     }
+	
+	 $scope.showpasswordPopup = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your password has updated successfully!!!</p>',
+            title: 'Password Updated',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
 	
     $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
         scope: $scope,
