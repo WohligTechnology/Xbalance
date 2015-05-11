@@ -4,22 +4,7 @@ angular.module('starter.controllers', ['myservices'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location) {
     //your balance
-    var yourbalancecallback = function(data, status) {
 
-        if (data == "false") {
-
-            console.log("no data");
-        } else {
-            console.log(data);
-            $scope.pb = data;
-            //            $location.url("/app/selling");
-        }
-    }
-    $scope.yourbalance = function() {
-        $scope.bal = $.jStorage.get("user1");
-        console.log($scope.bal);
-        MyServices.yourbalance($scope.bal, yourbalancecallback);
-    }
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function(data, status) {
         $scope.approvalcount = data.sellingapproval.length;
@@ -194,12 +179,12 @@ angular.module('starter.controllers', ['myservices'])
     MyServices.profile(shopid, shopprofilecallback);
     var shopphotocallback = function(data, status) {
         $scope.shoppic = data;
-      
+
     }
     $scope.amount = 1000;
     var shopproductphotocallback = function(data, status) {
         $scope.img = data;
-       
+
     }
     MyServices.shopphoto(shopid, shopphotocallback);
     MyServices.shopproductphoto(shopid, shopproductphotocallback);
@@ -299,7 +284,7 @@ angular.module('starter.controllers', ['myservices'])
         $scope.modals.hide();
     };
 
-    
+
     $ionicModal.fromTemplateUrl('templates/image-shop.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -456,7 +441,7 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal,$ionicPopup,$timeout, $ionicSlideBoxDelegate, MyServices, $http,$location) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location) {
     // shop profile
     $scope.pro = $.jStorage.get("user1");
     $scope.epro = {};
@@ -469,36 +454,36 @@ angular.module('starter.controllers', ['myservices'])
         $scope.image = data;
 
     }
-	var getallcategory1callback=function(data,status){
-	$scope.cat=data;
-		console.log($scope.cat);
-	}
-	var updatecatcallback=function(data,status){
-	console.log(data);
-	}
-	$scope.updatecat=function(c){
-	$scope.cats=c;
-		console.log($scope.cats);
-	MyServices.updatecat(user.id,$scope.cats,updatecatcallback);
-	}
-	var getareacallback=function(data,status){
-	console.log(data);
-		$scope.areas=data;
-	}
-	var updateareacallback=function(data,status){
-	console.log(data);
-	}
-	$scope.updatearea=function(a){
-	$scope.ar=a;
-		console.log($scope.ar);
-		MyServices.updatearea(user.id,$scope.ar,updateareacallback);
-	}
+    var getallcategory1callback = function(data, status) {
+        $scope.cat = data;
+        console.log($scope.cat);
+    }
+    var updatecatcallback = function(data, status) {
+        console.log(data);
+    }
+    $scope.updatecat = function(c) {
+        $scope.cats = c;
+        console.log($scope.cats);
+        MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
+    }
+    var getareacallback = function(data, status) {
+        console.log(data);
+        $scope.areas = data;
+    }
+    var updateareacallback = function(data, status) {
+        console.log(data);
+    }
+    $scope.updatearea = function(a) {
+        $scope.ar = a;
+        console.log($scope.ar);
+        MyServices.updatearea(user.id, $scope.ar, updateareacallback);
+    }
     var shopprofilecallback = function(data, status) {
 
         $scope.profile = data;
         console.log($scope.profile);
-		MyServices.getallcategory1(getallcategory1callback);
-		MyServices.getarea(getareacallback);
+        MyServices.getallcategory1(getallcategory1callback);
+        MyServices.getarea(getareacallback);
 
     }
 
@@ -506,7 +491,7 @@ angular.module('starter.controllers', ['myservices'])
     MyServices.shopphoto($scope.pro, shopphotocallback);
     MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     //edit profile
-	
+
     $scope.editpro = function(profile) {
         $scope.epro = profile;
         console.log($scope.epro);
@@ -521,7 +506,7 @@ angular.module('starter.controllers', ['myservices'])
             console.log("no data");
         } else {
             console.log("Updated");
-			$scope.showeditPopup();
+            $scope.showeditPopup();
         }
     }
     $scope.profileupdate = function(profile) {
@@ -530,12 +515,12 @@ angular.module('starter.controllers', ['myservices'])
         $scope.id = $.jStorage.get("user1");
         console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
-		
-		$location.url("/app/profile");
+
+        $location.url("/app/profile");
 
     }
-	
-	 $scope.showeditPopup = function() {
+
+    $scope.showeditPopup = function() {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your profile has been updated successfully!!!</p>',
@@ -565,7 +550,7 @@ angular.module('starter.controllers', ['myservices'])
     var changepasswordcallback = function(data, status) {
         $scope.p = data;
         console.log($scope.p);
-		$scope.showpasswordPopup();
+        $scope.showpasswordPopup();
         $scope.oModal2.hide();
     }
     $scope.changepass = function(pass) {
@@ -574,8 +559,8 @@ angular.module('starter.controllers', ['myservices'])
         $scope.passwrd = pass;
         MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
     }
-	
-	 $scope.showpasswordPopup = function() {
+
+    $scope.showpasswordPopup = function() {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your password has updated successfully!!!</p>',
@@ -587,7 +572,7 @@ angular.module('starter.controllers', ['myservices'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-	
+
     $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -617,10 +602,26 @@ angular.module('starter.controllers', ['myservices'])
     $scope.closeModals = function() {
         $scope.modalss.hide();
     };
-	
+
 })
 
 .controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices) {
+    var yourbalancecallback = function(data, status) {
+
+        if (data == "false") {
+
+            console.log("no data");
+        } else {
+            console.log(data);
+            $scope.pb = data;
+            //            $location.url("/app/selling");
+        }
+    }
+    console.log("Your Balance Exec");
+    $scope.bal = $.jStorage.get("user1");
+    console.log($scope.bal);
+    MyServices.yourbalance($scope.bal, yourbalancecallback);
+
     var balanceaddcallback = function(data, status) {
         if (data == "false") {
 
@@ -647,8 +648,8 @@ angular.module('starter.controllers', ['myservices'])
         MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback);
     };
     //	$scope.amount = 0;
-    $scope.amount=1000;
-    $scope.percent=parseFloat(user.percentpayment);
+    $scope.amount = 1000;
+    $scope.percent = parseFloat(user.percentpayment);
 
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,
