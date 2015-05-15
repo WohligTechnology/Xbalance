@@ -2,17 +2,18 @@
     <ion-content class="padding">
         <div class="incard">
             <div class="header-card">Find shops</div>
-<!--
+            <!--
             <label class="item item-input area">
                 <span class="input-label">Area</span>
                 <input type="text" placeholder="Enter Your Area">
             </label>
 -->
-                       <label class="item item-input item-select area">
+            <label class="item item-input item-select area">
                 <div class="input-label">
                     Area
                 </div>
                 <select ng-model="home.area">
+                    <option value="">All</option>
                     <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                 </select>
             </label>
@@ -21,6 +22,7 @@
                     Categories
                 </div>
                 <select ng-model="home.category">
+                    <option value="">All</option>
                     <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
                 </select>
 
@@ -31,18 +33,18 @@
             <!--            <div class="item item-input area">-->
             <div class="row">
                 <div class="col">
-                    <h5 class="member" >Membership No.</h5>
+                    <h5 class="member">Membership No.</h5>
                 </div>
                 <div class="col">
-<!--                    <p class="home-p" ng-click="openedit();">Please Select</p>-->
-                    <input type="text" id="normal-field"  ng-model="home.membershipno">
+                    <!--                    <p class="home-p" ng-click="openedit();">Please Select</p>-->
+                    <input type="text" id="normal-field" ng-model="home.membershipno">
                 </div>
             </div>
             <!--            </div>-->
             <div class="padding-horizontal">
-<!--                <a href="#/app/search">-->
-                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
-<!--                </a>-->
+                <!--                <a href="#/app/search">-->
+                <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
+                <!--                </a>-->
             </div>
         </div>
     </ion-content>
