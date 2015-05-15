@@ -114,6 +114,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             }
         }
     })
+    .state('app.addbalance', {
+        url: "/addbalance",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/addbalance.html",
+                controller: 'YourBalCtrl'
+            }
+        }
+    })
 
     .state('app.transaction', {
         url: "/transaction",
