@@ -1,4 +1,4 @@
-var adminbase = "http://localhost/osb/";
+var adminbase = "http://wohlig.co.in/Xbalance/admin/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
