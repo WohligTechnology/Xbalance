@@ -657,7 +657,17 @@ angular.module('starter.controllers', ['myservices'])
     }).then(function(modal) {
         $scope.modal = modal;
     });
+    $scope.add={};
 
+    $scope.changeamountinr=function(amount) {
+        console.log(amount);
+        $scope.add.amountinr=amount*$scope.percent/100;
+    };
+    $scope.changeamount=function(amountinr) {
+        console.log(amountinr);
+        $scope.add.amount=amountinr/$scope.percent*100;
+    };
+    
     $scope.openedit = function() {
         $scope.modal.show();
     }

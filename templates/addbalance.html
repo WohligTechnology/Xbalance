@@ -11,15 +11,18 @@
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">Amount in Barter:</span>
-                        <input type="text" ng-model="amount">
+                        <input type="text" ng-model="add.amount" ng-change="changeamountinr(add.amount);">
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Amount in INR:</span>
-                        <span>{{amount*percent/100|number:2}}</span>    
+                        <input type="text" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);">
+<!-- <span>{{add.amount*percent/100|number:2}}   </span>    -->
+                      
                         
                     </label>
+                    
                     <div class="padding-horizontal">
-                        <button class="button button-block button-balanced" type="submit" ng-click="addbalance(amount);">Add Balance</button>
+                        <button class="button button-block button-balanced" type="submit" ng-click="addbalance(add.amount);">Add Balance</button>
                     </div>
                 </div>
             </form>
