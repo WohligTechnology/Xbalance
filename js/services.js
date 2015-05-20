@@ -1,4 +1,5 @@
 var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/"
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -11,7 +12,7 @@ myservices.factory('MyServices', function($http) {
     var returnval = {};
     returnval.login = function(user1, logincallback) {
         //        console.log("Demo");
-        $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password, {}).success(logincallback);
+        $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password + "&token" + $.jStorage.get("token"), {}).success(logincallback);
     },
 
 
@@ -28,11 +29,12 @@ myservices.factory('MyServices', function($http) {
     //		returnval.getsearch=function(search) {
     //			return $.jStorage.get("search");
     //		},
-		returnval.getallcategory1 = function(getallcategory1callback) {
+    returnval.getallcategory1 = function(getallcategory1callback) {
         $http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);
 
     },
-		returnval.getarea = function(getareacallback) {
+
+    returnval.getarea = function(getareacallback) {
         $http.get(adminurl + "getarea", {}).success(getareacallback);
 
     },
@@ -58,19 +60,19 @@ myservices.factory('MyServices', function($http) {
     //	
     //	},
     returnval.updateprofile = function(id, profile, updateprofilecallback) {
-//        			console.log(profile);
+        //        			console.log(profile);
         $http({
             url: adminurl + "updateprofile",
             method: "POST",
             data: {
-				 'id': id,
-				'shopname': profile.shopname,
+                'id': id,
+                'shopname': profile.shopname,
                 'address': profile.address,
                 'description': profile.description,
                 'shopcontact1': profile.shopcontact1,
                 'shopcontact2': profile.shopcontact2,
-				'shopemail': profile.shopemail,
-				'website': profile.website   
+                'shopemail': profile.shopemail,
+                'website': profile.website
             }
         }).success(updateprofilecallback);
     },
@@ -79,12 +81,12 @@ myservices.factory('MyServices', function($http) {
     //			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
     //	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
     //	},
-		 returnval.updatecat = function(user,id, updatecatcallback) {
-//		console.log("updatecat?user=" + user + "&id=" + id);
+    returnval.updatecat = function(user, id, updatecatcallback) {
+        //		console.log("updatecat?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatecat?user=" + user + "&id=" + id, {}).success(updatecatcallback);
     }
-		 returnval.updatearea = function(user,id, updateareacallback) {
-//		console.log("updatearea?user=" + user + "&id=" + id);
+    returnval.updatearea = function(user, id, updateareacallback) {
+        //		console.log("updatearea?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatearea?user=" + user + "&id=" + id, {}).success(updateareacallback);
     }
     returnval.balanceadd = function(user, a, balanceaddcallback) {
@@ -94,7 +96,7 @@ myservices.factory('MyServices', function($http) {
     returnval.sellingapproval = function(sell, sellingapprovalcallback) {
         $http.get(adminurl + "sellingapproval?user=" + sell, {}).success(sellingapprovalcallback);
     },
-    returnval.accepted = function(id, reason, status,acceptstatuscallback) {
+    returnval.accepted = function(id, reason, status, acceptstatuscallback) {
         $http.get(adminurl + "accepted?id=" + id + "&reason=" + reason + "&status=" + status, {}).success(acceptstatuscallback);
     },
     returnval.transaction = function(u, transactioncallback) {
