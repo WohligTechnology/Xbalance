@@ -304,7 +304,9 @@ angular.module('starter.controllers', ['myservices'])
 })
 
 .controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout) {
+    var token=$.jStorage.get("token");
     $.jStorage.flush();
+    token=$.jStorage.set("token",token);
 
     $scope.user1 = {
         membershipno: "",

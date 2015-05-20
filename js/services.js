@@ -12,7 +12,7 @@ myservices.factory('MyServices', function($http) {
     var returnval = {};
     returnval.login = function(user1, logincallback) {
         //        console.log("Demo");
-        $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password + "&token" + $.jStorage.get("token"), {}).success(logincallback);
+        $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password + "&token=" + $.jStorage.get("token"), {}).success(logincallback);
     },
 
 
