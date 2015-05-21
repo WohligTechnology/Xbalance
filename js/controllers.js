@@ -459,11 +459,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         template: '<ion-spinner class="spinner-royal"></ion-spinner>'
     });
 
-    var options = {
-        quality: 40,
-        destinationType: Camera.DestinationType.NATIVE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        encodingType: Camera.EncodingType.JPEG};
+//    var options = {
+//        quality: 40,
+//        destinationType: Camera.DestinationType.NATIVE_URI,
+//        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+//        encodingType: Camera.EncodingType.JPEG};
 
     var changeprofilephoto = function (result) {
         $scope.profile.shoplogo = result.value;
@@ -512,7 +512,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.changeproductimage = function (id) {
         console.log("take picture");
-
+console.log("ID "+id);
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
