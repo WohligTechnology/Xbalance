@@ -1,6 +1,6 @@
 var globalfunctionapproval = {};
 
-angular.module('starter.controllers', ['myservices','ngCordova'])
+angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading) {
     //your balance
@@ -453,20 +453,21 @@ angular.module('starter.controllers', ['myservices','ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera,$cordovaFileTransfer) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer) {
     //loading
     $ionicLoading.show({
         template: '<ion-spinner class="spinner-royal"></ion-spinner>'
     });
+    var options = {
+        quality: 40,
+        destinationType: Camera.DestinationType.NATIVE_URI,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        encodingType: Camera.EncodingType.JPEG
+    };
 
     $scope.changeprofileimage = function () {
         console.log("take picture");
-        var options = {
-            quality: 40,
-            destinationType: Camera.DestinationType.NATIVE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            encodingType: Camera.EncodingType.JPEG
-        };
+
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
