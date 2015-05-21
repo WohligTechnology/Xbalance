@@ -641,3 +641,14 @@ ion-item.item.item-thumbnail-left.trns-add {
     white-space: pre-wrap;
     text-transform: capitalize;
 }
+.centered {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}

@@ -1,4 +1,7 @@
 <ion-view view-title="Selling Approval">
+
+    <div class="centered" ng-if="req.length==0">No approvals yet.</div>
+
     <ion-content class="padding">
         <div class="incard" ng-repeat="r in req">
             <div class="list">
@@ -12,7 +15,7 @@
                         <div class="col-75" ng->
                             <div class="sell-cont">
                                 <h2>{{r.shopname}}</h2>
-                                
+
                                 <p>Amount: {{r.amount}}</p>
 
                                 <textarea style="width:100%;font-size:13px;border: 1px solid #ccc;margin: 10px 0;padding: 4px;" ng-model="reason" rows="3" placeholder="Enter your reason"></textarea>

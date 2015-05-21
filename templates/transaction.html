@@ -1,5 +1,5 @@
 <ion-view view-title="Transaction">
-    <ion-content class="">
+    <ion-content class="searcher">
         <div class="button-bar bar-royal transbtn">
             <div class="button" ng-class="purchased" ng-click="changepurchase();">
                 Purchased
@@ -13,9 +13,9 @@
         </div>
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
-                <div class="incard transcard" ng-repeat="tr in t.purchased">
+                <div class="incard transcard">
                     <div class="list">
-                        <ion-item class="item item-thumbnail-left">
+                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
                             <div class="row">
                                 <div class="col-25">
                                     <div class="sell-img">
@@ -44,9 +44,9 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold'">
-                <div class="incard transcard" ng-repeat="tr in t.sales">
+                <div class="incard transcard">
                     <div class="list">
-                        <ion-item class="item item-thumbnail-left">
+                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
                             <div class="row">
                                 <div class="col-25">
                                     <div class="sell-img">
@@ -130,7 +130,7 @@
     </div>
 </div>
 -->
-                <div class="incard" ng-repeat="tr in t.admin">
+                <div class="incard">
                     <ion-list class="lesspadding disable-user-behavior">
                         <div class="list amt-add">
                             <ion-item class="headed item">
@@ -139,14 +139,12 @@
                                     <div class="col">Date</div>
                                 </div>
                             </ion-item>
-                            <ion-item href="#/app/shop" class="item item-complex">
-                                <a class="item-content">
+                            <ion-item class="item" ng-repeat="tr in t.admin">
                                     <div class="row">
                                         <div class="col">{{tr.amount}}</div>
                                         <div class="col">{{tr.date}}
                                         </div>
                                     </div>
-                                </a>
                             </ion-item>
 <!--
                             <ion-item href="#/app/shop" class="item item-complex">

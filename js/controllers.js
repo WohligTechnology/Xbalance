@@ -165,7 +165,7 @@ angular.module('starter.controllers', ['myservices'])
     function purchaseoverlimit() {
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Purchase is Overlimit!</p>',
-            title: 'OverLimit Purchase!',
+            title: 'Overlimit Purchase!',
             scope: $scope,
         });
         $timeout(function() {
@@ -395,7 +395,7 @@ angular.module('starter.controllers', ['myservices'])
         console.log(r);
         MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
         $ionicLoading.show({
-            template: 'Please wait...'
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
     }
     $scope.decline = function(r, reason) {
@@ -403,7 +403,7 @@ angular.module('starter.controllers', ['myservices'])
         console.log(r);
         MyServices.accepted(r.id, reason, 2, acceptstatuscallback);
         $ionicLoading.show({
-            template: 'Please wait...'
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
     }
 
@@ -540,7 +540,7 @@ angular.module('starter.controllers', ['myservices'])
     $scope.showeditPopup = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">Your profile has been updated successfully!!!</p>',
+            template: '<p class="text-center">Your profile has been updated successfully!</p>',
             title: 'Profile Updated',
             scope: $scope,
 
@@ -580,7 +580,7 @@ angular.module('starter.controllers', ['myservices'])
     $scope.showpasswordPopup = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">Your password has updated successfully!!!</p>',
+            template: '<p class="text-center">Your password has updated successfully!</p>',
             title: 'Password Updated',
             scope: $scope,
 
