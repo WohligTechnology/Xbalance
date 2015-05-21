@@ -2,11 +2,12 @@ var globalfunctionapproval = {};
 
 angular.module('starter.controllers', ['myservices'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading) {
     //your balance
 
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function(data, status) {
+        $ionicLoading.hide();
         $scope.approvalcount = data.sellingapproval.length;
         console.log(data.sellingapproval.length);
     }
@@ -15,6 +16,10 @@ angular.module('starter.controllers', ['myservices'])
     globalfunctionapproval = function() {
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
     };
+
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+    });
 
 })
 
@@ -53,7 +58,7 @@ angular.module('starter.controllers', ['myservices'])
     $scope.showPopup = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">No Such Membership Number Exists.</p>',
+            template: '<p class="text-center">No such membership number exists.</p>',
             title: 'No Match Found!',
             scope: $scope,
 
@@ -66,7 +71,7 @@ angular.module('starter.controllers', ['myservices'])
     $scope.showPopupNoBalance = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">Your Purchase Balance is too low.</p>',
+            template: '<p class="text-center">Your purchase balance is too low.</p>',
             title: 'Low Purchase Balance',
             scope: $scope,
 
@@ -121,7 +126,11 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('SearchCtrl', function($scope, MyServices, $ionicModal, $location, $stateParams) {
+.controller('SearchCtrl', function($scope, MyServices, $ionicModal, $location, $stateParams, $ionicLoading) {
+
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+    });
 
     var searchcallback = function(data, status) {
         $scope.shops = data;
@@ -130,6 +139,7 @@ angular.module('starter.controllers', ['myservices'])
     MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.membershipno, searchcallback);
     var getareacategorycallback = function(data, status) {
         $scope.recall = data;
+        $ionicLoading.hide();
         console.log(data);
     }
     MyServices.getareacategory($stateParams.area, $stateParams.category, getareacategorycallback);
@@ -146,8 +156,11 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams) {
+.controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading) {
 
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+    });
 
     function purchaseoverlimit() {
         var myPopup = $ionicPopup.show({
@@ -179,7 +192,7 @@ angular.module('starter.controllers', ['myservices'])
     MyServices.profile(shopid, shopprofilecallback);
     var shopphotocallback = function(data, status) {
         $scope.shoppic = data;
-
+        $ionicLoading.hide();
     }
     $scope.amount = 1000;
     var shopproductphotocallback = function(data, status) {
@@ -211,9 +224,6 @@ angular.module('starter.controllers', ['myservices'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-
-
-
 
 
     $scope.sendamt = function(amount, reason) {
@@ -304,9 +314,9 @@ angular.module('starter.controllers', ['myservices'])
 })
 
 .controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout) {
-    var token=$.jStorage.get("token");
+    var token = $.jStorage.get("token");
     $.jStorage.flush();
-    token=$.jStorage.set("token",token);
+    token = $.jStorage.set("token", token);
 
     $scope.user1 = {
         membershipno: "",
@@ -443,13 +453,19 @@ angular.module('starter.controllers', ['myservices'])
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location) {
+.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading) {
+    //loading
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+    });
+
     // shop profile
     $scope.pro = $.jStorage.get("user1");
     $scope.epro = {};
     var shopphotocallback = function(data, status) {
         $scope.pic = data;
         console.log($scope.pic);
+        $ionicLoading.hide();
 
     }
     var shopproductphotocallback = function(data, status) {
@@ -481,7 +497,6 @@ angular.module('starter.controllers', ['myservices'])
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
     }
     var shopprofilecallback = function(data, status) {
-
         $scope.profile = data;
         console.log($scope.profile);
         MyServices.getallcategory1(getallcategory1callback);
@@ -659,15 +674,18 @@ angular.module('starter.controllers', ['myservices'])
     }).then(function(modal) {
         $scope.modal = modal;
     });
-    $scope.add={amountinr:0,amount:0};
+    $scope.add = {
+        amountinr: 0,
+        amount: 0
+    };
 
-    $scope.changeamountinr=function(amount) {
-        $scope.add.amountinr=amount*$scope.percent/100;
+    $scope.changeamountinr = function(amount) {
+        $scope.add.amountinr = amount * $scope.percent / 100;
     };
-    $scope.changeamount=function(amountinr) {
-        $scope.add.amount=amountinr/$scope.percent*100;
+    $scope.changeamount = function(amountinr) {
+        $scope.add.amount = amountinr / $scope.percent * 100;
     };
-    
+
     $scope.openedit = function() {
         $scope.modal.show();
     }

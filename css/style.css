@@ -26,8 +26,9 @@
 .input.itemproducts {
     font-size: 12px;
     color: #909090;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     text-align: justify;
+    text-transform: capitalize;
 }
 .results {
     overflow-y: scroll;
@@ -92,15 +93,16 @@ button.btn-smalls {
 .welcome-img img {
     width: 90%;
 }
+.incard .item+.item {
+    border-top: 1px solid #ddd;
+}
 .incard .item {
     padding: 5px 10px;
     margin: 0;
     border: 0;
-    /* min-height: 90px!important; */
-    /* border-bottom: 1px solid #ddd; */
 }
 ion-item.item.item-complex {
-    border: 1px solid rgba(221, 221, 221, 0.25);
+    border: 0px;
 }
 .incard .item-content {
     padding: 0px!important;
@@ -364,7 +366,7 @@ ion-item.area.item h3 {
 }
 ion-item.category.item h3 {
     font-weight: 700;
-    padding-left: 10px;
+    padding-left: 0px;
 }
 .balanced.amount {
     background: #3185D7;
@@ -373,9 +375,10 @@ ion-item.category.item h3 {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
+    margin-top: 0px;
 }
 ion-item.area.item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
 }
 ion-list.lesspadding.less-pad .item {
     padding: 0;
@@ -421,7 +424,7 @@ ion-item.product.item h2 {
     font-weight: 100;
     font-size: 16px;
     padding-bottom: 0px;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 label.item.area input {
     text-align: right;
@@ -461,6 +464,8 @@ ion-footer-bar.footer-shop h4 {
 }
 .sell-cont.trans h2 {
     padding: 5px 0 0px 0;
+    text-transform: capitalize;
+    font-size: 16px;
 }
 .sell-cont h2 {
     font-size: 18px;
@@ -590,8 +595,7 @@ ion-item.item-left.item h2 {
 }
 .incard.transcard .item {
     min-height: 90px!important;
-    border-bottom: 1px solid #ddd;
-    ;
+    border-bottom: 0px solid #ddd;
 }
 ion-item.item.item-thumbnail-left.trns-add {
     min-height: 70px;
@@ -608,4 +612,32 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 .add-amt p {
     font-weight: bold;
+}
+.bar .button.button-icon.small-icon:before {
+    font-size: 22px;
+}
+.backdrop {
+    top: 44px;
+    background: #DEDFE1;
+}
+.loading-container .loading {
+    background: transparent;
+}
+.input-label.different {
+    color: #111;
+    font-size: 14px;
+}
+.text-capitalize,
+.text-capitalize>* {
+    text-transform: capitalize;
+}
+.padtop5 {
+    padding-top: 5px;
+}
+.searcher .col+.col {
+    text-align: center;
+}
+.col.prename {
+    white-space: pre-wrap;
+    text-transform: capitalize;
 }

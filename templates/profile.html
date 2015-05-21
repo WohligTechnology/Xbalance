@@ -1,15 +1,18 @@
 <ion-view view-title="Profile">
+    <ion-nav-buttons side="right">
+        <a class="button button-icon ion-edit small-icon" ng-click="editpro(profile);" href="#/app/profile/edit"></a>
+    </ion-nav-buttons>
     <ion-content class="padding">
         <div class="incard">
             <div class="profile-img">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
                 <h3>{{profile.shopname}}</h3>
             </div>
-            <div class="list profile-cont">
+            <div class="list profile-cont padtop5">
                 <ion-item class="item-left">
                     <h2>Area</h2>
-                    <div class="pull-right item-right"  >
-                       {{profile.area}}
+                    <div class="pull-right item-right">
+                        {{profile.area}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
@@ -18,15 +21,15 @@
                         {{profile.category}}
                     </div>
                 </ion-item>
-                <div class="item item-input item-text-wrap header" >
+                <div class="item item-input item-text-wrap header">
                     <h2> Address</h2>
-                    </div>
+                </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-						{{profile.address}}
+                        {{profile.address}}
                     </div>
                 </div>
-                 
+
                 <div class="item item-input item-text-wrap header">
                     <h2>Description</h2>
                 </div>
@@ -37,7 +40,7 @@
                 </div>
                 <ion-item class="item-left">
                     <h2>Cell Number</h2>
-                    <div class="pull-right item-right" >
+                    <div class="pull-right item-right">
                         {{profile.shopcontact1}}
                     </div>
                 </ion-item>
@@ -47,7 +50,7 @@
                         {{profile.shopcontact2}}
                     </div>
                 </ion-item>
-<!--
+                <!--
                 <ion-item class="item-left numbers">
                     <div class="pull-right item-right">
                         022 25454565
@@ -57,7 +60,7 @@
                 <ion-item class="item-left">
                     <h2>Email Id</h2>
                     <div class="pull-right item-right">
-                         {{profile.shopemail}}
+                        {{profile.shopemail}}
                     </div>
                 </ion-item>
                 <ion-item class="item-left">
@@ -69,12 +72,12 @@
                 <div class="item item-input item-text-wrap header">
                     <h2>Shops Photos</h2>
                 </div>
-                <div class="item item-input item-text-wrap itemproducts" >
+                <div class="item item-input item-text-wrap itemproducts">
                     <div class="input-div" ng-repeat="p in pic" ng-click="openshop();">
                         <div class="img-profile">
                             <img ng-src="{{p.photo|serverimage}}">
                         </div>
-                    </div>                 
+                    </div>
                 </div>
                 <div class="item item-input item-text-wrap header">
                     <h2>Products Photos</h2>
@@ -82,28 +85,14 @@
                 <div class="item item-input item-text-wrap itemproducts">
                     <div class="input-div" ng-repeat="i in image" ng-click="openpswds();">
                         <div class="img-profile">
-                        <img ng-src="{{i.photo|serverimage}}">
+                            <img ng-src="{{i.photo|serverimage}}">
                         </div>
                     </div>
 
                 </div>
 
-
-
-
-                <div class="btn-edit padding-horizontal">
-                    <div class="row">
-                        <div class="col">
-                            <a class="button button-block button-balanced prf-edit" ng-click="editpro(profile);" href="#/app/profile/edit">
-                                Edit
-                            </a>
-                        </div>
-                        <div class="col">
-                            <button class="button button-block button-assertive prf-reset" ng-click="openPassword();">
-                                Reset Password
-                            </button>
-                        </div>
-                    </div>
+                <div class="padding">
+                    <button class="button button-block button-assertive" ng-click="openPassword();">Reset Password</button>
                 </div>
             </div>
         </div>
