@@ -1,6 +1,6 @@
 var globalfunctionapproval = {};
 
-angular.module('starter.controllers', ['ngCordova','myservices'])
+angular.module('starter.controllers', ['myservices','ngCordova'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading) {
     //your balance
@@ -460,6 +460,7 @@ angular.module('starter.controllers', ['ngCordova','myservices'])
     });
 
     $scope.changeprofileimage = function () {
+        console.log("ABCD");
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
