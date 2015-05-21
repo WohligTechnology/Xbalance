@@ -1,6 +1,6 @@
 var globalfunctionapproval = {};
 
-angular.module('starter.controllers', ['myservices','ngCordova'])
+angular.module('starter.controllers', ['ngCordova','myservices'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading) {
     //your balance
