@@ -459,13 +459,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         template: '<ion-spinner class="spinner-royal"></ion-spinner>'
     });
 
-    //        var options = {
-    //            quality: 40,
-    //            destinationType: Camera.DestinationType.NATIVE_URI,
-    //            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //            encodingType: Camera.EncodingType.JPEG
-    //        };
-
+    var options = {
+        quality: 40,
+        destinationType: Camera.DestinationType.NATIVE_URI,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        encodingType: Camera.EncodingType.JPEG
+    };
 
     var changeprofilephoto = function (result) {
         $scope.profile.shoplogo = result.value;
