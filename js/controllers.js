@@ -458,16 +458,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicLoading.show({
         template: '<ion-spinner class="spinner-royal"></ion-spinner>'
     });
-    var options = {
-        quality: 40,
-        destinationType: Camera.DestinationType.NATIVE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        encodingType: Camera.EncodingType.JPEG
-    };
+
+    //        var options = {
+    //            quality: 40,
+    //            destinationType: Camera.DestinationType.NATIVE_URI,
+    //            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //            encodingType: Camera.EncodingType.JPEG
+    //        };
 
 
     var changeprofilephoto = function (result) {
         $scope.profile.shoplogo = result.value;
+    }
+
+    var changeshopphoto = function (result) {
+        MyServices.shopphoto($scope.pro, shopphotocallback);
+        MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     }
 
     $scope.changeprofileimage = function () {
@@ -483,6 +489,42 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
             $scope.cameraimage = imageData;
             $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
+        }, function (err) {
+            // An error occured. Show a message to the user
+        });
+    };
+
+    $scope.changeshopimage = function (id) {
+        console.log("take picture");
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            // Success! Image data is here
+            console.log("here in upload image");
+            console.log(imageData);
+            if (imageData.substring(0, 21) == "content://com.android") {
+                var photo_split = imageData.split("%3A");
+                imageData = "content://media/external/images/media/" + photo_split[1];
+            }
+            $scope.cameraimage = imageData;
+            $scope.uploadPhoto(adminurl + "imageuploadshop?id=" + id + "&user=" + user.id, changeshopphoto);
+        }, function (err) {
+            // An error occured. Show a message to the user
+        });
+    };
+
+    $scope.changeproductimage = function (id) {
+        console.log("take picture");
+
+        $cordovaCamera.getPicture(options).then(function (imageData) {
+            // Success! Image data is here
+            console.log("here in upload image");
+            console.log(imageData);
+            if (imageData.substring(0, 21) == "content://com.android") {
+                var photo_split = imageData.split("%3A");
+                imageData = "content://media/external/images/media/" + photo_split[1];
+            }
+            $scope.cameraimage = imageData;
+            $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
         }, function (err) {
             // An error occured. Show a message to the user
         });

@@ -52,43 +52,60 @@
                             <h2>Shops Photos</h2>
                         </div>
                         <div class="item item-input item-text-wrap itemproducts">
-                            <div class="input-div">
+                           <div class="input-div" ng-repeat="i in pic"  ng-click="changeshopimage(i.id);">
+                             
+                                <div class="img-profile">
+                                    <img ng-src="{{i.photo|serverimage}}">
+                                </div>
+                            </div>
+                            <div class="input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
-                            <div class="input-div">
+                            <div class="input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
-                            <div class="input-div">
+                            <div class="input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
+                            
 
                         </div>
                         <div class="item item-input item-text-wrap header">
                             <h2>Products Photos</h2>
                         </div>
                         <div class="item item-input item-text-wrap itemproducts">
-                            <div class="input-div">
+                           <div class="input-div" ng-repeat="i in image">
+                        <div class="img-profile">
+                            <img ng-src="{{i.photo|serverimage}}">
+                        </div>
+                    </div>
+                           <div class="input-div" ng-repeat="i in image" ng-click="changeproductimage(i.id);">
+                                <div class="img-profile">
+                                    <img ng-src="{{i.photo|serverimage}}">
+                                </div>
+                            </div>
+                            <div class="input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
-                            <div class="input-div">
+                            <div class="input-div" ng-if="image.length==0 || image.length==1" ng-click="changeproductimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
-                            <div class="input-div">
+                            <div class="input-div" ng-if="image.length==0 || image.length==1 ||  image.length==2" ng-click="changeproductimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
