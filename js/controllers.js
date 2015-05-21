@@ -465,6 +465,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         encodingType: Camera.EncodingType.JPEG
     };
 
+
+    var changeprofilephoto = function (result) {
+        $scope.profile.shoplogo = result.value;
+    }
+
     $scope.changeprofileimage = function () {
         console.log("take picture");
 
@@ -477,7 +482,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 imageData = "content://media/external/images/media/" + photo_split[1];
             }
             $scope.cameraimage = imageData;
-            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id);
+            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
         }, function (err) {
             // An error occured. Show a message to the user
         });
@@ -488,13 +493,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //Upload photo
 
     //File Upload parameters: source, filePath, options
-    $scope.uploadPhoto = function (serverpath) {
+    $scope.uploadPhoto = function (serverpath, callback) {
 
         //        console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
             .then(function (result) {
                 console.log(result);
-
+                callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
             }, function (err) {
