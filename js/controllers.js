@@ -726,18 +726,24 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices) {
+.controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $ionicLoading) {
+
+    $ionicLoading.show({
+        template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+    });
+
+
     var yourbalancecallback = function(data, status) {
-
         if (data == "false") {
-
             console.log("no data");
         } else {
+            $ionicLoading.hide();
             console.log(data);
             $scope.pb = data;
             //            $location.url("/app/selling");
         }
     }
+
     console.log("Your Balance Exec");
     $scope.bal = $.jStorage.get("user1");
     console.log($scope.bal);
