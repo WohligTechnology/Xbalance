@@ -89,9 +89,9 @@ myservices.factory('MyServices', function($http) {
         //		console.log("updatearea?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatearea?user=" + user + "&id=" + id, {}).success(updateareacallback);
     }
-    returnval.balanceadd = function(user, a, balanceaddcallback) {
+    returnval.balanceadd = function(user, a, balanceaddcallback, reason) {
         console.log("addbalance?user=" + user + "&amount=" + a);
-        $http.get(adminurl + "addbalance?user=" + user + "&amount=" + a, {}).success(balanceaddcallback);
+        $http.get(adminurl + "addbalance?user=" + user + "&amount=" + a + "&reason=" + reason, {}).success(balanceaddcallback);
     },
     returnval.sellingapproval = function(sell, sellingapprovalcallback) {
         $http.get(adminurl + "sellingapproval?user=" + sell, {}).success(sellingapprovalcallback);
