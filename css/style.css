@@ -656,3 +656,9 @@ ion-item.item.item-thumbnail-left.trns-add {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+.row.nopad {
+    padding: 0px;
+}
+.row.nopad>.col {
+    padding: 0px;
+}

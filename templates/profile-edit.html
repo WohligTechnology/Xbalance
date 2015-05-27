@@ -12,7 +12,7 @@
                             <input type="text" placeholder="Name" ng-model="profile.shopname">
                         </div>
 
-                        <div class="item item-input item-select">
+                        <div class="item item-input item-select text-capitalize">
                             <div class="input-label different">
                                 Area
                             </div>
@@ -20,7 +20,7 @@
                                 <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
                             </select>
                         </div>
-                        <div class="item item-input item-select">
+                        <div class="item item-input item-select text-capitalize">
                             <div class="input-label different">
                                 Category
                             </div>
@@ -52,43 +52,56 @@
                             <h2>Shops Photos</h2>
                         </div>
                         <div class="item item-input item-text-wrap itemproducts">
-                            <div class="input-div" ng-repeat="i in pic" ng-click="changeshopimage(i.id);">
+                            <div class="row nopad">
+                               
+                                <div class="col" ng-repeat="i in pic" ng-click="changeshopimage(i.id);">
+                                    <div class="input-div">
+                                        <div class="img-profile">
+                                            <img ng-src="{{i.photo|serverimage}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col" ng-if="pic.length==0" ng-click="changeshopimage('');">
+                                    <div class="input-div">
+                                        <div class="img-profile">
+                                            <img src="img/add.png">
+                                            <div class="holder2">Edit</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col"  ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
+                                    <div class="input-div">
+                                        <div class="img-profile">
+                                            <img src="img/add.png">
+                                            <div class="holder2">Edit</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class="img-profile">
-                                    <img ng-src="{{i.photo|serverimage}}">
+                                <div class="col" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
+                                    <div class="input-div">
+                                        <div class="img-profile">
+                                            <img src="img/add.png">
+                                            <div class="holder2">Edit</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-                            <div class="input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-                            <div class="input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
 
-
+                            </div>
                         </div>
+
                         <div class="item item-input item-text-wrap header">
                             <h2>Products Photos</h2>
                         </div>
                         <div class="item item-input item-text-wrap itemproducts">
-                            
+
                             <div class="input-div" ng-repeat="i in image" ng-click="changeproductimage(i.id);">
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
                             </div>
+                            
                             <div class="input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
@@ -107,6 +120,7 @@
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
+                            
                         </div>
                         <div class="padding-horizontal btn-rest">
                             <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(c);updatearea(a);">Update</button>
