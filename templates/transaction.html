@@ -58,26 +58,17 @@
                 </div>
             </div>
             <div class="bold-list" ng-if="admin=='bold'">
-                <div class="incard">
-                    <ion-list class="lesspadding disable-user-behavior">
-                        <div class="list amt-add">
-                            <ion-item class="headed item">
-                                <div class="row">
-                                    <div class="col">Amount Added</div>
-                                    <div class="col">Date</div>
-                                </div>
-                            </ion-item>
-                            <ion-item class="item" ng-repeat="tr in t.admin">
-                                    <div class="row">
-                                        <div class="col">{{tr.amount}}</div>
-                                        <div class="col">{{tr.date}}
-                                        </div>
-                                    </div>
-                            </ion-item>
-                        </div>
-                    </ion-list>
+
+                <div class="incard padding-horizontal">
+                    <div class="list">
+                        <ion-item class="item" ng-repeat="tr in t.admin">
+                            <span class="item-note">Date: {{tr.date}}</span>
+                            <p>Amount in Barter: {{tr.barteramount}}</p>
+                            <p>Amount in INR: {{tr.amount}}</p>
+                            <p>Reason: {{tr.reason}}</p>
+                        </ion-item>
+                    </div>
                 </div>
             </div>
-        </div>
     </ion-content>
 </ion-view>
