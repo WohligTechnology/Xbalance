@@ -66,8 +66,8 @@ button.btn-small {
     position: relative;
 }
 .profile-img img {
-    width: 75px;
-    height: 75px;
+    width: auto;
+    height: 80px;
 }
 .prod-info h4 {
     text-align: center;
@@ -565,6 +565,7 @@ h5.member {
 }
 .img-profile {
     position: relative;
+    overflow: hidden;
 }
 .button.bold {
     background: #1A1E24;
@@ -619,6 +620,9 @@ ion-item.item.item-thumbnail-left.trns-add {
 .backdrop {
     top: 44px;
     background: #DEDFE1;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .backdrop {
+    top: 64px;
 }
 .loading-container .loading {
     background: transparent;
