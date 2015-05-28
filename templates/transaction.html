@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="bold-list" ng-if="sale=='bold'">
+            <div class="bold-list" ng-if="sale=='bold';">
                 <div class="incard transcard">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
@@ -63,12 +63,13 @@
                     <div class="list">
                         <ion-item class="item" ng-repeat="tr in t.admin">
                             <span class="item-note">Date: {{tr.date}}</span>
-                            <p>Amount in Barter: {{tr.barteramount}}</p>
-                            <p>Amount in INR: {{tr.amount}}</p>
-                            <p>Reason: {{tr.reason}}</p>
+                            <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
+                            <p><b>Amount in INR:</b> {{tr.amount}}</p>
+                            <!--<p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>-->
                         </ion-item>
                     </div>
                 </div>
             </div>
+
     </ion-content>
 </ion-view>
