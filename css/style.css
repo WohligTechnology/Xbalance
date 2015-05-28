@@ -11,9 +11,6 @@
 }
 .bg-xb {
     background-image: url('../img/login-bg.png');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -86,9 +83,8 @@ button.btn-smalls {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     padding: 0 3px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
+/*    min-height: 85px;*/
 }
 .welcome-img img {
     width: 90%;
@@ -284,8 +280,6 @@ div.ps-toolbar-play div.ps-toolbar-content {
 }
 .list.profile-cont .item button img {
     width: 100%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 0 3px;
 }
@@ -336,13 +330,9 @@ p.info {
 }
 .incard {
     background: white;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
     /* border: 1px solid #ddd; */
     overflow: hidden;
-    -webkit-box-shadow: 0 1px 1px 0 #aaa;
-    -moz-box-shadow: 0 1px 1px 0 #aaa;
     box-shadow: 0 1px 1px 0 #aaa;
     margin-bottom: 10px;
 }
@@ -372,8 +362,6 @@ ion-item.category.item h3 {
     background: #3185D7;
     color: white;
     padding: 5px 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
     border-radius: 15px;
     margin-top: 0px;
 }
@@ -443,8 +431,6 @@ ion-footer-bar.footer-shop h4 {
 }
 .sell-img img {
     width: 100%;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 .sell-cont {
@@ -496,8 +482,6 @@ ion-item.my-balcont.item {
 }
 .item.item-input.itemimage button img {
     width: 100%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     padding: 0 3px;
 }
@@ -510,8 +494,6 @@ ion-item.my-balcont.item {
 }
 .round-circle {
     border: 2px solid #3185D7;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     height: 35px;
     width: 35px;
@@ -522,8 +504,6 @@ ion-item.my-balcont.item {
 }
 .rounds-x {
     border: 2px solid #dc3a29;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     background: #dc3a29;
 }
@@ -584,8 +564,6 @@ ion-item.item-left.item h2 {
     color: #fff;
 }
 .button-bar.transbtn .button {
-    -webkit-border-radius: 0px!important;
-    -moz-border-radius: 0px!important;
     border-radius: 0px!important;
     border-color: #1A1E24;
 }
@@ -651,9 +629,7 @@ ion-item.item.item-thumbnail-left.trns-add {
     width: 100%;
     text-align: center;
     -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 .row.nopad {
@@ -661,4 +637,8 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 .row.nopad>.col {
     padding: 0px;
+}
+.input-div {
+    min-width: 50px;
+    text-align: center;
 }
