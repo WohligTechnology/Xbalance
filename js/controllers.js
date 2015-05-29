@@ -487,12 +487,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.showloading();
 
-    //    var options = {
-    //        quality: 40,
-    //        destinationType: Camera.DestinationType.NATIVE_URI,
-    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //        encodingType: Camera.EncodingType.JPEG
-    //    };
+
 
     var changeprofilephoto = function(result) {
         $scope.profile.shoplogo = result.value;
@@ -505,6 +500,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.changeprofileimage = function() {
         console.log("take picture");
+
+        var options = {
+            quality: 40,
+            destinationType: Camera.DestinationType.NATIVE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            encodingType: Camera.EncodingType.JPEG
+        };
 
         $cordovaCamera.getPicture(options).then(function(imageData) {
             // Success! Image data is here
