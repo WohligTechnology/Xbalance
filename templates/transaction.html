@@ -13,7 +13,10 @@
         </div>
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
-                <div class="incard transcard">
+
+                <p class="royal padding text-center" ng-if="t.purchased=='';">No transactions yet.</p>
+
+                <div class="incard transcard" ng-if="t.purchased!='';">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
                             <div class="row">
@@ -36,7 +39,10 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold';">
-                <div class="incard transcard">
+
+                <p class="royal padding text-center" ng-if="t.sales=='';">No transactions yet.</p>
+
+                <div class="incard transcard" ng-if="t.sales!='';">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
                             <div class="row">
@@ -59,13 +65,15 @@
             </div>
             <div class="bold-list" ng-if="admin=='bold'">
 
-                <div class="incard padding-horizontal">
+                <p class="royal padding text-center" ng-if="t.admin=='';">No transactions yet.</p>
+
+                <div class="incard padding-horizontal" ng-if="t.admin!='';">
                     <div class="list">
                         <ion-item class="item" ng-repeat="tr in t.admin">
                             <span class="item-note">Date: {{tr.date}}</span>
                             <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
                             <p><b>Amount in INR:</b> {{tr.amount}}</p>
-                            <!--<p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>-->
+                            <p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>
                         </ion-item>
                     </div>
                 </div>
