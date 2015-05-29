@@ -11,7 +11,8 @@
                         <div class="item item-input text-capitalize">
                             <input type="text" placeholder="Name" ng-model="profile.shopname">
                         </div>
-
+                        
+                        <!--Select-->
                         <div class="item item-input item-select text-capitalize">
                             <div class="input-label different">Area</div>
                             <select ng-model="profile.areaid">
@@ -24,25 +25,26 @@
                                 <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                             </select>
                         </div>
+                        <!--Select-->
 
                         <div class="item item-input text-capitalize">
-                            <textarea placeholder="Address" ng-model="profile.address" value=""></textarea>
+                            <textarea placeholder="Address" ng-model="profile.address"></textarea>
                         </div>
                         <div class="item item-input text-capitalize">
-                            <textarea placeholder="Description" ng-model="profile.description" value=""></textarea>
+                            <textarea placeholder="Description" ng-model="profile.description"></textarea>
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Mobile No." ng-model="profile.shopcontact1" value="">
+                            <input type="text" placeholder="Mobile No." ng-model="profile.shopcontact1">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Landline No." ng-model="profile.shopcontact2" value="">
+                            <input type="text" placeholder="Landline No." ng-model="profile.shopcontact2">
                         </div>
 
                         <div class="item item-input">
-                            <input type="text" placeholder="Email Id" type=email ng-model="profile.shopemail" value="">
+                            <input type="email" placeholder="Email Id" ng-model="profile.shopemail">
                         </div>
                         <div class="item item-input">
-                            <input type="text" placeholder="Website" type=email ng-model="profile.website" value="">
+                            <input type="text" placeholder="Website" ng-model="profile.website">
                         </div>
                         <div class="item item-input item-text-wrap header">
                             <h2>Shops Photos</h2>
@@ -112,7 +114,7 @@
 
                         </div>
                         <div class="padding-horizontal btn-rest">
-                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(c);updatearea(a);">Update</button>
+                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
                         </div>
                     </div>
                 </form>

@@ -616,7 +616,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     $scope.updatecat = function(c) {
         $scope.cats = c;
-        console.log($scope.cats);
+        console.log('Category Id: ' + $scope.cats);
         MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
     }
     var getareacallback = function(data, status) {
@@ -628,7 +628,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     $scope.updatearea = function(a) {
         $scope.ar = a;
-        console.log($scope.ar);
+        console.log('Area Id: ' + $scope.ar);
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
     }
     var shopprofilecallback = function(data, status) {
