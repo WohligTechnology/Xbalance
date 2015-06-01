@@ -2,13 +2,16 @@
     <ion-content class="searcher">
         <div class="button-bar bar-royal transbtn">
             <div class="button" ng-class="purchased" ng-click="changepurchase();">
-                Purchased
+                Trade Value <br>
+                 Purchase
             </div>
             <div class="button" ng-class="sale" ng-click="chnagesale();">
-                Sales
+               Trade Value <br>
+               Sales
             </div>
             <div class="button" ng-class="admin" ng-click="chnageadmin();">
-                Admin
+                Transaction <br>
+                 Charges
             </div>
         </div>
         <div class="padding">
@@ -40,9 +43,7 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold';">
-
                 <p class="royal padding text-center" ng-if="t.sales=='';">No transactions yet.</p>
-
                 <div class="incard transcard" ng-if="t.sales!='';">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">

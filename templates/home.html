@@ -1,5 +1,55 @@
 <ion-view view-title="Home">
+
+
+
     <ion-content class="padding">
+        <div class="incard">
+            <div class="profile-img" ng-controller="ProfileCtrl">
+                <img ng-src="{{profile.shoplogo|serverimage}}">
+                <h3>{{profile.shopname}}</h3>
+            </div>
+            
+            <div class="list padtop5" ng-controller="YourBalCtrl">
+<!--
+                <ion-item class="item-left">
+                    <h2 class="unbold">Area</h2>
+                    <div class="pull-right item-right text-capitalize">
+                        {{profile.area}}
+                   
+                    </div>
+                </ion-item>
+                <ion-item class="item-left">
+                    <h2 class="unbold">Category</h2>
+                    <div class="pull-right item-right text-capitalize">
+                        {{profile.category}}
+                    </div>
+                </ion-item>
+-->
+                <ion-item class="my-balcont">
+                    <div class="row text-center">
+                        <div class="col">
+                            <div class="balance bod-right">
+                                <h4 class="calm">{{pb.yourbalance.purchasebalance}}</h4>
+<!--                                <h4 class="calm">9000</h4>-->
+                                <div class="label-name">
+                                    Purchase Balance
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="balance">
+                                <h4 class="calm">{{pb.yourbalance.salesbalance}}</h4>
+<!--                                <h4 class="calm">8000</h4>-->
+
+                                <div class="label-name">
+                                    Sell Balance
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ion-item>
+            </div>
+        </div>
         <div class="incard">
             <div class="header-card">Find shops</div>
             <!--
@@ -35,7 +85,7 @@
                 <div class="col">
                     <h5 class="member">Membership No.</h5>
                 </div>
-                <div class="col">
+                <div class="col membershipno">
                     <!--                    <p class="home-p" ng-click="openedit();">Please Select</p>-->
                     <input type="text" id="normal-field" ng-model="home.membershipno">
                 </div>
