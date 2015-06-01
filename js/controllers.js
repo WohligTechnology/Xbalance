@@ -261,6 +261,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modal.hide();
     };
 
+    $scope.send = {
+        amount: 0,
+        reason: ""
+    };
+
     $scope.aImages = [{
 
         'src': 'img/shop1.png',
@@ -488,14 +493,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-//    var options = {
-//        quality: 20,
-//        destinationType: Camera.DestinationType.FILE_URI,
-//        sourceType: Camera.PictureSourceType.CAMERA,
-//        allowEdit: true,
-//        encodingType: Camera.EncodingType.JPEG,
-//        saveToPhotoAlbum: true
-//    };
+    //    var options = {
+    //        quality: 20,
+    //        destinationType: Camera.DestinationType.FILE_URI,
+    //        sourceType: Camera.PictureSourceType.CAMERA,
+    //        allowEdit: true,
+    //        encodingType: Camera.EncodingType.JPEG,
+    //        saveToPhotoAlbum: true
+    //    };
 
     var changeprofilephoto = function(result) {
         $scope.profile.shoplogo = result.value;
