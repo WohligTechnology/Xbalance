@@ -13,7 +13,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 10000);
     };
     $scope.showloading();
-
+//log out
+	var logoutcallback=function(data,status){
+	console.log("logged out");
+	}
+	$scope.logoutfunction=function(){
+		$scope.loginid=$.jStorage.get("user1");
+		console.log($scope.loginid);
+	MyServices.logout($scope.loginid, logoutcallback);
+	}
+	
     //your balance
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function (data, status) {
@@ -369,7 +378,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(data);
             console.log("Login Failed");
             $scope.showPopup();
-        } else {
+        }
+		else if(data == -1){
+		console.log("already logged in!!");
+			$scope.showPopup1();
+		}
+		else {
             //			console.log(data);
             data = data.replace('"', "");
             //			console.log(data);
@@ -394,7 +408,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
+   
+	 $scope.showPopup1 = function () {
 
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Sorry you are already logged in!!!</p>',
+            title: 'Already Logged In',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
     $scope.onlogin = function (user1) {
         MyServices.login(user1, logincallback);
     };

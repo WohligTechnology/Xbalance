@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -115,8 +115,8 @@ myservices.factory('MyServices', function($http) {
     returnval.changepassword = function(id, pass, changepasswordcallback) {
         $http.get(adminurl + "changepassword?id=" + id + "&oldpassword=" + pass.oldpassword + "&newpassword=" + pass.newpassword + "&confirmpassword=" + pass.confirmpassword, {}).success(changepasswordcallback);
     },
-    returnval.logout = function(logoutcallback) {
-        $http.get(adminurl + "logout", {}).success(logoutcallback);
+    returnval.logout = function(loginid,logoutcallback) {
+        $http.get(adminurl + "logout?loginid=" + loginid, {}).success(logoutcallback);
     };
     returnval.getshopidmebership = function(data, callback) {
         $http.get(adminurl + "shopprofilemem?mem=" + data).success(function(data) {
