@@ -4,28 +4,12 @@
 
     <ion-content class="padding">
         <div class="incard">
-<!--           <div class="header-card">Find shops</div>-->
             <div class="profile-img" ng-controller="ProfileCtrl">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
                 <h3>{{profile.shopname}}</h3>
             </div>
 
             <div class="padtop5" ng-controller="YourBalCtrl">
-                <!--
-                <ion-item class="item-left">
-                    <h2 class="unbold">Area</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{profile.area}}
-                   
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2 class="unbold">Category</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{profile.category}}
-                    </div>
-                </ion-item>
--->
                 <ion-item class="my-balcont">
                     <div class="row text-center">
                         <div class="col">
@@ -40,8 +24,6 @@
                         <div class="col">
                             <div class="balance">
                                 <h4 class="calm">{{pb.yourbalance.salesbalance}}</h4>
-                                <!--                                <h4 class="calm">8000</h4>-->
-
                                 <div class="label-name">
                                     Sell Balance
                                 </div>
@@ -50,7 +32,13 @@
                     </div>
                 </ion-item>
             </div>
+            <div class="padding-horizontal" ng-controller="YourBalCtrl">
+                <button class="button button-block button-balanced" ng-click="openedit();">
+                    Add Balance
+                </button>
+            </div>
         </div>
+        
         <div class="incard">
             <div class="header-card">Find shops</div>
             <!--
