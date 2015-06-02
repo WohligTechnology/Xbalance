@@ -22,7 +22,7 @@
 				<div class="incard transcard" ng-if="t.purchased!='';" >
 					<div class="list">
 						<ion-item class="item item-thumbnail-left listmk">
-							<span class="item-note">{{tr.purchasebalance}}</span>
+							<span class="item-note">{{t.totalpurchase.purchasebalance}}</span>
 							<h2 class="bold">Total</h2>
 						</ion-item>
 						<ion-item class="item item-thumbnail-left"  ng-repeat="tr in t.purchased">
@@ -45,7 +45,7 @@
 							</div>
 						</ion-item>
 						<ion-item class="item item-thumbnail-left listmk">
-							<span class="item-note">{{tr.purchasebalance-tr.amount}}</span>
+							<span class="item-note">{{t.totalpurchase.purchasebalance-totaltr}}</span>
 							<h2 class="bold">Remaining</h2>
 						</ion-item>
 					</div>
@@ -57,7 +57,7 @@
 				<div class="incard transcard" ng-if="t.sales!='';">
 					<div class="list">
 						<ion-item class="item item-thumbnail-left listmk">
-							<span class="item-note">{{tr.salesbalance}}</span>
+							<span class="item-note">{{t.totalsales.salesbalance}}</span>
 							<h2 class="bold">Total</h2>
 						</ion-item>
 						<ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
@@ -79,7 +79,7 @@
 							</div>
 						</ion-item>
 						<ion-item class="item item-thumbnail-left listmk">
-							<span class="item-note">{{tr.salesbalance-tr.amount}}</span>
+							<span class="item-note">{{t.totalsales.salesbalance-totalsr}}</span>
 							<h2 class="bold">Remaining</h2>
 						</ion-item>
 					</div>
