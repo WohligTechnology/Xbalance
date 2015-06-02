@@ -806,7 +806,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 
 .registration.pull-right {
-  padding-top: 10px;
-  color: #fff;
-  border-bottom: 1px solid #fff;
+    padding-top: 10px;
+    color: #fff;
+    text-decoration: underline;
 }
