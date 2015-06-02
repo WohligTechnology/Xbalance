@@ -4,13 +4,14 @@
 
     <ion-content class="padding">
         <div class="incard">
+           <div class="header-card">Find shops</div>
             <div class="profile-img" ng-controller="ProfileCtrl">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
                 <h3>{{profile.shopname}}</h3>
             </div>
-            
-            <div class="list padtop5" ng-controller="YourBalCtrl">
-<!--
+
+            <div class="padtop5" ng-controller="YourBalCtrl">
+                <!--
                 <ion-item class="item-left">
                     <h2 class="unbold">Area</h2>
                     <div class="pull-right item-right text-capitalize">
@@ -30,7 +31,7 @@
                         <div class="col">
                             <div class="balance bod-right">
                                 <h4 class="calm">{{pb.yourbalance.purchasebalance}}</h4>
-<!--                                <h4 class="calm">9000</h4>-->
+                                <!--                                <h4 class="calm">9000</h4>-->
                                 <div class="label-name">
                                     Purchase Balance
                                 </div>
@@ -39,7 +40,7 @@
                         <div class="col">
                             <div class="balance">
                                 <h4 class="calm">{{pb.yourbalance.salesbalance}}</h4>
-<!--                                <h4 class="calm">8000</h4>-->
+                                <!--                                <h4 class="calm">8000</h4>-->
 
                                 <div class="label-name">
                                     Sell Balance

@@ -1,27 +1,67 @@
-<ion-view class="bg-xb">
+<ion-view>
+    <ion-header-bar class="bar-royal">
+        <h1 class="title"> Registration</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closereg()">Close</button>
+        </div>
+    </ion-header-bar>
     <ion-content>
+        <!--
         <div class="welcome-img">
             <img src="img/main.png">
         </div>
-        <div class="list login-mk">
-            <label class="item item-input">
-                <span class="input-label">Name</span>
-                <input type="text" placeholder="Name">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Email</span>
-                <input type="email" placeholder="Email">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Number</span>
-                <input type="number" placeholder="Number">
-            </label>
-            <label class="item item-input">
-                <span class="input-label">Meassage</span>
-                <input type="text" placeholder="Meassage">
-            </label>
-            <div class="btn-login">
-                <a class="button button-block button-balanced" ng-click="closereg();" type="submit">Submit</a>
+-->
+        <div class="padding">
+            <div class="incard pad-btm padding">
+<!--
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input type="text" placeholder="Name">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Email</span>
+                        <input type="email" placeholder="Email">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Number</span>
+                        <input type="text" placeholder="Number">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Meassage</span>
+                        <textarea cols="30" rows="3">
+                        </textarea>
+                    </label>
+                    <div class="btn-login">
+                        <a class="button button-block button-balanced" ng-click="closereg();" type="submit">Submit</a>
+                    </div>
+                </div>
+-->
+
+
+
+
+                <div class="list">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Name</span>
+                        <input type="text" placeholder="Name">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Email</span>
+                        <input type="email" placeholder="Email Id">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Number</span>
+                        <input type="text" placeholder="Number">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Meassage</span>
+                        <textarea placeholder="Message"></textarea>
+                    </label>
+                </div>
+                <div class="btn-login">
+                    <a class="button button-block button-balanced" ng-click="closereg();" type="submit">Submit</a>
+                </div>
             </div>
         </div>
     </ion-content>
