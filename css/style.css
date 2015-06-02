@@ -551,7 +551,7 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .sell-cont.trans h2 {
-    padding: 5px 0 0px 0;
+    padding: 0px;
     text-transform: capitalize;
     font-size: 16px;
 }
@@ -801,12 +801,21 @@ ion-item.item.item-thumbnail-left.trns-add {
     text-align: center;
 }
 
-.membershipno {
-    border-bottom: 1px solid #ddd;
+.membershipno input {
+    background: #eee;
 }
 
 .registration.pull-right {
     padding-top: 10px;
     color: #fff;
     text-decoration: underline;
+}
+
+ion-item.item.item-thumbnail-left.listmk {
+    min-height: 35px!important;
+}
+
+h2.bold {
+    font-weight: 700;
+    padding-left: 5px;
 }
