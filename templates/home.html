@@ -1,8 +1,13 @@
 <ion-view view-title="Home">
 
-
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
+    </ion-nav-buttons>
 
     <ion-content class="padding">
+
+        <ion-refresher ng-controller="YourBalCtrl"  pulling-text="Pull To Refresh" on-refresh="dorefresh();" refreshing-text="Refreshing.."></ion-refresher>
+
         <div class="incard">
             <div class="profile-img" ng-controller="ProfileCtrl">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
@@ -15,7 +20,6 @@
                         <div class="col">
                             <div class="balance bod-right">
                                 <h4 class="calm">{{pb.yourbalance.purchasebalance}}</h4>
-                                <!--                                <h4 class="calm">9000</h4>-->
                                 <div class="label-name">
                                     Purchase Balance
                                 </div>
@@ -37,10 +41,10 @@
                     Add Balance
                 </button>
             </div>
-            
-            
-            
-<!--  jagruti teting
+
+
+
+            <!--  jagruti teting
                     <form action="http://wohlig.co.in/osb/payumoney/PayUMoney_form.php" method="post">
                         <input type="text" name="amount">
                         <input type="text" name="firstname">
@@ -52,10 +56,10 @@
                         <input type="submit" value="Pay">
                     </form>
 -->
-            
-            
+
+
         </div>
-        
+
         <div class="incard">
             <div class="header-card">Find shops</div>
             <!--

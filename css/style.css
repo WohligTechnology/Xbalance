@@ -686,3 +686,6 @@ h2.bold {
     font-weight: 700;
     padding-left: 5px;
 }
+.item.no-left {
+    padding-left: 0px;
+}

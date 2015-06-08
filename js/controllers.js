@@ -427,7 +427,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('FaqCtrl', function($scope, $stateParams) {})
-.controller('checkout', function($scope, $stateParams) {})
+    .controller('checkout', function($scope, $stateParams) {})
 
 .controller('SellingCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
     //Loading Package
@@ -486,7 +486,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.totalsr = 0;
     var transactioncallback = function(data, status) {
         $scope.t = data;
-        
+
         //purchase
         for (var i = 0; i < $scope.t.purchased.length; i++) {
             $scope.totaltr = $scope.totaltr + parseInt($scope.t.purchased[i].amount);
@@ -826,15 +826,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
 
+
+
     //GET USER PROFILE
     $scope.pro = $.jStorage.get("user1");
-    var shopprofilecallback = function (data, status) {
+    var shopprofilecallback = function(data, status) {
         console.log(data);
         $scope.profileuser = data;
     }
     MyServices.profile($scope.pro, shopprofilecallback);
-    
-    
+
+
     //Loading Package
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -862,8 +864,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
-    
-    
+    $scope.dorefresh = function() {
+        MyServices.yourbalance($scope.bal, yourbalancecallback);
+        $scope.showloading();
+        console.log('Refresh Called');
+
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
+
     var checkstate = function(data, status) {
         console.log(data);
         if (data == "1") {
@@ -879,12 +888,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log("hey hey in inerval");
         MyServices.checkstatus($scope.orderidd, checkstate);
     };
-    
-    
+
+
     var balanceaddcallback = function(data, status) {
         console.log(data);
         $scope.orderidd = data;
-        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data
+        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
         if (data == "false") {
             console.log("balance not added");
         } else {
@@ -899,15 +908,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 1500);
-            
+
             //JAGRUTI PAYUMONEY
-            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid="+data+"&firstname="+$scope.profileuser.shopname+"&amount="+$scope.add.amount+"&email="+$scope.profileuser.shopemail+"&phone="+$scope.profileuser.shopcontact2+"&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data+"&furl=wohlig.com", '_blank', 'location=no');
-            
+            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
+
             stopinterval = $interval(callAtInterval, 2000);
             ref.addEventListener('exit', function(event) {
                 $interval.cancel(stopinterval);
             });
-            
+
         }
     };
     $scope.user = $.jStorage.get("user1");
@@ -962,19 +971,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
-    
-    
-    
+
+
+
     //PAY U MONEY
-    
-    
-    
-    $scope.topayment = function(){
-        ref=window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
-        
-//        stopinterval = $interval(callAtInterval, 10000);
+
+
+
+    $scope.topayment = function() {
+        ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
+
+        //        stopinterval = $interval(callAtInterval, 10000);
     }
-    
-    
+
+
 
 });
