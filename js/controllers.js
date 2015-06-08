@@ -862,10 +862,29 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
+    
+    
+    var checkstate = function(data, status) {
+        console.log(data);
+        if (data == "1") {
+            console.log("Facebook Login");
+            $interval.cancel(stopinterval);
+            ref.close();
+        } else {
+            console.log("Do nothing");
+        }
+    };
+
+    var callAtInterval = function() {
+        console.log("hey hey in inerval");
+        MyServices.checkstatus($scope.orderidd, checkstate);
+    };
+    
+    
     var balanceaddcallback = function(data, status) {
         console.log(data);
         $scope.orderidd = data;
-        $scope.succurl = "htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data
+        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data
         if (data == "false") {
             console.log("balance not added");
         } else {
@@ -882,12 +901,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }, 1500);
             
             //JAGRUTI PAYUMONEY
-//            window.location.href = "http://wohlig.co.in/osb/payumoney/PayUMoney_form.php?orderid="+data+"&firstname="+$scope.profileuser.shopname+"&amount="+$scope.add.amount+"&email="+$scope.profileuser.shopemail+"&phone="+$scope.profileuser.shopcontact2+"&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data+"&furl=wohlig.com";
-//            window.location.href = "http://wohlig.co.in/osb/payumoney/PayUMoney_form.php";
+            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid="+data+"&firstname="+$scope.profileuser.shopname+"&amount="+$scope.add.amount+"&email="+$scope.profileuser.shopemail+"&phone="+$scope.profileuser.shopcontact2+"&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid="+data+"&furl=wohlig.com", '_blank', 'location=no');
             
+            stopinterval = $interval(callAtInterval, 2000);
+            ref.addEventListener('exit', function(event) {
+                $interval.cancel(stopinterval);
+            });
             
-            
-            //            $location.url("/app/home");
         }
     };
     $scope.user = $.jStorage.get("user1");
@@ -947,10 +967,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     
     //PAY U MONEY
     
-    var callAtInterval = function() {
-            $interval.cancel(stopinterval);
-            ref.close();
-    };
+    
     
     $scope.topayment = function(){
         ref=window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
