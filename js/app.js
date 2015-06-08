@@ -147,6 +147,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+    
+    .state('app.checkout', {
+        url: "/checkout",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/checkout.html",
+                controller: 'checkout'
+            }
+        }
+    })
 
     .state('app.profileedit', {
         url: "/profile/edit",

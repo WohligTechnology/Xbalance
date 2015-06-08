@@ -1,0 +1,45 @@
+<ion-view title="Checkout">
+    <ion-content class="has-header">
+<!--        <form ng-submit="continuepayment(form);">-->
+            <div class="item item-divider">Shipping Information</div>
+            <label class="item item-input">
+                <input type="text" placeholder="First Name*" ng-model="form.firstname" ng-class="allvalidation[0].validation" required>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Last Name*" ng-model="form.lastname" ng-class="allvalidation[1].validation" required>
+            </label>
+            <label class="item item-input">
+                <input type="email" placeholder="Email*" ng-model="form.email" ng-class="allvalidation[2].validation" required>
+            </label>
+            <label class="item item-input">
+                <textarea placeholder="Address*" ng-model="form.billingaddress" ng-class="allvalidation[3].validation" required></textarea>
+            </label>
+            <label class="item item-input">
+                <input type="tel" placeholder="Phone*" ng-model="form.phone" ng-class="allvalidation[4].validation" required>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="Zipcode*" ng-model="form.billingpincode" ng-class="allvalidation[5].validation" required>
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="State" ng-model="form.billingstate">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="City*" ng-model="form.billingcity" ng-class="allvalidation[7].validation" required>
+            </label>
+            <div class="padding">
+                <button class="button button-block button-royal" ng-click="showdiffaddress()">
+                    Ship to different address
+                </button>
+            </div>
+            <div ng-show="orcontinue">
+                <div style="text-align: center;color: #A3A3A3;">
+                    OR
+                </div>
+                <div class="padding">
+                    <button class="button button-block button-royal" ng-click="continuenoshipping()">
+                        Continue
+                    </button>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>
