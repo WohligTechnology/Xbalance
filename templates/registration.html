@@ -10,24 +10,24 @@
             <div class="incard pad-btm padding">
                 <div class="list">
                     <label class="item item-input item-stacked-label">
-                        <span class="input-label">Name</span>
-                        <input type="text" placeholder="Name">
+                        <span class="input-label">Name*</span>
+                        <input type="text" placeholder="Name" ng-model="register.name" ng-class="allvalidation[0].validation" required>
                     </label>
                     <label class="item item-input item-stacked-label">
-                        <span class="input-label">Email</span>
-                        <input type="email" placeholder="Email Id">
+                        <span class="input-label">Email*</span>
+                        <input type="email" placeholder="Email Id" ng-model="register.email" ng-class="allvalidation[1].validation" required>
                     </label>
                     <label class="item item-input item-stacked-label">
-                        <span class="input-label">Number</span>
-                        <input type="text" placeholder="Number">
+                        <span class="input-label">Number*</span>
+                        <input type="text" placeholder="Number" ng-model="register.number" ng-class="allvalidation[2].validation" required>
                     </label>
                     <label class="item item-input item-stacked-label">
-                        <span class="input-label">Message</span>
-                        <textarea placeholder="Message"></textarea>
+                        <span class="input-label">Message*</span>
+                        <textarea placeholder="Message" ng-model="register.message" ng-class="allvalidation[3].validation" required></textarea>
                     </label>
                 </div>
                 <div class="btn-login">
-                    <a class="button button-block button-balanced" ng-click="closereg();" type="submit">Submit</a>
+                    <a class="button button-block button-balanced" ng-click="registerval(register);" type="submit">Submit</a>
                 </div>
             </div>
         </div>

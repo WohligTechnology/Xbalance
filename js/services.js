@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -38,8 +38,9 @@ myservices.factory('MyServices', function($http) {
         $http.get(adminurl + "getarea", {}).success(getareacallback);
 
     },
-    returnval.searchresult = function(area, category, membershipno, searchcallback) {
-        $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&membershipno=" + membershipno, {}).success(searchcallback);
+    returnval.searchresult = function(area, category, online,offline,searchcallback) {
+		console.log("searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline);
+        $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline, {}).success(searchcallback);
     },
     returnval.getareacategory = function(area, category, getareacategorycallback) {
 
@@ -78,6 +79,19 @@ myservices.factory('MyServices', function($http) {
                 'website': profile.website
             }
         }).success(updateprofilecallback);
+    },
+		 returnval.becomeamember = function(register,becomeamembercallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "becomeamember",
+            method: "POST",
+            data: {
+                'name': register.name,
+                'email': register.email,
+                'number': register.number,
+                'message': register.message
+            }
+        }).success(becomeamembercallback);
     },
 
    /* 	returnval.updateprofile=function(id,p,updateprofilecallback){

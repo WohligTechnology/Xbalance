@@ -36,11 +36,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     globalfunctionapproval = function() {
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
     };
+	
+	
 
 })
 
 .controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout) {
     //home page
+		$scope.varonline =0;
+		$scope.varoffline =0;
     $scope.home = {
         area: "",
         category: "",
@@ -97,6 +101,28 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     //search shop
+	$scope.onlineclass = "";
+	$scope.offlineclass = "";
+	$scope.online = function(){
+		if($scope.varonline == 0){
+			$scope.varonline = 1;
+			$scope.onlineclass = "button-activates";
+		}else{
+			$scope.varonline = 0;
+			$scope.onlineclass = "";
+		}
+		console.log($scope.varonline);
+	}
+	$scope.offline = function(){
+		if($scope.varoffline == 0){
+			$scope.varoffline = 1;
+			$scope.offlineclass = "button-activates";
+		}else{
+			$scope.varoffline = 0;
+			$scope.offlineclass = "";
+		}
+		console.log($scope.varoffline);
+	}
 
     $scope.memfunc = function(home) {
 
@@ -107,13 +133,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             } else {
                 var area = 0;
                 var category = 0;
+			
                 if (home.area != "") {
                     area = home.area;
                 }
                 if (category != "") {
                     category = home.category;
                 }
-                $location.url("/app/search/" + home.area + "/" + home.category);
+                $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline );
             }
         } else {
             $scope.showPopupNoBalance();
@@ -158,7 +185,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.shops = data;
 
     }
-    MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.membershipno, searchcallback);
+    MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.online,$stateParams.offline,searchcallback);
     var getareacategorycallback = function(data, status) {
         $scope.recall = data;
         $ionicLoading.hide();
@@ -374,6 +401,65 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         password: ""
     };
 
+	//become a member start
+	var becomeamembercallback=function(data,status){
+	console.log(data);
+		if(data=="0"){
+		console.log("No data found");
+		}
+		else{
+	  $scope.showPopup2();
+		console.log("successfull registration");
+			$scope.register = [];
+			$scope.oModal1.hide();
+		}
+	}
+	$scope.register = [];
+	$scope.registerval=function(register){
+		
+		  $scope.allvalidation = [{
+            field: $scope.register.name,
+           validation: ""
+        }, {
+            field: $scope.register.email,
+           validation: ""
+        },{
+			  field: $scope.register.number,
+            validation: ""
+			},{
+			field: $scope.register.message,
+            validation: ""
+			}];
+        var check = formvalidation($scope.allvalidation);
+        //        if (navigator.network.connection.type == Connection.none) {
+        //            var myPopup = $ionicPopup.show({
+        //                title: 'No Internet Connection',
+        //                scope: $scope,
+        //            });
+        //            $timeout(function () {
+        //                myPopup.close(); //close the popup after 3 seconds for some reason
+        //            }, 1500);
+        //        } else {
+        if (check) {
+			$scope.reg=register;
+		console.log($scope.reg);
+           MyServices.becomeamember($scope.reg, becomeamembercallback);
+
+        } else {
+            var myPopup = $ionicPopup.show({
+                title: 'Please Enter Mandatory Fields!!',
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+
+            //            }
+        }
+	}
+	
+	//become a member end
+	
     var logincallback = function(data, status) {
         if (data == "false") {
             console.log(data);
@@ -408,6 +494,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
 
+	$scope.showPopup2 = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Successfully registered!!</p>',
+            title: 'Thankyou',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+	
     $scope.showPopup1 = function() {
 
         var myPopup = $ionicPopup.show({
