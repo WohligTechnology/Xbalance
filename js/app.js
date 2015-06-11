@@ -137,6 +137,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+    .state('app.myproducts', {
+        url: "/myproducts",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/myproducts.html",
+                controller: 'MyproductsCtrl'
+            }
+        }
+    })
 
     .state('app.profile', {
         url: "/profile",

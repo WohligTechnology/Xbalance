@@ -579,7 +579,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('TransactionCtrl', function($scope, $stateParams, $ionicPopup, $location, MyServices) {
+    .controller('TransactionCtrl', function($scope, $stateParams, $ionicPopup, $location, MyServices) {
     //	
     $scope.totaltr = 0;
     $scope.totalsr = 0;
@@ -1084,5 +1084,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
 
+
+})
+.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+        $ionicModal.fromTemplateUrl('templates/addproducts.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+
+    $scope.openedit = function() {
+        $scope.modal.show();
+    };
+
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
 
 });
