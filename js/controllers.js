@@ -566,9 +566,29 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.reason = "";
     $scope.accept = function(r, reason) {
         console.log(r);
+		if(r.purchasebalance<=r.amount){
+			console.log("in if");
+		 $scope.showPopup4();
+		}
+		else{
+			console.log("in else");
         MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
         $scope.showloading();
+		}
     }
+	
+	 $scope.showPopup4 = function() {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">You have insufficient purchase balance!!!</p>',
+            title: 'Oops cannot proceed!!!',
+            scope: $scope,
+
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
     $scope.decline = function(r, reason) {
         console.log("Decline");
         console.log(r);
