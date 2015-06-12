@@ -1107,9 +1107,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, 
-
-$location, MyServices) {
+.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
 	//view products start
 	var viewmyproductscallback=function(data,status){
 	console.log(data);
@@ -1161,7 +1159,7 @@ $location, MyServices) {
         $scope.modal1.hide();
     };
 
-});
+})
 
 .controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
 });
