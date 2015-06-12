@@ -866,3 +866,8 @@ a.item.item-thumbnail-left.bod-bottom {
 .item.bod-bottom {
     border-bottom: 1px solid #ddd;
 }
+
+.leftnames {
+    padding-left: 100px;
+    margin: 8px 0 0px 0!important;
+}
