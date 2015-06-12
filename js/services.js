@@ -83,6 +83,22 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(updateprofilecallback);
     },
+		returnval.createproduct = function(id, ap, createproductcallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "createproduct",
+            method: "POST",
+            data: {
+                'name': ap.name,
+                'sku': ap.sku,
+                'price': ap.price,
+                'description': ap.description,
+                'status': ap.status,
+                'user': id,
+                'quantity': ap.quantity
+            }
+        }).success(createproductcallback);
+    },
 		 returnval.becomeamember = function(register,becomeamembercallback) {
         //        			console.log(profile);
         $http({

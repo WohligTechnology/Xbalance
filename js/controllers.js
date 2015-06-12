@@ -1106,13 +1106,31 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
 })
-.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+
+.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, 
+
+$location, MyServices) {
+	//view products start
 	var viewmyproductscallback=function(data,status){
 	console.log(data);
 		$scope.products=data;
 	}
 	$scope.myid=$.jStorage.get("user1");
 	 MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+	//view products end
+	
+	
+	//add products start
+	var createproductcallback=function(data,status){
+	console.log(data);
+	}
+	$scope.insertproduct=function(ap){
+		$scope.ap=ap;
+	$scope.insertid=$.jStorage.get("user1");
+		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
+	}
+	//add products end
+	
         $ionicModal.fromTemplateUrl('templates/addproducts.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1143,7 +1161,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modal1.hide();
     };
 
-})
+});
 
 .controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
 });
