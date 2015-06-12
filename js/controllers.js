@@ -1126,6 +1126,24 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.closeModal = function() {
         $scope.modal.hide();
+    };      
+    
+    $ionicModal.fromTemplateUrl('templates/productdetails.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal1 = modal;
+    });
+
+    $scope.openprdtdetails = function() {
+        $scope.modal1.show();
+    };
+
+    $scope.closeprdtdetails = function() {
+        $scope.modal1.hide();
     };
 
 });
+
+.controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+}
