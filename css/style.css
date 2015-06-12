@@ -852,3 +852,13 @@ i.icon.ion-record.icon-actived {
 a.item.item-thumbnail-left.bod-bottom {
     border-bottom: 1px solid #ddd;
 }
+
+.item-toggle .toggle {
+    top: 0px;
+}
+
+.incard .item {
+  padding: 6px 15px;
+  margin: 0;
+  border: 0;
+}
