@@ -14,29 +14,32 @@
                         <div class="holder">Edit</div>
                     </div>
                     <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Name" ng-model="ap.name">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="number" placeholder="Price">
+                        <input type="number" placeholder="Price" ng-model="ap.price">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="number" placeholder="Quantity">
+                        <input type="number" placeholder="Quantity" ng-model="ap.name">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="SKU">
+                        <input type="text" placeholder="SKU" ng-model="ap.sku">
                     </div>
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="ap.status">
                             <div class="track">
                                 <div class="handle"></div>
                             </div>
                         </label>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description"></textarea>
+                        <textarea placeholder="Description" ng-model="ap.description"></textarea>
                     </div>
+                    <div class="padding">
+                <button class="button button-block button-assertive" ng-click="insertproduct();">Save</button>
+            </div>
                 </div>
             </form>
         </div>

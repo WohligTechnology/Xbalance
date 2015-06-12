@@ -581,7 +581,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">You have insufficient purchase balance!!!</p>',
-            title: 'Oops cannot proceed!!!',
+            title: 'Oops sorry cannot proceed!!!',
             scope: $scope,
 
         });
