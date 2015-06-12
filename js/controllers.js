@@ -1087,6 +1087,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 .controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+	var viewmyproductscallback=function(data,status){
+	console.log(data);
+		$scope.products=data;
+	}
+	$scope.myid=$.jStorage.get("user1");
+	 MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
         $ionicModal.fromTemplateUrl('templates/addproducts.html', {
         scope: $scope,
         animation: 'slide-in-up'
