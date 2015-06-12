@@ -50,6 +50,9 @@ myservices.factory('MyServices', function($http) {
         $http.get(adminurl + "shopprofile?user=" + shop, {}).success(shopprofilecallback);
 
     },
+	returnval.viewmyproducts = function(myid, viewmyproductscallback) {
+        $http.get(adminurl + "viewmyproducts?user=" + myid, {}).success(viewmyproductscallback);
+    },
     returnval.shopphoto = function(id, shopphotocallback) {
         $http.get(adminurl + "shopphoto?id=" + id, {}).success(shopphotocallback);
     },

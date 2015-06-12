@@ -1,17 +1,29 @@
 <ion-view view-title="My Products">
+       <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
     <ion-content class="padding">
-        <div class="incard">
+        <div class="incard" ng-if="products!=0">
             <div class="list">
+<<<<<<< HEAD
+                <a class="item item-thumbnail-left bod-bottom" href="#">
+                    <img src="img/icon.png">
+                    <h2 class="leftname">Name: <span>XperiaZ</span></h2>
+                    <h2 class="leftname">Price: <span>40000</span></h2>
+=======
+                <a class="item item-thumbnail-left bod-bottom" href="#" ng-repeat="pro in products">
+                    <img ng-src="{{pro.image|serverimage}}">
+                    <h2 class="leftname">Name: <span>{{pro.name}}</span></h2>
+
+                    <h2 class="leftname">Price: <span>{{pro.price}}</span></h2>
+
+>>>>>>> origin/master
+                </a>
+<!--
                 <a class="item item-thumbnail-left bod-bottom" href="#">
                     <img src="img/icon.png">
                     <h2 class="leftname">Name: <span>XperiaZ</span></h2>
                     <h2 class="leftname">Price: <span>40000</span></h2>
                 </a>
-                <a class="item item-thumbnail-left bod-bottom" href="#">
-                    <img src="img/icon.png">
-                    <h2 class="leftname">Name: <span>XperiaZ</span></h2>
-                    <h2 class="leftname">Price: <span>40000</span></h2>
-                </a>
+-->
             </div>
             <div class="padding">
                 <button class="button button-block button-assertive" ng-click="openedit();">Add More Products</button>
