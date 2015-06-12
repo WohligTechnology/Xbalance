@@ -112,6 +112,9 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(becomeamembercallback);
     },
+	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
+        $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
+    },	
 
    /* 	returnval.updateprofile=function(id,p,updateprofilecallback){
     			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);

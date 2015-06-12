@@ -1121,14 +1121,41 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//add products start
 	var createproductcallback=function(data,status){
 	console.log(data);
+	 $scope.modal.hide();
 	}
 	$scope.insertproduct=function(ap){
 		$scope.ap=ap;
+		if($scope.ap.status==true){
+		$scope.ap.status=1;
+			console.log($scope.ap.status);
+		}
+		if($scope.ap.status==false){
+		$scope.ap.status=0;
+				console.log($scope.ap.status);
+		}
+		console.log($scope.ap);
 	$scope.insertid=$.jStorage.get("user1");
-//		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
+		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
 	}
 	//add products end
-	
+
+	//product details start
+	var getsingleproductcallback=function(data,status){
+		$scope.prodetails=data;
+		console.log($scope.prodetails);
+		if($scope.prodetails.status==1)
+		{
+		$scope.prodetails.status="Available";
+		}
+		if($scope.prodetails.status==0)
+		{
+		$scope.prodetails.status="Not Available";
+		}
+	}
+	$scope.productdetails=function(id){		
+	MyServices.getsingleproduct(id,getsingleproductcallback);
+	}	
+	//product details end
         $ionicModal.fromTemplateUrl('templates/addproducts.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1157,21 +1184,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.closeprdtdetails = function() {
         $scope.modal1.hide();
-    };   
-    
-    $ionicModal.fromTemplateUrl('templates/productedit.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal2 = modal;
-    });
-
-    $scope.openprdtedit = function() {
-        $scope.modal2.show();
-    };
-
-    $scope.closeprdtedit = function() {
-        $scope.modal2.hide();
     };
 
 })

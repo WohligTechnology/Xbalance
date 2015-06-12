@@ -12,35 +12,36 @@
     <ion-content class="padding">
         <div class="incard">
             <div class="profile-img">
-                <img src="img/icon.png">
-                <h3>Xperia Z</h3>
+<!--                <img src="img/icon.png">-->
+                <img ng-src="{{prodetails.image|serverimage}}">
+                <h3>{{prodetails.name}}</h3>
             </div>
             <div class="list profile-cont padtop5">
                 <ion-item class="item-left">
                     <h2>Price</h2>
                     <div class="pull-right item-right text-capitalize">
-                        40000
+                        {{prodetails.price}}
                     </div>
                 </ion-item>
 
                 <ion-item class="item-left">
                     <h2>Quantity</h2>
                     <div class="pull-right item-right text-capitalize">
-                        25
+                         {{prodetails.quantity}}
                     </div>
                 </ion-item>
 
                 <ion-item class="item-left">
                     <h2>SKU</h2>
                     <div class="pull-right item-right text-capitalize">
-                        4984908
+                         {{prodetails.sku}}
                     </div>
                 </ion-item>
 
                 <ion-item class="item-left">
                     <h2>Status</h2>
                     <div class="pull-right item-right text-capitalize">
-                        Available
+                        {{prodetails.status}}
                     </div>
                 </ion-item>
 
@@ -49,7 +50,7 @@
                 </div>
                 <div class="item item-input item-text-wrap">
                     <div class="input itemproducts">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        {{prodetails.description}}
                     </div>
                 </div>
             </div>
