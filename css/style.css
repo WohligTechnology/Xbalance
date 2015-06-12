@@ -858,7 +858,11 @@ a.item.item-thumbnail-left.bod-bottom {
 }
 
 .incard .item {
-  padding: 6px 15px;
-  margin: 0;
-  border: 0;
+    padding: 6px 15px;
+    margin: 0;
+    border: 0;
+}
+
+.item.bod-bottom {
+    border-bottom: 1px solid #ddd;
 }
