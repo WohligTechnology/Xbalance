@@ -1157,6 +1157,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.closeprdtdetails = function() {
         $scope.modal1.hide();
+    };   
+    
+    $ionicModal.fromTemplateUrl('templates/productedit.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal2 = modal;
+    });
+
+    $scope.openprdtedit = function() {
+        $scope.modal2.show();
+    };
+
+    $scope.closeprdtedit = function() {
+        $scope.modal2.hide();
     };
 
 })
