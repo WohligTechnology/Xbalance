@@ -1125,7 +1125,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.insertproduct=function(ap){
 		$scope.ap=ap;
 	$scope.insertid=$.jStorage.get("user1");
-		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
+//		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
 	}
 	//add products end
 	
