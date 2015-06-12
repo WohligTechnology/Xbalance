@@ -10,36 +10,37 @@
             <form ng-submit="">
                 <div class="list">
                     <div class="profile-img">
-                        <img src="img/icon.png">
+                        <img ng-src="{{prodetails.image|serverimage}}">
+                        <div class="holder">Edit</div>
                     </div>
                     <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Name">
+                     <input type="text" placeholder="Name" ng-model="prodetails.name">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="number" placeholder="Price">
+                        <input type="text" placeholder="Price" ng-model="prodetails.price">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="number" placeholder="Quantity">
+                        <input type="text" placeholder="Quantity" ng-model="prodetails.quantity">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="SKU">
+                        <input type="text" placeholder="SKU" ng-model="prodetails.sku">
                     </div>
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">
-                            <input type="checkbox">
+                            <input type="checkbox" ng-model="prodetails.status">
                             <div class="track">
                                 <div class="handle"></div>
                             </div>
                         </label>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description"></textarea>
+                        <textarea placeholder="Description" ng-model="prodetails.description"></textarea>
                     </div>
                 </div>
             </form>
                <div class="padding">
-                <button class="button button-block button-balanced">Update</button>
+                <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.productid,prodetails.status);">Update</button>
             </div>
         </div>
         </div>

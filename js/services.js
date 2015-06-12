@@ -112,6 +112,38 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(becomeamembercallback);
     },
+//		returnval.changeproductstatus = function(user, id, changeproductstatuscallback) {
+//        //		console.log("updatecat?user=" + user + "&id=" + id);
+//        $http.get(adminurl + "changeproductstatus?user=" + user + "&id=" + id, {}).success(changeproductstatuscallback);
+//    }
+		returnval.editproduct = function(product,id,editproductcallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "editproduct",
+            method: "POST",
+            data: {
+               'id': product.productid,
+               'name': product.name,
+                'sku': product.sku,
+                'price': product.price,
+                'description': product.description,
+                'status': product.status,
+                'user': id,
+                'quantity': product.quantity
+            }
+        }).success(editproductcallback);
+    },
+		returnval.changeproductstatus = function(product,id,changeproductstatuscallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "changeproductstatus",
+            method: "POST",
+            data: {
+               'id': product.productid,
+               'name': product.name
+            }
+        }).success(editproductcallback);
+    },
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	
