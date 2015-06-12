@@ -1,10 +1,8 @@
 <ion-view view-title="My Products">
-
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-plus-round small-icon"  ng-click="openedit();"></button>
     </ion-nav-buttons>
     <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
-
     <ion-content class="padding">
         <div class="incard" ng-if="products!=0">
             <div class="list">
@@ -27,5 +25,6 @@
             </div>
         </div>
          </div>
+        </div>
     </ion-content>
 </ion-view>
