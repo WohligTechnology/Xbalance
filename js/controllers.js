@@ -1143,7 +1143,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modal1.hide();
     };
 
-});
+})
 
 .controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
-}
+});
