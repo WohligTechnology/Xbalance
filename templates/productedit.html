@@ -1,0 +1,43 @@
+<ion-modal-view view-title="Add Balance">
+    <ion-header-bar class="bar-royal">
+        <h1 class="title">Product Details</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeprdtdetails()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="incard">
+            <form ng-submit="">
+                <div class="list">
+                    <div class="profile-img">
+                        <img src="img/icon.png">
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="Name">
+                    </div>
+                    <div class="item  item-input text-capitalize">
+                        <input type="number" placeholder="Price">
+                    </div>
+                    <div class="item  item-input text-capitalize">
+                        <input type="number" placeholder="Quantity">
+                    </div>
+                    <div class="item  item-input text-capitalize">
+                        <input type="text" placeholder="SKU">
+                    </div>
+                    <div class="item item-toggle">
+                        Status
+                        <label class="toggle toggle-balanced">
+                            <input type="checkbox">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                    <div class="item  item-input text-capitalize">
+                        <textarea placeholder="Description"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>
