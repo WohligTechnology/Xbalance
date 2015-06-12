@@ -1179,7 +1179,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		status=0;
 		}
 		console.log(status);
-//	MyServices.changeproductstatus(id,status,changeproductstatuscallback);	
+	MyServices.changeproductstatus(id,status,changeproductstatuscallback);	
 	}
 	//edit products and status end
         $ionicModal.fromTemplateUrl('templates/addproducts.html', {
@@ -1230,4 +1230,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+	var viewmyproductorderscallback=function(data,status){
+		$scope.ordr=data.queryresult;
+			console.log($scope.ordr);
+	}
+	$scope.uid=$.jStorage.get("user1");
+		MyServices.viewmyproductorders($scope.uid,viewmyproductorderscallback);	
 });
