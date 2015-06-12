@@ -1,5 +1,10 @@
 <ion-view view-title="My Products">
-       <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon ion-plus-round small-icon"  ng-click="openedit();"></button>
+    </ion-nav-buttons>
+    <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
+
     <ion-content class="padding">
         <div class="incard" ng-if="products!=0">
             <div class="list">
@@ -7,13 +12,13 @@
                     <img src="img/icon.png">
                     <h2 class="leftname">Name: <span>XperiaZ</span></h2>
                     <h2 class="leftname">Price: <span>40000</span></h2>
-                <a class="item item-thumbnail-left bod-bottom" href="#" ng-repeat="pro in products">
-                    <img ng-src="{{pro.image|serverimage}}">
-                    <h2 class="leftname">Name: <span>{{pro.name}}</span></h2>
+                    <a class="item item-thumbnail-left bod-bottom" href="#" ng-repeat="pro in products">
+                        <img ng-src="{{pro.image|serverimage}}">
+                        <h2 class="leftname">Name: <span>{{pro.name}}</span></h2>
 
-                    <h2 class="leftname">Price: <span>{{pro.price}}</span></h2>
-                </a>
-<!--
+                        <h2 class="leftname">Price: <span>{{pro.price}}</span></h2>
+                    </a>
+                    <!--
                 <a class="item item-thumbnail-left bod-bottom" href="#">
                     <img src="img/icon.png">
                     <h2 class="leftname">Name: <span>XperiaZ</span></h2>
