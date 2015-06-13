@@ -25,6 +25,15 @@
                     <div class="item  item-input text-capitalize">
                         <input type="text" placeholder="SKU" ng-model="ap.sku">
                     </div>
+                     <label class="item item-input item-select area">
+                <div class="input-label">
+                    Category
+                </div>
+                <select ng-model="home.area">
+                    <option value="">All</option>
+                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                </select>
+            </label>
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">

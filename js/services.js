@@ -20,6 +20,10 @@ myservices.factory('MyServices', function($http) {
         //        console.log("Demo");
         $http.get(adminurl + "home?user=" + user, {}).success(homecallback);
     },
+		returnval.searchproduct = function(product, searchproductcallback) {
+        //        console.log("Demo");
+        $http.get(adminurl + "searchproduct?product=" + product, {}).success(searchproductcallback);
+    },
     //		returnval.setsearch=function(search) {
     //			console.log("in service");
     //			console.log(search);
@@ -112,12 +116,7 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(becomeamembercallback);
     },
-//		returnval.changeproductstatus = function(user, id, changeproductstatuscallback) {
-//        //		console.log("updatecat?user=" + user + "&id=" + id);
-//        $http.get(adminurl + "changeproductstatus?user=" + user + "&id=" + id, {}).success(changeproductstatuscallback);
-//    }
 		returnval.editproduct = function(product,id,editproductcallback) {
-        //        			console.log(profile);
         $http({
             url: adminurl + "editproduct",
             method: "POST",
@@ -139,10 +138,10 @@ myservices.factory('MyServices', function($http) {
             url: adminurl + "changeproductstatus",
             method: "POST",
             data: {
-               'id': product.productid,
+               'id': product.id,
                'name': product.name
             }
-        }).success(editproductcallback);
+        }).success(changeproductstatuscallback);
     },
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);

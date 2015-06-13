@@ -147,8 +147,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
 
     }
-
-
+//search product
+	var searchproductcallback=function(data,status){
+	console.log(data);
+	}
+	$scope.searchproduct=function(product){
+    MyServices.searchproduct(product,searchproductcallback);
+	}
 
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
@@ -674,14 +679,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-    //    var options = {
-    //        quality: 20,
-    //        destinationType: Camera.DestinationType.FILE_URI,
-    //        sourceType: Camera.PictureSourceType.CAMERA,
-    //        allowEdit: true,
-    //        encodingType: Camera.EncodingType.JPEG,
-    //        saveToPhotoAlbum: true
-    //    };
+//        var options = {
+//            quality: 20,
+//            destinationType: Camera.DestinationType.FILE_URI,
+//            sourceType: Camera.PictureSourceType.CAMERA,
+//            allowEdit: true,
+//            encodingType: Camera.EncodingType.JPEG,
+//            saveToPhotoAlbum: true
+//        };
 
     var changeprofilephoto = function(result) {
         $scope.profile.shoplogo = result.value;
@@ -694,7 +699,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.changeprofileimage = function() {
         console.log("take picture");
-
         $cordovaCamera.getPicture(options).then(function(imageData) {
             // Success! Image data is here
             console.log("here in upload image");
@@ -1107,7 +1111,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
+.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices,$cordovaCamera) {
 	//view products start
 	var viewmyproductscallback=function(data,status){
 	console.log(data);
@@ -1157,7 +1161,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	MyServices.getsingleproduct(id,getsingleproductcallback);
 	}	
 	//product details end
-	
+	//categories
+	var homecallback=function(data,status){
+	console.log(data.category);
+		$scope.cat=data.category;
+	}
+	MyServices.home($scope.insertid,homecallback);
 	//edit products and status start
 	var editproductcallback=function(data,status){
 	console.log(data);
@@ -1182,6 +1191,64 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	MyServices.changeproductstatus(id,status,changeproductstatuscallback);	
 	}
 	//edit products and status end
+	   //Hide when on PC
+//        var options = {
+//            quality: 20,
+//            destinationType: Camera.DestinationType.FILE_URI,
+//            sourceType: Camera.PictureSourceType.CAMERA,
+//            allowEdit: true,
+//            encodingType: Camera.EncodingType.JPEG,
+//            saveToPhotoAlbum: true
+//        };
+	//upload editproductimage start
+	$scope.editproductimage=function(id){
+	 console.log("take picture");
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            // Success! Image data is here
+            console.log("here in upload image");
+            console.log(imageData);
+            if (imageData.substring(0, 21) == "content://com.android") {
+                var photo_split = imageData.split("%3A");
+                imageData = "content://media/external/images/media/" + photo_split[1];
+            }
+            $scope.cameraimage = imageData;
+            $scope.uploadPhoto(adminurl + "editproductimage?id=" + id, editproductimage);
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+		 };
+	//upload editproductimage end
+	
+	 //Upload photo
+
+    //File Upload parameters: source, filePath, options
+    $scope.uploadPhoto = function(serverpath, callback) {
+
+        //        console.log("function called");
+        $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
+            .then(function(result) {
+                console.log(result);
+                callback(result);
+                $ionicLoading.hide();
+                //$scope.addretailer.store_image = $scope.filename2;
+            }, function(err) {
+                // Error
+                console.log(err);
+            }, function(progress) {
+                // constant progress updates
+                $ionicLoading.show({
+                    //        template: 'We are fetching the best rates for you.',
+
+                    content: 'Uploading Image',
+                    animation: 'fade-in',
+                    showBackdrop: true,
+                    maxWidth: 200,
+                    showDelay: '0'
+                });
+                console.log("progress");
+            });
+
+    };
         $ionicModal.fromTemplateUrl('templates/addproducts.html', {
         scope: $scope,
         animation: 'slide-in-up'

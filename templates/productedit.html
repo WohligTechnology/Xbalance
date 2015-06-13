@@ -9,7 +9,7 @@
         <div class="incard">
             <form ng-submit="">
                 <div class="list">
-                    <div class="profile-img">
+                    <div class="profile-img" ng-click="editproductimage(prodetails.id);">
                         <img ng-src="{{prodetails.image|serverimage}}">
                         <div class="holder">Edit</div>
                     </div>
@@ -26,7 +26,7 @@
                         <input type="text" placeholder="SKU" ng-model="prodetails.sku">
                     </div>
                     <div class="item item-toggle">
-                        Status
+                        <span style="font-weight:bold;">Status</span>
                         <label class="toggle toggle-balanced">
                             <input type="checkbox" ng-model="prodetails.status">
                             <div class="track">
@@ -34,13 +34,22 @@
                             </div>
                         </label>
                     </div>
+                      <label class="item item-input item-select area">
+                <div class="input-label">
+					<span style="font-weight:bold;">Category</span>
+                </div>
+                <select ng-model="home.area">
+                    <option value="">All</option>
+                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                </select>
+            </label>
                     <div class="item  item-input text-capitalize">
                         <textarea placeholder="Description" ng-model="prodetails.description"></textarea>
                     </div>
                 </div>
             </form>
                <div class="padding">
-                <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.productid,prodetails.status);">Update</button>
+                <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>
             </div>
         </div>
         </div>
