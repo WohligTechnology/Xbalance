@@ -212,7 +212,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	var homecallback=function(data,status){
 	$scope.a=data.area;
 	$scope.c=data.category;
-//	$scope.product.category = $stateParams.cat;
 	}
 	MyServices.home($scope.i, homecallback);
 })
@@ -1337,10 +1336,37 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('OrderCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices) {
+	$scope.tabvalue = 1;
 	var viewmyproductorderscallback = function (data, status) {
 		$scope.ordr = data.queryresult;
 		console.log($scope.ordr);
 	}
 	$scope.uid = $.jStorage.get("user1");
 	MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
+})
+
+.controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+	 $ionicModal.fromTemplateUrl('templates/modal-form.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal1 = modal;
+    });
+
+    $scope.openform = function () {
+        $scope.modal1.show();
+    };
+
+    $scope.closeform = function () {
+        $scope.modal1.hide();
+    };
+    $scope.diffadd = false;
+    $scope.showdiffaddress = function () {
+        $scope.diffadd = true;
+    }
+
+    $scope.hidediffaddress = function () {
+        $scope.diffadd = false;
+    }
+
 });
