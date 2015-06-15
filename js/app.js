@@ -157,20 +157,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })  
     .state('app.products', {
-        url: "/products",
+        url: "/products/:name/:mem/:cat",
         views: {
             'menuContent': {
                 templateUrl: "templates/product.html",
                 controller: 'ProductCtrl'
-            }
-        }
-    })  
-    .state('app.productdetail', {
-        url: "/productdetail",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/buydetails.html",
-                controller: 'ProductdetailCtrl'
             }
         }
     })
@@ -215,6 +206,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         return imgpath + image;
     };
 });
+
+function partitionarray(myarray, number) {
+            var arrlength = myarray.length;
+            var newarray = [];
+            var j = -1;
+            for (var i = 0; i < arrlength; i++) {
+                if (i % number == 0) {
+                    j++;
+                    newarray[j] = [];
+                }
+                newarray[j].push(myarray[i]);
+            }
+            return newarray;
+        };
 
 var formvalidation = function (allvalidation) {
     var isvalid2 = true;

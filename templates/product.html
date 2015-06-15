@@ -7,8 +7,8 @@
                     Area
                 </div>
                 <select ng-model="home.area">
-                    <option value="">All</option>
-                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                    <option value="">Mumbai</option>
+                    <option ng-repeat="a in a" value="{{a.id}}">{{a.name}}</option>
                 </select>
             </label>
 
@@ -16,9 +16,8 @@
                 <div class="input-label">
                     Categories
                 </div>
-                <select ng-model="home.category">
-                    <option value="">All</option>
-                    <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
+                <select ng-model="product.category">
+                    <option ng-repeat="c in c" value="{{c.id}}">{{c.name}}</option>
                 </select>
             </label>
 
@@ -27,7 +26,7 @@
                     <h5 class="member">Keyword</h5>
                 </div>
                 <div class="col membershipno">
-                    <input type="text" id="" ng-model="">
+                    <input type="text" id="" ng-model="product.productname">
                 </div>
             </div>
             <div class="home-or">
@@ -39,30 +38,34 @@
                     <h5 class="member">Membership No.</h5>
                 </div>
                 <div class="col membershipno">
-                    <input type="text" id="normal-field" ng-model="home.membershipno">
+                    <input type="text" id="normal-field" ng-model="product.membershipno">
                 </div>
             </div>
             <div class="padding-horizontal">
                 <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
-                <a class="button button-block button-outline button-balanced">Search</a>
+                <a class="button button-block button-outline button-balanced" ng-click="searchproduct(product);">Search</a>
             </div>
         </div>
         <div class="incard">
             <div class="header-card">Products</div>
+            <div class="row productsCol" ng-repeat="sp in spr">
+                <div class="col col-33 text-center" ng-repeat="s in sp">
+                    <img ng-src={{s.image|serverimage}} class="full-image">
+                    <h5>{{s.name}}</h5>
+                    <h5>{{s.price}}</h5>
+                </div>
+            </div>
+<!--
             <div class="row productsCol">
                 <div class="col col-33 text-center">
-                       <a href="#/app/productdetail">
                     <img src="img/icon.png" class="full-image">
                     <h5>Xperia z</h5>
                     <h5>9000</h5>
-                    </a>
                 </div>
                 <div class="col col-33 text-center">
-                     <a href="#/app/productdetail">
                     <img src="img/icon.png" class="full-image">
                     <h5>Xperia z</h5>
                     <h5>9000</h5>
-                    </a>
                 </div>
                 <div class="col col-33 text-center">
                     <img src="img/icon.png" class="full-image">
@@ -70,52 +73,26 @@
                     <h5>9000</h5>
                 </div>
             </div>
+-->
+<!--
             <div class="row productsCol">
                 <div class="col col-33 text-center">
-                    <a href="">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                    </a>
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
                 </div>
                 <div class="col col-33 text-center">
-                    <a href="">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                    </a>
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
                 </div>
                 <div class="col col-33 text-center">
-                    <a href="">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                    </a>
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
                 </div>
             </div>
-            <div class="row productsCol">
-                <a href="">
-                    <div class="col col-33 text-center">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                </a>
-                </div>
-                <div class="col col-33 text-center">
-                    <a href="">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                    </a>
-                </div>
-                <div class="col col-33 text-center">
-                    <a href="">
-                        <img src="img/icon.png" class="full-image">
-                        <h5>Xperia z</h5>
-                        <h5>9000</h5>
-                    </a>
-                </div>
-            </div>
+-->
         </div>
     </ion-content>
 </ion-view>
