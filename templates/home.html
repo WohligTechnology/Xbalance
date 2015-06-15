@@ -68,48 +68,93 @@
                 <input type="text" placeholder="Enter Your Area">
             </label>
 -->
-           <div class="button-bar padding-horizontal">
-  <a class="button" ng-click="online()" ng-class="onlineclass">Online</a>
-  <a class="button" ng-click="offline()" ng-class="offlineclass">Offline</a>
-</div>
-        
-            <label class="item item-input item-select area">
-                <div class="input-label">
-                    Area
-                </div>
-                <select ng-model="home.area">
-                    <option value="">All</option>
-                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
-                </select>
-            </label>
-            <label class="item item-input item-select area">
-                <div class="input-label">
-                    Categories
-                </div>
-                <select ng-model="home.category">
-                    <option value="">All</option>
-                    <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
-                </select>
+            <div class="button-bar">
+                <a class="button button-outline button-royal" ng-class="onlineclass" ng-click="tabvalue = 1;">Online</a>
+                <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
+                <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="offlineclass">Offline</a>
+            </div>
+            <div class="" ng-if="tabvalue == 1">
+                <label class="item item-input item-select area">
+                    <div class="input-label">
+                        Area
+                    </div>
+                    <select ng-model="home.area">
+                        <option value="">All</option>
+                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                    </select>
+                </label>
+                <label class="item item-input item-select area">
+                    <div class="input-label">
+                        Categories
+                    </div>
+                    <select ng-model="home.category">
+                        <option value="">All</option>
+                        <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
+                    </select>
 
-            </label>
-            <div class="home-or">
-                <h6>- OR -</h6>
-            </div>
-            <!--            <div class="item item-input area">-->
-            <div class="row">
-                <div class="col">
-                    <h5 class="member">Membership No.</h5>
+                </label>
+                <div class="home-or">
+                    <h6>- OR -</h6>
                 </div>
-                <div class="col membershipno">
-                    <!--                    <p class="home-p" ng-click="openedit();">Please Select</p>-->
-                    <input type="text" id="normal-field" ng-model="home.membershipno">
+                <!--            <div class="item item-input area">-->
+                <div class="row">
+                    <div class="col">
+                        <h5 class="member">Membership No.</h5>
+                    </div>
+                    <div class="col membershipno">
+                        <input type="text" id="normal-field" ng-model="home.membershipno">
+                    </div>
+                </div>
+                <div class="padding-horizontal">
+                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
                 </div>
             </div>
-            <!--            </div>-->
-            <div class="padding-horizontal">
-                <!--                <a href="#/app/search">-->
-                <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
-                <!--                </a>-->
+
+            <div class="" ng-if="tabvalue == 2">
+                <label class="item item-input item-select area">
+                    <div class="input-label">
+                        Area
+                    </div>
+                    <select ng-model="home.area">
+                        <option value="">All</option>
+                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select area">
+                    <div class="input-label">
+                        Categories
+                    </div>
+                    <select ng-model="home.category">
+                        <option value="">All</option>
+                        <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
+                    </select>
+                </label>
+
+                <div class="row">
+                    <div class="col">
+                        <h5 class="member">Keyword</h5>
+                    </div>
+                    <div class="col membershipno">
+                        <input type="text" id="" ng-model="">
+                    </div>
+                </div>
+                <div class="home-or">
+                    <h6>- OR -</h6>
+                </div>
+                <!--            <div class="item item-input area">-->
+                <div class="row">
+                    <div class="col">
+                        <h5 class="member">Membership No.</h5>
+                    </div>
+                    <div class="col membershipno">
+                        <input type="text" id="normal-field" ng-model="home.membershipno">
+                    </div>
+                </div>
+                <div class="padding-horizontal">
+<!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
+                      <a class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</a>
+                </div>
             </div>
         </div>
     </ion-content>

@@ -3,22 +3,22 @@ var ref = 0;
 
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
+.controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
     $scope.showloading();
     //log out
-    var logoutcallback = function(data, status) {
+    var logoutcallback = function (data, status) {
         console.log("logged out");
     }
-    $scope.logoutfunction = function() {
+    $scope.logoutfunction = function () {
         $scope.loginid = $.jStorage.get("user1");
         console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
@@ -26,25 +26,26 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //your balance
     $scope.approvalcount = 0;
-    var sellingapprovalcallback = function(data, status) {
+    var sellingapprovalcallback = function (data, status) {
         $ionicLoading.hide();
         $scope.approvalcount = data.sellingapproval.length;
         console.log(data.sellingapproval.length);
     }
     $scope.sell = $.jStorage.get("user1");
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
-    globalfunctionapproval = function() {
+    globalfunctionapproval = function () {
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
     };
-	
-	
+
+
 
 })
 
-.controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout) {
     //home page
-		$scope.varonline =0;
-		$scope.varoffline =0;
+    $scope.varonline = 0;
+    $scope.varoffline = 0;
+    $scope.tabvalue = 1;
     $scope.home = {
         area: "",
         category: "",
@@ -56,7 +57,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $location.url("/login");
     }
 
-    var homecallback = function(data, status) {
+    var homecallback = function (data, status) {
         $scope.user = data;
 
         $.jStorage.set("user", data.userdetails);
@@ -75,19 +76,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
 
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">No such membership number exists.</p>',
             title: 'No Match Found!',
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
 
-    $scope.showPopupNoBalance = function() {
+    $scope.showPopupNoBalance = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your purchase balance is too low.</p>',
@@ -95,103 +96,104 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
 
     //search shop
-	$scope.onlineclass = "";
-	$scope.offlineclass = "";
-	$scope.online = function(){
-		if($scope.varonline == 0){
-			$scope.varonline = 1;
-			$scope.onlineclass = "button-activates";
-		}else{
-			$scope.varonline = 0;
-			$scope.onlineclass = "";
-		}
-		console.log($scope.varonline);
-	}
-	$scope.offline = function(){
-		if($scope.varoffline == 0){
-			$scope.varoffline = 1;
-			$scope.offlineclass = "button-activates";
-		}else{
-			$scope.varoffline = 0;
-			$scope.offlineclass = "";
-		}
-		console.log($scope.varoffline);
-	}
-
-    $scope.memfunc = function(home) {
-
-        purchasebalance = parseFloat(user.purchasebalance);
-        if (purchasebalance > 0) {
-            if (home.membershipno != "") {
-                MyServices.getshopidmebership(home.membershipno, onmembershipid);
-            } else {
-                var area = 0;
-                var category = 0;
-			
-                if (home.area != "") {
-                    area = home.area;
-                }
-                if (category != "") {
-                    category = home.category;
-                }
-                $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline );
-            }
+    $scope.onlineclass = "";
+    $scope.offlineclass = "";
+    $scope.online = function () {
+        if ($scope.varonline == 0) {
+            $scope.varonline = 1;
+            $scope.onlineclass = "button-activates";
         } else {
-            $scope.showPopupNoBalance();
+            $scope.varonline = 0;
+            $scope.onlineclass = "";
         }
-
+        console.log($scope.varonline);
     }
-//search product
-	var searchproductcallback=function(data,status){
-	console.log(data);
-	}
-	$scope.searchproduct=function(product){
-    MyServices.searchproduct(product,searchproductcallback);
-	}
+    $scope.offline = function () {
+        if ($scope.varoffline == 0) {
+            $scope.varoffline = 1;
+            $scope.offlineclass = "button-activates";
+        } else {
+            $scope.varoffline = 0;
+            $scope.offlineclass = "";
+        }
+        console.log($scope.varoffline);
+    }
+
+    $scope.memfunc = function (home) {
+
+            purchasebalance = parseFloat(user.purchasebalance);
+            if (purchasebalance > 0) {
+                if (home.membershipno != "") {
+                    MyServices.getshopidmebership(home.membershipno, onmembershipid);
+                } else {
+                    var area = 0;
+                    var category = 0;
+
+                    if (home.area != "") {
+                        area = home.area;
+                    }
+                    if (category != "") {
+                        category = home.category;
+                    }
+                    $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline);
+                }
+            } else {
+                $scope.showPopupNoBalance();
+            }
+        }
+        //search product
+    var searchproductcallback = function (data, status) {
+        console.log(data);
+    }
+    $scope.searchproduct = function (product) {
+        MyServices.searchproduct(product, searchproductcallback);
+    }
 
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modal.hide();
     };
     $scope.d = {};
 
 })
 
-.controller('SearchCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+    
+    .controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
     $scope.showloading();
 
 
-    var searchcallback = function(data, status) {
+    var searchcallback = function (data, status) {
         $scope.shops = data;
 
     }
-    MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.online,$stateParams.offline,searchcallback);
-    var getareacategorycallback = function(data, status) {
+    MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.online, $stateParams.offline, searchcallback);
+    var getareacategorycallback = function (data, status) {
         $scope.recall = data;
         $ionicLoading.hide();
         console.log(data);
@@ -201,7 +203,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     $scope.demo = [];
-    var searchcallback = function(data, status) {
+    var searchcallback = function (data, status) {
         console.log(data);
         $scope.demo = data;
         $.jStorage.set("demo", data);
@@ -210,14 +212,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading) {
+.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading) {
 
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
@@ -229,7 +231,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             title: 'Overlimit Purchase!',
             scope: $scope,
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     }
@@ -237,7 +239,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.purchaselimit = parseFloat(user.purchasebalance);
     $scope.userpurchasebalance = parseFloat(user.purchasebalance);
-    var shopprofilecallback = function(data, status) {
+    var shopprofilecallback = function (data, status) {
         $scope.profile = data;
 
         var newsalesbalance = parseFloat($scope.profile.salesbalance);
@@ -251,12 +253,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.userid = user.id;
     console.log(shopid);
     MyServices.profile(shopid, shopprofilecallback);
-    var shopphotocallback = function(data, status) {
+    var shopphotocallback = function (data, status) {
         $scope.shoppic = data;
         $ionicLoading.hide();
     }
     $scope.amount = 1000;
-    var shopproductphotocallback = function(data, status) {
+    var shopproductphotocallback = function (data, status) {
         $scope.img = data;
 
     }
@@ -264,11 +266,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.shopproductphoto(shopid, shopproductphotocallback);
 
 
-    $scope.callpurchase = function(profile) {
+    $scope.callpurchase = function (profile) {
         $scope.modal.show();
     };
 
-    var purchaserequestcallback = function(data, status) {
+    var purchaserequestcallback = function (data, status) {
 
         if (data == "false") {
 
@@ -281,13 +283,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             title: 'Your Request Sent!',
             scope: $scope,
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
 
 
-    $scope.sendamt = function(amount, reason) {
+    $scope.sendamt = function (amount, reason) {
 
         amount = parseFloat(amount);
         if (amount > $scope.purchaselimit) {
@@ -333,30 +335,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicModal.fromTemplateUrl('templates/purchase.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     };
 
-    $scope.closeModalss = function() {
+    $scope.closeModalss = function () {
         $scope.modal.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/image-modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modals = modal;
     });
 
-    $scope.openpswd = function() {
+    $scope.openpswd = function () {
         $scope.modals.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modals.hide();
     };
 
@@ -364,35 +366,35 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicModal.fromTemplateUrl('templates/image-shop.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modalss = modal;
     });
 
-    $scope.openshops = function() {
+    $scope.openshops = function () {
         $scope.modalss.show();
     };
 
-    $scope.closeModals = function() {
+    $scope.closeModals = function () {
         $scope.modalss.hide();
     };
 
 
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal) {
+.controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal) {
     $ionicModal.fromTemplateUrl('templates/registration.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal1 = modal;
     });
 
-    $scope.openreg = function() {
+    $scope.openreg = function () {
         $scope.oModal1.show();
     };
 
-    $scope.closereg = function() {
+    $scope.closereg = function () {
         $scope.oModal1.hide();
     };
 
@@ -406,35 +408,34 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         password: ""
     };
 
-	//become a member start
-	var becomeamembercallback=function(data,status){
-	console.log(data);
-		if(data=="0"){
-		console.log("No data found");
-		}
-		else{
-	  $scope.showPopup2();
-		console.log("successfull registration");
-			$scope.register = [];
-			$scope.oModal1.hide();
-		}
-	}
-	$scope.register = [];
-	$scope.registerval=function(register){
-		
-		  $scope.allvalidation = [{
+    //become a member start
+    var becomeamembercallback = function (data, status) {
+        console.log(data);
+        if (data == "0") {
+            console.log("No data found");
+        } else {
+            $scope.showPopup2();
+            console.log("successfull registration");
+            $scope.register = [];
+            $scope.oModal1.hide();
+        }
+    }
+    $scope.register = [];
+    $scope.registerval = function (register) {
+
+        $scope.allvalidation = [{
             field: $scope.register.name,
-           validation: ""
+            validation: ""
         }, {
             field: $scope.register.email,
-           validation: ""
-        },{
-			  field: $scope.register.number,
             validation: ""
-			},{
-			field: $scope.register.message,
+        }, {
+            field: $scope.register.number,
             validation: ""
-			}];
+   }, {
+            field: $scope.register.message,
+            validation: ""
+   }];
         var check = formvalidation($scope.allvalidation);
         //        if (navigator.network.connection.type == Connection.none) {
         //            var myPopup = $ionicPopup.show({
@@ -446,26 +447,26 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //            }, 1500);
         //        } else {
         if (check) {
-			$scope.reg=register;
-		console.log($scope.reg);
-           MyServices.becomeamember($scope.reg, becomeamembercallback);
+            $scope.reg = register;
+            console.log($scope.reg);
+            MyServices.becomeamember($scope.reg, becomeamembercallback);
 
         } else {
             var myPopup = $ionicPopup.show({
                 title: 'Please Enter Mandatory Fields!!',
                 scope: $scope,
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 1500);
 
             //            }
         }
-	}
-	
-	//become a member end
-	
-    var logincallback = function(data, status) {
+    }
+
+    //become a member end
+
+    var logincallback = function (data, status) {
         if (data == "false") {
             console.log(data);
             console.log("Login Failed");
@@ -486,7 +487,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     };
 
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Incorrect Membership Number or Password.</p>',
@@ -494,12 +495,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
 
-	$scope.showPopup2 = function() {
+    $scope.showPopup2 = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Successfully registered!!</p>',
@@ -507,12 +508,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-	
-    $scope.showPopup1 = function() {
+
+    $scope.showPopup1 = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Sorry you are already logged in!!!</p>',
@@ -520,33 +521,33 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-    $scope.onlogin = function(user1) {
+    $scope.onlogin = function (user1) {
         MyServices.login(user1, logincallback);
     };
 
 })
 
-.controller('FaqCtrl', function($scope, $stateParams) {})
-    .controller('checkout', function($scope, $stateParams) {})
+.controller('FaqCtrl', function ($scope, $stateParams) {})
+    .controller('checkout', function ($scope, $stateParams) {})
 
-.controller('SellingCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
+.controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
     $scope.showloading();
 
     //SELLING APPROVAL
-    var sellingapprovalcallback = function(data, status) {
+    var sellingapprovalcallback = function (data, status) {
         $scope.req = data.sellingapproval;
         console.log($scope.req);
         $ionicLoading.hide();
@@ -554,14 +555,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.sell = $.jStorage.get("user1");
     console.log($scope.sell);
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
 
     };
 
-    var acceptstatuscallback = function(data, status) {
+    var acceptstatuscallback = function (data, status) {
         console.log(data);
         $ionicLoading.hide();
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
@@ -569,20 +570,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     }
     $scope.reason = "";
-    $scope.accept = function(r, reason) {
+    $scope.accept = function (r, reason) {
         console.log(r);
-		if(r.purchasebalance<=r.amount){
-			console.log("in if");
-		 $scope.showPopup4();
-		}
-		else{
-			console.log("in else");
-        MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
-        $scope.showloading();
-		}
+        if (r.purchasebalance <= r.amount) {
+            console.log("in if");
+            $scope.showPopup4();
+        } else {
+            console.log("in else");
+            MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
+            $scope.showloading();
+        }
     }
-	
-	 $scope.showPopup4 = function() {
+
+    $scope.showPopup4 = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">You have insufficient purchase balance!!!</p>',
@@ -590,11 +590,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-    $scope.decline = function(r, reason) {
+    $scope.decline = function (r, reason) {
         console.log("Decline");
         console.log(r);
         MyServices.accepted(r.id, reason, 2, acceptstatuscallback);
@@ -604,11 +604,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-    .controller('TransactionCtrl', function($scope, $stateParams, $ionicPopup, $location, MyServices) {
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices) {
     //	
     $scope.totaltr = 0;
     $scope.totalsr = 0;
-    var transactioncallback = function(data, status) {
+    var transactioncallback = function (data, status) {
         $scope.t = data;
 
         //purchase
@@ -639,18 +639,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    $scope.user = [];
 
     //  DESIGN CODE
-    $scope.changepurchase = function() {
+    $scope.changepurchase = function () {
         $scope.purchased = "bold";
         $scope.sale = "";
         $scope.admin = "";
     }
 
-    $scope.chnagesale = function() {
+    $scope.chnagesale = function () {
         $scope.purchased = "";
         $scope.sale = "bold";
         $scope.admin = "";
     }
-    $scope.chnageadmin = function() {
+    $scope.chnageadmin = function () {
         $scope.purchased = "";
         $scope.sale = "";
         $scope.admin = "bold";
@@ -662,44 +662,44 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('AboutCtrl', function($scope, $stateParams) {
+.controller('AboutCtrl', function ($scope, $stateParams) {
 
 })
 
-.controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer) {
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
     $scope.showloading();
 
     //Hide when on PC
-//        var options = {
-//            quality: 20,
-//            destinationType: Camera.DestinationType.FILE_URI,
-//            sourceType: Camera.PictureSourceType.CAMERA,
-//            allowEdit: true,
-//            encodingType: Camera.EncodingType.JPEG,
-//            saveToPhotoAlbum: true
-//        };
+    //        var options = {
+    //            quality: 20,
+    //            destinationType: Camera.DestinationType.FILE_URI,
+    //            sourceType: Camera.PictureSourceType.CAMERA,
+    //            allowEdit: true,
+    //            encodingType: Camera.EncodingType.JPEG,
+    //            saveToPhotoAlbum: true
+    //        };
 
-    var changeprofilephoto = function(result) {
+    var changeprofilephoto = function (result) {
         $scope.profile.shoplogo = result.value;
     };
 
-    var changeshopphoto = function(result) {
+    var changeshopphoto = function (result) {
         MyServices.shopphoto($scope.pro, shopphotocallback);
         MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     };
 
-    $scope.changeprofileimage = function() {
+    $scope.changeprofileimage = function () {
         console.log("take picture");
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+        $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(imageData);
@@ -709,15 +709,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
             $scope.cameraimage = imageData;
             $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
     };
 
-    $scope.changeshopimage = function(id) {
+    $scope.changeshopimage = function (id) {
         console.log("take picture");
 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+        $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(imageData);
@@ -727,15 +727,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
             $scope.cameraimage = imageData;
             $scope.uploadPhoto(adminurl + "imageuploadshop?id=" + id + "&user=" + user.id, changeshopphoto);
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
     };
 
-    $scope.changeproductimage = function(id) {
+    $scope.changeproductimage = function (id) {
         console.log("take picture");
         console.log("ID " + id);
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+        $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(imageData);
@@ -745,7 +745,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
             $scope.cameraimage = imageData;
             $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
     };
@@ -755,19 +755,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //Upload photo
 
     //File Upload parameters: source, filePath, options
-    $scope.uploadPhoto = function(serverpath, callback) {
+    $scope.uploadPhoto = function (serverpath, callback) {
 
         //        console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
-            .then(function(result) {
+            .then(function (result) {
                 console.log(result);
                 callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
-            }, function(err) {
+            }, function (err) {
                 // Error
                 console.log(err);
-            }, function(progress) {
+            }, function (progress) {
                 // constant progress updates
                 $ionicLoading.show({
                     //        template: 'We are fetching the best rates for you.',
@@ -787,41 +787,41 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     // shop profile
     $scope.pro = $.jStorage.get("user1");
     $scope.epro = {};
-    var shopphotocallback = function(data, status) {
+    var shopphotocallback = function (data, status) {
         $scope.pic = data;
         console.log($scope.pic);
         $ionicLoading.hide();
 
     }
-    var shopproductphotocallback = function(data, status) {
+    var shopproductphotocallback = function (data, status) {
         $scope.image = data;
 
     }
-    var getallcategory1callback = function(data, status) {
+    var getallcategory1callback = function (data, status) {
         $scope.cat = data;
         console.log($scope.cat);
     }
-    var updatecatcallback = function(data, status) {
+    var updatecatcallback = function (data, status) {
         console.log(data);
     }
-    $scope.updatecat = function(c) {
+    $scope.updatecat = function (c) {
         $scope.cats = c;
         console.log('Category Id: ' + $scope.cats);
         MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
     }
-    var getareacallback = function(data, status) {
+    var getareacallback = function (data, status) {
         console.log(data);
         $scope.areas = data;
     }
-    var updateareacallback = function(data, status) {
+    var updateareacallback = function (data, status) {
         console.log(data);
     }
-    $scope.updatearea = function(a) {
+    $scope.updatearea = function (a) {
         $scope.ar = a;
         console.log('Area Id: ' + $scope.ar);
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
     }
-    var shopprofilecallback = function(data, status) {
+    var shopprofilecallback = function (data, status) {
         $scope.profile = data;
         console.log($scope.profile);
         MyServices.getallcategory1(getallcategory1callback);
@@ -834,15 +834,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     //edit profile
 
-    $scope.editpro = function(profile) {
-        $scope.epro = profile;
-        console.log($scope.epro);
-    }
-    //    $scope.sp=$.jStorage.get("sp");
-    //	console.log("In profile");
-    ////	console.log($scope.sp);
-    ////	
-    var updateprofilecallback = function(data, status) {
+    $scope.editpro = function (profile) {
+            $scope.epro = profile;
+            console.log($scope.epro);
+        }
+        //    $scope.sp=$.jStorage.get("sp");
+        //	console.log("In profile");
+        ////	console.log($scope.sp);
+        ////	
+    var updateprofilecallback = function (data, status) {
         if (data == "false") {
 
             console.log("no data");
@@ -851,7 +851,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.showeditPopup();
         }
     }
-    $scope.profileupdate = function(profile) {
+    $scope.profileupdate = function (profile) {
         $scope.updatedata = profile;
         console.log($scope.updatedata);
         $scope.id = $.jStorage.get("user1");
@@ -862,7 +862,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     }
 
-    $scope.showeditPopup = function() {
+    $scope.showeditPopup = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your profile has been updated successfully!</p>',
@@ -870,7 +870,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
@@ -878,31 +878,31 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         id: '2',
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.oModal2 = modal;
     });
 
-    $scope.openPassword = function() {
+    $scope.openPassword = function () {
         $scope.oModal2.show();
     };
 
-    $scope.closePassword = function() {
+    $scope.closePassword = function () {
         $scope.oModal2.hide();
     };
-    var changepasswordcallback = function(data, status) {
+    var changepasswordcallback = function (data, status) {
         $scope.p = data;
         console.log($scope.p);
         $scope.showpasswordPopup();
         $scope.oModal2.hide();
     }
-    $scope.changepass = function(pass) {
+    $scope.changepass = function (pass) {
         $scope.passwrd = pass;
         $scope.id = $.jStorage.get("user1");
         $scope.passwrd = pass;
         MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
     }
 
-    $scope.showpasswordPopup = function() {
+    $scope.showpasswordPopup = function () {
 
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your password has updated successfully!</p>',
@@ -910,7 +910,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
@@ -918,42 +918,42 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modals = modal;
     });
 
-    $scope.openpswds = function() {
+    $scope.openpswds = function () {
         $scope.modals.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modals.hide();
     };
 
     $ionicModal.fromTemplateUrl('templates/image-shop1.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modalss = modal;
     });
 
-    $scope.openshop = function() {
+    $scope.openshop = function () {
         $scope.modalss.show();
     };
 
-    $scope.closeModals = function() {
+    $scope.closeModals = function () {
         $scope.modalss.hide();
     };
 
 })
 
-.controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
+.controller('YourBalCtrl', function ($scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
 
 
 
     //GET USER PROFILE
     $scope.pro = $.jStorage.get("user1");
-    var shopprofilecallback = function(data, status) {
+    var shopprofilecallback = function (data, status) {
         console.log(data);
         $scope.profileuser = data;
     }
@@ -961,17 +961,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     //Loading Package
-    $scope.showloading = function() {
+    $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function() {
+        $timeout(function () {
             $ionicLoading.hide();
         }, 10000);
     };
     $scope.showloading();
 
-    var yourbalancecallback = function(data, status) {
+    var yourbalancecallback = function (data, status) {
 
         if (data == "false") {
             console.log("no data");
@@ -987,7 +987,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
-    $scope.dorefresh = function() {
+    $scope.dorefresh = function () {
         MyServices.yourbalance($scope.bal, yourbalancecallback);
         $scope.showloading();
         console.log('Refresh Called');
@@ -996,7 +996,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.$broadcast('scroll.refreshComplete');
     };
 
-    var checkstate = function(data, status) {
+    var checkstate = function (data, status) {
         console.log(data);
         if (data == "1") {
             console.log("Facebook Login");
@@ -1007,13 +1007,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     };
 
-    var callAtInterval = function() {
+    var callAtInterval = function () {
         console.log("hey hey in inerval");
         MyServices.checkstatus($scope.orderidd, checkstate);
     };
 
 
-    var balanceaddcallback = function(data, status) {
+    var balanceaddcallback = function (data, status) {
         console.log(data);
         $scope.orderidd = data;
         $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
@@ -1028,7 +1028,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 scope: $scope,
 
             });
-            $timeout(function() {
+            $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 1500);
 
@@ -1036,14 +1036,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
 
             stopinterval = $interval(callAtInterval, 2000);
-            ref.addEventListener('exit', function(event) {
+            ref.addEventListener('exit', function (event) {
                 $interval.cancel(stopinterval);
             });
 
         }
     };
     $scope.user = $.jStorage.get("user1");
-    $scope.addbalance = function(amount, reason) {
+    $scope.addbalance = function (amount, reason) {
         $scope.a = amount;
         $scope.b = reason;
         console.log($scope.a, $scope.b);
@@ -1056,7 +1056,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
     $scope.add = {
@@ -1065,22 +1065,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         reason: ""
     };
 
-    $scope.changeamountinr = function(amount) {
+    $scope.changeamountinr = function (amount) {
         $scope.add.amountinr = amount * $scope.percent / 100;
     };
-    $scope.changeamount = function(amountinr) {
+    $scope.changeamount = function (amountinr) {
         $scope.add.amount = amountinr / $scope.percent * 100;
     };
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     }
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modal.hide();
     };
     //popup
-    $scope.showPopup = function() {
+    $scope.showPopup = function () {
         $scope.data = {}
 
         // An elaborate, custom popup
@@ -1090,7 +1090,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             scope: $scope,
 
         });
-        $timeout(function() {
+        $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 1500);
     };
@@ -1101,7 +1101,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
 
-    $scope.topayment = function() {
+    $scope.topayment = function () {
         ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
 
         //        stopinterval = $interval(callAtInterval, 10000);
@@ -1111,99 +1111,97 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices,$cordovaCamera) {
-	//view products start
-	var viewmyproductscallback=function(data,status){
-	console.log(data);
-		$scope.products=data;
-	}
-	$scope.myid=$.jStorage.get("user1");
-	 MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-	//view products end
-	
-	
-	//add products start
-	var createproductcallback=function(data,status){
-	console.log(data);
-		 MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-	 $scope.modal.hide();
-	}
-	$scope.insertproduct=function(ap){
-		$scope.ap=ap;
-		if($scope.ap.status==true){
-		$scope.ap.status=1;
-			console.log($scope.ap.status);
-		}
-		if($scope.ap.status==false){
-		$scope.ap.status=0;
-				console.log($scope.ap.status);
-		}
-		console.log($scope.ap);
-	$scope.insertid=$.jStorage.get("user1");
-		MyServices.createproduct($scope.insertid,$scope.ap,createproductcallback);
-	}
-	//add products end
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera) {
+    //view products start
+    var viewmyproductscallback = function (data, status) {
+        console.log(data);
+        $scope.products = data;
+    }
+    $scope.myid = $.jStorage.get("user1");
+    MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+    //view products end
 
-	//product details start
-	var getsingleproductcallback=function(data,status){
-		$scope.prodetails=data;
-		console.log($scope.prodetails);
-		if($scope.prodetails.status==1)
-		{
-		$scope.prodetails.status="Available";
-		}
-		if($scope.prodetails.status==0)
-		{
-		$scope.prodetails.status="Not Available";
-		}
-	}
-	$scope.productdetails=function(id){		
-	MyServices.getsingleproduct(id,getsingleproductcallback);
-	}	
-	//product details end
-	//categories
-	var homecallback=function(data,status){
-	console.log(data.category);
-		$scope.cat=data.category;
-	}
-	MyServices.home($scope.insertid,homecallback);
-	//edit products and status start
-	var editproductcallback=function(data,status){
-	console.log(data);
-	 $scope.modal2.hide();
-	}
-	$scope.editproducts=function(products){
-	$scope.editpro=products;
-		console.log($scope.editpro);
-	MyServices.editproduct($scope.editpro,$scope.insertid,editproductcallback);	
-	}
-	var changeproductstatuscallback=function(data,status){
-	console.log(data);
-	}
-	$scope.editstatus=function(id,status){
-		if(status==true){
-		status=1;
-		}
-		if(status==false){
-		status=0;
-		}
-		console.log(status);
-	MyServices.changeproductstatus(id,status,changeproductstatuscallback);	
-	}
-	//edit products and status end
-	   //Hide when on PC
-//        var options = {
-//            quality: 20,
-//            destinationType: Camera.DestinationType.FILE_URI,
-//            sourceType: Camera.PictureSourceType.CAMERA,
-//            allowEdit: true,
-//            encodingType: Camera.EncodingType.JPEG,
-//            saveToPhotoAlbum: true
-//        };
-	//upload editproductimage start
-	$scope.editproductimage=function(id){
-	 console.log("take picture");
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+
+    //add products start
+    var createproductcallback = function (data, status) {
+        console.log(data);
+        MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+        $scope.modal.hide();
+    }
+    $scope.insertproduct = function (ap) {
+            $scope.ap = ap;
+            if ($scope.ap.status == true) {
+                $scope.ap.status = 1;
+                console.log($scope.ap.status);
+            }
+            if ($scope.ap.status == false) {
+                $scope.ap.status = 0;
+                console.log($scope.ap.status);
+            }
+            console.log($scope.ap);
+            $scope.insertid = $.jStorage.get("user1");
+            MyServices.createproduct($scope.insertid, $scope.ap, createproductcallback);
+        }
+        //add products end
+
+    //product details start
+    var getsingleproductcallback = function (data, status) {
+        $scope.prodetails = data;
+        console.log($scope.prodetails);
+        if ($scope.prodetails.status == 1) {
+            $scope.prodetails.status = "Available";
+        }
+        if ($scope.prodetails.status == 0) {
+            $scope.prodetails.status = "Not Available";
+        }
+    }
+    $scope.productdetails = function (id) {
+            MyServices.getsingleproduct(id, getsingleproductcallback);
+        }
+        //product details end
+        //categories
+    var homecallback = function (data, status) {
+        console.log(data.category);
+        $scope.cat = data.category;
+    }
+    MyServices.home($scope.insertid, homecallback);
+    //edit products and status start
+    var editproductcallback = function (data, status) {
+        console.log(data);
+        $scope.modal2.hide();
+    }
+    $scope.editproducts = function (products) {
+        $scope.editpro = products;
+        console.log($scope.editpro);
+        MyServices.editproduct($scope.editpro, $scope.insertid, editproductcallback);
+    }
+    var changeproductstatuscallback = function (data, status) {
+        console.log(data);
+    }
+    $scope.editstatus = function (id, status) {
+            if (status == true) {
+                status = 1;
+            }
+            if (status == false) {
+                status = 0;
+            }
+            console.log(status);
+            MyServices.changeproductstatus(id, status, changeproductstatuscallback);
+        }
+        //edit products and status end
+        //Hide when on PC
+        //        var options = {
+        //            quality: 20,
+        //            destinationType: Camera.DestinationType.FILE_URI,
+        //            sourceType: Camera.PictureSourceType.CAMERA,
+        //            allowEdit: true,
+        //            encodingType: Camera.EncodingType.JPEG,
+        //            saveToPhotoAlbum: true
+        //        };
+        //upload editproductimage start
+    $scope.editproductimage = function (id) {
+        console.log("take picture");
+        $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
             console.log("here in upload image");
             console.log(imageData);
@@ -1213,28 +1211,28 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
             $scope.cameraimage = imageData;
             $scope.uploadPhoto(adminurl + "editproductimage?id=" + id, editproductimage);
-        }, function(err) {
+        }, function (err) {
             // An error occured. Show a message to the user
         });
-		 };
-	//upload editproductimage end
-	
-	 //Upload photo
+    };
+    //upload editproductimage end
+
+    //Upload photo
 
     //File Upload parameters: source, filePath, options
-    $scope.uploadPhoto = function(serverpath, callback) {
+    $scope.uploadPhoto = function (serverpath, callback) {
 
         //        console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
-            .then(function(result) {
+            .then(function (result) {
                 console.log(result);
                 callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
-            }, function(err) {
+            }, function (err) {
                 // Error
                 console.log(err);
-            }, function(progress) {
+            }, function (progress) {
                 // constant progress updates
                 $ionicLoading.show({
                     //        template: 'We are fetching the best rates for you.',
@@ -1249,58 +1247,58 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
 
     };
-        $ionicModal.fromTemplateUrl('templates/addproducts.html', {
+    $ionicModal.fromTemplateUrl('templates/addproducts.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal = modal;
     });
 
-    $scope.openedit = function() {
+    $scope.openedit = function () {
         $scope.modal.show();
     };
 
-    $scope.closeModal = function() {
+    $scope.closeModal = function () {
         $scope.modal.hide();
-    };      
-    
+    };
+
     $ionicModal.fromTemplateUrl('templates/productdetails.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal1 = modal;
     });
 
-    $scope.openprdtdetails = function() {
+    $scope.openprdtdetails = function () {
         $scope.modal1.show();
     };
 
-    $scope.closeprdtdetails = function() {
+    $scope.closeprdtdetails = function () {
         $scope.modal1.hide();
-    };  
-	
-	$ionicModal.fromTemplateUrl('templates/productedit.html', {
+    };
+
+    $ionicModal.fromTemplateUrl('templates/productedit.html', {
         scope: $scope,
         animation: 'slide-in-up'
-    }).then(function(modal) {
+    }).then(function (modal) {
         $scope.modal2 = modal;
     });
 
-    $scope.openprdtedit = function() {
+    $scope.openprdtedit = function () {
         $scope.modal2.show();
     };
 
-    $scope.closeprdtedit = function() {
+    $scope.closeprdtedit = function () {
         $scope.modal2.hide();
     };
 
 })
 
-.controller('OrderCtrl', function($scope, $stateParams, $ionicPopup,$ionicModal, $location, MyServices) {
-	var viewmyproductorderscallback=function(data,status){
-		$scope.ordr=data.queryresult;
-			console.log($scope.ordr);
-	}
-	$scope.uid=$.jStorage.get("user1");
-		MyServices.viewmyproductorders($scope.uid,viewmyproductorderscallback);	
+.controller('OrderCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices) {
+    var viewmyproductorderscallback = function (data, status) {
+        $scope.ordr = data.queryresult;
+        console.log($scope.ordr);
+    }
+    $scope.uid = $.jStorage.get("user1");
+    MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
 });

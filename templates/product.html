@@ -1,0 +1,105 @@
+<ion-view view-title="Products">
+    <ion-content class="padding">
+        <div class="incard">
+            <div class="header-card">Offline Search</div>
+            <label class="item item-input item-select area">
+                <div class="input-label">
+                    Area
+                </div>
+                <select ng-model="home.area">
+                    <option value="">All</option>
+                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                </select>
+            </label>
+
+            <label class="item item-input item-select area">
+                <div class="input-label">
+                    Categories
+                </div>
+                <select ng-model="home.category">
+                    <option value="">All</option>
+                    <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
+                </select>
+            </label>
+
+            <div class="row">
+                <div class="col">
+                    <h5 class="member">Keyword</h5>
+                </div>
+                <div class="col membershipno">
+                    <input type="text" id="" ng-model="">
+                </div>
+            </div>
+            <div class="home-or">
+                <h6>- OR -</h6>
+            </div>
+            <!--            <div class="item item-input area">-->
+            <div class="row">
+                <div class="col">
+                    <h5 class="member">Membership No.</h5>
+                </div>
+                <div class="col membershipno">
+                    <input type="text" id="normal-field" ng-model="home.membershipno">
+                </div>
+            </div>
+            <div class="padding-horizontal">
+                <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
+                <a class="button button-block button-outline button-balanced">Search</a>
+            </div>
+        </div>
+        <div class="incard">
+            <div class="header-card">Products</div>
+            <div class="row productsCol">
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+            </div>
+            <div class="row productsCol">
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+            </div>
+            <div class="row productsCol">
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+                <div class="col col-33 text-center">
+                    <img src="img/icon.png" class="full-image">
+                    <h5>Xperia z</h5>
+                    <h5>9000</h5>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

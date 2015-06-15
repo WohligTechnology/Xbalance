@@ -155,6 +155,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                 controller: 'OrderCtrl'
             }
         }
+    })  
+    .state('app.products', {
+        url: "/products",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/product.html",
+                controller: 'ProductCtrl'
+            }
+        }
     })
 
     .state('app.profile', {

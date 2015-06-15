@@ -871,3 +871,8 @@ a.item.item-thumbnail-left.bod-bottom {
     padding-left: 100px;
     margin: 8px 0 0px 0!important;
 }
+
+.row.productsCol {
+    border-bottom: 1px solid #ddd;
+    padding-top: 12px;
+}
