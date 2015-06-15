@@ -885,3 +885,7 @@ a.item.item-thumbnail-left.bod-bottom {
 ion-content.has-headers.has-header {
     top: 94px;
 }
+
+a.button.border-none {
+  border: 0px;
+}
