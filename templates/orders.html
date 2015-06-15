@@ -6,7 +6,7 @@
         My Purchases
       </a>
             <a class="tab-item" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">
-        My Orders
+        My Sales
       </a>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <div class="incard">
             <div class="list" ng-if="tabvalue == 1">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
-                <div class="item item-thumbnail-left bod-bottom" ng-click="openpurchase();">
+                <div class="item item-thumbnail-left" ng-click="openpurchase();">
                     <img src="img/icon.png">
                     <h2 class="leftnames">Name: <span>Xperia U</span></h2>
                     <h2 class="leftnames">Price: <span>8000</span></h2>
@@ -32,7 +32,7 @@
 
             <div class="list" ng-if="tabvalue == 2">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
-                <div class="item item-thumbnail-left bod-bottom" ng-click="opensale();">
+                <div class="item item-thumbnail-left" ng-click="opensale();">
                     <img src="img/icon.png">
                     <h2 class="leftnames">Name: <span>Xperia U</span></h2>
                     <h2 class="leftnames">Price: <span>8000</span></h2>
