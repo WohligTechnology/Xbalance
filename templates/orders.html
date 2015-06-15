@@ -1,23 +1,43 @@
 <ion-view view-title="My Orders">
-   <div class="centered" ng-if="ordr==0">No Orders.</div>{{ordr.length}}
-    <ion-content class="padding">
-        <div class="incard" ng-if="ordr!=0">
-            <div class="list">
-                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">
-<!--                    <img src="img/icon.png">-->
+    <div class="centered" ng-if="ordr==0">No Orders.</div>{{ordr.length}}
+    <div class="tabs-striped tabs-top tabs-background-royal tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item" ng-click="tabvalue = 1;"  ng-class="{'active': tabvalue == 1}">
+        My Purchases
+      </a>
+            <a class="tab-item" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">
+        My Orders
+      </a>
+        </div>
+    </div>
+    <ion-content class="padding has-headers">
+        <div class="incard">
+            <div class="list" ng-if="tabvalue == 1">
+                <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
+                <div class="item item-thumbnail-left bod-bottom">
+                    <img src="img/icon.png">
+                    <h2 class="leftnames">Name: <span>Xperia U</span></h2>
+                    <h2 class="leftnames">Price: <span>8000</span></h2>
+                    <h2 class="leftnames">Transaction ID: <span>78787989</span></h2>
+                </div>
+                <!--
+                   <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">
                     <img ng-src="{{o.productimage|serverimage}}">
                     <h2 class="leftnames">Name: <span>{{o.productname}}</span></h2>
                     <h2 class="leftnames">Price: <span>{{o.price}}</span></h2>
                     <h2 class="leftnames">Transaction ID: <span>{{o.transactionid}}</span></h2>
                 </div>
-<!--
+-->
+            </div>
+
+            <div class="list" ng-if="tabvalue == 2">
+                <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
                 <div class="item item-thumbnail-left bod-bottom">
                     <img src="img/icon.png">
-                    <h2 class="leftnames">Name: <span>XperiaZ</span></h2>
-                    <h2 class="leftnames">Price: <span>40000</span></h2>
-                    <h2 class="leftnames">Transaction ID: <span>1234</span></h2>
+                    <h2 class="leftnames">Name: <span>Xperia U</span></h2>
+                    <h2 class="leftnames">Price: <span>8000</span></h2>
+                    <h2 class="leftnames">Transaction ID: <span>78787989</span></h2>
                 </div>
--->
             </div>
         </div>
     </ion-content>

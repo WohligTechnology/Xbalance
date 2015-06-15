@@ -1,0 +1,97 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-royal">
+        <h1 class="title">Checkout</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeform()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="incard">
+            <div class="header-card">Shipping Information</div>
+            <form ng-submit="">
+                <div class="list buy-form">
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="Name">
+                    </div>
+                    <div class="item item-input">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="item item-input">
+                        <input type="tel" placeholder="Phone Number">
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <textarea placeholder="Address"></textarea>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="City">
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="State">
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="Country">
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <input type="text" placeholder="Pincode">
+                    </div>
+                </div>
+            </form>
+            <div class="padding">
+                <button class="button button-block button-royal" ng-click="showdiffaddress()">
+                    Ship to different address
+                </button>
+            </div>
+
+            <div class="padding" ng-show="diffadd">
+                <button class="button button-block button-royal" ng-click="hidediffaddress()">
+                    Ship to Same address
+                </button>
+            </div>
+
+            <div class="" ng-show="diffadd">
+                <div class="header-card">Shipping Information</div>
+                <form ng-submit="">
+                    <div class="list buy-form">
+                        <div class="item item-input text-capitalize">
+                            <input type="text" placeholder="Name">
+                        </div>
+                        <div class="item item-input">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="item item-input">
+                            <input type="tel" placeholder="Phone Number">
+                        </div>
+                        <div class="item item-input text-capitalize">
+                            <textarea placeholder="Address"></textarea>
+                        </div>
+                        <div class="item item-input text-capitalize">
+                            <input type="text" placeholder="City">
+                        </div>
+                        <div class="item item-input text-capitalize">
+                            <input type="text" placeholder="State">
+                        </div>
+                        <div class="item item-input item-select">
+                            <div class="input-label">
+                                Country
+                            </div>
+                            <select>
+                                <option>Select your Country</option>
+                                <option>India</option>
+                                <option>USA</option>
+                                <option>Bangladesh</option>
+                            </select>
+                        </div>
+                        <div class="item item-input text-capitalize">
+                            <input type="text" placeholder="Pincode">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-royal">
+                    Submit &amp; Buy
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

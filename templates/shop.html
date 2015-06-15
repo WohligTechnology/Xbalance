@@ -84,9 +84,10 @@
             </div>
             <div class="item item-input item-text-wrap itemimage">
                 <div class="input-div" ng-repeat="i in img">
-                    <button class="button" ng-click="openshops();">
-                        <img ng-src="{{i.photo|serverimage}}">
-                    </button>
+<!--                    <button class="button" ng-click="openshops();">-->
+                    <a class="button" href="#/app/productdetail">
+                        <img ng-src="{{i.photo|serverimage}}" class="full-image">
+                    </a>
                 </div>
 
             </div>

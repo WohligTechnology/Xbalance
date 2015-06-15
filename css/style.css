@@ -876,3 +876,12 @@ a.item.item-thumbnail-left.bod-bottom {
     border-bottom: 1px solid #ddd;
     padding-top: 12px;
 }
+
+.buy-form .input-label {
+    color: #A3A3A3;
+    font-weight: 500;
+}
+
+ion-content.has-headers.has-header {
+    top: 94px;
+}
