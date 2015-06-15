@@ -73,7 +73,7 @@
                 <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
                 <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="offlineclass">Offline</a>
             </div>
-            <div class="" ng-if="tabvalue == 1">
+            <div class="" ng-if="tabvalue == 2">
                 <label class="item item-input item-select area">
                     <div class="input-label">
                         Area
@@ -110,13 +110,13 @@
                 </div>
             </div>
 
-            <div class="" ng-if="tabvalue == 2">
+            <div class="" ng-if="tabvalue == 1">
                 <label class="item item-input item-select area">
                     <div class="input-label">
                         Area
                     </div>
                     <select ng-model="home.area">
-                        <option value="">All</option>
+                        <option value="">Mumbai</option>
                         <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                     </select>
                 </label>
@@ -125,7 +125,7 @@
                     <div class="input-label">
                         Categories
                     </div>
-                    <select ng-model="home.category">
+                    <select ng-model="product.category">
                         <option value="">All</option>
                         <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
                     </select>
@@ -136,7 +136,7 @@
                         <h5 class="member">Keyword</h5>
                     </div>
                     <div class="col membershipno">
-                        <input type="text" id="" ng-model="">
+                        <input type="text" id="" ng-model="product.productname">
                     </div>
                 </div>
                 <div class="home-or">
@@ -148,12 +148,12 @@
                         <h5 class="member">Membership No.</h5>
                     </div>
                     <div class="col membershipno">
-                        <input type="text" id="normal-field" ng-model="home.membershipno">
+                        <input type="text" id="normal-field" ng-model="product.membershipno">
                     </div>
                 </div>
                 <div class="padding-horizontal">
 <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
-                      <a class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</a>
+                      <button class="button button-block button-outline button-balanced" ng-click="searchproduct(product);">Search</button>
                 </div>
             </div>
         </div>

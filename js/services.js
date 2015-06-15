@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -20,19 +20,10 @@ myservices.factory('MyServices', function($http) {
         //        console.log("Demo");
         $http.get(adminurl + "home?user=" + user, {}).success(homecallback);
     },
-		returnval.searchproduct = function(product, searchproductcallback) {
-        //        console.log("Demo");
-        $http.get(adminurl + "searchproduct?product=" + product, {}).success(searchproductcallback);
+		returnval.searchproduct = function(productname,membershipno,category,searchproductcallback) {
+               console.log("searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category);
+        $http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category, {}).success(searchproductcallback);
     },
-    //		returnval.setsearch=function(search) {
-    //			console.log("in service");
-    //			console.log(search);
-    //			$.jStorage.set("search",search);
-    //			
-    //		},
-    //		returnval.getsearch=function(search) {
-    //			return $.jStorage.get("search");
-    //		},
     returnval.getallcategory1 = function(getallcategory1callback) {
         $http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);
 
