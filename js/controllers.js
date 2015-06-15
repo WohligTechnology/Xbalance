@@ -174,8 +174,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
-    
-    .controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+
+.controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+
+.controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({

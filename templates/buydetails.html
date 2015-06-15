@@ -1,18 +1,18 @@
-<ion-modal-view>
+<ion-view view-title="My Product Details">
     <ion-header-bar class="bar-royal">
         <div class="buttons">
             <button class="button button-clear" ng-click="closeprdtdetails()">Close</button>
         </div>
         <h1 class="title">My Product Details</h1>
         <div class="buttons">
-            <!--            <button class="button button-clear" ng-click="closeprdtdetails()">Close</button>-->
-            <a class="button button-icon ion-edit small-icon" ng-click="openprdtedit();"></a>
+<!--            <button class="button button-clear" ng-click="closeprdtdetails()">Close</button>-->
+             <a class="button button-icon ion-edit small-icon" ng-click="openprdtedit();"></a>
         </div>
     </ion-header-bar>
     <ion-content class="padding">
         <div class="incard">
             <div class="profile-img">
-                <!--                <img src="img/icon.png">-->
+<!--                <img src="img/icon.png">-->
                 <img ng-src="{{prodetails.image|serverimage}}">
                 <h3>{{prodetails.name}}</h3>
             </div>
@@ -27,20 +27,20 @@
                 <ion-item class="item-left">
                     <h2>Quantity</h2>
                     <div class="pull-right item-right text-capitalize">
-                        {{prodetails.quantity}}
+                         {{prodetails.quantity}}
                     </div>
                 </ion-item>
 
                 <ion-item class="item-left">
                     <h2>SKU</h2>
                     <div class="pull-right item-right text-capitalize">
-                        {{prodetails.sku}}
+                         {{prodetails.sku}}
                     </div>
                 </ion-item>
-                <ion-item class="item-left">
+                 <ion-item class="item-left">
                     <h2>Category</h2>
                     <div class="pull-right item-right text-capitalize">
-                        {{prodetails.categoryname}}
+                         {{prodetails.categoryname}}
                     </div>
                 </ion-item>
 
@@ -62,4 +62,4 @@
             </div>
         </div>
     </ion-content>
-</ion-modal-view>
+</ion-view>
