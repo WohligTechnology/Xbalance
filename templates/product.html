@@ -1,14 +1,14 @@
 <ion-view view-title="Products">
     <ion-content class="padding">
         <div class="incard">
-            <div class="header-card">Offline Search</div>
+            <div class="header-card">Online Search</div>
             <label class="item item-input item-select area">
                 <div class="input-label">
                     Area
                 </div>
                 <select ng-model="home.area">
                     <option value="">Mumbai</option>
-                    <option ng-repeat="a in a" value="{{a.id}}">{{a.name}}</option>
+<!--                    <option ng-repeat="singlearea in area" value="{{singlearea.id}}">{{singlearea.name}}</option>-->
                 </select>
             </label>
 
@@ -16,8 +16,7 @@
                 <div class="input-label">
                     Categories
                 </div>
-                <select ng-model="product.category">
-                    <option ng-repeat="c in c" value="{{c.id}}">{{c.name}}</option>
+                <select ng-model="product.category" ng-options="cat.id as cat.name for cat in category">
                 </select>
             </label>
 
@@ -49,7 +48,7 @@
         <div class="incard">
             <div class="header-card">Products</div>
             <div class="row productsCol" ng-repeat="sp in spr">
-                <div class="col col-33 text-center" ng-repeat="s in sp">
+                <div class="col col-33 text-center" ng-repeat="s in sp" ng-click="getproduct(s.productid)">
                     <img ng-src={{s.image|serverimage}} class="full-image">
                     <h5>{{s.name}}</h5>
                     <h5>{{s.price}}</h5>
