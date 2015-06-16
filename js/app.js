@@ -126,6 +126,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                 controller: 'ProductdetailCtrl'
             }
         }
+    })	
+.state('app.dealerprd', {
+        url: "/dealerprd",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/dealerprd.html",
+                controller: 'DealerprdCtrl'
+            }
+        }
     })
         .state('app.addbalance', {
             url: "/addbalance",
