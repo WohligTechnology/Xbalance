@@ -887,5 +887,13 @@ ion-content.has-headers.has-header {
 }
 
 a.button.border-none {
-  border: 0px;
+    border: 0px;
+}
+
+h5.bold {
+    font-weight: 700;
+}
+
+input.pull-right {
+    text-align: right;
 }

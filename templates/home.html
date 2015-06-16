@@ -1,5 +1,4 @@
 <ion-view view-title="Home">
-
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
     </ion-nav-buttons>
@@ -59,12 +58,14 @@
 
 
         </div>
-        <div class="button-bar">
-            <a class="button button-outline button-royal"  ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
+
+        <div class="incard">
+                   <div class="button-bar bars">
+            <a class="button button-outline button-royal" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
             <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
             <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
         </div>
-        <div class="incard">
+           
             <div class="header-card">Find shops & Products</div>
             <!--
             <label class="item item-input area">
@@ -80,7 +81,7 @@
                     </div>
                     <select ng-model="home.area">
                         <option value="">Mumbai</option>
-                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                        <!--                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>-->
                     </select>
                 </label>
 
@@ -122,13 +123,25 @@
             <div class="" ng-if="tabvalue == 2">
                 <label class="item item-input item-select area">
                     <div class="input-label">
+                        City
+                    </div>
+                    <select ng-model="home.area">
+<!--                        <option value="">Mumbai</option>-->
+                                                <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select area">
+                    <div class="input-label">
                         Area
                     </div>
                     <select ng-model="home.area">
-                        <option value="">All</option>
-                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+<!--                        <option value="">Sion</option>-->
+                                                <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                     </select>
                 </label>
+                
+
                 <label class="item item-input item-select area">
                     <div class="input-label">
                         Categories

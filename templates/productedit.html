@@ -14,16 +14,17 @@
                         <div class="holder">Edit</div>
                     </div>
                     <div class="item item-input text-capitalize">
-                     <input type="text" placeholder="Name" ng-model="prodetails.name">
+                       <span class="input-label">Name</span>
+                        <input type="text" placeholder="Name" ng-model="prodetails.name" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="Price" ng-model="prodetails.price">
+                        <input type="text" placeholder="Price" ng-model="prodetails.price" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="Quantity" ng-model="prodetails.quantity">
+                        <input type="text" placeholder="Quantity" ng-model="prodetails.quantity" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="SKU" ng-model="prodetails.sku">
+                        <input type="text" placeholder="SKU" ng-model="prodetails.sku" class="pull-right">
                     </div>
                     <div class="item item-toggle">
                         <span style="font-weight:bold;">Status</span>
@@ -34,21 +35,21 @@
                             </div>
                         </label>
                     </div>
-                      <label class="item item-input item-select area">
-                <div class="input-label">
-					<span style="font-weight:bold;">Category</span>
-                </div>
-                <select ng-model="home.area">
-                    <option value="">All</option>
-                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                </select>
-            </label>
+                    <label class="item item-input item-select area">
+                        <div class="input-label">
+                            <span style="font-weight:bold;">Category</span>
+                        </div>
+                        <select ng-model="home.area">
+                            <option value="">All</option>
+                            <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                        </select>
+                    </label>
                     <div class="item  item-input text-capitalize">
                         <textarea placeholder="Description" ng-model="prodetails.description"></textarea>
                     </div>
                 </div>
             </form>
-               <div class="padding">
+            <div class="padding">
                 <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>
             </div>
         </div>
