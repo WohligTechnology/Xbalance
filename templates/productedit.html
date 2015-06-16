@@ -8,22 +8,25 @@
     <ion-content class="padding">
         <div class="incard">
             <form ng-submit="">
-                <div class="list">
+                <div class="list prd-form">
                     <div class="profile-img" ng-click="editproductimage(prodetails.id);">
                         <img ng-src="{{prodetails.image|serverimage}}">
                         <div class="holder">Edit</div>
                     </div>
                     <div class="item item-input text-capitalize">
-                       <span class="input-label">Name</span>
+                        <span class="input-label">Name</span>
                         <input type="text" placeholder="Name" ng-model="prodetails.name" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
+                        <span class="input-label">Price</span>
                         <input type="text" placeholder="Price" ng-model="prodetails.price" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
+                        <span class="input-label">Quantity</span>
                         <input type="text" placeholder="Quantity" ng-model="prodetails.quantity" class="pull-right">
                     </div>
                     <div class="item  item-input text-capitalize">
+                        <span class="input-label">SKU</span>
                         <input type="text" placeholder="SKU" ng-model="prodetails.sku" class="pull-right">
                     </div>
                     <div class="item item-toggle">
@@ -44,6 +47,9 @@
                             <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                         </select>
                     </label>
+                    <div class="item item-input item-text-wrap header">
+                        <h2>Description</h2>
+                    </div>
                     <div class="item  item-input text-capitalize">
                         <textarea placeholder="Description" ng-model="prodetails.description"></textarea>
                     </div>
