@@ -164,6 +164,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+        .state('app.notification', {
+        url: "/notification",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/notification.html",
+                controller: 'NotificationCtrl'
+            }
+        }
+    })
     
     .state('app.orders', {
         url: "/orders",

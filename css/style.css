@@ -913,3 +913,7 @@ h3.leftname {
 .title.title-left.header-item {
   text-align: center;
 }
+
+.incard.notification {
+  padding: 10px 15px 0px;
+}
