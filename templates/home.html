@@ -2,9 +2,7 @@
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
     </ion-nav-buttons>
-
     <ion-content class="padding">
-
         <ion-refresher ng-controller="YourBalCtrl" pulling-text="Pull To Refresh" on-refresh="dorefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
         <div class="incard">
