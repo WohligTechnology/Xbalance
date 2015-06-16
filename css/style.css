@@ -902,3 +902,14 @@ input.pull-right {
     font-weight: 700;
     font-size: 14px;
 }
+
+h3.leftname {
+    margin-top: 4px!important;
+}
+.blue {
+  color: #3185D7;
+}
+
+.title.title-left.header-item {
+  text-align: center;
+}

@@ -8,7 +8,7 @@
                 </div>
                 <select ng-model="home.area">
                     <option value="">Mumbai</option>
-<!--                    <option ng-repeat="singlearea in area" value="{{singlearea.id}}">{{singlearea.name}}</option>-->
+                    <!--                    <option ng-repeat="singlearea in area" value="{{singlearea.id}}">{{singlearea.name}}</option>-->
                 </select>
             </label>
 
@@ -28,10 +28,11 @@
                     <input type="text" id="" ng-model="product.productname">
                 </div>
             </div>
+
             <div class="home-or">
                 <h6>- OR -</h6>
             </div>
-            <!--            <div class="item item-input area">-->
+
             <div class="row">
                 <div class="col">
                     <h5 class="member">Membership No.</h5>
@@ -40,23 +41,25 @@
                     <input type="text" id="normal-field" ng-model="product.membershipno">
                 </div>
             </div>
+
             <div class="padding-horizontal">
-                <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
                 <a class="button button-block button-outline button-balanced" ng-click="searchproduct(product);">Search</a>
             </div>
         </div>
+
         <div class="incard">
             <div class="header-card">Products</div>
             <div class="row productsCol" ng-repeat="sp in spr">
                 <div class="col col-33 text-center" ng-repeat="s in sp" ng-click="getproduct(s.productid)">
-                   <a href="#/app/productdetail">
-                    <img ng-src={{s.image|serverimage}} class="full-image">
-                    <h5 class="bold">{{s.name}}</h5>
-                    <h5>{{s.price}}</h5>
+                    <a href="#/app/productdetail">
+                        <img ng-src={{s.image|serverimage}} class="full-image">
+                        <h5 class="bold">{{s.name}}</h5>
+                        <h5>{{s.price}}</h5>
                     </a>
                 </div>
             </div>
-<!--
+            
+            <!--
             <div class="row productsCol">
                 <div class="col col-33 text-center">
                     <img src="img/icon.png" class="full-image">
@@ -75,7 +78,7 @@
                 </div>
             </div>
 -->
-<!--
+            <!--
             <div class="row productsCol">
                 <div class="col col-33 text-center">
                     <img src="img/icon.png" class="full-image">

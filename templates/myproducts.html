@@ -1,17 +1,18 @@
 <ion-view view-title="My Products">
     <ion-nav-buttons side="right">
-        <button class="button button-icon ion-plus-round small-icon"  ng-click="openedit();"></button>
+        <button class="button button-icon ion-plus-round small-icon" ng-click="openedit();"></button>
     </ion-nav-buttons>
     <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
     <ion-content class="padding">
         <div class="incard" ng-if="products!=0">
             <div class="list">
-                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">
-                        <img ng-src="{{pro.image|serverimage}}">
-                        <h2 class="leftname">Name: <span>{{pro.name}}</span></h2>
-
-                        <h2 class="leftname">Price: <span>{{pro.price}}</span></h2>
-                    
+<!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
+                     <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
+                    <img ng-src="{{pro.image|serverimage}}">
+                    <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
+                    <h3 class="leftname">Price: <span>{{pro.price}}</span></h3>
+                    <h3 class="leftname">Quantity: <span>{{pro.quantity}}</span></h3>
+                    <h3 class="leftname">Status: <span>{{pro.status}}</span></h3>
                     <!--
                 <a class="item item-thumbnail-left bod-bottom" href="#">
                     <img src="img/icon.png">
@@ -19,12 +20,12 @@
                     <h2 class="leftname">Price: <span>40000</span></h2>
                 </a>
 -->
-            </div>
-            <div class="padding">
-                <button class="button button-block button-assertive" ng-click="openedit();">Add More Products</button>
+                </div>
+                <div class="padding">
+                    <button class="button button-block button-assertive" ng-click="openedit();">Add More Products</button>
+                </div>
             </div>
         </div>
-         </div>
         </div>
     </ion-content>
 </ion-view>
