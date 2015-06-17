@@ -3,33 +3,33 @@
 		<div class="incard">
 			<div class="profile-img">
 				<img ng-src="img/1.jpg">
-				<h3>Xperia Z</h3>
+				<h3>{{getsinglepro.name}}</h3>
 			</div>
 			<div class="list profile-cont padtop5">
 				<ion-item class="item-left">
 					<h2>Price</h2>
 					<div class="pull-right item-right text-capitalize">
-						7000
+						{{getsinglepro.price}}
 					</div>
 				</ion-item>
 
 				<ion-item class="item-left">
 					<h2>Quantity</h2>
 					<div class="pull-right item-right text-capitalize">
-						20
+						{{getsinglepro.quantity}}
 					</div>
 				</ion-item>
 
 				<ion-item class="item-left">
 					<h2>SKU</h2>
 					<div class="pull-right item-right text-capitalize">
-						4565465465
+						{{getsinglepro.sku}}
 					</div>
 				</ion-item>
 				<ion-item class="item-left">
 					<h2>Category</h2>
 					<div class="pull-right item-right text-capitalize">
-						546544654
+						{{getsinglepro.categoryname}}
 					</div>
 				</ion-item>
 
@@ -39,10 +39,10 @@
 						Avaliable
 					</div>
 				</ion-item>
-				<ion-item class="item-left" href="#/app/dealerprd">
+				<ion-item class="item-left" ng-click=getallprod(getsinglepro.user);>
 					<h2>Shop</h2>
 					<div class="pull-right item-right text-capitalize blue">
-						Croma
+						{{getsinglepro.shopname}}
 					</div>
 				</ion-item>
 				<div class="item item-input item-text-wrap header">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="item item-input item-text-wrap">
 					<div class="input itemproducts">
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+						{{getsinglepro.description}}
 					</div>
 				</div>
 				<!--

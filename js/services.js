@@ -142,6 +142,20 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(changeproductstatuscallback);
     },
+		
+//	returnval.getalluserproducts = function(id, getalluserproductscallback) {
+//        $http.get(adminurl + "getalluserproducts?userid=" + id, {}).success(getalluserproductscallback);
+//    },
+		 returnval.getalluserproducts = function(id,getalluserproductscallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "getalluserproducts",
+            method: "POST",
+            data: {
+                'userid': id,
+            }
+        }).success(getalluserproductscallback);
+    },
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	

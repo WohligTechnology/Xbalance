@@ -119,7 +119,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })
 	.state('app.productdetail', {
-        url: "/productdetail",
+        url: "/productdetail/:id",
         views: {
             'menuContent': {
                 templateUrl: "templates/buydetails.html",

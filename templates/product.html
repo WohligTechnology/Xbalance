@@ -50,12 +50,12 @@
         <div class="incard">
             <div class="header-card">Products</div>
             <div class="row productsCol" ng-repeat="sp in spr">
-                <div class="col col-33 text-center" ng-repeat="s in sp" ng-click="getproduct(s.productid)">
-                    <a href="#/app/productdetail">
-                        <img ng-src={{s.image|serverimage}} class="full-image">
+                <div class="col col-33 text-center" ng-repeat="s in sp">
+<!--                    <a href="#/app/productdetail">-->
+                        <img ng-src={{s.image|serverimage}} ng-click="getproduct(s.productid)" class="full-image">
                         <h5 class="bold">{{s.name}}</h5>
                         <h5>{{s.price}}</h5>
-                    </a>
+<!--                    </a>-->
                 </div>
             </div>
             

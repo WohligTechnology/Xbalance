@@ -227,6 +227,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//    console.log($scope.productname1);
 	//    console.log($scope.membershipno1);
 	//    console.log($scope.category1);
+	//product detail
+	var getsingleproductcallback = function (data, status) {
+		$scope.getpro=data;
+//			console.log($scope.getsinglepro);
+		}
+	$scope.getproduct = function (id) {
+		console.log(id);
+		MyServices.getsingleproduct(id, getsingleproductcallback);
+		$location.url("/app/productdetail/" + id);
+	}
 	var searchproductcallback = function (data, status) {
 		//		console.log(data);
 		$scope.spr = data;
@@ -1418,19 +1428,24 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+.controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+$scope.getallprod=function(id){
+
+}
+})
 
 
 .controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
     
     
     .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-	$scope.getproduct = function (id) {
-		var getsingleproductcallback = function (data, status) {
-			console.log(data);
-		}
-		MyServices.getsingleproduct(id, getsingleproductcallback);
+	$scope.prodid=$stateParams.id;
+	console.log($scope.prodid);
+	var getsingleproductcallback=function(data,status){
+	$scope.getsinglepro=data;
+		console.log($scope.getsinglepro);
 	}
+	MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
 	$ionicModal.fromTemplateUrl('templates/modal-form.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
