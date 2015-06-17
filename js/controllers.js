@@ -1429,7 +1429,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-
+var getalluserproductscallback=function(data,status){
+$scope.break=data.queryresult;
+	$scope.break = partitionarray($scope.break, 3);
+	console.log($scope.break);
+	
+}
+	$scope.getprod=$stateParams.id;
+	MyServices.getalluserproducts($scope.getprod, getalluserproductscallback);
 })
 
 
@@ -1439,8 +1446,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
 	//all products
 	var getalluserproductscallback=function(data,status){
-console.log(data.queryresult);
-				$location.url("/app/dealerprd/" + $scope.p.productname);
+//console.log(data.queryresult);
+				$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
 
 }
 	$scope.getallprod=function(id){
@@ -1479,4 +1486,5 @@ MyServices.getalluserproducts(id, getalluserproductscallback);
 		$scope.diffadd = false;
 	}
 
-});
+})
+.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});

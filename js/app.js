@@ -128,7 +128,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })	
 .state('app.dealerprd', {
-        url: "/dealerprd",
+        url: "/dealerprd/:id",
         views: {
             'menuContent': {
                 templateUrl: "templates/dealerprd.html",

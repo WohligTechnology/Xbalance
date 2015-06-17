@@ -143,11 +143,8 @@ myservices.factory('MyServices', function($http) {
         }).success(changeproductstatuscallback);
     },
 		
-//	returnval.getalluserproducts = function(id, getalluserproductscallback) {
-//        $http.get(adminurl + "getalluserproducts?userid=" + id, {}).success(getalluserproductscallback);
-//    },
 		 returnval.getalluserproducts = function(id,getalluserproductscallback) {
-        //        			console.log(profile);
+                			console.log(id);
         $http({
             url: adminurl + "getalluserproducts",
             method: "POST",
@@ -159,6 +156,45 @@ myservices.factory('MyServices', function($http) {
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	
+		 returnval.buyproduct = function(user,buyproductcallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "buyproduct",
+            method: "POST",
+            data: {
+                'userid': user,
+                'productid': user,
+                'quantity': user,
+                'name': user,
+                'email': user,
+                'contactno': user,
+                'billingaddress': user,
+                'billingcity': user,
+                'billingstate': user,
+                'billingcountry': user,
+                'billingpincode': user,
+                'shippingaddress': user,
+                'shippingcity': user,
+                'shippingaddress': user,
+//				 $userid=$data['userid'];
+//        $productid=$data['productid'];
+//        $quantity=$data['quantity'];
+//        $name=$data['name'];
+//        $email=$data['email'];
+//        $billingaddress=$data['billingaddress'];
+//        $billingcity=$data['billingcity'];
+//        $billingstate=$data['billingstate'];
+//        $billingcountry=$data['billingcountry'];
+//        $billingpincode=$data['billingpincode'];
+//        $shippingaddress=$data['shippingaddress'];
+//        $shippingcity=$data['shippingcity'];
+//        $shippingcountry=$data['shippingcountry'];
+//        $shippingstate=$data['shippingstate'];
+//        $shippingpincode=$data['shippingpincode'];
+//        $sameas=$data['sameas'];
+            }
+        }).success(buyproductcallback);
+    },
  returnval.viewmyproductorders = function(user,viewmyproductorderscallback) {
         //        			console.log(profile);
         $http({
