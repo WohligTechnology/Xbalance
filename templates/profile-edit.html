@@ -16,12 +16,14 @@
                         <div class="item item-input item-select text-capitalize">
                             <div class="input-label different">Area</div>
                             <select ng-model="profile.areaid">
+								<option value="">All</option>
                                 <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
                             </select>
                         </div>
                         <div class="item item-input item-select text-capitalize">
                             <div class="input-label different">Category</div>
                             <select ng-model="profile.categoryid">
+                               <option value="">All</option>
                                 <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                             </select>
                         </div>

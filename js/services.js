@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -108,11 +108,19 @@ myservices.factory('MyServices', function($http) {
         }).success(becomeamembercallback);
     },
 		returnval.editproduct = function(product,id,editproductcallback) {
+		console.log(product.id);
+		console.log(product.name);
+		console.log(product.sku);
+		console.log(product.price);
+		console.log(product.description);
+		console.log(product.status);
+		console.log(product.user);
+		console.log(product.quantity);
         $http({
             url: adminurl + "editproduct",
             method: "POST",
             data: {
-               'id': product.productid,
+               'id': product.id,
                'name': product.name,
                 'sku': product.sku,
                 'price': product.price,
@@ -152,7 +160,7 @@ myservices.factory('MyServices', function($http) {
     	 $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
     	},*/
     returnval.updatecat = function(user, id, updatecatcallback) {
-        //		console.log("updatecat?user=" + user + "&id=" + id);
+        		console.log("updatecat?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatecat?user=" + user + "&id=" + id, {}).success(updatecatcallback);
     }
     returnval.updatearea = function(user, id, updateareacallback) {

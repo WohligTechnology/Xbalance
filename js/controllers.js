@@ -900,12 +900,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 	var shopprofilecallback = function (data, status) {
 		$scope.profile = data;
-		console.log($scope.profile);
 		MyServices.getallcategory1(getallcategory1callback);
 		MyServices.getarea(getareacallback);
 
 	}
-
+//    $scope.profile.categoryid=$scope.profile.category;
+//		$scope.profile.areaid=$scope.profile.area;
 	MyServices.profile($scope.pro, shopprofilecallback);
 	MyServices.shopphoto($scope.pro, shopphotocallback);
 	MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
@@ -925,7 +925,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			console.log("no data");
 		} else {
 			console.log("Updated");
+//			MyServices.profile($scope.pro, shopprofilecallback);
 			$scope.showeditPopup();
+			
+			$location.url("/app/profile");
 		}
 	}
 	$scope.profileupdate = function (profile) {
@@ -935,7 +938,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		console.log($scope.id);
 		MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
 
-		$location.url("/app/profile");
+		
 
 	}
 
@@ -1245,6 +1248,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//edit products and status start
 	var editproductcallback = function (data, status) {
 		console.log(data);
+		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal2.hide();
 	}
 	$scope.editproducts = function (products) {
