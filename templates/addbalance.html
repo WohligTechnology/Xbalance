@@ -15,23 +15,23 @@
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Amount in INR:</span>
-                        <input type="text" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);">
+                        <input type="text" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);" class="disable">
                         <!-- <span>{{add.amount*percent/100|number:2}}   </span>    -->
                     </label>
 
                     <label class="item item-input">
                         <span class="input-label">Reason:</span>
-                        <input type="text" ng-model="add.reason">
+                        <input type="text" ng-model="add.reason" class="disable">
                     </label>
-                    <div class="row">
+                    <div class="row pad">
                         <div class="col">
-                            Purchase Value
+                           <p class="addb-p"> Purchase Value</p> 
                         </div>
                         <div class="col">
-                            Sell Value
+                           <p class="addb-p">Sell Value</p> 
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row pad">
                         <div class="col">
                             <input type="text" ng-model="add.amount" class="disable" disabled>
                         </div>

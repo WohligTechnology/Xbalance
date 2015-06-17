@@ -906,34 +906,47 @@ input.pull-right {
 h3.leftname {
     margin-top: 4px!important;
 }
+
 .blue {
-  color: #3185D7;
+    color: #3185D7;
 }
 
 .title.title-left.header-item {
-  text-align: center;
+    text-align: center;
 }
 
 .incard.notification {
-  padding: 10px 15px 0px;
+    padding: 10px 15px 0px;
 }
 
 .header-cards {
-  padding: 3px 0px;
-  font-weight: bold;
-  font-size: 16px;
-  border-bottom: 1px solid #ddd;
+    padding: 3px 0px;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
 }
 
 .bar .button.button-icon.small-icon.arrows:before {
-  font-size: 22px;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+    font-size: 22px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
 
 .item-content.main {
-  padding: 16px 49px 16px 16px!important;
+    padding: 16px 49px 16px 16px!important;
+}
+
+input.disable {
+    padding-left: 5px;
+}
+
+.row.pad {
+    padding-left: 10px;
+}
+
+p.addb-p {
+    font-size: 16px;
 }
