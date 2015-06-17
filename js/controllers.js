@@ -1429,9 +1429,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-$scope.getallprod=function(id){
 
-}
 })
 
 
@@ -1439,6 +1437,18 @@ $scope.getallprod=function(id){
     
     
     .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+	//all products
+	var getalluserproductscallback=function(data,status){
+console.log(data.queryresult);
+				$location.url("/app/dealerprd/" + $scope.p.productname);
+
+}
+	$scope.getallprod=function(id){
+MyServices.getalluserproducts(id, getalluserproductscallback);
+}
+	
+	
+	
 	$scope.prodid=$stateParams.id;
 	console.log($scope.prodid);
 	var getsingleproductcallback=function(data,status){
