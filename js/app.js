@@ -173,6 +173,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+            .state('app.events', {
+        url: "/events",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/events.html",
+                controller: 'EventCtrl'
+            }
+        }
+    })
     
     .state('app.orders', {
         url: "/orders",
