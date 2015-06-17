@@ -11,7 +11,7 @@
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">Amount in Barter:</span>
-                        <input type="text" ng-model="add.amount" ng-change="changeamountinr(add.amount);">
+                        <input type="text" ng-model="add.amount" ng-change="changeamountinr(add.amount);" class="disable" disabled>
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Amount in INR:</span>
@@ -23,30 +23,49 @@
                         <span class="input-label">Reason:</span>
                         <input type="text" ng-model="add.reason">
                     </label>
+                    <div class="row">
+                        <div class="col">
+                            Purchase Value
+                        </div>
+                        <div class="col">
+                            Sell Value
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" ng-model="add.amount" class="disable" disabled>
+                        </div>
+                        <div class="col">
+                            <input type="text" ng-model="add.amount" class="disable" disabled>
+                        </div>
+                    </div>
+
+                    <!--
                      <label class="item item-input">
                         <span class="input-label">Purchase Value</span>
-                        <input type="text" ng-model="add.amount">
+                        <input type="text" ng-model="add.amount" class="disable"  disabled>
                     </label>
                      <label class="item item-input">
                         <span class="input-label">Sell Value</span>
-                        <input type="text" ng-model="add.amount">
+                        <input type="text" ng-model="add.amount" class="disable" disabled>
                     </label>
+-->
                     <div class="padding-horizontal">
                         <button class="button button-block button-balanced" type="submit" ng-click="addbalance(add.amount,add.reason);">Add Balance</button>
-<!--                        <button class="button button-block button-balanced" type="submit" ng-click="topayment()">Add Balance</button>-->
+                        <!--                        <button class="button button-block button-balanced" type="submit" ng-click="topayment()">Add Balance</button>-->
                     </div>
-                    
-                    
-<!--     Payment button               -->
-<!--                    <div class="pm-button"><a href="https://www.payumoney.com/paybypayumoney/#/1C83343220BD901D4F4102601A363341"><img src="https://www.payumoney.com//media/images/payby_payumoney/buttons/111.png" /></a></div>-->
-                   
-                   
-                   
-                </div>
-            
 
-            
-            
+
+                    <!--     Payment button               -->
+                    <!--                    <div class="pm-button"><a href="https://www.payumoney.com/paybypayumoney/#/1C83343220BD901D4F4102601A363341"><img src="https://www.payumoney.com//media/images/payby_payumoney/buttons/111.png" /></a></div>-->
+
+
+
+                </div>
+
+            </form>
+
+
         </div>
     </ion-content>
 </ion-modal-view>
