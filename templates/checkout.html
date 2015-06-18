@@ -1,33 +1,43 @@
 <ion-view title="Checkout">
     <ion-content class="has-header">
 <!--        <form ng-submit="continuepayment(form);">-->
-            <div class="item item-divider">Shipping Information</div>
-            <label class="item item-input">
-                <input type="text" placeholder="First Name*" ng-model="form.firstname" ng-class="allvalidation[0].validation" required>
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Last Name*" ng-model="form.lastname" ng-class="allvalidation[1].validation" required>
-            </label>
-            <label class="item item-input">
-                <input type="email" placeholder="Email*" ng-model="form.email" ng-class="allvalidation[2].validation" required>
-            </label>
-            <label class="item item-input">
-                <textarea placeholder="Address*" ng-model="form.billingaddress" ng-class="allvalidation[3].validation" required></textarea>
-            </label>
-            <label class="item item-input">
-                <input type="tel" placeholder="Phone*" ng-model="form.phone" ng-class="allvalidation[4].validation" required>
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="Zipcode*" ng-model="form.billingpincode" ng-class="allvalidation[5].validation" required>
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="State" ng-model="form.billingstate">
-            </label>
-            <label class="item item-input">
-                <input type="text" placeholder="City*" ng-model="form.billingcity" ng-class="allvalidation[7].validation" required>
-            </label>
+            <div class="header-card">Shipping Information</div>
+            <form ng-submit="">
+                <div class="list buy-form">
+                    <div class="item item-input text-capitalize">
+                        <span>Name*</span><input class="pull-right" type="text" placeholder="Enter your Name" ng-model="form.name" ng-class="allvalidation[0].validation" required>
+                    </div>
+                    <div class="item item-input">
+                        <span>Email*</span><input class="pull-right" type="email" placeholder="Email" ng-model="form.email" ng-class="allvalidation[1].validation" required>
+                    </div>
+                    <div class="item item-input">
+                        <span>Contact no*</span><input class="pull-right" type="tel" placeholder="Phone Number" ng-model="form.personalcontact" ng-class="allvalidation[2].validation" required>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>Address*</span><textarea class="pull-right form-addrs" ng-model="form.billingaddress" ng-class="allvalidation[3].validation" required></textarea>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>City*</span><input class="pull-right" type="text" placeholder="City" ng-model="form.billingcity" ng-class="allvalidation[4].validation" required>
+                    </div>
+                     <div class="item item-input text-capitalize">
+                        <span>Pincode*</span><input class="pull-right" type="text" placeholder="Pincode" ng-model="form.billingpincode" ng-class="allvalidation[5].validation" required>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>State*</span><input class="pull-right" type="text" placeholder="State" ng-model="form.billingstate" ng-class="allvalidation[6].validation" required>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>Country*</span><input class="pull-right" type="text" placeholder="Country" ng-model="form.billingcountry" ng-class="allvalidation[7].validation" required>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>Quantity*</span><input class="pull-right" type="text" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>
+                    </div>
+                    <div class="item item-input text-capitalize">
+                        <span>Logistic Charge</span><input class="pull-right" type="text" placeholder="Logistics Charges" ng-model="form.logisticcharge" ng-class="allvalidation[9].validation" required>
+                    </div>
+                </div>
+            </form>
             <div class="padding">
-                <button class="button button-block button-royal" ng-click="showdiffaddress()">
+                <button class="button button-block button-royal" ng-click="openform();">
                     Ship to different address
                 </button>
             </div>
@@ -40,6 +50,12 @@
                         Continue
                     </button>
                 </div>
+               
+            </div>
+             <div class="padding">
+                <button class="button button-block button-royal" ng-click="buyproduct(form);">
+                    Submit &amp; Buy
+                </button>
             </div>
     </ion-content>
 </ion-view>

@@ -619,11 +619,84 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('FaqCtrl', function ($scope, $stateParams) {})
-	.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading,$ionicModal) {
+
+	.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading,$ionicModal,$location) {
+	$scope.prodid=$stateParams.prodid;
 	$scope.detailid=$.jStorage.get("user1");
 	console.log($scope.detailid);
 	var getuserdetailscallback=function(data,status){
-	console.log(data);
+	$scope.form=data[0];
+//		console.log($scope.form);
+		//buying details
+		var buyproductcallback=function(data,status){
+			$scope.showPopup5();
+			$scope.modal1.hide();
+			$location.url("/app/home");
+		}
+		$scope.buyproduct=function(form){
+			$scope.allvalidation = [{
+			field: $scope.form.name,
+			validation: ""
+        }, {
+			field: $scope.form.email,
+			validation: ""
+        }, {
+			field: $scope.form.personalcontact,
+			validation: ""
+   }, {
+			field: $scope.form.billingaddress,
+			validation: ""
+   },{      
+	   		field: $scope.form.billingcity,
+			validation: ""
+	 },{
+		 	field: $scope.form.billingpincode,
+			validation: ""
+	 },{
+	 		field: $scope.form.billingstate,
+			validation: ""
+	 },{
+	 		field: $scope.form.billingcountry,
+			validation: ""
+	 },{
+		 	field: $scope.form.quantity,
+			validation: ""
+	 }];
+								   
+		var check = formvalidation($scope.allvalidation);
+		if (check) {
+			$scope.form = form;
+//			console.log($scope.form);
+			MyServices.buyproduct($scope.detailid,$scope.prodid,$scope.form,buyproductcallback);
+
+		} else {
+			var myPopup = $ionicPopup.show({
+				title: 'Please Enter Mandatory Fields!!',
+				scope: $scope,
+			});
+			$timeout(function () {
+				myPopup.close(); //close the popup after 3 seconds for some reason
+			}, 1500);
+
+			//            }
+		}
+//			console.log(form);
+//		MyServices.buyproduct($scope.detailid,$scope.prodid,form,buyproductcallback);
+		}
+		$scope.showPopup5 = function () {
+
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Will get back to you soon!!!</p>',
+			title: 'Your Order is Successfully Placed!!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 3000);
+	};
+		
+		
 		$ionicModal.fromTemplateUrl('templates/modal-form.html', {
 		scope: $scope,
 		animation: 'slide-in-up'
@@ -739,8 +812,8 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		}
 		console.log($scope.totalsr);
 
-		$scope.finalpurchase = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totaltr);
-		$scope.finalsales = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totalsr);
+		$scope.finalsales = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totaltr);
+		$scope.finalpurchase = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totalsr);
 
 		console.log($scope.finalsales + " " + $scope.finalpurchase);
 
@@ -1436,7 +1509,8 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		$scope.modal = modal;
 	});
 
-	$scope.openpurchase = function () {
+	$scope.openpurchase = function (p) {
+		$scope.getp=p;
 		$scope.modal.show();
 	};
 
@@ -1452,7 +1526,8 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		$scope.modal1 = modal;
 	});
 
-	$scope.opensale = function () {
+	$scope.opensale = function (o) {
+		$scope.getsell=o;
 		$scope.modal1.show();
 	};
 
@@ -1474,7 +1549,16 @@ $scope.break=data.queryresult;
 })
 
 
-.controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+.controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+var getnotificationcallback=function(data,status){
+	$scope.notification=data;
+console.log($scope.notification);
+}
+	
+	$scope.notificationid=$.jStorage.get("user1");
+MyServices.getnotification($scope.notificationid, getnotificationcallback);
+
+})
     
     
     .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
@@ -1497,8 +1581,8 @@ MyServices.getalluserproducts(id, getalluserproductscallback);
 		console.log($scope.getsinglepro);
 	}
 	MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
-	$scope.openform1=function(){
-	$location.url("/app/checkout");
+	$scope.openform1=function(productid){
+	$location.url("/app/checkout/" + productid);
 	}
 
 })

@@ -108,14 +108,14 @@ myservices.factory('MyServices', function($http) {
         }).success(becomeamembercallback);
     },
 		returnval.editproduct = function(product,id,editproductcallback) {
-		console.log(product.id);
-		console.log(product.name);
-		console.log(product.sku);
-		console.log(product.price);
-		console.log(product.description);
-		console.log(product.status);
-		console.log(product.user);
-		console.log(product.quantity);
+//		console.log(product.id);
+//		console.log(product.name);
+//		console.log(product.sku);
+//		console.log(product.price);
+//		console.log(product.description);
+//		console.log(product.status);
+//		console.log(product.user);
+//		console.log(product.quantity);
         $http({
             url: adminurl + "editproduct",
             method: "POST",
@@ -166,48 +166,31 @@ myservices.factory('MyServices', function($http) {
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	
-//		 returnval.buyproduct = function(user,buyproductcallback) {
-//        //        			console.log(profile);
-//        $http({
-//            url: adminurl + "buyproduct",
-//            method: "POST",
-//            data: {
-//                'userid': user,
-//                'productid': user,
-//                'quantity': user,
-//                'name': user,
-//                'email': user,
-//                'contactno': user,
-//                'billingaddress': user,
-//                'billingcity': user,
-//                'billingstate': user,
-//                'billingcountry': user,
-//                'billingpincode': user,
-//                'shippingaddress': user,
-//                'shippingcity': user,
-//                'shippingcountry': user,
-//                'shippingcountry': user,
-//                'shippingcountry': user,
-//                'shippingcountry': user,
-////				 $userid=$data['userid'];
-////        $productid=$data['productid'];
-////        $quantity=$data['quantity'];
-////        $name=$data['name'];
-////        $email=$data['email'];
-////        $billingaddress=$data['billingaddress'];
-////        $billingcity=$data['billingcity'];
-////        $billingstate=$data['billingstate'];
-////        $billingcountry=$data['billingcountry'];
-////        $billingpincode=$data['billingpincode'];
-////        $shippingaddress=$data['shippingaddress'];
-////        $shippingcity=$data['shippingcity'];
-////        $shippingcountry=$data['shippingcountry'];
-////        $shippingstate=$data['shippingstate'];
-////        $shippingpincode=$data['shippingpincode'];
-////        $sameas=$data['sameas'];
-//            }
-//        }).success(buyproductcallback);
-//    },
+		 returnval.buyproduct = function(userid,prodid,user,buyproductcallback) {
+        $http({
+            url: adminurl + "buyproduct",
+            method: "POST",
+            data: {
+                'userid': userid,
+                'productid': prodid,
+                'quantity': user.quantity,
+                'name': user.name,
+                'email': user.email,
+                'contactno': user.personalcontact,
+                'billingaddress': user.billingaddress,
+                'billingcity': user.billingcity,
+                'billingstate': user.billingstate,
+                'billingcountry': user.billingcountry,
+                'billingpincode': user.billingpincode,
+                'shippingaddress': user.shippingaddress,
+                'shippingcity': user.shippingcity,
+                'shippingcountry': user.shippingcountry,
+                'shippingstate': user.shippingstate,
+                'shippingpincode': user.shippingpincode,
+                'logisticcharge': user.logisticcharge			
+            }
+        }).success(buyproductcallback);
+    },
  returnval.viewmyproductorders = function(user,viewmyproductorderscallback) {
         //        			console.log(profile);
         $http({
@@ -252,6 +235,9 @@ myservices.factory('MyServices', function($http) {
     },
     returnval.transaction = function(u, transactioncallback) {
         $http.get(adminurl + "transaction?user=" + u, {}).success(transactioncallback);
+    },
+	returnval.getnotification = function(id, getnotificationcallback) {
+        $http.get(adminurl + "getnotification?userid=" + id, {}).success(getnotificationcallback);
     },
     returnval.yourbalance = function(u, yourbalancecallback) {
         $http.get(adminurl + "yourbalance?user=" + JSON.parse(u), {}).success(yourbalancecallback);

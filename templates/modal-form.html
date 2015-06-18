@@ -7,41 +7,7 @@
     </ion-header-bar>
     <ion-content class="padding">
         <div class="incard">
-            <div class="header-card">Shipping Information</div>
-            <form ng-submit="">
-                <div class="list buy-form">
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Name">
-                    </div>
-                    <div class="item item-input">
-                        <input type="email" placeholder="Email">
-                    </div>
-                    <div class="item item-input">
-                        <input type="tel" placeholder="Phone Number">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <textarea placeholder="Address"></textarea>
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="City">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="State">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Country">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Pincode">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Quantity">
-                    </div>
-                    <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Logistics Charges">
-                    </div>
-                </div>
-            </form>
+            
             <div class="padding">
                 <button class="button button-block button-royal" ng-click="showdiffaddress()">
                     Ship to different address
@@ -70,33 +36,26 @@
                         </div>
 -->
                         <div class="item item-input text-capitalize">
-                            <textarea placeholder="Address"></textarea>
+                            <span>Address*</span><textarea ng-model="form.shippingaddress" class="pull-right"></textarea>
                         </div>
                         <div class="item item-input text-capitalize">
-                            <input type="text" placeholder="City">
+                            <span>City*</span><input ng-model="form.shippingcity" class="pull-right" type="text" placeholder="City">
                         </div>
                         <div class="item item-input text-capitalize">
-                            <input type="text" placeholder="State">
-                        </div>
-                        <div class="item item-input item-select">
-                            <div class="input-label">
-                                Country
-                            </div>
-                            <select>
-                                <option>Select your Country</option>
-                                <option>India</option>
-                                <option>USA</option>
-                                <option>Bangladesh</option>
-                            </select>
+                            <span>Pincode*</span><input ng-model="form.shippingpincode" class="pull-right" type="text" placeholder="Pincode">
                         </div>
                         <div class="item item-input text-capitalize">
-                            <input type="text" placeholder="Pincode">
+                            <span>State*</span><input ng-model="form.shippingstate" class="pull-right" type="text" placeholder="State">
                         </div>
+                       <div class="item item-input text-capitalize">
+                        <span>Country*</span><input class="pull-right" type="text" placeholder="Country" ng-model="form.shippingcountry">
+                    </div>
+                        
                     </div>
                 </form>
             </div>
             <div class="padding">
-                <button class="button button-block button-royal">
+                <button class="button button-block button-royal" ng-click="buyproduct(form);">
                     Submit &amp; Buy
                 </button>
             </div>

@@ -950,3 +950,11 @@ input.disable {
 p.addb-p {
     font-size: 16px;
 }
+.form-addrs{
+margin-left: 15px;
+	font-size: 13px;
+	margin-top: 15px;
+}
+.buy-form input{
+	color: #9F9F9F;
+}

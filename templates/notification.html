@@ -1,22 +1,26 @@
 <ion-view view-title="Notification">
     <ion-content class="padding">
+        <div class="incard notification" ng-repeat="n in notification">
+            <div class="header-cards">Business
+                <span style="float:right; font-size:14px;">{{n.date}}</span>
+            </div>
+            <p>{{n.message}}</p>
+        </div>
+<!--
         <div class="incard notification">
             <div class="header-cards">Business
                 <span style="float:right; font-size:14px;">15-12-2014</span>
             </div>
             <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
         </div>
+-->
+<!--
         <div class="incard notification">
             <div class="header-cards">Business
                 <span style="float:right; font-size:14px;">15-12-2014</span>
             </div>
             <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
         </div>
-        <div class="incard notification">
-            <div class="header-cards">Business
-                <span style="float:right; font-size:14px;">15-12-2014</span>
-            </div>
-            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        </div>
+-->
     </ion-content>
 </ion-view>
