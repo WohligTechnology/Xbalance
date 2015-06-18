@@ -619,7 +619,36 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('FaqCtrl', function ($scope, $stateParams) {})
-	.controller('checkout', function ($scope, $stateParams) {})
+	.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading,$ionicModal) {
+	$scope.detailid=$.jStorage.get("user1");
+	console.log($scope.detailid);
+	var getuserdetailscallback=function(data,status){
+	console.log(data);
+		$ionicModal.fromTemplateUrl('templates/modal-form.html', {
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function (modal) {
+		$scope.modal1 = modal;
+	});
+
+	$scope.openform = function () {
+		$scope.modal1.show();
+	};
+
+	$scope.closeform = function () {
+		$scope.modal1.hide();
+	};
+	$scope.diffadd = false;
+	$scope.showdiffaddress = function () {
+		$scope.diffadd = true;
+	}
+
+	$scope.hidediffaddress = function () {
+		$scope.diffadd = false;
+	}
+	}
+MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
+})
 
 .controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
 	//Loading Package
@@ -1393,7 +1422,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 	$scope.uid = $.jStorage.get("user1");
 	MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
-
+	var viewallorderscallback=function(data,status){
+	console.log(data.queryresult);
+		$scope.mypurchase=data.queryresult;
+	}
+	MyServices.viewallorders($scope.uid, viewallorderscallback);
+    
 
 	$ionicModal.fromTemplateUrl('templates/modal-mypurchase.html', {
 		scope: $scope,
@@ -1463,27 +1497,8 @@ MyServices.getalluserproducts(id, getalluserproductscallback);
 		console.log($scope.getsinglepro);
 	}
 	MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
-	$ionicModal.fromTemplateUrl('templates/modal-form.html', {
-		scope: $scope,
-		animation: 'slide-in-up'
-	}).then(function (modal) {
-		$scope.modal1 = modal;
-	});
-
-	$scope.openform = function () {
-		$scope.modal1.show();
-	};
-
-	$scope.closeform = function () {
-		$scope.modal1.hide();
-	};
-	$scope.diffadd = false;
-	$scope.showdiffaddress = function () {
-		$scope.diffadd = true;
-	}
-
-	$scope.hidediffaddress = function () {
-		$scope.diffadd = false;
+	$scope.openform1=function(){
+	$location.url("/app/checkout");
 	}
 
 })

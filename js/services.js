@@ -69,7 +69,7 @@ myservices.factory('MyServices', function($http) {
             data: {
                 'id': id,
                 'shopname': profile.shopname,
-                'address': profile.address,
+                'address': profile.billingaddress,
                 'description': profile.description,
                 'shopcontact1': profile.shopcontact1,
                 'shopcontact2': profile.shopcontact2,
@@ -153,48 +153,61 @@ myservices.factory('MyServices', function($http) {
             }
         }).success(getalluserproductscallback);
     },
+		 returnval.getuserdetails = function(id,getuserdetailscallback) {
+                			console.log(id);
+        $http({
+            url: adminurl + "getuserdetails",
+            method: "POST",
+            data: {
+                'userid': id,
+            }
+        }).success(getuserdetailscallback);
+    },
 	 returnval.getsingleproduct = function(id, getsingleproductcallback) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	
-		 returnval.buyproduct = function(user,buyproductcallback) {
-        //        			console.log(profile);
-        $http({
-            url: adminurl + "buyproduct",
-            method: "POST",
-            data: {
-                'userid': user,
-                'productid': user,
-                'quantity': user,
-                'name': user,
-                'email': user,
-                'contactno': user,
-                'billingaddress': user,
-                'billingcity': user,
-                'billingstate': user,
-                'billingcountry': user,
-                'billingpincode': user,
-                'shippingaddress': user,
-                'shippingcity': user,
-                'shippingaddress': user,
-//				 $userid=$data['userid'];
-//        $productid=$data['productid'];
-//        $quantity=$data['quantity'];
-//        $name=$data['name'];
-//        $email=$data['email'];
-//        $billingaddress=$data['billingaddress'];
-//        $billingcity=$data['billingcity'];
-//        $billingstate=$data['billingstate'];
-//        $billingcountry=$data['billingcountry'];
-//        $billingpincode=$data['billingpincode'];
-//        $shippingaddress=$data['shippingaddress'];
-//        $shippingcity=$data['shippingcity'];
-//        $shippingcountry=$data['shippingcountry'];
-//        $shippingstate=$data['shippingstate'];
-//        $shippingpincode=$data['shippingpincode'];
-//        $sameas=$data['sameas'];
-            }
-        }).success(buyproductcallback);
-    },
+//		 returnval.buyproduct = function(user,buyproductcallback) {
+//        //        			console.log(profile);
+//        $http({
+//            url: adminurl + "buyproduct",
+//            method: "POST",
+//            data: {
+//                'userid': user,
+//                'productid': user,
+//                'quantity': user,
+//                'name': user,
+//                'email': user,
+//                'contactno': user,
+//                'billingaddress': user,
+//                'billingcity': user,
+//                'billingstate': user,
+//                'billingcountry': user,
+//                'billingpincode': user,
+//                'shippingaddress': user,
+//                'shippingcity': user,
+//                'shippingcountry': user,
+//                'shippingcountry': user,
+//                'shippingcountry': user,
+//                'shippingcountry': user,
+////				 $userid=$data['userid'];
+////        $productid=$data['productid'];
+////        $quantity=$data['quantity'];
+////        $name=$data['name'];
+////        $email=$data['email'];
+////        $billingaddress=$data['billingaddress'];
+////        $billingcity=$data['billingcity'];
+////        $billingstate=$data['billingstate'];
+////        $billingcountry=$data['billingcountry'];
+////        $billingpincode=$data['billingpincode'];
+////        $shippingaddress=$data['shippingaddress'];
+////        $shippingcity=$data['shippingcity'];
+////        $shippingcountry=$data['shippingcountry'];
+////        $shippingstate=$data['shippingstate'];
+////        $shippingpincode=$data['shippingpincode'];
+////        $sameas=$data['sameas'];
+//            }
+//        }).success(buyproductcallback);
+//    },
  returnval.viewmyproductorders = function(user,viewmyproductorderscallback) {
         //        			console.log(profile);
         $http({
@@ -204,6 +217,16 @@ myservices.factory('MyServices', function($http) {
                 'userid': user,
             }
         }).success(viewmyproductorderscallback);
+    },
+		 returnval.viewallorders = function(user,viewallorderscallback) {
+        //        			console.log(profile);
+        $http({
+            url: adminurl + "viewallorders",
+            method: "POST",
+            data: {
+                'userid': user,
+            }
+        }).success(viewallorderscallback);
     },
    /* 	returnval.updateprofile=function(id,p,updateprofilecallback){
     			console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
