@@ -79,7 +79,7 @@ myservices.factory('MyServices', function($http) {
         }).success(updateprofilecallback);
     },
 		returnval.createproduct = function(id, ap, createproductcallback) {
-        //        			console.log(profile);
+               			console.log(ap.status);
         $http({
             url: adminurl + "createproduct",
             method: "POST",
@@ -90,7 +90,8 @@ myservices.factory('MyServices', function($http) {
                 'description': ap.description,
                 'status': ap.status,
                 'user': id,
-                'quantity': ap.quantity
+                'quantity': ap.quantity,
+                'category': ap.category
             }
         }).success(createproductcallback);
     },
@@ -108,14 +109,15 @@ myservices.factory('MyServices', function($http) {
         }).success(becomeamembercallback);
     },
 		returnval.editproduct = function(product,id,editproductcallback) {
-//		console.log(product.id);
-//		console.log(product.name);
-//		console.log(product.sku);
-//		console.log(product.price);
-//		console.log(product.description);
-//		console.log(product.status);
-//		console.log(product.user);
-//		console.log(product.quantity);
+		console.log(product.id);
+		console.log(product.name);
+		console.log(product.sku);
+		console.log(product.price);
+		console.log(product.description);
+		console.log(product.status);
+		console.log(product.user);
+		console.log(product.quantity);
+		console.log(product.category);
         $http({
             url: adminurl + "editproduct",
             method: "POST",
@@ -127,18 +129,19 @@ myservices.factory('MyServices', function($http) {
                 'description': product.description,
                 'status': product.status,
                 'user': id,
-                'quantity': product.quantity
+                'quantity': product.quantity,
+                'category': product.category
             }
         }).success(editproductcallback);
     },
-		returnval.changeproductstatus = function(product,id,changeproductstatuscallback) {
+		returnval.changeproductstatus = function(id,status,changeproductstatuscallback) {
         //        			console.log(profile);
         $http({
             url: adminurl + "changeproductstatus",
             method: "POST",
             data: {
-               'id': product.id,
-               'name': product.name
+               'productid': id,
+               'status': status
             }
         }).success(changeproductstatuscallback);
     },

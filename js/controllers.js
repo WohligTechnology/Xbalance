@@ -812,8 +812,8 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		}
 		console.log($scope.totalsr);
 
-		$scope.finalsales = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totaltr);
-		$scope.finalpurchase = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totalsr);
+		$scope.finalsales = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totalsr);
+		$scope.finalpurchase = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totaltr);
 
 		console.log($scope.finalsales + " " + $scope.finalpurchase);
 
@@ -1303,7 +1303,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera,$timeout) {
 	//view products start
 	var viewmyproductscallback = function (data, status) {
 		console.log(data);
@@ -1312,11 +1312,24 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	$scope.myid = $.jStorage.get("user1");
 	MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 	//view products end
+	$scope.showPopup6 = function () {
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Low Sales Balance!!</p>',
+			title: 'Oops product cannot be added!',
+			scope: $scope,
 
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+	};	
 
 	//add products start
 	var createproductcallback = function (data, status) {
 		console.log(data);
+		if(data=="-1"){
+		$scope.showPopup6();
+		}
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal.hide();
 	}
@@ -1359,19 +1372,28 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	MyServices.home($scope.insertid, homecallback);
 	//edit products and status start
 	var editproductcallback = function (data, status) {
-		console.log(data);
+		console.log(data);	
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-		$scope.modal2.hide();
+			$scope.modal2.hide();
+		
 	}
 	$scope.editproducts = function (products) {
 		$scope.editpro = products;
 		console.log($scope.editpro);
+		if ($scope.editpro.status == true) {
+				$scope.editpro.status = 1;
+			}
+			if ($scope.editpro.status == false) {
+				$scope.editpro.status = 0;
+			}
+			
 		MyServices.editproduct($scope.editpro, $scope.insertid, editproductcallback);
 	}
 	var changeproductstatuscallback = function (data, status) {
 		console.log(data);
 	}
 	$scope.editstatus = function (id, status) {
+		console.log(id);
 			if (status == true) {
 				status = 1;
 			}

@@ -29,11 +29,22 @@
                 <div class="input-label">
                     Category
                 </div>
-                <select ng-model="home.area">
+                <select ng-model="ap.category">
                     <option value="">All</option>
-                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                 </select>
             </label>
+<!--
+                   <label class="item item-input item-select area">
+                        <div class="input-label">
+                            <span style="font-weight:bold;">Category</span>
+                        </div>
+                        <select ng-model="prodetails.category">
+                            <option value="">All</option>
+                            <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                        </select>
+                    </label>
+-->
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">
