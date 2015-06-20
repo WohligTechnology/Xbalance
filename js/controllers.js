@@ -622,6 +622,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 	.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading,$ionicModal,$location) {
 	$scope.prodid=$stateParams.prodid;
+	console.log($scope.prodid);
 	$scope.detailid=$.jStorage.get("user1");
 	console.log($scope.detailid);
 	var getuserdetailscallback=function(data,status){

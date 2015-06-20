@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -109,15 +109,15 @@ myservices.factory('MyServices', function($http) {
         }).success(becomeamembercallback);
     },
 		returnval.editproduct = function(product,id,editproductcallback) {
-		console.log(product.id);
-		console.log(product.name);
-		console.log(product.sku);
-		console.log(product.price);
-		console.log(product.description);
-		console.log(product.status);
-		console.log(product.user);
-		console.log(product.quantity);
-		console.log(product.category);
+//		console.log(product.id);
+//		console.log(product.name);
+//		console.log(product.sku);
+//		console.log(product.price);
+//		console.log(product.description);
+//		console.log(product.status);
+//		console.log(product.user);
+//		console.log(product.quantity);
+//		console.log(product.category);
         $http({
             url: adminurl + "editproduct",
             method: "POST",
@@ -170,6 +170,16 @@ myservices.factory('MyServices', function($http) {
         $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
     },	
 		 returnval.buyproduct = function(userid,prodid,user,buyproductcallback) {
+		console.log(prodid);
+		console.log(user.quantity);
+		console.log(user.name);
+		console.log(user.email);
+		console.log(user.personalcontact);
+		console.log(user.billingaddress);
+		console.log(user.billingcity);
+		console.log(user.billingstate);
+		console.log(user.billingcountry);
+		console.log(user.billingpincode);
         $http({
             url: adminurl + "buyproduct",
             method: "POST",
