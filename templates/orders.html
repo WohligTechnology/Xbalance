@@ -1,5 +1,6 @@
 <ion-view view-title="My Orders">
-<!--    <div class="centered" ng-if="ordr==0">No Orders.</div>{{ordr.length}}-->
+   
+    
     <div class="tabs-striped tabs-top tabs-background-royal tabs-color-light">
         <div class="tabs">
             <a class="tab-item" ng-click="tabvalue = 1;"  ng-class="{'active': tabvalue == 1}">
@@ -12,7 +13,7 @@
     </div>
     <ion-content class="padding has-headers">
         <div class="incard">
-            <div class="list" ng-if="tabvalue == 1">
+            <div class="list" ng-if="tabvalue == 1" ng-if="mypurchase.length>0">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
                 <div class="item item-thumbnail-left" ng-click="openpurchase(p);" ng-repeat="p in mypurchase">
                     <img ng-src={{p.productimage|serverimage}}>
@@ -29,8 +30,8 @@
                 </div>
 -->
             </div>
-
-            <div class="list" ng-if="tabvalue == 2">
+			 <div class="centers" ng-if="mypurchase.length==0">No Purchase.</div>
+            <div class="list" ng-if="tabvalue == 2" ng-if="ordr.length>0">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
                 <div class="item item-thumbnail-left" ng-click="opensale(o);" ng-repeat="o in ordr">
                    <img ng-src={{o.productimage|serverimage}}>
@@ -39,6 +40,7 @@
                     <h3 class="leftnames">Transaction ID: <span>{{o.transactionid}}</span></h3>
                 </div>
             </div>
+            <div class="centers" ng-if="ordr.length==0">No Sell.</div>
         </div>
     </ion-content>
 </ion-view>

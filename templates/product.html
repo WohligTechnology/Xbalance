@@ -53,7 +53,7 @@
 
         <div class="incard">
             <div class="header-card">Products</div>
-            <div class="row productsCol" ng-repeat="sp in spr">
+            <div class="row productsCol" ng-repeat="sp in spr" ng-if="spr.length>0">
                 <div class="col col-33 text-center" ng-repeat="s in sp">
 <!--                    <a href="#/app/productdetail">-->
                         <img ng-src={{s.image|serverimage}} ng-click="getproduct(s.productid)" class="full-image">
@@ -61,46 +61,10 @@
                         <h5>{{s.price}}</h5>
 <!--                    </a>-->
                 </div>
+                 
             </div>
-            
-            <!--
-            <div class="row productsCol">
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-            </div>
--->
-            <!--
-            <div class="row productsCol">
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-                <div class="col col-33 text-center">
-                    <img src="img/icon.png" class="full-image">
-                    <h5>Xperia z</h5>
-                    <h5>9000</h5>
-                </div>
-            </div>
--->
+          
         </div>
+         <div class="centers-pro" ng-if="spr.length==0">No Products Found.</div>
     </ion-content>
 </ion-view>
