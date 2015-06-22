@@ -9,8 +9,8 @@
         <div class="incard">
             <form ng-submit="">
                 <div class="list">
-                    <div class="profile-img" ng-click="addproductimage()">
-                        <img ng-src="img/add.png">
+                    <div class="profile-img"> 
+                        <img ng-src={{prodimg|serverimage}} ng-click="addproductimage();">
                         <div class="holder">Add Image</div>
                     </div>
                     <div class="item item-input text-capitalize">

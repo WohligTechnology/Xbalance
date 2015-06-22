@@ -229,9 +229,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//    console.log($scope.category1);
 	//product detail
 	var getsingleproductcallback = function (data, status) {
-		$scope.getpro=data;
-//			console.log($scope.getsinglepro);
-		}
+		$scope.getpro = data;
+		//			console.log($scope.getsinglepro);
+	}
 	$scope.getproduct = function (id) {
 		console.log(id);
 		MyServices.getsingleproduct(id, getsingleproductcallback);
@@ -250,10 +250,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
 	$scope.i = $.jStorage.get("user1");
-	
+
 	var homecallback = function (data, status) {
 		$scope.area = data.area;
-		data.category.unshift({id:0,name:"All"});
+		data.category.unshift({
+			id: 0,
+			name: "All"
+		});
 		$scope.category = data.category;
 	}
 	MyServices.home($scope.i, homecallback);
@@ -620,108 +623,108 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
-	.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading,$ionicModal,$location) {
-	$scope.prodid=$stateParams.prodid;
+.controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
+	$scope.prodid = $stateParams.prodid;
 	console.log($scope.prodid);
-	$scope.detailid=$.jStorage.get("user1");
+	$scope.detailid = $.jStorage.get("user1");
 	console.log($scope.detailid);
-	var getuserdetailscallback=function(data,status){
-	$scope.form=data[0];
-//		console.log($scope.form);
+	var getuserdetailscallback = function (data, status) {
+		$scope.form = data[0];
+		//		console.log($scope.form);
 		//buying details
-		var buyproductcallback=function(data,status){
+		var buyproductcallback = function (data, status) {
 			$scope.showPopup5();
 			$scope.modal1.hide();
 			$location.url("/app/home");
 		}
-		$scope.buyproduct=function(form){
+		$scope.buyproduct = function (form) {
 			$scope.allvalidation = [{
-			field: $scope.form.name,
-			validation: ""
+				field: $scope.form.name,
+				validation: ""
         }, {
-			field: $scope.form.email,
-			validation: ""
+				field: $scope.form.email,
+				validation: ""
         }, {
-			field: $scope.form.personalcontact,
-			validation: ""
+				field: $scope.form.personalcontact,
+				validation: ""
    }, {
-			field: $scope.form.billingaddress,
-			validation: ""
-   },{      
-	   		field: $scope.form.billingcity,
-			validation: ""
-	 },{
-		 	field: $scope.form.billingpincode,
-			validation: ""
-	 },{
-	 		field: $scope.form.billingstate,
-			validation: ""
-	 },{
-	 		field: $scope.form.billingcountry,
-			validation: ""
-	 },{
-		 	field: $scope.form.quantity,
-			validation: ""
+				field: $scope.form.billingaddress,
+				validation: ""
+   }, {
+				field: $scope.form.billingcity,
+				validation: ""
+	 }, {
+				field: $scope.form.billingpincode,
+				validation: ""
+	 }, {
+				field: $scope.form.billingstate,
+				validation: ""
+	 }, {
+				field: $scope.form.billingcountry,
+				validation: ""
+	 }, {
+				field: $scope.form.quantity,
+				validation: ""
 	 }];
-								   
-		var check = formvalidation($scope.allvalidation);
-		if (check) {
-			$scope.form = form;
-//			console.log($scope.form);
-			MyServices.buyproduct($scope.detailid,$scope.prodid,$scope.form,buyproductcallback);
 
-		} else {
-			var myPopup = $ionicPopup.show({
-				title: 'Please Enter Mandatory Fields!!',
-				scope: $scope,
-			});
-			$timeout(function () {
-				myPopup.close(); //close the popup after 3 seconds for some reason
-			}, 1500);
+			var check = formvalidation($scope.allvalidation);
+			if (check) {
+				$scope.form = form;
+				//			console.log($scope.form);
+				MyServices.buyproduct($scope.detailid, $scope.prodid, $scope.form, buyproductcallback);
 
-			//            }
-		}
-//			console.log(form);
-//		MyServices.buyproduct($scope.detailid,$scope.prodid,form,buyproductcallback);
+			} else {
+				var myPopup = $ionicPopup.show({
+					title: 'Please Enter Mandatory Fields!!',
+					scope: $scope,
+				});
+				$timeout(function () {
+					myPopup.close(); //close the popup after 3 seconds for some reason
+				}, 1500);
+
+				//            }
+			}
+			//			console.log(form);
+			//		MyServices.buyproduct($scope.detailid,$scope.prodid,form,buyproductcallback);
 		}
 		$scope.showPopup5 = function () {
 
-		var myPopup = $ionicPopup.show({
-			template: '<p class="text-center">Will get back to you soon!!!</p>',
-			title: 'Your Order is Successfully Placed!!',
-			scope: $scope,
+			var myPopup = $ionicPopup.show({
+				template: '<p class="text-center">Will get back to you soon!!!</p>',
+				title: 'Your Order is Successfully Placed!!',
+				scope: $scope,
 
-		});
-		$timeout(function () {
-			myPopup.close(); //close the popup after 3 seconds for some reason
-		}, 3000);
-	};
-		
-		
+			});
+			$timeout(function () {
+				myPopup.close(); //close the popup after 3 seconds for some reason
+			}, 3000);
+		};
+
+
 		$ionicModal.fromTemplateUrl('templates/modal-form.html', {
-		scope: $scope,
-		animation: 'slide-in-up'
-	}).then(function (modal) {
-		$scope.modal1 = modal;
-	});
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function (modal) {
+			$scope.modal1 = modal;
+		});
 
-	$scope.openform = function () {
-		$scope.modal1.show();
-	};
+		$scope.openform = function () {
+			$scope.modal1.show();
+		};
 
-	$scope.closeform = function () {
-		$scope.modal1.hide();
-	};
-	$scope.diffadd = false;
-	$scope.showdiffaddress = function () {
-		$scope.diffadd = true;
-	}
-
-	$scope.hidediffaddress = function () {
+		$scope.closeform = function () {
+			$scope.modal1.hide();
+		};
 		$scope.diffadd = false;
+		$scope.showdiffaddress = function () {
+			$scope.diffadd = true;
+		}
+
+		$scope.hidediffaddress = function () {
+			$scope.diffadd = false;
+		}
 	}
-	}
-MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
+	MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 })
 
 .controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
@@ -869,14 +872,14 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	$scope.showloading();
 
 	//Hide when on PC
-	//        var options = {
-	//            quality: 20,
-	//            destinationType: Camera.DestinationType.FILE_URI,
-	//            sourceType: Camera.PictureSourceType.CAMERA,
-	//            allowEdit: true,
-	//            encodingType: Camera.EncodingType.JPEG,
-	//            saveToPhotoAlbum: true
-	//        };
+	        var options = {
+	            quality: 20,
+	            destinationType: Camera.DestinationType.FILE_URI,
+	            sourceType: Camera.PictureSourceType.CAMERA,
+	            allowEdit: true,
+	            encodingType: Camera.EncodingType.JPEG,
+	            saveToPhotoAlbum: true
+	        };
 
 	var changeprofilephoto = function (result) {
 		$scope.profile.shoplogo = result.value;
@@ -1012,13 +1015,13 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		MyServices.updatearea(user.id, $scope.ar, updateareacallback);
 	}
 	var shopprofilecallback = function (data, status) {
-		$scope.profile = data;
-		MyServices.getallcategory1(getallcategory1callback);
-		MyServices.getarea(getareacallback);
+			$scope.profile = data;
+			MyServices.getallcategory1(getallcategory1callback);
+			MyServices.getarea(getareacallback);
 
-	}
-//    $scope.profile.categoryid=$scope.profile.category;
-//		$scope.profile.areaid=$scope.profile.area;
+		}
+		//    $scope.profile.categoryid=$scope.profile.category;
+		//		$scope.profile.areaid=$scope.profile.area;
 	MyServices.profile($scope.pro, shopprofilecallback);
 	MyServices.shopphoto($scope.pro, shopphotocallback);
 	MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
@@ -1038,9 +1041,9 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 			console.log("no data");
 		} else {
 			console.log("Updated");
-//			MyServices.profile($scope.pro, shopprofilecallback);
+			//			MyServices.profile($scope.pro, shopprofilecallback);
 			$scope.showeditPopup();
-			
+
 			$location.url("/app/profile");
 		}
 	}
@@ -1051,7 +1054,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		console.log($scope.id);
 		MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
 
-		
+
 
 	}
 
@@ -1304,7 +1307,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera,$timeout) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout) {
 	//view products start
 	var viewmyproductscallback = function (data, status) {
 		console.log(data);
@@ -1323,14 +1326,14 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		$timeout(function () {
 			myPopup.close(); //close the popup after 3 seconds for some reason
 		}, 2000);
-	};	
+	};
 
 	//add products start
 	var createproductcallback = function (data, status) {
 		console.log(data);
-		$scope.insertprodid=data;
-		if(data=="-1"){
-		$scope.showPopup6();
+		$scope.insertprodid = data;
+		if (data == "-1") {
+			$scope.showPopup6();
 		}
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal.hide();
@@ -1350,8 +1353,12 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 			MyServices.createproduct($scope.insertid, $scope.ap, createproductcallback);
 		}
 		//add products end
-	//addproductimage
-		$scope.addproductimage = function () {
+		//addproductimage
+		var addproductimage=function(result){
+		console.log(result);
+			$scope.prodimg=result;
+		}
+	$scope.addproductimage = function () {
 		console.log("take picture");
 		$cordovaCamera.getPicture(options).then(function (imageData) {
 			// Success! Image data is here
@@ -1362,7 +1369,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 				imageData = "content://media/external/images/media/" + photo_split[1];
 			}
 			$scope.cameraimage = imageData;
-			$scope.uploadPhoto(adminurl + "addproductimage?id=" +$scope.insertprodid, addproductimage);
+			$scope.uploadPhoto(adminurl + "addproductimage?id=" + $scope.insertprodid, addproductimage);
 		}, function (err) {
 			// An error occured. Show a message to the user
 		});
@@ -1390,28 +1397,28 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	MyServices.home($scope.insertid, homecallback);
 	//edit products and status start
 	var editproductcallback = function (data, status) {
-		console.log(data);	
+		console.log(data);
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-			$scope.modal2.hide();
-		
+		$scope.modal2.hide();
+
 	}
 	$scope.editproducts = function (products) {
 		$scope.editpro = products;
 		console.log($scope.editpro);
 		if ($scope.editpro.status == true) {
-				$scope.editpro.status = 1;
-			}
-			if ($scope.editpro.status == false) {
-				$scope.editpro.status = 0;
-			}
-			
+			$scope.editpro.status = 1;
+		}
+		if ($scope.editpro.status == false) {
+			$scope.editpro.status = 0;
+		}
+
 		MyServices.editproduct($scope.editpro, $scope.insertid, editproductcallback);
 	}
 	var changeproductstatuscallback = function (data, status) {
 		console.log(data);
 	}
 	$scope.editstatus = function (id, status) {
-		console.log(id);
+			console.log(id);
 			if (status == true) {
 				status = 1;
 			}
@@ -1432,6 +1439,9 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 		//            saveToPhotoAlbum: true
 		//        };
 		//upload editproductimage start
+	var editproductimage=function(result){
+	console.log(data);
+	}
 	$scope.editproductimage = function (id) {
 		console.log("take picture");
 		$cordovaCamera.getPicture(options).then(function (imageData) {
@@ -1535,12 +1545,12 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	}
 	$scope.uid = $.jStorage.get("user1");
 	MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
-	var viewallorderscallback=function(data,status){
-	console.log(data.queryresult);
-		$scope.mypurchase=data.queryresult;
+	var viewallorderscallback = function (data, status) {
+		console.log(data.queryresult);
+		$scope.mypurchase = data.queryresult;
 	}
 	MyServices.viewallorders($scope.uid, viewallorderscallback);
-    
+
 
 	$ionicModal.fromTemplateUrl('templates/modal-mypurchase.html', {
 		scope: $scope,
@@ -1550,7 +1560,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	});
 
 	$scope.openpurchase = function (p) {
-		$scope.getp=p;
+		$scope.getp = p;
 		$scope.modal.show();
 	};
 
@@ -1567,7 +1577,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	});
 
 	$scope.opensale = function (o) {
-		$scope.getsell=o;
+		$scope.getsell = o;
 		$scope.modal1.show();
 	};
 
@@ -1578,52 +1588,52 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-var getalluserproductscallback=function(data,status){
-$scope.break=data.queryresult;
-	$scope.break = partitionarray($scope.break, 3);
-	console.log($scope.break);
-	
-}
-	$scope.getprod=$stateParams.id;
+	var getalluserproductscallback = function (data, status) {
+		$scope.break = data.queryresult;
+		$scope.break = partitionarray($scope.break, 3);
+		console.log($scope.break);
+
+	}
+	$scope.getprod = $stateParams.id;
 	MyServices.getalluserproducts($scope.getprod, getalluserproductscallback);
 })
 
 
 .controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-var getnotificationcallback=function(data,status){
-	$scope.notification=data;
-console.log($scope.notification);
-}
-	
-	$scope.notificationid=$.jStorage.get("user1");
-MyServices.getnotification($scope.notificationid, getnotificationcallback);
-
-})
-    
-    
-    .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-	//all products
-	var getalluserproductscallback=function(data,status){
-//console.log(data.queryresult);
-				$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
-
-}
-	$scope.getallprod=function(id){
-MyServices.getalluserproducts(id, getalluserproductscallback);
-}
-	
-	
-	
-	$scope.prodid=$stateParams.id;
-	console.log($scope.prodid);
-	var getsingleproductcallback=function(data,status){
-	$scope.getsinglepro=data;
-		console.log($scope.getsinglepro);
-	}
-	MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
-	$scope.openform1=function(productid){
-	$location.url("/app/checkout/" + productid);
+	var getnotificationcallback = function (data, status) {
+		$scope.notification = data;
+		console.log($scope.notification);
 	}
 
+	$scope.notificationid = $.jStorage.get("user1");
+	MyServices.getnotification($scope.notificationid, getnotificationcallback);
+
 })
-.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});
+
+
+.controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+		//all products
+		var getalluserproductscallback = function (data, status) {
+			//console.log(data.queryresult);
+			$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
+
+		}
+		$scope.getallprod = function (id) {
+			MyServices.getalluserproducts(id, getalluserproductscallback);
+		}
+
+
+
+		$scope.prodid = $stateParams.id;
+		console.log($scope.prodid);
+		var getsingleproductcallback = function (data, status) {
+			$scope.getsinglepro = data;
+			console.log($scope.getsinglepro);
+		}
+		MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
+		$scope.openform1 = function (productid) {
+			$location.url("/app/checkout/" + productid);
+		}
+
+	})
+	.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});
