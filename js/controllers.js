@@ -1435,17 +1435,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}
 		//edit products and status end
 		//Hide when on PC
-		//        var options = {
-		//            quality: 20,
-		//            destinationType: Camera.DestinationType.FILE_URI,
-		//            sourceType: Camera.PictureSourceType.CAMERA,
-		//            allowEdit: true,
-		//            encodingType: Camera.EncodingType.JPEG,
-		//            saveToPhotoAlbum: true
-		//        };
+		        var options = {
+		            quality: 20,
+	            destinationType: Camera.DestinationType.FILE_URI,
+	            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+	            allowEdit: true,
+	            encodingType: Camera.EncodingType.JPEG,
+	            saveToPhotoAlbum: true
+		        };
 		//upload editproductimage start
 	var editproductimage=function(result){
-	console.log(data);
+	console.log(result);
+		$scope.prodetails.image=result.value;
 	}
 	$scope.editproductimage = function (id) {
 		console.log("take picture");
