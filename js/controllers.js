@@ -1328,6 +1328,7 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 	//add products start
 	var createproductcallback = function (data, status) {
 		console.log(data);
+		$scope.insertprodid=data;
 		if(data=="-1"){
 		$scope.showPopup6();
 		}
@@ -1349,7 +1350,23 @@ MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 			MyServices.createproduct($scope.insertid, $scope.ap, createproductcallback);
 		}
 		//add products end
-
+	//addproductimage
+		$scope.addproductimage = function () {
+		console.log("take picture");
+		$cordovaCamera.getPicture(options).then(function (imageData) {
+			// Success! Image data is here
+			console.log("here in upload image");
+			console.log(imageData);
+			if (imageData.substring(0, 21) == "content://com.android") {
+				var photo_split = imageData.split("%3A");
+				imageData = "content://media/external/images/media/" + photo_split[1];
+			}
+			$scope.cameraimage = imageData;
+			$scope.uploadPhoto(adminurl + "addproductimage?id=" +$scope.insertprodid, addproductimage);
+		}, function (err) {
+			// An error occured. Show a message to the user
+		});
+	};
 	//product details start
 	var getsingleproductcallback = function (data, status) {
 		$scope.prodetails = data;
