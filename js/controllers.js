@@ -872,20 +872,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.showloading();
 
 	//Hide when on PC
-	        var options = {
-	            quality: 20,
-	            destinationType: Camera.DestinationType.FILE_URI,
-	            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-	            allowEdit: true,
-	            encodingType: Camera.EncodingType.JPEG,
-	            saveToPhotoAlbum: true
-	        };
-//    var options = {
-//            maximumImagesCount: 1,
-//            width: 800,
-//            height: 800,
-//            quality: 80
-//        };
+	var options = {
+		quality: 20,
+		destinationType: Camera.DestinationType.FILE_URI,
+		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG,
+		saveToPhotoAlbum: true
+	};
+	//    var options = {
+	//            maximumImagesCount: 1,
+	//            width: 800,
+	//            height: 800,
+	//            quality: 80
+	//        };
 	var changeprofilephoto = function (result) {
 		console.log(result);
 		console.log(result.value);
@@ -1314,7 +1314,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout,$cordovaFileTransfer,$ionicLoading) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading) {
 	//view products start
 	var viewmyproductscallback = function (data, status) {
 		console.log(data);
@@ -1345,7 +1345,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal.hide();
 	}
-	$scope.prodimg='';
+	$scope.prodimg = '';
 	$scope.insertproduct = function (ap) {
 			$scope.ap = ap;
 			if ($scope.ap.status == true) {
@@ -1357,18 +1357,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 				console.log($scope.ap.status);
 			}
 			console.log($scope.ap);
-		console.log("before:" + $scope.prodimg);
+			console.log("before:" + $scope.prodimg);
 			$scope.insertid = $.jStorage.get("user1");
-			MyServices.createproduct($scope.insertid, $scope.ap,$scope.prodimg, createproductcallback);
+			MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
 		}
 		//add products end
 		//addproductimage
-		var addproductimage=function(result){
+
+	var addproductimage = function (result) {
 		console.log(result);
 		console.log(result.response);
-		console.log(result.response.value);
-			$scope.prodimg=result;
-		}
+		$scope.xyz = JSON.parse(result.response);
+		console.log($scope.xyz);
+		$scope.prodimg = $scope.xyz;
+	}
+
 	$scope.addproductimage = function () {
 		console.log("take picture");
 		$cordovaCamera.getPicture(options).then(function (imageData) {
@@ -1441,18 +1444,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}
 		//edit products and status end
 		//Hide when on PC
-		        var options = {
-		           quality: 20,
-	            destinationType: Camera.DestinationType.FILE_URI,
-	            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-	            allowEdit: true,
-	            encodingType: Camera.EncodingType.JPEG,
-	            saveToPhotoAlbum: true
-		        };
-		//upload editproductimage start
-	var editproductimage=function(result){
-	console.log(result);
-		$scope.prodetails.image=result.value;
+	var options = {
+		quality: 20,
+		destinationType: Camera.DestinationType.FILE_URI,
+		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG,
+		saveToPhotoAlbum: true
+	};
+	//upload editproductimage start
+	var editproductimage = function (result) {
+		console.log(result);
+		$scope.prodetails.image = result.value;
 	}
 	$scope.editproductimage = function (id) {
 		console.log(id);
@@ -1476,7 +1479,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//Upload photo
 
 	//File Upload parameters: source, filePath, options
-		$scope.uploadPhoto = function (serverpath, callback) {
+	$scope.uploadPhoto = function (serverpath, callback) {
 
 		//        console.log("function called");
 		$cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
