@@ -78,7 +78,7 @@ myservices.factory('MyServices', function ($http) {
 				}
 			}).success(updateprofilecallback);
 		},
-		returnval.createproduct = function (id, ap, createproductcallback) {
+		returnval.createproduct = function (id, ap,img, createproductcallback) {
 			console.log(ap.status);
 			$http({
 				url: adminurl + "createproduct",
@@ -91,7 +91,8 @@ myservices.factory('MyServices', function ($http) {
 					'status': ap.status,
 					'user': id,
 					'quantity': ap.quantity,
-					'category': ap.category
+					'category': ap.category,
+					'image': img
 				}
 			}).success(createproductcallback);
 		},

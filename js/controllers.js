@@ -1355,13 +1355,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			}
 			console.log($scope.ap);
 			$scope.insertid = $.jStorage.get("user1");
-			MyServices.createproduct($scope.insertid, $scope.ap, createproductcallback);
+			MyServices.createproduct($scope.insertid, $scope.ap,$scope.prodimg, createproductcallback);
 		}
 		//add products end
 		//addproductimage
 		var addproductimage=function(result){
 		console.log(result);
-			$scope.prodimg=result;
+			$scope.prodimg=result.value;
 		}
 	$scope.addproductimage = function () {
 		console.log("take picture");
