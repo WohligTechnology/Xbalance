@@ -1374,7 +1374,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 				imageData = "content://media/external/images/media/" + photo_split[1];
 			}
 			$scope.cameraimage = imageData;
-			$scope.uploadPhoto(adminurl + "addproductimage?id=" + $scope.insertprodid, addproductimage);
+			$scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
 		}, function (err) {
 			// An error occured. Show a message to the user
 		});
