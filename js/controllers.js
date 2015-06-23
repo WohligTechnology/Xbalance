@@ -1362,7 +1362,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//add products end
 		//addproductimage
 		var addproductimage=function(result){
-		console.log(result.value);
+		console.log(result);
+		console.log(result.response);
+		console.log(result.response.value);
 			$scope.prodimg=result.value;
 		}
 	$scope.addproductimage = function () {
