@@ -1367,7 +1367,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		console.log(result);
 		console.log(result.response);
 		console.log(result.response.value);
-			$scope.prodimg=result.value;
+			$scope.prodimg=result;
 		}
 	$scope.addproductimage = function () {
 		console.log("take picture");
