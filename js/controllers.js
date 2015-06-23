@@ -1369,7 +1369,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		console.log(result.response);
 		$scope.xyz = JSON.parse(result.response);
 		console.log($scope.xyz);
-		$scope.prodimg = $scope.xyz;
+		$scope.prodimg = $scope.xyz.value;
 	}
 
 	$scope.addproductimage = function () {
