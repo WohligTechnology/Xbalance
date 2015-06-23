@@ -887,6 +887,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 //            quality: 80
 //        };
 	var changeprofilephoto = function (result) {
+		console.log(result);
+		console.log(result.value);
 		$scope.profile.shoplogo = result.value;
 	};
 
