@@ -1343,6 +1343,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal.hide();
 	}
+	$scope.prodimg='';
 	$scope.insertproduct = function (ap) {
 			$scope.ap = ap;
 			if ($scope.ap.status == true) {
@@ -1354,13 +1355,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 				console.log($scope.ap.status);
 			}
 			console.log($scope.ap);
+		console.log("before:" + $scope.prodimg);
 			$scope.insertid = $.jStorage.get("user1");
 			MyServices.createproduct($scope.insertid, $scope.ap,$scope.prodimg, createproductcallback);
 		}
 		//add products end
 		//addproductimage
 		var addproductimage=function(result){
-		console.log(result);
+		console.log(result.value);
 			$scope.prodimg=result.value;
 		}
 	$scope.addproductimage = function () {

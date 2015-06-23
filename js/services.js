@@ -80,6 +80,7 @@ myservices.factory('MyServices', function ($http) {
 		},
 		returnval.createproduct = function (id, ap,img, createproductcallback) {
 			console.log(ap.status);
+			console.log(img);
 			$http({
 				url: adminurl + "createproduct",
 				method: "POST",
