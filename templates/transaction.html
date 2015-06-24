@@ -29,6 +29,25 @@
                             <span class="item-note">{{finalpurchase}}</span>
                             <h2 class="bold">Total</h2>
                         </ion-item>
+                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
+                            <div class="row">
+                                <div class="col-25">
+                                    <div class="sell-img">
+                                        <img src="{{tr.shoplogo|serverimage}}">
+                                    </div>
+                                </div>
+                                <div class="col-75">
+                                    <div class="sell-cont trans">
+                                        <span class="item-note">-{{tr.amount}}</span>
+                                        <h2>{{tr.shopname}}</h2>
+                                        <p>Date: {{tr.date}}</p>
+                                        <p>Time: {{tr.time}}</p>
+                                        <p>Transaction Id: {{tr.id}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ion-item>
+<!--
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
                             <div class="row">
                                 <div class="col-25">
@@ -47,6 +66,7 @@
                                 </div>
                             </div>
                         </ion-item>
+-->
                         <ion-item class="item item-thumbnail-left listmk">
                             <span class="item-note">{{t.totalpurchase.purchasebalance}}</span>
                             <h2 class="bold">Remaining</h2>
@@ -63,7 +83,7 @@
                             <span class="item-note">{{finalsales}}</span>
                             <h2 class="bold">Total</h2>
                         </ion-item>
-                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
+                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
                             <div class="row">
                                 <div class="col-25">
                                     <div class="sell-img">

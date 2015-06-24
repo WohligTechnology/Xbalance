@@ -65,7 +65,8 @@
             <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
         </div>
            
-            <div class="header-card">Find shops & Products</div>
+            <div class="header-card" ng-if="tabvalue == 1">Find Products</div>
+            <div class="header-card" ng-if="tabvalue == 2">Find Shops</div>
             <!--
             <label class="item item-input area">
                 <span class="input-label">Area</span>

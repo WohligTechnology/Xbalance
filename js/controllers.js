@@ -816,8 +816,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}
 		console.log($scope.totalsr);
 
-		$scope.finalsales = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totalsr);
-		$scope.finalpurchase = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totaltr);
+		$scope.finalsales = parseInt($scope.t.totalsales.salesbalance) + parseInt($scope.totaltr);
+		$scope.finalpurchase = parseInt($scope.t.totalpurchase.purchasebalance) + parseInt($scope.totalsr);
 
 		console.log($scope.finalsales + " " + $scope.finalpurchase);
 
