@@ -12,7 +12,8 @@
                     <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
                     <h3 class="leftname">Price: <span>{{pro.price}}</span></h3>
                     <h3 class="leftname">Quantity: <span>{{pro.quantity}}</span></h3>
-                    <h3 class="leftname">Status: <span>{{pro.status}}</span></h3>
+                    <h3 class="leftname" ng-if="pro.status==1">Status: <span>Available</span></h3>
+                    <h3 class="leftname" ng-if="pro.status==0">Status: <span>Not Available</span></h3>
                     <!--
                 <a class="item item-thumbnail-left bod-bottom" href="#">
                     <img src="img/icon.png">
