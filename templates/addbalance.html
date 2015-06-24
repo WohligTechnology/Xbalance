@@ -14,8 +14,8 @@
                         <input type="text" ng-model="add.amount" ng-change="changeamountinr(add.amount);" class="disable" disabled>
                     </label>
                     <label class="item item-input">
-                        <span class="input-label">Amount in INR:</span>
-                        <input type="text" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);" class="disable">
+                        <span class="input-label">Amount in INR*:</span>
+                        <input type="tel" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);" class="disable" ng-class="allvalidation[0].validation" required>
                         <!-- <span>{{add.amount*percent/100|number:2}}   </span>    -->
                     </label>
 
