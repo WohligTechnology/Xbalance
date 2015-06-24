@@ -1093,18 +1093,74 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.oModal2.hide();
 	};
 	var changepasswordcallback = function (data, status) {
+		if(data=="-1"){
+		console.log("new and confirm do not match ");
+			$scope.showpasswordPopup1();
+		}
+	    else{
 		$scope.p = data;
 		console.log($scope.p);
 		$scope.showpasswordPopup();
 		$scope.oModal2.hide();
-	}
-	$scope.changepass = function (pass) {
-		$scope.passwrd = pass;
-		$scope.id = $.jStorage.get("user1");
-		$scope.passwrd = pass;
-		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
+		}
 	}
 
+	$scope.pass={};
+	
+	$scope.changepass = function () {
+//		$scope.passwrd = pass;
+		$scope.id = $.jStorage.get("user1");
+//		$scope.passwrd = pass;
+		$scope.allvalidation = [{
+			field:  $scope.pass.oldpassword,
+			validation: ""
+        },{
+			field:  $scope.pass.newpassword,
+			validation: ""
+			},{
+			field:  $scope.pass.confirmpassword,
+			validation: ""
+			}];
+		var check = formvalidation($scope.allvalidation);
+		if (check) {
+			console.log("valid");
+			MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
+
+		} else {
+			console.log("not valid");
+			$scope.showPopup8();
+		}
+	}
+//	$scope.changepass = function (pass) {
+//		$scope.passwrd = pass;
+//		$scope.id = $.jStorage.get("user1");
+//		$scope.passwrd = pass;
+//		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
+//	}
+	$scope.showPopup8 = function () {
+
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Please Enter Mandatory Fields</p>',
+			title: "Sorry Cannot Proceed!!",
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+	};
+    	$scope.showpasswordPopup1 = function () {
+
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">New Password and Confirm Password do not Match!</p>',
+			title: "Sorry Cannot Proceed!!",
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+	};
 	$scope.showpasswordPopup = function () {
 
 		var myPopup = $ionicPopup.show({
@@ -1245,13 +1301,47 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 		}
 	};
-	$scope.user = $.jStorage.get("user1");
 	$scope.addbalance = function (amount, reason) {
-		$scope.a = amount;
+		$scope.user = $.jStorage.get("user1");
+        $scope.a = amount;
 		$scope.b = reason;
-		console.log($scope.a, $scope.b);
-		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+		$scope.allvalidation = [{
+			field:  $scope.a,
+			validation: ""
+        }];
+		var check = formvalidation($scope.allvalidation);
+		if (check) {
+			console.log("valid");
+			console.log($scope.a, $scope.b);
+			MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+
+		} else {
+			console.log("not valid");
+			$scope.showPopup7();
+		}
+	}
+		$scope.showPopup7 = function () {
+		$scope.data = {}
+
+		// An elaborate, custom popup
+		var myPopup = $ionicPopup.show({
+			template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Its Mandatory</p>',
+			title: 'Enter Amount!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 1500);
 	};
+	
+//	$scope.user = $.jStorage.get("user1");
+//	$scope.addbalance = function (amount, reason) {
+//		$scope.a = amount;
+//		$scope.b = reason;
+//		console.log($scope.a, $scope.b);
+//		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+//	};
 	//	$scope.amount = 0;
 	$scope.amount = 1000;
 	$scope.percent = parseFloat(user.percentpayment);
@@ -1604,8 +1694,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+	
 	var getalluserproductscallback = function (data, status) {
 		$scope.break = data.queryresult;
+		$scope.shopname=$scope.break[0].shopname;
 		$scope.break = partitionarray($scope.break, 3);
 		console.log($scope.break);
 
@@ -1630,7 +1722,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
 		//all products
 		var getalluserproductscallback = function (data, status) {
-			//console.log(data.queryresult);
+//			console.log(data.queryresult);
 			$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
 
 		}
