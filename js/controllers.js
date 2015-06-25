@@ -4,9 +4,9 @@ var ref = 0;
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
+	$scope.product={};
 	$scope.searchproduct = function (product) {
-		$scope.p = product;
-		$scope.p={}
+		$scope.p = product;	
 		console.log($scope.p.productname);
 		console.log($scope.p.membershipno);
 		console.log($scope.p.category);
@@ -259,7 +259,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.product.membershipno = $stateParams.mem;
 	}
 //	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
-	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat,$scope.sortid, searchproductcallback);
+	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
 	$scope.i = $.jStorage.get("user1");
 
 	var homecallback = function (data, status) {
