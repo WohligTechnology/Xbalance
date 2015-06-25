@@ -283,7 +283,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	var homecallback = function (data, status) {
 		$scope.area = data.area;
 		data.category.unshift({
-			id: 0,
+			id:"",
 			name: "All"
 		});
 		$scope.category = data.category;
