@@ -6,6 +6,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
 	$scope.searchproduct = function (product) {
 		$scope.p = product;
+		$scope.p={}
 		console.log($scope.p.productname);
 		console.log($scope.p.membershipno);
 		console.log($scope.p.category);
@@ -244,6 +245,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.spr = partitionarray($scope.spr, 3);
 		console.log("partition data");
 		console.log($scope.spr);
+		
 		$scope.product.productname = $stateParams.name;
 		$scope.product.category = $stateParams.cat;
 		$scope.product.membershipno = $stateParams.mem;
@@ -263,6 +265,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.product = {};
 	$scope.product.productname = $scope.productname1;
 	$scope.product.membershipno = $scope.membershipno1;
+	
+	$ionicModal.fromTemplateUrl('templates/modal-sort.html', {
+			scope: $scope,
+			animation: 'slide-in-up'
+		}).then(function (modal) {
+			$scope.modal1 = modal;
+		});
+
+		$scope.opensort = function () {
+			$scope.modal1.show();
+		};
+
+		$scope.closesort = function () {
+			$scope.modal1.hide();
+		};
 })
 
 .controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
@@ -1101,6 +1118,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.p = data;
 		console.log($scope.p);
 		$scope.showpasswordPopup();
+			$scope.pass={};
 		$scope.oModal2.hide();
 		}
 	}
@@ -1433,6 +1451,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			$scope.showPopup6();
 		}
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+		$scope.ap={};
 		$scope.modal.hide();
 	}
 	$scope.prodimg = '';
@@ -1516,7 +1535,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			$scope.editpro.status = 0;
 		}
 
-		MyServices.editproduct($scope.editpro, $scope.insertid, editproductcallback);
+		MyServices.editproduct($scope.editpro, $scope.insertid,$scope.prodetails.image, editproductcallback);
 	}
 	var changeproductstatuscallback = function (data, status) {
 		console.log(data);
@@ -1532,6 +1551,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			console.log(status);
 			MyServices.changeproductstatus(id, status, changeproductstatuscallback);
 		}
+	var deleteproductcallback=function(data,status){
+	console.log(data);
+		$scope.modal2.hide();
+			MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+	}
+	$scope.deleteproduct=function(prodid,user){
+	MyServices.deleteproduct(prodid, user, deleteproductcallback);
+	}
 		//edit products and status end
 		//Hide when on PC
 	var options = {
@@ -1544,11 +1571,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	};
 	//upload editproductimage start
 	var editproductimage = function (result) {
-		console.log(result);
-		$scope.prodetails.image = result.value;
+		console.log(result.response);
+		$scope.abc = JSON.parse(result.response);
+		$scope.prodetails.image = $scope.abc.value;
+//		console.log(result.response);
+//		$scope.xyz = JSON.parse(result.response);
+//		console.log($scope.xyz);
+//		$scope.prodimg = $scope.xyz.value;
 	}
-	$scope.editproductimage = function (id) {
-		console.log(id);
+	$scope.editproductimage = function () {
+//		console.log(id);
 		console.log("take picture");
 		$cordovaCamera.getPicture(options).then(function (imageData) {
 			// Success! Image data is here
@@ -1559,7 +1591,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 				imageData = "content://media/external/images/media/" + photo_split[1];
 			}
 			$scope.cameraimage = imageData;
-			$scope.uploadPhoto(adminurl + "editproductimage?id=" + id, editproductimage);
+			$scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
 		}, function (err) {
 			// An error occured. Show a message to the user
 		});

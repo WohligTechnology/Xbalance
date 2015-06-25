@@ -110,7 +110,18 @@ myservices.factory('MyServices', function ($http) {
 				}
 			}).success(becomeamembercallback);
 		},
-		returnval.editproduct = function (product, id, editproductcallback) {
+			returnval.deleteproduct = function (prodid,user,deleteproductcallback) {
+			//        			console.log(profile);
+			$http({
+				url: adminurl + "deleteproduct",
+				method: "POST",
+				data: {
+					'productid': prodid,
+					'user': user
+				}
+			}).success(deleteproductcallback);
+		},
+		returnval.editproduct = function (product, id,image,editproductcallback) {
 			//		console.log(product.id);
 			//		console.log(product.name);
 			//		console.log(product.sku);
@@ -132,7 +143,8 @@ myservices.factory('MyServices', function ($http) {
 					'status': product.status,
 					'user': id,
 					'quantity': product.quantity,
-					'category': product.category
+					'category': product.category,
+					'image': image
 				}
 			}).success(editproductcallback);
 		},
