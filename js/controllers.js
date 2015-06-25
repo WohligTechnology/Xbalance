@@ -1534,7 +1534,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		if ($scope.editpro.status == false) {
 			$scope.editpro.status = 0;
 		}
-
+        console.log("in edit product:" + $scope.prodetails.image);
 		MyServices.editproduct($scope.editpro, $scope.insertid,$scope.prodetails.image, editproductcallback);
 	}
 	var changeproductstatuscallback = function (data, status) {
@@ -1574,6 +1574,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		console.log(result.response);
 		$scope.abc = JSON.parse(result.response);
 		$scope.prodetails.image = $scope.abc.value;
+		console.log("in edit image success:" + $scope.prodetails.image);
 //		console.log(result.response);
 //		$scope.xyz = JSON.parse(result.response);
 //		console.log($scope.xyz);
