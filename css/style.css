@@ -806,6 +806,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 
 .membershipno input {
     background: #eee;
+	width: 100%;
 }
 
 .registration.pull-right {
@@ -980,4 +981,8 @@ margin-left: 15px;
   border-radius: 5px;
   text-align: center;
   padding: 5px 0px;
+}
+
+ion-footer-bar.footer-shop h4 {
+  text-align: center;
 }

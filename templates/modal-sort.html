@@ -10,14 +10,14 @@
             <form class="filter-form">
                 <div class="list">
                     <label class="item item-radio">
-                        <input type="radio" name="group">
+                        <input type="radio" name="group" value="1" ng-model="sorting">
                         <div class="item-content main">
                             High to Low
                         </div>
                         <i class="radio-icon ion-checkmark"></i>
                     </label>
                     <label class="item item-radio">
-                        <input type="radio" name="group">
+                        <input type="radio" name="group" value="0" ng-model="sorting">
                         <div class="item-content main">
                             Low to High
                         </div>
@@ -26,7 +26,7 @@
                 </div>
             </form>
                                 <div class="padding-horizontal btn-rest">
-                        <button class="button button-block button-balanced">Submit</button>
+                        <button class="button button-block button-balanced" ng-click="getsort(sorting);">Submit</button>
                     </div>
         </div>
     </ion-content>

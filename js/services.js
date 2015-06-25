@@ -20,9 +20,10 @@ myservices.factory('MyServices', function ($http) {
 			//        console.log("Demo");
 			$http.get(adminurl + "home?user=" + user, {}).success(homecallback);
 		},
-		returnval.searchproduct = function (productname, membershipno, category, searchproductcallback) {
+		returnval.searchproduct = function (productname, membershipno, category,sortid, searchproductcallback) {
 			console.log("searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category);
-			$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category, {}).success(searchproductcallback);
+			$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category + "&sortid=" +sortid, {}).success(searchproductcallback);
+//		$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category + "&sortid=", {}).success(searchproductcallback);
 		},
 		returnval.getallcategory1 = function (getallcategory1callback) {
 			$http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);

@@ -228,6 +228,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//    console.log($scope.productname1);
 	//    console.log($scope.membershipno1);
 	//    console.log($scope.category1);
+//	$scope.content={};
+	$scope.sorting = 0;
+	$scope.getsort=function(content){
+		$scope.sortid=content;
+		console.log(content);	
+		$scope.modal1.hide();
+	}
 	//product detail
 	var getsingleproductcallback = function (data, status) {
 		$scope.getpro = data;
@@ -245,12 +252,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.spr = partitionarray($scope.spr, 3);
 		console.log("partition data");
 		console.log($scope.spr);
+//		console.log($scope.spr);
 		
 		$scope.product.productname = $stateParams.name;
 		$scope.product.category = $stateParams.cat;
 		$scope.product.membershipno = $stateParams.mem;
 	}
-	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
+//	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
+	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat,$scope.sortid, searchproductcallback);
 	$scope.i = $.jStorage.get("user1");
 
 	var homecallback = function (data, status) {
@@ -889,14 +898,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.showloading();
 
 	//Hide when on PC
-	var options = {
-		quality: 20,
-		destinationType: Camera.DestinationType.FILE_URI,
-		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-		allowEdit: true,
-		encodingType: Camera.EncodingType.JPEG,
-		saveToPhotoAlbum: true
-	};
+//	var options = {
+//		quality: 20,
+//		destinationType: Camera.DestinationType.FILE_URI,
+//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+//		allowEdit: true,
+//		encodingType: Camera.EncodingType.JPEG,
+//		saveToPhotoAlbum: true
+//	};
 	//    var options = {
 	//            maximumImagesCount: 1,
 	//            width: 800,
@@ -1561,14 +1570,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 		//edit products and status end
 		//Hide when on PC
-	var options = {
-		quality: 20,
-		destinationType: Camera.DestinationType.FILE_URI,
-		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-		allowEdit: true,
-		encodingType: Camera.EncodingType.JPEG,
-		saveToPhotoAlbum: true
-	};
+//	var options = {
+//		quality: 20,
+//		destinationType: Camera.DestinationType.FILE_URI,
+//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+//		allowEdit: true,
+//		encodingType: Camera.EncodingType.JPEG,
+//		saveToPhotoAlbum: true
+//	};
 	//upload editproductimage start
 	var editproductimage = function (result) {
 		console.log(result.response);
