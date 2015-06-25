@@ -212,7 +212,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading,$ionicPopup,$timeout) {
 	//    $scope.productname1 = $stateParams.name;
 	//    $scope.membershipno1 = $stateParams.mem;
 	//    $scope.category1 = $stateParams.cat;
@@ -245,10 +245,27 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		MyServices.getsingleproduct(id, getsingleproductcallback);
 		$location.url("/app/productdetail/" + id);
 	}
+	$scope.showPopupw = function () {
+
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Wrong Membership Number Entered!!</p>',
+			title: 'Sorry!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+	};
 	var searchproductcallback = function (data, status) {
 		//		console.log(data);
 		$scope.spr = data;
 		console.log($scope.spr);
+		if($scope.spr=="-1"){
+		$scope.showPopupw();
+		$location.url("/app/home");
+		}
+		else{
 		$scope.spr = partitionarray($scope.spr, 3);
 		console.log("partition data");
 		console.log($scope.spr);
@@ -257,6 +274,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.product.productname = $stateParams.name;
 		$scope.product.category = $stateParams.cat;
 		$scope.product.membershipno = $stateParams.mem;
+		}
 	}
 //	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
 	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
@@ -898,14 +916,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.showloading();
 
 	//Hide when on PC
-//	var options = {
-//		quality: 20,
-//		destinationType: Camera.DestinationType.FILE_URI,
-//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-//		allowEdit: true,
-//		encodingType: Camera.EncodingType.JPEG,
-//		saveToPhotoAlbum: true
-//	};
+	var options = {
+		quality: 20,
+		destinationType: Camera.DestinationType.FILE_URI,
+		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG,
+		saveToPhotoAlbum: true
+	};
 	//    var options = {
 	//            maximumImagesCount: 1,
 	//            width: 800,
@@ -1570,14 +1588,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 		//edit products and status end
 		//Hide when on PC
-//	var options = {
-//		quality: 20,
-//		destinationType: Camera.DestinationType.FILE_URI,
-//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-//		allowEdit: true,
-//		encodingType: Camera.EncodingType.JPEG,
-//		saveToPhotoAlbum: true
-//	};
+	var options = {
+		quality: 20,
+		destinationType: Camera.DestinationType.FILE_URI,
+		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		allowEdit: true,
+		encodingType: Camera.EncodingType.JPEG,
+		saveToPhotoAlbum: true
+	};
 	//upload editproductimage start
 	var editproductimage = function (result) {
 		console.log(result.response);
