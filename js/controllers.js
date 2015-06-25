@@ -1,12 +1,13 @@
 var globalfunctionapproval = {};
 var ref = 0;
+var sorts = {};
 
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
-	$scope.product={};
+	$scope.product = {};
 	$scope.searchproduct = function (product) {
-		$scope.p = product;	
+		$scope.p = product;
 		console.log($scope.p.productname);
 		console.log($scope.p.membershipno);
 		console.log($scope.p.category);
@@ -212,7 +213,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading,$ionicPopup,$timeout) {
+.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $timeout) {
 	//    $scope.productname1 = $stateParams.name;
 	//    $scope.membershipno1 = $stateParams.mem;
 	//    $scope.category1 = $stateParams.cat;
@@ -228,14 +229,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//    console.log($scope.productname1);
 	//    console.log($scope.membershipno1);
 	//    console.log($scope.category1);
-//	$scope.content={};
+	//	$scope.content={};
 	$scope.sorting = 0;
-	$scope.getsort=function(content){
-		$scope.sortid=content;
-		console.log(content);	
-		$scope.modal1.hide();
-	}
-	//product detail
+	var fulldatasorted=[];
+	$scope.getsort = function (content) {
+			$scope.modal1.hide();
+		console.log($scope.sprfull);
+			if (content == 0) {
+				
+				fulldatasorted=_.sortBy($scope.sprfull,function(n) {
+					return parseFloat(n.price);
+				});
+				console.log(fulldatasorted);
+				$scope.spr = partitionarray(fulldatasorted, 3);
+				
+				
+			} else if (content == 1) {
+			fulldatasorted=_.sortBy($scope.sprfull,function(n) {
+					return -1*parseFloat(n.price);
+				});
+				console.log(fulldatasorted);
+				$scope.spr = partitionarray(fulldatasorted, 3);
+			}
+		}
+		//product detail
 	var getsingleproductcallback = function (data, status) {
 		$scope.getpro = data;
 		//			console.log($scope.getsinglepro);
@@ -258,32 +275,32 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}, 2000);
 	};
 	var searchproductcallback = function (data, status) {
-		//		console.log(data);
-		$scope.spr = data;
-		console.log($scope.spr);
-		if($scope.spr=="-1"){
-		$scope.showPopupw();
-		$location.url("/app/home");
+			//		console.log(data);
+			$scope.spr = data;
+			$scope.sprfull=data;
+			console.log($scope.spr);
+			if ($scope.spr == "-1") {
+				$scope.showPopupw();
+				$location.url("/app/home");
+			} else {
+				$scope.spr = partitionarray($scope.spr, 3);
+				console.log("partition data");
+				console.log($scope.spr);
+				//		console.log($scope.spr);
+
+				$scope.product.productname = $stateParams.name;
+				$scope.product.category = $stateParams.cat;
+				$scope.product.membershipno = $stateParams.mem;
+			}
 		}
-		else{
-		$scope.spr = partitionarray($scope.spr, 3);
-		console.log("partition data");
-		console.log($scope.spr);
-//		console.log($scope.spr);
-		
-		$scope.product.productname = $stateParams.name;
-		$scope.product.category = $stateParams.cat;
-		$scope.product.membershipno = $stateParams.mem;
-		}
-	}
-//	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
+		//	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
 	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
 	$scope.i = $.jStorage.get("user1");
 
 	var homecallback = function (data, status) {
 		$scope.area = data.area;
 		data.category.unshift({
-			id:"",
+			id: "",
 			name: "All"
 		});
 		$scope.category = data.category;
@@ -292,21 +309,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.product = {};
 	$scope.product.productname = $scope.productname1;
 	$scope.product.membershipno = $scope.membershipno1;
-	
+
 	$ionicModal.fromTemplateUrl('templates/modal-sort.html', {
-			scope: $scope,
-			animation: 'slide-in-up'
-		}).then(function (modal) {
-			$scope.modal1 = modal;
-		});
+		scope: $scope,
+		animation: 'slide-in-up'
+	}).then(function (modal) {
+		$scope.modal1 = modal;
+	});
 
-		$scope.opensort = function () {
-			$scope.modal1.show();
-		};
+	$scope.opensort = function () {
+		$scope.modal1.show();
+	};
 
-		$scope.closesort = function () {
-			$scope.modal1.hide();
-		};
+	$scope.closesort = function () {
+		$scope.modal1.hide();
+	};
 })
 
 .controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
@@ -916,14 +933,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.showloading();
 
 	//Hide when on PC
-//	var options = {
-//		quality: 20,
-//		destinationType: Camera.DestinationType.FILE_URI,
-//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-//		allowEdit: true,
-//		encodingType: Camera.EncodingType.JPEG,
-//		saveToPhotoAlbum: true
-//	};
+	//	var options = {
+	//		quality: 20,
+	//		destinationType: Camera.DestinationType.FILE_URI,
+	//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+	//		allowEdit: true,
+	//		encodingType: Camera.EncodingType.JPEG,
+	//		saveToPhotoAlbum: true
+	//	};
 	//    var options = {
 	//            maximumImagesCount: 1,
 	//            width: 800,
@@ -1137,51 +1154,50 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.oModal2.hide();
 	};
 	var changepasswordcallback = function (data, status) {
-		if(data=="-1"){
-		console.log("new and confirm do not match ");
+		if (data == "-1") {
+			console.log("new and confirm do not match ");
 			$scope.showpasswordPopup1();
-		}
-	    else{
-		$scope.p = data;
-		console.log($scope.p);
-		$scope.showpasswordPopup();
-			$scope.pass={};
-		$scope.oModal2.hide();
-		}
-	}
-
-	$scope.pass={};
-	
-	$scope.changepass = function () {
-//		$scope.passwrd = pass;
-		$scope.id = $.jStorage.get("user1");
-//		$scope.passwrd = pass;
-		$scope.allvalidation = [{
-			field:  $scope.pass.oldpassword,
-			validation: ""
-        },{
-			field:  $scope.pass.newpassword,
-			validation: ""
-			},{
-			field:  $scope.pass.confirmpassword,
-			validation: ""
-			}];
-		var check = formvalidation($scope.allvalidation);
-		if (check) {
-			console.log("valid");
-			MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
-
 		} else {
-			console.log("not valid");
-			$scope.showPopup8();
+			$scope.p = data;
+			console.log($scope.p);
+			$scope.showpasswordPopup();
+			$scope.pass = {};
+			$scope.oModal2.hide();
 		}
 	}
-//	$scope.changepass = function (pass) {
-//		$scope.passwrd = pass;
-//		$scope.id = $.jStorage.get("user1");
-//		$scope.passwrd = pass;
-//		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
-//	}
+
+	$scope.pass = {};
+
+	$scope.changepass = function () {
+			//		$scope.passwrd = pass;
+			$scope.id = $.jStorage.get("user1");
+			//		$scope.passwrd = pass;
+			$scope.allvalidation = [{
+				field: $scope.pass.oldpassword,
+				validation: ""
+        }, {
+				field: $scope.pass.newpassword,
+				validation: ""
+			}, {
+				field: $scope.pass.confirmpassword,
+				validation: ""
+			}];
+			var check = formvalidation($scope.allvalidation);
+			if (check) {
+				console.log("valid");
+				MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
+
+			} else {
+				console.log("not valid");
+				$scope.showPopup8();
+			}
+		}
+		//	$scope.changepass = function (pass) {
+		//		$scope.passwrd = pass;
+		//		$scope.id = $.jStorage.get("user1");
+		//		$scope.passwrd = pass;
+		//		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
+		//	}
 	$scope.showPopup8 = function () {
 
 		var myPopup = $ionicPopup.show({
@@ -1194,7 +1210,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			myPopup.close(); //close the popup after 3 seconds for some reason
 		}, 2000);
 	};
-    	$scope.showpasswordPopup1 = function () {
+	$scope.showpasswordPopup1 = function () {
 
 		var myPopup = $ionicPopup.show({
 			template: '<p class="text-center">New Password and Confirm Password do not Match!</p>',
@@ -1348,10 +1364,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	};
 	$scope.addbalance = function (amount, reason) {
 		$scope.user = $.jStorage.get("user1");
-        $scope.a = amount;
+		$scope.a = amount;
 		$scope.b = reason;
 		$scope.allvalidation = [{
-			field:  $scope.a,
+			field: $scope.a,
 			validation: ""
         }];
 		var check = formvalidation($scope.allvalidation);
@@ -1365,7 +1381,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			$scope.showPopup7();
 		}
 	}
-		$scope.showPopup7 = function () {
+	$scope.showPopup7 = function () {
 		$scope.data = {}
 
 		// An elaborate, custom popup
@@ -1379,14 +1395,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			myPopup.close(); //close the popup after 3 seconds for some reason
 		}, 1500);
 	};
-	
-//	$scope.user = $.jStorage.get("user1");
-//	$scope.addbalance = function (amount, reason) {
-//		$scope.a = amount;
-//		$scope.b = reason;
-//		console.log($scope.a, $scope.b);
-//		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
-//	};
+
+	//	$scope.user = $.jStorage.get("user1");
+	//	$scope.addbalance = function (amount, reason) {
+	//		$scope.a = amount;
+	//		$scope.b = reason;
+	//		console.log($scope.a, $scope.b);
+	//		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+	//	};
 	//	$scope.amount = 0;
 	$scope.amount = 1000;
 	$scope.percent = parseFloat(user.percentpayment);
@@ -1478,7 +1494,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			$scope.showPopup6();
 		}
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-		$scope.ap={};
+		$scope.ap = {};
 		$scope.modal.hide();
 	}
 	$scope.prodimg = '';
@@ -1561,54 +1577,54 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		if ($scope.editpro.status == false) {
 			$scope.editpro.status = 0;
 		}
-        console.log("in edit product:" + $scope.prodetails.image);
-		MyServices.editproduct($scope.editpro, $scope.insertid,$scope.prodetails.image, editproductcallback);
+		console.log("in edit product:" + $scope.prodetails.image);
+		MyServices.editproduct($scope.editpro, $scope.insertid, $scope.prodetails.image, editproductcallback);
 	}
 	var changeproductstatuscallback = function (data, status) {
 		console.log(data);
 	}
 	$scope.editstatus = function (id, status) {
-			console.log(id);
-			if (status == true) {
-				status = 1;
-			}
-			if (status == false) {
-				status = 0;
-			}
-			console.log(status);
-			MyServices.changeproductstatus(id, status, changeproductstatuscallback);
+		console.log(id);
+		if (status == true) {
+			status = 1;
 		}
-	var deleteproductcallback=function(data,status){
-	console.log(data);
+		if (status == false) {
+			status = 0;
+		}
+		console.log(status);
+		MyServices.changeproductstatus(id, status, changeproductstatuscallback);
+	}
+	var deleteproductcallback = function (data, status) {
+		console.log(data);
 		$scope.modal2.hide();
-			MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 	}
-	$scope.deleteproduct=function(prodid,user){
-	MyServices.deleteproduct(prodid, user, deleteproductcallback);
-	}
+	$scope.deleteproduct = function (prodid, user) {
+			MyServices.deleteproduct(prodid, user, deleteproductcallback);
+		}
 		//edit products and status end
 		//Hide when on PC
-//	var options = {
-//		quality: 20,
-//		destinationType: Camera.DestinationType.FILE_URI,
-//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-//		allowEdit: true,
-//		encodingType: Camera.EncodingType.JPEG,
-//		saveToPhotoAlbum: true
-//	};
-	//upload editproductimage start
+		//	var options = {
+		//		quality: 20,
+		//		destinationType: Camera.DestinationType.FILE_URI,
+		//		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+		//		allowEdit: true,
+		//		encodingType: Camera.EncodingType.JPEG,
+		//		saveToPhotoAlbum: true
+		//	};
+		//upload editproductimage start
 	var editproductimage = function (result) {
 		console.log(result.response);
 		$scope.abc = JSON.parse(result.response);
 		$scope.prodetails.image = $scope.abc.value;
 		console.log("in edit image success:" + $scope.prodetails.image);
-//		console.log(result.response);
-//		$scope.xyz = JSON.parse(result.response);
-//		console.log($scope.xyz);
-//		$scope.prodimg = $scope.xyz.value;
+		//		console.log(result.response);
+		//		$scope.xyz = JSON.parse(result.response);
+		//		console.log($scope.xyz);
+		//		$scope.prodimg = $scope.xyz.value;
 	}
 	$scope.editproductimage = function () {
-//		console.log(id);
+		//		console.log(id);
 		console.log("take picture");
 		$cordovaCamera.getPicture(options).then(function (imageData) {
 			// Success! Image data is here
@@ -1754,10 +1770,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-	
+
 	var getalluserproductscallback = function (data, status) {
 		$scope.break = data.queryresult;
-		$scope.shopname=$scope.break[0].shopname;
+		$scope.shopname = $scope.break[0].shopname;
 		$scope.break = partitionarray($scope.break, 3);
 		console.log($scope.break);
 
@@ -1782,7 +1798,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
 		//all products
 		var getalluserproductscallback = function (data, status) {
-//			console.log(data.queryresult);
+			//			console.log(data.queryresult);
 			$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
 
 		}
