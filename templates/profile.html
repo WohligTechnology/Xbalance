@@ -21,19 +21,19 @@
                         {{profile.category}}
                     </div>
                 </ion-item>
-                <div class="item item-input item-text-wrap header">
+                <div class="item item-text-wrap header">
                     <h2> Address</h2>
                 </div>
-                <div class="item item-input item-text-wrap">
+                <div class="item item-text-wrap">
                     <div class="input itemproducts">
                        <p> {{profile.billingaddress}}</p>
                     </div>
                 </div>
 
-                <div class="item item-input item-text-wrap header">
+                <div class="item item-text-wrap header">
                     <h2>Description</h2>
                 </div>
-                <div class="item item-input item-text-wrap">
+                <div class="item item-text-wrap">
                     <div class="input itemproducts">
                       <p>{{profile.description}}</p>  
                     </div>
@@ -69,21 +69,21 @@
                         {{profile.website}}
                     </div>
                 </ion-item>
-                <div class="item item-input item-text-wrap header" ng-if="pic.length>0">
+                <div class="item item-text-wrap header" ng-if="pic.length>0">
                     <h2>Shops Photos</h2>
                 </div>
-                <div class="item item-input item-text-wrap itemproducts">
-                    <div class="input-div" ng-repeat="p in pic" ng-click="openshop();">
+                <div class="row">
+                    <div class="col input-div" ng-repeat="p in pic" ng-click="openshop();">
                         <div class="img-profile">
                             <img ng-src="{{p.photo|serverimage}}">
                         </div>
                     </div>
                 </div>
-                <div class="item item-input item-text-wrap header" ng-if="image.length>0">
+                <div class="item item-text-wrap header" ng-if="image.length>0">
                     <h2>Products Photos</h2>
                 </div>
-                <div class="item item-input item-text-wrap itemproducts">
-                    <div class="input-div" ng-repeat="i in image" ng-click="openpswds();">
+                <div class="row">
+                    <div class="col input-div" ng-repeat="i in image" ng-click="openpswds();">
                         <div class="img-profile">
                             <img ng-src="{{i.photo|serverimage}}">
                         </div>
