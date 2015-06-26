@@ -1465,7 +1465,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading,$cordovaImagePicker) {
 	//view products start
 	var viewmyproductscallback = function (data, status) {
 		console.log(data);
