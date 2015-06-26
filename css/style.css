@@ -523,6 +523,8 @@ ion-footer-bar.footer-shop h4 {
     padding-top: 12px;
     color: #fff;
     font-size: 18px;
+    width: 100%;
+    text-align: center;
 }
 
 .sell-img img {
@@ -991,4 +993,9 @@ margin-left: 15px;
 
 ion-footer-bar.footer-shop h4 {
   text-align: center;
+}
+
+.item.item-input.item-text-wrap.itemimage {
+  display: table;
+  width: 100%;
 }
