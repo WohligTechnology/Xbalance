@@ -112,7 +112,8 @@ myservices.factory('MyServices', function ($http) {
 			}).success(becomeamembercallback);
 		},
 			returnval.deleteproduct = function (prodid,user,deleteproductcallback) {
-			//        			console.log(profile);
+//			        			console.log(prodid);
+//			        			console.log(user);
 			$http({
 				url: adminurl + "deleteproduct",
 				method: "POST",
