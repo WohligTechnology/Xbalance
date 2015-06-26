@@ -231,22 +231,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//    console.log($scope.category1);
 	//	$scope.content={};
 	$scope.sorting = 0;
-	var fulldatasorted = [];
+	var fulldatasorted=[];
 	$scope.getsort = function (content) {
 			$scope.modal1.hide();
-			console.log($scope.sprfull);
+		console.log($scope.sprfull);
 			if (content == 0) {
-
-				fulldatasorted = _.sortBy($scope.sprfull, function (n) {
+				
+				fulldatasorted=_.sortBy($scope.sprfull,function(n) {
 					return parseFloat(n.price);
 				});
 				console.log(fulldatasorted);
 				$scope.spr = partitionarray(fulldatasorted, 3);
-
-
+				
+				
 			} else if (content == 1) {
-				fulldatasorted = _.sortBy($scope.sprfull, function (n) {
-					return -1 * parseFloat(n.price);
+			fulldatasorted=_.sortBy($scope.sprfull,function(n) {
+					return -1*parseFloat(n.price);
 				});
 				console.log(fulldatasorted);
 				$scope.spr = partitionarray(fulldatasorted, 3);
@@ -277,7 +277,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	var searchproductcallback = function (data, status) {
 			//		console.log(data);
 			$scope.spr = data;
-			$scope.sprfull = data;
+			$scope.sprfull=data;
 			console.log($scope.spr);
 			if ($scope.spr == "-1") {
 				$scope.showPopupw();
@@ -933,14 +933,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	$scope.showloading();
 
 	//Hide when on PC
-	var options = {
-		quality: 20,
-		destinationType: Camera.DestinationType.FILE_URI,
-		sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-		allowEdit: true,
-		encodingType: Camera.EncodingType.JPEG,
-		saveToPhotoAlbum: true
-	};
+		var options = {
+			quality: 20,
+			destinationType: Camera.DestinationType.FILE_URI,
+			sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			allowEdit: true,
+			encodingType: Camera.EncodingType.JPEG,
+			saveToPhotoAlbum: true
+		};
 	//    var options = {
 	//            maximumImagesCount: 1,
 	//            width: 800,
@@ -1465,7 +1465,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading) {
 	//view products start
 	var viewmyproductscallback = function (data, status) {
 		console.log(data);
@@ -1526,51 +1526,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 	$scope.addproductimage = function () {
 		console.log("take picture");
-		//	 $cordovaImagePicker.getPictures(options).then(function (imageData) {
-		//			console.log("here in upload image");
-		//			console.log(imageData);
-		//			if (imageData.substring(0, 21) == "content://com.android") {
-		//				var photo_split = imageData.split("%3A");
-		//				imageData = "content://media/external/images/media/" + photo_split[1];
-		//			}
-		//			$scope.cameraimage = imageData;
-		//			$scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-		//		}, function (err) {
-		//			// An error occured. Show a message to the user
-		//		});
-
-		$cordovaImagePicker.getPictures(options).then(function (resultImage) {
-				// Success! Image data is here
-				console.log("here in upload image");
-
-				console.log(resultImage);
-
-				$scope.cameraimage = resultImage[0];
-				$scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-
-			},
-			function (err) {
-				// An error occured. Show a message to the user
-			});
-
+		$cordovaCamera.getPicture(options).then(function (imageData) {
+			// Success! Image data is here
+			console.log("here in upload image");
+			console.log(imageData);
+			if (imageData.substring(0, 21) == "content://com.android") {
+				var photo_split = imageData.split("%3A");
+				imageData = "content://media/external/images/media/" + photo_split[1];
+			}
+			$scope.cameraimage = imageData;
+			$scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
+		}, function (err) {
+			// An error occured. Show a message to the user
+		});
 	};
-	//old image
-	//	$scope.addproductimage = function () {
-	//		console.log("take picture");
-	//		$cordovaCamera.getPicture(options).then(function (imageData) {
-	//			// Success! Image data is here
-	//			console.log("here in upload image");
-	//			console.log(imageData);
-	//			if (imageData.substring(0, 21) == "content://com.android") {
-	//				var photo_split = imageData.split("%3A");
-	//				imageData = "content://media/external/images/media/" + photo_split[1];
-	//			}
-	//			$scope.cameraimage = imageData;
-	//			$scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-	//		}, function (err) {
-	//			// An error occured. Show a message to the user
-	//		});
-	//	};
 	//product details start
 	var getsingleproductcallback = function (data, status) {
 		$scope.prodetails = data;
@@ -1594,12 +1563,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	MyServices.home($scope.insertid, homecallback);
 	//edit products and status start
 	var editproductcallback = function (data, status) {
-			console.log(data);
-			MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-			$scope.modal2.hide();
+		console.log(data);
+		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+		$scope.modal2.hide();
 
-		}
-		//	$scope.prodetails.image='';
+	}
+//	$scope.prodetails.image='';
 	$scope.editproducts = function (products) {
 		$scope.editpro = products;
 		console.log($scope.editpro);
@@ -1636,21 +1605,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}
 		//edit products and status end
 		//Hide when on PC
-		//			var options = {
-		//				quality: 20,
-		//				destinationType: Camera.DestinationType.FILE_URI,
-		//				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-		//				allowEdit: true,
-		//				encodingType: Camera.EncodingType.JPEG,
-		//				saveToPhotoAlbum: true
-		//			};
-	var options = {
-		maximumImagesCount: 10,
-		width: 800,
-		height: 800,
-		quality: 80
-	};
-	//upload editproductimage start
+			var options = {
+				quality: 20,
+				destinationType: Camera.DestinationType.FILE_URI,
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+				allowEdit: true,
+				encodingType: Camera.EncodingType.JPEG,
+				saveToPhotoAlbum: true
+			};
+	
+	
+		//upload editproductimage start
 	var editproductimage = function (result) {
 		console.log(result.response);
 		$scope.abc = JSON.parse(result.response);
@@ -1662,8 +1627,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//		$scope.prodimg = $scope.xyz.value;
 	}
 	$scope.editproductimage = function () {
+		//		console.log(id);
 		console.log("take picture");
-		$cordovaImagePicker.getPictures(options).then(function (imageData) {
+		$cordovaCamera.getPicture(options).then(function (imageData) {
+			// Success! Image data is here
 			console.log("here in upload image");
 			console.log(imageData);
 			if (imageData.substring(0, 21) == "content://com.android") {
@@ -1676,24 +1643,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			// An error occured. Show a message to the user
 		});
 	};
-	//old edit image upload
-	//	$scope.editproductimage = function () {
-	//		//		console.log(id);
-	//		console.log("take picture");
-	//		$cordovaCamera.getPicture(options).then(function (imageData) {
-	//			// Success! Image data is here
-	//			console.log("here in upload image");
-	//			console.log(imageData);
-	//			if (imageData.substring(0, 21) == "content://com.android") {
-	//				var photo_split = imageData.split("%3A");
-	//				imageData = "content://media/external/images/media/" + photo_split[1];
-	//			}
-	//			$scope.cameraimage = imageData;
-	//			$scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
-	//		}, function (err) {
-	//			// An error occured. Show a message to the user
-	//		});
-	//	};
 	//upload editproductimage end
 
 	//Upload photo
