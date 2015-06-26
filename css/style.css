@@ -783,7 +783,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 .centered {
     position: absolute;
     top: 50%;
-/*
+    /*
     width: 100%;
     text-align: center;
     -webkit-transform: translateY(-50%);
@@ -802,14 +802,13 @@ ion-item.item.item-thumbnail-left.trns-add {
     padding: 0px;
 }
 
-.input-div {
-    width: 33.33%;
-  display: table-cell;
+.input-div img {
+    width: 100%;
 }
 
 .membershipno input {
     background: #eee;
-	width: 100%;
+    width: 100%;
     padding: 0px 0px 0px 10px;
 }
 
@@ -849,6 +848,11 @@ i.icon.ion-record.icon-actived {
     padding-right: 10px;
     color: #24DD70;
     vertical-align: bottom;
+}
+
+.col.input-div button {
+    padding: 0;
+    border: 0px;
 }
 
 .leftname {
@@ -957,45 +961,47 @@ input.disable {
 p.addb-p {
     font-size: 16px;
 }
-.form-addrs{
-margin-left: 15px;
-	font-size: 13px;
-	margin-top: 15px;
-}
-.buy-form input{
-	color: #9F9F9F;
+
+.form-addrs {
+    margin-left: 15px;
+    font-size: 13px;
+    margin-top: 15px;
 }
 
-.centers
-{
-  position: absolute;
-  top: 50%;
-  background-color: #fff;
-  width: 100%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  text-align: center;
-  padding: 5px 0px;
+.buy-form input {
+    color: #9F9F9F;
 }
-.centers-pro
-{
-  position: absolute;
-/*  top: 50%;*/
-  background-color: #fff;
-  width: 100%;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  text-align: center;
-  padding: 5px 0px;
+
+.centers {
+    position: absolute;
+    top: 50%;
+    background-color: #fff;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.centers-pro {
+    position: absolute;
+    /*  top: 50%;*/
+    
+    background-color: #fff;
+    width: 100%;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 0px;
 }
 
 ion-footer-bar.footer-shop h4 {
-  text-align: center;
+    text-align: center;
 }
 
 .item.item-input.item-text-wrap.itemimage {
-  display: table;
-  width: 100%;
+    display: table;
+    width: 100%;
 }
