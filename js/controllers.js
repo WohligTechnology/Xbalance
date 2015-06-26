@@ -1568,6 +1568,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.modal2.hide();
 
 	}
+	$scope.prodetails.image='';
 	$scope.editproducts = function (products) {
 		$scope.editpro = products;
 		console.log($scope.editpro);

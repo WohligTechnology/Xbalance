@@ -132,7 +132,7 @@ myservices.factory('MyServices', function ($http) {
 			//		console.log(product.status);
 			//		console.log(product.user);
 			//		console.log(product.quantity);
-			//		console.log(product.category);
+					console.log(image);
 			$http({
 				url: adminurl + "editproduct",
 				method: "POST",
