@@ -38,7 +38,8 @@
                 </div>
                 <div class="item item-input text-capitalize">
                     <span>Quantity*</span>
-                    <input class="pull-right" type="text" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>
+                      <input type="number" name="quantity" min="1" class="pull-right" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>
+<!--                    <input class="pull-right" type="text" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>-->
                 </div>
                 <div class="item item-input text-capitalize">
                     <span>Logistic Charge</span>
