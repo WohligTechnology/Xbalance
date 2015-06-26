@@ -694,6 +694,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//		console.log($scope.form);
 		//buying details
 		var buyproductcallback = function (data, status) {
+			if(data== "-1")
 			$scope.showPopup5();
 			$scope.modal1.hide();
 			$location.url("/app/home");
@@ -1545,10 +1546,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.prodetails = data;
 		console.log($scope.prodetails);
 		if ($scope.prodetails.status == 1) {
-			$scope.prodetails.status = "Available";
+//			$scope.prodetails.status = "Available";
+			$scope.prodetails.status = true;
 		}
 		if ($scope.prodetails.status == 0) {
-			$scope.prodetails.status = "Not Available";
+//			$scope.prodetails.status = "Not Available";
+			$scope.prodetails.status = false;
 		}
 	}
 	$scope.productdetails = function (id) {
