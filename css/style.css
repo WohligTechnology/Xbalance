@@ -416,9 +416,9 @@ p.info {
 }
 
 .incard .item.item-input {
-    padding: 5px 15px;
-    border-width: 0px;
-    margin: 0;
+    /* padding: 5px 15px; */
+    /* border-width: 0px; */
+    /* margin: 0; */
 }
 
 .headed.item {
@@ -674,6 +674,7 @@ h5.member {
 .img-profile {
     position: relative;
     overflow: hidden;
+    display: table-cell;
 }
 
 .button.bold {
@@ -800,8 +801,9 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 
 .input-div {
-    min-width: 50px;
+    display: inline-table;
     text-align: center;
+    width: 33.33%;
 }
 
 .membershipno input {
@@ -969,6 +971,8 @@ margin-left: 15px;
   top: 50%;
   background-color: #fff;
   width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
   padding: 5px 0px;
@@ -979,6 +983,8 @@ margin-left: 15px;
 /*  top: 50%;*/
   background-color: #fff;
   width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
   padding: 5px 0px;
