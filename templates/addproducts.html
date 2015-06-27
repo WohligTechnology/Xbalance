@@ -50,14 +50,14 @@
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">
-                            <input type="checkbox" ng-model="ap.status" ng-class="allvalidation[4].validation" required>
+                            <input type="checkbox" ng-model="ap.status">
                             <div class="track">
                                 <div class="handle"></div>
                             </div>
                         </label>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[5].validation" required></textarea>
+                        <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
                     </div>
                     <div class="padding">
                 <button class="button button-block button-assertive" ng-click="insertproduct(ap);">Save</button>

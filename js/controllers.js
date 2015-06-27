@@ -1553,10 +1553,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
          }, {
 				field: $scope.ap.category,
 				validation: ""
-	 }, {
-				field: $scope.ap.status,
-				validation: ""
-	 }, {
+	 },{
 				field: $scope.ap.description,
 				validation: ""
 	 }];
@@ -1688,9 +1685,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			field: $scope.editpro.quantity,
 			validation: ""
         }, {
-			field: $scope.editpro.status,
-			validation: ""
-        }, {
 			field: $scope.editpro.category,
 			validation: ""
         }, {
@@ -1727,7 +1721,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		}, 2000);
 	};
 	var changeproductstatuscallback = function (data, status) {
-		console.log(data);
+		console.log("change status:"+ data);
 	}
 	$scope.editstatus = function (id, status) {
 		console.log(id);

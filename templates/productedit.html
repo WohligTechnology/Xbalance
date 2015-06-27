@@ -39,7 +39,7 @@
 -->
                     <div class="item item-toggle">
                         <span style="font-weight:bold;">Status</span>
-                        <label class="toggle toggle-balanced" ng-class="allvalidation[3].validation" required>
+                        <label class="toggle toggle-balanced">
                             <input type="checkbox" ng-model="prodetails.status" >
                             <div class="track">
                                 <div class="handle"></div>
@@ -50,7 +50,7 @@
                         <div class="input-label">
                             <span style="font-weight:bold;">Category</span>
                         </div>
-                        <select ng-model="prodetails.category" ng-class="allvalidation[4].validation" required>
+                        <select ng-model="prodetails.category" ng-class="allvalidation[3].validation" required>
                             <option value="">All</option>
                             <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                         </select>
@@ -59,7 +59,7 @@
                         <h2>Description</h2>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[5].validation" required></textarea>
+                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required></textarea>
                     </div>
                 </div>
             </form>

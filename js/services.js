@@ -151,16 +151,17 @@ myservices.factory('MyServices', function ($http) {
 			}).success(editproductcallback);
 		},
 		returnval.changeproductstatus = function (id, status, changeproductstatuscallback) {
-			//        			console.log(profile);
+			        			console.log("productid="+ id);
+			        			console.log("status="+ status);
 			$http({
 				url: adminurl + "changeproductstatus",
 				method: "POST",
 				data: {
 					'productid': id,
-					'status': status
+					'status': status+""
 				}
 			}).success(changeproductstatuscallback);
-		},
+		}
 
 		returnval.getalluserproducts = function (id, getalluserproductscallback) {
 			console.log(id);
