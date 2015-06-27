@@ -11,14 +11,15 @@
                     <ion-item class="item">
 
                         <span class="item-note text-capitalize">
-                        <input type="text" ng-model="getsinglepro.price" readonly style="text-align:right">
+                        <input type="text" ng-model="getsinglepro.price" readonly class="buy-inputdetails">
 <!--						{{getsinglepro.price}}-->
 					</span>
                         <h2>Price</h2>
                     </ion-item>
                     <ion-item>
                         <span class="item-note text-capitalize">
-						{{getsinglepro.quantity}}
+                        <input type="text" ng-model="getsinglepro.quantity" readonly class="buy-inputdetails">
+<!--						{{getsinglepro.quantity}}-->
 					</span>
                         <h2>Quantity</h2>
                     </ion-item>
@@ -34,7 +35,8 @@
                     <ion-item>
 
                         <span class="item-note text-capitalize">
-						{{getsinglepro.categoryname}}
+                        <input type="text" ng-model="getsinglepro.categoryname" readonly class="buy-inputdetails">
+<!--						{{getsinglepro.categoryname}}-->
 					</span>
                         <h2>Category</h2>
                     </ion-item>
@@ -48,7 +50,8 @@
                     <ion-item ng-click=getallprod(getsinglepro.user);>
 
                         <span class="item-note text-capitalize blue">
-						{{getsinglepro.shopname}}
+                         <input type="text" ng-model="getsinglepro.shopname" readonly class="buy-inputdetails">
+<!--						{{getsinglepro.shopname}}-->
 					</span>
                         <h2>Shop</h2>
                     </ion-item>
