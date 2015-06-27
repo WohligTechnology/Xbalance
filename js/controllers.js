@@ -1638,23 +1638,90 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	//edit products and status start
 	var editproductcallback = function (data, status) {
 		console.log(data);
+		if(data=="0"){
+		$scope.showPopup15();
+		}
+		else if(data=="1"){
+			$scope.showPopup16();
 		MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
 		$scope.modal2.hide();
+		}
 
 	}
-//	$scope.prodetails.image='';
+			$scope.showPopup15 = function () {
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Low Sales Balance</p>',
+			title: 'Amount Exceeds!!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+			};
+	
+	$scope.showPopup16 = function () {
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Product Updated!</p>',
+			title: 'Successfull!!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+			};
 	$scope.editproducts = function (products) {
 		$scope.editpro = products;
+		$scope.allvalidation = [{
+		field: $scope.editpro.name,
+			validation: ""
+        }, {
+			field: $scope.editpro.price,
+			validation: ""
+        },{
+			field: $scope.editpro.quantity,
+			validation: ""
+        },{
+			field: $scope.editpro.status,
+			validation: ""
+        },{
+			field: $scope.editpro.category,
+			validation: ""
+        },{
+			field: $scope.editpro.description,
+			validation: ""
+        }];
+	var check = formvalidation($scope.allvalidation);
+		if (check) {
 		console.log($scope.editpro);
-		if ($scope.editpro.status == true) {
+			if ($scope.editpro.status == true) {
 			$scope.editpro.status = 1;
 		}
-		if ($scope.editpro.status == false) {
+			if ($scope.editpro.status == false) {
 			$scope.editpro.status = 0;
 		}
 		console.log("in edit product:" + $scope.prodetails.image);
 		MyServices.editproduct($scope.editpro, $scope.insertid, $scope.prodetails.image, editproductcallback);
+
+					}
+		else{
+			$scope.showPopupenteredit();
+		}
+		
 	}
+	$scope.showPopupenteredit = function () {
+
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Please Enter Mandatory Fields!</p>',
+			title: 'Sorry Cannot Proceed!',
+			scope: $scope,
+
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+	};
 	var changeproductstatuscallback = function (data, status) {
 		console.log(data);
 	}

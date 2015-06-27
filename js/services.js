@@ -124,26 +124,26 @@ myservices.factory('MyServices', function ($http) {
 			}).success(deleteproductcallback);
 		},
 		returnval.editproduct = function (product, id,image,editproductcallback) {
-			//		console.log(product.id);
-			//		console.log(product.name);
-			//		console.log(product.sku);
-			//		console.log(product.price);
-			//		console.log(product.description);
-			//		console.log(product.status);
-			//		console.log(product.user);
-			//		console.log(product.quantity);
-					console.log(image);
+					console.log(id);
+//					console.log(product.name);
+//					console.log(product.sku);
+//					console.log(product.price);
+//					console.log(product.description);
+//					console.log(product.status);
+//					console.log(product.user);
+//					console.log(product.quantity);
+//					console.log(image);
 			$http({
 				url: adminurl + "editproduct",
 				method: "POST",
 				data: {
 					'id': product.id,
 					'name': product.name,
-					'sku': product.sku,
+//					'sku': product.sku,
 					'price': product.price,
 					'description': product.description,
 					'status': product.status,
-					'user': id,
+					'user': $.jStorage.get("user1"),
 					'quantity': product.quantity,
 					'category': product.category,
 					'image': image
