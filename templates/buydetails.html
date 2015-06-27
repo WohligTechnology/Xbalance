@@ -11,7 +11,8 @@
                     <ion-item class="item">
 
                         <span class="item-note text-capitalize">
-						{{getsinglepro.price}}
+                        <input type="text" ng-model="getsinglepro.price" readonly style="text-align:right">
+<!--						{{getsinglepro.price}}-->
 					</span>
                         <h2>Price</h2>
                     </ion-item>
@@ -42,7 +43,7 @@
                         <span class="item-note text-capitalize">
 						Avaliable
 					</span>
-                        <h2> Status</h2>
+                        <h2>Status</h2>
                     </ion-item>
                     <ion-item ng-click=getallprod(getsinglepro.user);>
 
