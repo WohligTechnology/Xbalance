@@ -694,7 +694,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//		console.log($scope.form);
 		//buying details
 		var buyproductcallback = function (data, status) {
-			if(data== "-1"){
+			if(data== "-2"){
+			$scope.showPopuppurchase();
+			}
+			else if(data== "-1"){
 			$scope.showPopupquantity();
 			}
 			else{
@@ -754,6 +757,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			//			console.log(form);
 			//		MyServices.buyproduct($scope.detailid,$scope.prodid,form,buyproductcallback);
 		}
+		$scope.showPopuppurchase = function () {
+
+			var myPopup = $ionicPopup.show({
+				template: '<p class="text-center">Your Purchase balance is low!!!</p>',
+				title: 'Amount Exceeds!!',
+				scope: $scope,
+
+			});
+			$timeout(function () {
+				myPopup.close(); //close the popup after 3 seconds for some reason
+			}, 3000);
+		};
 		$scope.showPopup5 = function () {
 
 			var myPopup = $ionicPopup.show({
