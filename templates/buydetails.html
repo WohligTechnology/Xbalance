@@ -1,26 +1,26 @@
 <ion-view view-title="Product Details">
-	<ion-content class="padding">
-		<div class="incard">
-			<div class="profile-img">
-				<img ng-src={{getsinglepro.image|serverimage}}>
-				<h3>{{getsinglepro.name}}</h3>
-			</div>
-			<div class="list padtop5">
-				<ion-item class="item">
-					Price
-					<span class="item-note text-capitalize" style="padding-right:10px;">
+    <ion-content class="padding">
+        <div class="incard">
+            <div class="profile-img">
+                <img ng-src={{getsinglepro.image|serverimage}}>
+                <h3>{{getsinglepro.name}}</h3>
+            </div>
+            <div class="list padtop5">
+                <ion-item class="item">
+                    Price
+                    <span class="item-note text-capitalize">
 						{{getsinglepro.price}}
 					</span>
-				</ion-item>
+                </ion-item>
 
-				<ion-item class="item">
-					Quantity
-					<span class="item-note text-capitalize" style="padding-right:10px;">
+                <ion-item class="item">
+                    Quantity
+                    <span class="item-note text-capitalize">
 						{{getsinglepro.quantity}}
 					</span>
-				</ion-item>
+                </ion-item>
 
-<!--
+                <!--
 				<ion-item class="item">
 					SKU
 					<div class="item-note text-capitalize">
@@ -28,44 +28,44 @@
 					</div>
 				</ion-item>
 -->
-				<ion-item class="item">
-					Category
-					<span class="item-note text-capitalize" style="padding-right:10px;">
+                <ion-item class="item">
+                    Category
+                    <span class="item-note text-capitalize">
 						{{getsinglepro.categoryname}}
 					</span>
-				</ion-item>
+                </ion-item>
 
-				<ion-item class="item">
-					Status
-					<span class="item-note text-capitalize" style="padding-right:10px;">
+                <ion-item class="item">
+                    Status
+                    <span class="item-note text-capitalize">
 						Avaliable
 					</span>
-				</ion-item>
-				<ion-item class="item" ng-click=getallprod(getsinglepro.user);>
-					Shop
-					<span class="item-note text-capitalize blue" style="padding-right:10px;">
+                </ion-item>
+                <ion-item class="item" ng-click=getallprod(getsinglepro.user);>
+                    Shop
+                    <span class="item-note text-capitalize blue">
 						{{getsinglepro.shopname}}
 					</span>
-				</ion-item>
-				<div class="item">
-					Description
-				</div>
-				<div class="item item-text-wrap">
-					<div class="input itemproducts">
+                </ion-item>
+                <div class="item">
+                    Description
+                </div>
+                <div class="item item-text-wrap">
+                    <div class="input itemproducts">
                         <p>{{getsinglepro.description}}</p>
-					</div>
-				</div>
-				<!--
+                    </div>
+                </div>
+                <!--
                 <div class="padding-horizontal">
                     <a class="button button-block button-outline button-balanced" href="#/app/dealerprd">
                 View More Products
             </a>
                 </div>
 -->
-			</div>
-		</div>
-	</ion-content>
-	<ion-footer-bar class="footer-shop ion-item balanced" ng-click="openform1(getsinglepro.id)" ng-if="disableid!=getsinglepro.user">
-		<h4>Buy Now</h4>
-	</ion-footer-bar>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="footer-shop ion-item balanced" ng-click="openform1(getsinglepro.id)" ng-if="disableid!=getsinglepro.user">
+        <h4>Buy Now</h4>
+    </ion-footer-bar>
 </ion-view>
