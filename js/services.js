@@ -87,7 +87,7 @@ myservices.factory('MyServices', function ($http) {
 				method: "POST",
 				data: {
 					'name': ap.name,
-					'sku': ap.sku,
+//					'sku': ap.sku,
 					'price': ap.price,
 					'description': ap.description,
 					'status': ap.status,
@@ -188,7 +188,7 @@ myservices.factory('MyServices', function ($http) {
 		returnval.buyproduct = function (userid, prodid, user, buyproductcallback) {
 			console.log(userid);
 			console.log(prodid);
-			console.log(user);
+			console.log(user.personalcontact);
 			$http({
 				url: adminurl + "buyproduct",
 				method: "POST",

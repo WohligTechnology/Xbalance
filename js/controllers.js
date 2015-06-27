@@ -694,10 +694,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//		console.log($scope.form);
 		//buying details
 		var buyproductcallback = function (data, status) {
-			if(data== "-1")
+			if(data== "-1"){
+			$scope.showPopupquantity();
+			}
+			else{
+				console.log("result: "+ data);
 			$scope.showPopup5();
 			$scope.modal1.hide();
 			$location.url("/app/home");
+			}
 		}
 		$scope.buyproduct = function (form) {
 			$scope.allvalidation = [{
@@ -761,7 +766,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 				myPopup.close(); //close the popup after 3 seconds for some reason
 			}, 3000);
 		};
+		$scope.showPopupquantity = function () {
 
+			var myPopup = $ionicPopup.show({
+				template: '<p class="text-center">Sorry Cannot Proceed!!</p>',
+				title: 'Quantity Exceeds',
+				scope: $scope,
+
+			});
+			$timeout(function () {
+				myPopup.close(); //close the popup after 3 seconds for some reason
+			}, 3000);
+		};
 
 		$ionicModal.fromTemplateUrl('templates/modal-form.html', {
 			scope: $scope,
@@ -1488,6 +1504,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	};
 
 	//add products start
+	$scope.ap = [];
 	var createproductcallback = function (data, status) {
 		console.log(data);
 		$scope.insertprodid = data;
@@ -1499,8 +1516,32 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		$scope.modal.hide();
 	}
 	$scope.prodimg = '';
+//insert product wit validation
+//	$scope.ap="";
 	$scope.insertproduct = function (ap) {
-			$scope.ap = ap;
+			$scope.allvalidation = [{
+				field: $scope.ap.name,
+				validation: ""
+        }, {
+				field: $scope.ap.price,
+				validation: ""
+        }, {
+				field: $scope.ap.quantity,
+				validation: ""
+         }, {
+				field: $scope.ap.category,
+				validation: ""
+	 },{
+				field: $scope.ap.status,
+				validation: ""
+	 },{
+				field: $scope.ap.description,
+				validation: ""
+	 }];
+		
+		var check = formvalidation($scope.allvalidation);
+			if (check) {
+				$scope.ap = ap;
 			if ($scope.ap.status == true) {
 				$scope.ap.status = 1;
 				console.log($scope.ap.status);
@@ -1513,10 +1554,25 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 			console.log("before:" + $scope.prodimg);
 			$scope.insertid = $.jStorage.get("user1");
 			MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
+			}
+		else{
+		$scope.showPopup10();
 		}
+		
+	}
 		//add products end
 		//addproductimage
+			$scope.showPopup10 = function () {
+		var myPopup = $ionicPopup.show({
+			template: '<p class="text-center">Please Enter Mandatory Fields!!</p>',
+			title: 'Sorry!!',
+			scope: $scope,
 
+		});
+		$timeout(function () {
+			myPopup.close(); //close the popup after 3 seconds for some reason
+		}, 2000);
+			};
 	var addproductimage = function (result) {
 		console.log(result);
 		console.log(result.response);

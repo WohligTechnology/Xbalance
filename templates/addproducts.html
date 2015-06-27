@@ -14,22 +14,24 @@
                         <div class="holder">Add Image</div>
                     </div>
                     <div class="item item-input text-capitalize">
-                        <input type="text" placeholder="Name" ng-model="ap.name">
+                        <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="Price" ng-model="ap.price">
+                        <input type="text" placeholder="Price" ng-model="ap.price" ng-class="allvalidation[1].validation" required>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <input type="number" min="1" placeholder="Quantity" ng-model="ap.quantity">
+                        <input type="number" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
                     </div>
+<!--
                     <div class="item  item-input text-capitalize">
                         <input type="text" placeholder="SKU" ng-model="ap.sku">
                     </div>
+-->
                      <label class="item item-input item-select area">
                 <div class="input-label">
                     Category
                 </div>
-                <select ng-model="ap.category">
+                <select ng-model="ap.category" ng-class="allvalidation[3].validation" required>
                     <option value="">All</option>
                     <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                 </select>
@@ -48,14 +50,14 @@
                     <div class="item item-toggle">
                         Status
                         <label class="toggle toggle-balanced">
-                            <input type="checkbox" ng-model="ap.status">
+                            <input type="checkbox" ng-model="ap.status" ng-class="allvalidation[4].validation" required>
                             <div class="track">
                                 <div class="handle"></div>
                             </div>
                         </label>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description" ng-model="ap.description"></textarea>
+                        <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[5].validation" required></textarea>
                     </div>
                     <div class="padding">
                 <button class="button button-block button-assertive" ng-click="insertproduct(ap);">Save</button>
