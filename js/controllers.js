@@ -63,9 +63,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams,$ionicNavBarDelegate) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams) {
 	//home page
-    $ionicNavBarDelegate.showBackButton(false);
 	$scope.varonline = 0;
 	$scope.varoffline = 0;
 	$scope.tabvalue = 1;
