@@ -1010,23 +1010,31 @@ ion-footer-bar.footer-shop h4 {
     display: table;
     width: 100%;
 }
-.popup-color{
+
+.popup-color {
     background-color: white;
-  text-align: center;
-  padding: 40px 20px;
+    text-align: center;
+    padding: 40px 20px;
 }
 
 .pop-width {
     padding: 7%;
     /*    margin: 0 auto;*/
-   transform: translateY(50%);
-  top: -50%;
+    
+    transform: translateY(50%);
+    top: -50%;
 }
+
 .rating-pop {
     background: rgba(0, 0, 0, 0.71)!important;
 }
-.ok-btn{
-width:40%;
+
+.ok-btn {
+    width: 40%;
     line-height: 30px!important;
     min-height: 0px!important;
+}
+
+button.button.button-icon.button-clear.ion-navicon.hide {
+    display: block;
 }
