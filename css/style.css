@@ -910,7 +910,7 @@ h5.bold {
     font-weight: 700;
 }
 
-input.pull-right {
+input.text-right {
     text-align: right;
 }
 
@@ -1051,4 +1051,11 @@ button.button.button-icon.button-clear.ion-navicon.hide {
 
 .bar .buttons .hide.no-hide {
   display: block;
+}
+
+.padtop5 .item-note {
+  color: #aaa;
+  font-size: 14px;
+  position: absolute;
+  right: 17px;
 }
