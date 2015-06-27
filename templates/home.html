@@ -1,7 +1,30 @@
-<ion-view view-title="Home">
+<ion-view hide-nav-bar="true">
+
+<!--
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
     </ion-nav-buttons>
+-->
+    <ion-header-bar class="bar-royal" align-title="center">
+                      <div class="buttons button-left">
+                       <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
+                </button>
+        </div>
+        <h1 class="title">Home</h1>
+        <div class="buttons button-right">
+            <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
+        </div>
+    </ion-header-bar>
+
+    <!--
+    <div class="header">
+        <h1 class="title">Home</h1>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
+        </ion-nav-buttons>
+    </div>
+-->
+
     <ion-content class="padding">
         <ion-refresher ng-controller="YourBalCtrl" pulling-text="Pull To Refresh" on-refresh="dorefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
@@ -33,7 +56,7 @@
                     </div>
                 </ion-item>
             </div>
-            
+
             <div class="padding-horizontal" ng-controller="YourBalCtrl">
                 <button class="button button-block button-balanced" ng-click="openedit();">
                     Add Balance
@@ -59,12 +82,12 @@
         </div>
 
         <div class="incard">
-                   <div class="button-bar bars">
-            <a class="button button-outline button-royal" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
-            <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
-            <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
-        </div>
-           
+            <div class="button-bar bars">
+                <a class="button button-outline button-royal" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
+                <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
+                <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
+            </div>
+
             <div class="header-card" ng-if="tabvalue == 1">Find Products</div>
             <div class="header-card" ng-if="tabvalue == 2">Find Shops</div>
             <!--
@@ -127,7 +150,7 @@
                     </div>
                     <select ng-model="home.area">
                         <option value="">Mumbai</option>
-                                                <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                     </select>
                 </label>
 
@@ -137,10 +160,10 @@
                     </div>
                     <select ng-model="home.area">
                         <option value="">All</option>
-                                                <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                     </select>
                 </label>
-                
+
 
                 <label class="item item-input item-select area">
                     <div class="input-label">

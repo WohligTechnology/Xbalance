@@ -1021,6 +1021,14 @@ ion-footer-bar.footer-shop h4 {
     padding: 7%;
     /*    margin: 0 auto;*/
     
+    -webkit-transform: translateY(50%);
+    
+    -moz-transform: translateY(50%);
+    
+    -ms-transform: translateY(50%);
+    
+    -o-transform: translateY(50%);
+    
     transform: translateY(50%);
     top: -50%;
 }
@@ -1039,3 +1047,8 @@ ion-footer-bar.footer-shop h4 {
 button.button.button-icon.button-clear.ion-navicon.hide {
     display: block;
 }*/
+
+
+.bar .buttons .hide.no-hide {
+  display: block;
+}
