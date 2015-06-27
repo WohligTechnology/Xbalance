@@ -1859,6 +1859,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
 		//all products
+	          $scope.disableid=$.jStorage.get("user1");
 		var getalluserproductscallback = function (data, status) {
 			//			console.log(data.queryresult);
 			$location.url("/app/dealerprd/" + $scope.getsinglepro.user);
@@ -1875,6 +1876,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		var getsingleproductcallback = function (data, status) {
 			$scope.getsinglepro = data;
 			console.log($scope.getsinglepro);
+			
 		}
 		MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
 		$scope.openform1 = function (productid) {
