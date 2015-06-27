@@ -1022,13 +1022,9 @@ ion-footer-bar.footer-shop h4 {
     /*    margin: 0 auto;*/
     
     -webkit-transform: translateY(50%);
-    
     -moz-transform: translateY(50%);
-    
     -ms-transform: translateY(50%);
-    
     -o-transform: translateY(50%);
-    
     transform: translateY(50%);
     top: -50%;
 }
@@ -1042,20 +1038,29 @@ ion-footer-bar.footer-shop h4 {
     line-height: 30px!important;
     min-height: 0px!important;
 }
-
 /*
 button.button.button-icon.button-clear.ion-navicon.hide {
     display: block;
 }*/
 
-
 .bar .buttons .hide.no-hide {
-  display: block;
+    display: block;
 }
 
 .padtop5 .item-note {
-  color: #aaa;
-  font-size: 14px;
-  position: absolute;
-  right: 17px;
+    color: #aaa;
+    font-size: 14px;
+    position: absolute;
+    right: 17px;
+}
+
+.buy-inputdetails {
+    text-align: right;
+    background-color: white!important;
+    padding-bottom: 20px;
+    color: #B9B9B9!important;
+}
+
+.item-input textarea {
+    width: 56%;
 }
