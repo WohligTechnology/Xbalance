@@ -1052,3 +1052,10 @@ button.button.button-icon.button-clear.ion-navicon.hide {
 .bar .buttons .hide.no-hide {
   display: block;
 }
+
+.padtop5 .item-note {
+  color: #aaa;
+  font-size: 14px;
+  position: absolute;
+  right: 17px;
+}
