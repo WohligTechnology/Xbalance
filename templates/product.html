@@ -22,6 +22,13 @@
                 </div>
                 <select ng-model="product.category" ng-options="cat.id as cat.name for cat in category">
                 </select>
+<!--
+           <select ng-model="product.category">
+			   {{category}}
+               <option ng-repeat="cat in category" value={{cat.id}}>{{cat.id}}{{cat.name}}</option>
+            </select>
+-->
+            
             </label>
 
 <!--
@@ -67,10 +74,12 @@
             <div class="header-card">Products</div>
             <div class="row productsCol" ng-repeat="sp in spr" ng-if="spr.length>0">
                 <div class="col col-33 text-center" ng-repeat="s in sp">
+                <span ng-click="getproduct(s.productid)">
 <!--                    <a href="#/app/productdetail">-->
-                        <img ng-src={{s.image|serverimage}} ng-click="getproduct(s.productid)" class="full-image">
+                        <img ng-src={{s.image|serverimage}}  class="full-image">
                         <h5 class="bold">{{s.name}}</h5>
                         <h5>{{s.price}}</h5>
+                        </span>
 <!--                    </a>-->
                 </div>
                  

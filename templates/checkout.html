@@ -47,7 +47,7 @@
                 </div>
                 <div class="item item-input text-capitalize">
                     <span class="input-label">Logistic Charge</span>
-                    <input class="text-right" type="text" placeholder="Logistics Charges" ng-model="form.logisticcharge" ng-class="allvalidation[9].validation" required>
+                    <input class="text-right" type="text" placeholder="Logistics Charges" ng-model="form.logisticcharge">
                 </div>
             </div>
         </form>
@@ -128,7 +128,7 @@
             </form>
         </div>
         <div class="padding">
-            <button class="button button-block button-royal" ng-click="buyproduct(form);">
+            <button class="button button-block button-royal" ng-click="buyproduct(form);" ng-if="isDisabled==0">
                 Submit &amp; Buy
             </button>
         </div>
