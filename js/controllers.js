@@ -687,6 +687,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
 	$scope.prodid = $stateParams.prodid;
 	console.log($scope.prodid);
+	$scope.isDisabled=0;
 	$scope.detailid = $.jStorage.get("user1");
 	console.log($scope.detailid);
 	var getuserdetailscallback = function (data, status) {
@@ -695,9 +696,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 		//buying details
 		var buyproductcallback = function (data, status) {
 			if(data== "-2"){
+			$scope.isDisabled=0;
 			$scope.showPopuppurchase();
 			}
 			else if(data== "-1"){
+			$scope.isDisabled=0;
 			$scope.showPopupquantity();
 			}
 			else{
@@ -739,6 +742,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 			var check = formvalidation($scope.allvalidation);
 			if (check) {
+				$scope.isDisabled=1;
 				$scope.form = form;
 				//			console.log($scope.form);
 				MyServices.buyproduct($scope.detailid, $scope.prodid, $scope.form, buyproductcallback);
