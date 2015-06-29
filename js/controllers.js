@@ -762,7 +762,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal) {
+.controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal,$ionicLoading) {
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -771,7 +771,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 10000);
     };
-    $scope.showloading();
 	$ionicModal.fromTemplateUrl('templates/registration.html', {
         id: '1',
         scope: $scope,
@@ -872,6 +871,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(data);
             user1 = data;
             $.jStorage.set("user1", data);
+            user=data;
             $location.url("/app/home");
         }
 
