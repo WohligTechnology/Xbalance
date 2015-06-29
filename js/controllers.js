@@ -864,8 +864,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 	}
 	$scope.reason = "";
 	$scope.accept = function (r, reason) {
-		console.log(r);
-		if (r.purchasebalance <= r.amount) {
+		console.log("amt" +r.amount);
+		console.log("pb" +r.purchasebalance);
+		console.log(r.id);
+		if (parseInt(r.purchasebalance) <= r.amount) {
 			console.log("in if");
 			$scope.showPopup4();
 		} else {
