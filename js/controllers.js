@@ -64,10 +64,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams,$ionicLoading) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading) {
     //home page
 
-   var yourbalancecallback = function (data, status) {
+    var yourbalancecallback = function (data, status) {
 
         if (data == "false") {
             console.log("no data");
@@ -380,7 +380,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading) {
+.controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading, $ionicSlideBoxDelegate) {
 
     //Loading Package
     $scope.showloading = function () {
@@ -522,8 +522,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modals = modal;
     });
 
-    $scope.openpswd = function () {
+    $scope.openpswd = function (num) {
+        console.log(num);
         $scope.modals.show();
+        setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+
     };
 
     $scope.closeModal = function () {
