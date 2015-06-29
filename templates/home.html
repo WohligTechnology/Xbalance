@@ -1,18 +1,18 @@
 <ion-view hide-nav-bar="true">
 
-<!--
+    <!--
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
     </ion-nav-buttons>
 -->
     <ion-header-bar class="bar-royal" align-title="center">
-                      <div class="buttons button-left">
-                       <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
-                </button>
+        <div class="buttons button-left">
+            <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
+            </button>
         </div>
         <h1 class="title">Home</h1>
         <div class="buttons button-right">
-            <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
+            <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
         </div>
     </ion-header-bar>
 
@@ -26,7 +26,7 @@
 -->
 
     <ion-content class="padding">
-        <ion-refresher ng-controller="YourBalCtrl" pulling-text="Pull To Refresh" on-refresh="dorefresh();" refreshing-text="Refreshing.."></ion-refresher>
+        <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
         <div class="incard">
             <div class="profile-img" ng-controller="ProfileCtrl">
@@ -34,7 +34,8 @@
                 <h3>{{profile.shopname}}</h3>
             </div>
 
-            <div class="padtop5" ng-controller="YourBalCtrl">
+
+            <div class="padtop5">
                 <ion-item class="my-balcont">
                     <div class="row text-center">
                         <div class="col">

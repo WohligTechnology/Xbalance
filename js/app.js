@@ -109,15 +109,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })
 
-    .state('app.balance', {
-        url: "/balance",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/yourbalance.html",
-                controller: 'YourBalCtrl'
-            }
-        }
-    })
+    
 	.state('app.productdetail', {
         url: "/productdetail/:id",
         views: {

@@ -797,6 +797,8 @@ ion-item.item.item-thumbnail-left.trns-add {
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
 */
+    width: 100%;
+    text-align: center;
 }
 
 .row.nopad {
