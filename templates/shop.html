@@ -83,7 +83,7 @@
             </div>
             <div class="row">
                 <div class="col input-div" ng-repeat="i in img">
-                    <button class="button" ng-click="openshops();">
+                    <button class="button" ng-click="openshops($index);">
 <!--                    <a class="button border-none" href="#/app/productdetail">-->
                         <img ng-src="{{i.photo|serverimage}}" class="full-size">
 <!--                    </a>-->

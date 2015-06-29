@@ -64,7 +64,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading,$interval) {
     //home page
 
     var yourbalancecallback = function (data, status) {
@@ -222,6 +222,201 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modal.hide();
     };
     $scope.d = {};
+	 //GET USER PROFILE
+    $scope.pro = $.jStorage.get("user1");
+    var shopprofilecallback = function (data, status) {
+        console.log(data);
+        $scope.profileuser = data;
+    }
+    MyServices.profile($scope.pro, shopprofilecallback);
+
+
+    //Loading Package
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
+
+    var yourbalancecallback = function (data, status) {
+
+        if (data == "false") {
+            console.log("no data");
+        } else {
+            $ionicLoading.hide();
+            console.log(data);
+            $scope.pb = data;
+        }
+
+    }
+
+
+    console.log("Your Balance Exec");
+    $scope.bal = $.jStorage.get("user1");
+    console.log($scope.bal);
+    MyServices.yourbalance($scope.bal, yourbalancecallback);
+
+    $scope.dorefresh = function () {
+        console.log("Do Refresh");
+        MyServices.yourbalance($scope.bal, yourbalancecallback);
+        $scope.showloading();
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
+    chintansglobal.changebalance = $scope.dorefresh;
+
+    var checkstate = function (data, status) {
+        console.log(data);
+        if (data == "1") {
+            console.log("Facebook Login");
+            $interval.cancel(stopinterval);
+            ref.close();
+        } else {
+            console.log("Do nothing");
+        }
+    };
+
+    var callAtInterval = function () {
+        console.log("hey hey in inerval");
+        MyServices.checkstatus($scope.orderidd, checkstate);
+    };
+
+
+    var balanceaddcallback = function (data, status) {
+        console.log(data);
+        $scope.orderidd = data;
+        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
+        if (data == "false") {
+            console.log("balance not added");
+        } else {
+            console.log("balance added");
+            // An elaborate, custom popup
+            var myPopup = $ionicPopup.show({
+                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+                title: 'Your Request Sent!',
+                scope: $scope,
+
+            });
+            $timeout(function () {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 1500);
+
+            //JAGRUTI PAYUMONEY
+            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
+
+            stopinterval = $interval(callAtInterval, 2000);
+            ref.addEventListener('exit', function (event) {
+                $interval.cancel(stopinterval);
+            });
+
+        }
+    };
+    $scope.addbalance = function (amount, reason) {
+        $scope.user = $.jStorage.get("user1");
+        $scope.a = amount;
+        $scope.b = reason;
+        $scope.allvalidation = [{
+            field: $scope.a,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            console.log("valid");
+            console.log($scope.a, $scope.b);
+            MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+
+        } else {
+            console.log("not valid");
+            $scope.showPopup7();
+        }
+    }
+    $scope.showPopup7 = function () {
+        $scope.data = {}
+
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Its Mandatory</p>',
+            title: 'Enter Amount!',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 1500);
+    };
+
+    //	$scope.user = $.jStorage.get("user1");
+    //	$scope.addbalance = function (amount, reason) {
+    //		$scope.a = amount;
+    //		$scope.b = reason;
+    //		console.log($scope.a, $scope.b);
+    //		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+    //	};
+    //	$scope.amount = 0;
+    $scope.amount = 1000;
+    $scope.percent = parseFloat(user.percentpayment);
+
+    $ionicModal.fromTemplateUrl('templates/addbalance.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+    $scope.add = {
+        amountinr: 0,
+        amount: 0,
+        reason: ""
+    };
+
+    $scope.changeamountinr = function (amount) {
+        $scope.add.amountinr = amount * $scope.percent / 100;
+    };
+    $scope.changeamount = function (amountinr) {
+        $scope.add.amount = amountinr / $scope.percent * 100;
+    };
+
+    $scope.openedit = function () {
+        $scope.modal.show();
+    }
+
+    $scope.closeModal = function () {
+        $scope.modal.hide();
+    };
+    //popup
+    $scope.showPopup = function () {
+        $scope.data = {}
+
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+            title: 'Your Request Sent!',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 1500);
+    };
+
+
+
+    //PAY U MONEY
+
+
+
+    $scope.topayment = function () {
+        ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
+
+        //        stopinterval = $interval(callAtInterval, 10000);
+    }
+
+
+
 
 })
 
@@ -242,6 +437,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    console.log($scope.membershipno1);
     //    console.log($scope.category1);
     //	$scope.content={};
+	$scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
     $scope.sorting = 0;
     var fulldatasorted = [];
     $scope.getsort = function (content) {
@@ -514,7 +718,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.closeModalss = function () {
         $scope.modal.hide();
     };
-
+//SHOP IMAGE
     $ionicModal.fromTemplateUrl('templates/image-modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -543,8 +747,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modalss = modal;
     });
 
-    $scope.openshops = function () {
+    $scope.openshops = function (num) {
+		console.log(num);
         $scope.modalss.show();
+		 setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
     };
 
     $scope.closeModals = function () {
@@ -555,7 +763,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal) {
-    $ionicModal.fromTemplateUrl('templates/registration.html', {
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
+	$ionicModal.fromTemplateUrl('templates/registration.html', {
         id: '1',
         scope: $scope,
         animation: 'slide-in-up'
@@ -707,7 +924,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('FaqCtrl', function ($scope, $stateParams) {})
 
 .controller('checkout', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
-    $scope.prodid = $stateParams.prodid;
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
+	$scope.prodid = $stateParams.prodid;
     console.log($scope.prodid);
     $scope.isDisabled = 0;
     $scope.detailid = $.jStorage.get("user1");
@@ -916,8 +1142,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices) {
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices,$ionicLoading,$timeout) {
     //	
+	    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
     $scope.totaltr = 0;
     $scope.totalsr = 0;
     var transactioncallback = function (data, status) {
@@ -1292,7 +1527,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-
+//PROfILE IMAGE
     $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -1300,8 +1535,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modals = modal;
     });
 
-    $scope.openpswds = function () {
+    $scope.openpswds = function (num) {
+		console.log(num);
         $scope.modals.show();
+		 setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+        
     };
 
     $scope.closeModal = function () {
@@ -1315,8 +1555,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modalss = modal;
     });
 
-    $scope.openshop = function () {
+    $scope.openshop = function (num) {
+		console.log(num);
         $scope.modalss.show();
+		 setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+       
     };
 
     $scope.closeModals = function () {
@@ -1329,17 +1574,206 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
 
-    //GET USER PROFILE
-    $scope.pro = $.jStorage.get("user1");
-    var shopprofilecallback = function (data, status) {
-        console.log(data);
-        $scope.profileuser = data;
-    }
-    MyServices.profile($scope.pro, shopprofilecallback);
+//    //GET USER PROFILE
+//    $scope.pro = $.jStorage.get("user1");
+//    var shopprofilecallback = function (data, status) {
+//        console.log(data);
+//        $scope.profileuser = data;
+//    }
+//    MyServices.profile($scope.pro, shopprofilecallback);
+//
+//
+//    //Loading Package
+//    $scope.showloading = function () {
+//        $ionicLoading.show({
+//            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+//        });
+//        $timeout(function () {
+//            $ionicLoading.hide();
+//        }, 10000);
+//    };
+//    $scope.showloading();
+//
+//    var yourbalancecallback = function (data, status) {
+//
+//        if (data == "false") {
+//            console.log("no data");
+//        } else {
+//            $ionicLoading.hide();
+//            console.log(data);
+//            $scope.pb = data;
+//        }
+//
+//    }
+//
+//
+//    console.log("Your Balance Exec");
+//    $scope.bal = $.jStorage.get("user1");
+//    console.log($scope.bal);
+//    MyServices.yourbalance($scope.bal, yourbalancecallback);
+//
+//    $scope.dorefresh = function () {
+//        console.log("Do Refresh");
+//        MyServices.yourbalance($scope.bal, yourbalancecallback);
+//        $scope.showloading();
+//        console.log('Refresh Called');
+//        //Stop the ion-refresher from spinning
+//        $scope.$broadcast('scroll.refreshComplete');
+//    };
+//    chintansglobal.changebalance = $scope.dorefresh;
+//
+//    var checkstate = function (data, status) {
+//        console.log(data);
+//        if (data == "1") {
+//            console.log("Facebook Login");
+//            $interval.cancel(stopinterval);
+//            ref.close();
+//        } else {
+//            console.log("Do nothing");
+//        }
+//    };
+//
+//    var callAtInterval = function () {
+//        console.log("hey hey in inerval");
+//        MyServices.checkstatus($scope.orderidd, checkstate);
+//    };
+//
+//
+//    var balanceaddcallback = function (data, status) {
+//        console.log(data);
+//        $scope.orderidd = data;
+//        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
+//        if (data == "false") {
+//            console.log("balance not added");
+//        } else {
+//            console.log("balance added");
+//            // An elaborate, custom popup
+//            var myPopup = $ionicPopup.show({
+//                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+//                title: 'Your Request Sent!',
+//                scope: $scope,
+//
+//            });
+//            $timeout(function () {
+//                myPopup.close(); //close the popup after 3 seconds for some reason
+//            }, 1500);
+//
+//            //JAGRUTI PAYUMONEY
+//            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
+//
+//            stopinterval = $interval(callAtInterval, 2000);
+//            ref.addEventListener('exit', function (event) {
+//                $interval.cancel(stopinterval);
+//            });
+//
+//        }
+//    };
+//    $scope.addbalance = function (amount, reason) {
+//        $scope.user = $.jStorage.get("user1");
+//        $scope.a = amount;
+//        $scope.b = reason;
+//        $scope.allvalidation = [{
+//            field: $scope.a,
+//            validation: ""
+//        }];
+//        var check = formvalidation($scope.allvalidation);
+//        if (check) {
+//            console.log("valid");
+//            console.log($scope.a, $scope.b);
+//            MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+//
+//        } else {
+//            console.log("not valid");
+//            $scope.showPopup7();
+//        }
+//    }
+//    $scope.showPopup7 = function () {
+//        $scope.data = {}
+//
+//        // An elaborate, custom popup
+//        var myPopup = $ionicPopup.show({
+//            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Its Mandatory</p>',
+//            title: 'Enter Amount!',
+//            scope: $scope,
+//
+//        });
+//        $timeout(function () {
+//            myPopup.close(); //close the popup after 3 seconds for some reason
+//        }, 1500);
+//    };
+//
+//    //	$scope.user = $.jStorage.get("user1");
+//    //	$scope.addbalance = function (amount, reason) {
+//    //		$scope.a = amount;
+//    //		$scope.b = reason;
+//    //		console.log($scope.a, $scope.b);
+//    //		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+//    //	};
+//    //	$scope.amount = 0;
+//    $scope.amount = 1000;
+//    $scope.percent = parseFloat(user.percentpayment);
+//
+//    $ionicModal.fromTemplateUrl('templates/addbalance.html', {
+//        scope: $scope,
+//        animation: 'slide-in-up'
+//    }).then(function (modal) {
+//        $scope.modal = modal;
+//    });
+//    $scope.add = {
+//        amountinr: 0,
+//        amount: 0,
+//        reason: ""
+//    };
+//
+//    $scope.changeamountinr = function (amount) {
+//        $scope.add.amountinr = amount * $scope.percent / 100;
+//    };
+//    $scope.changeamount = function (amountinr) {
+//        $scope.add.amount = amountinr / $scope.percent * 100;
+//    };
+//
+//    $scope.openedit = function () {
+//        $scope.modal.show();
+//    }
+//
+//    $scope.closeModal = function () {
+//        $scope.modal.hide();
+//    };
+//    //popup
+//    $scope.showPopup = function () {
+//        $scope.data = {}
+//
+//        // An elaborate, custom popup
+//        var myPopup = $ionicPopup.show({
+//            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
+//            title: 'Your Request Sent!',
+//            scope: $scope,
+//
+//        });
+//        $timeout(function () {
+//            myPopup.close(); //close the popup after 3 seconds for some reason
+//        }, 1500);
+//    };
+//
+//
+//
+//    //PAY U MONEY
+//
+//
+//
+//    $scope.topayment = function () {
+//        ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
+//
+//        //        stopinterval = $interval(callAtInterval, 10000);
+//    }
+//
+//
 
+})
 
-    //Loading Package
-    $scope.showloading = function () {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading) {
+    //view products start
+	$scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
@@ -1348,186 +1782,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 10000);
     };
     $scope.showloading();
-
-    var yourbalancecallback = function (data, status) {
-
-        if (data == "false") {
-            console.log("no data");
-        } else {
-            $ionicLoading.hide();
-            console.log(data);
-            $scope.pb = data;
-        }
-
-    }
-
-
-    console.log("Your Balance Exec");
-    $scope.bal = $.jStorage.get("user1");
-    console.log($scope.bal);
-    MyServices.yourbalance($scope.bal, yourbalancecallback);
-
-    $scope.dorefresh = function () {
-        console.log("Do Refresh");
-        MyServices.yourbalance($scope.bal, yourbalancecallback);
-        $scope.showloading();
-        console.log('Refresh Called');
-        //Stop the ion-refresher from spinning
-        $scope.$broadcast('scroll.refreshComplete');
-    };
-    chintansglobal.changebalance = $scope.dorefresh;
-
-    var checkstate = function (data, status) {
-        console.log(data);
-        if (data == "1") {
-            console.log("Facebook Login");
-            $interval.cancel(stopinterval);
-            ref.close();
-        } else {
-            console.log("Do nothing");
-        }
-    };
-
-    var callAtInterval = function () {
-        console.log("hey hey in inerval");
-        MyServices.checkstatus($scope.orderidd, checkstate);
-    };
-
-
-    var balanceaddcallback = function (data, status) {
-        console.log(data);
-        $scope.orderidd = data;
-        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
-        if (data == "false") {
-            console.log("balance not added");
-        } else {
-            console.log("balance added");
-            // An elaborate, custom popup
-            var myPopup = $ionicPopup.show({
-                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
-                title: 'Your Request Sent!',
-                scope: $scope,
-
-            });
-            $timeout(function () {
-                myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 1500);
-
-            //JAGRUTI PAYUMONEY
-            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
-
-            stopinterval = $interval(callAtInterval, 2000);
-            ref.addEventListener('exit', function (event) {
-                $interval.cancel(stopinterval);
-            });
-
-        }
-    };
-    $scope.addbalance = function (amount, reason) {
-        $scope.user = $.jStorage.get("user1");
-        $scope.a = amount;
-        $scope.b = reason;
-        $scope.allvalidation = [{
-            field: $scope.a,
-            validation: ""
-        }];
-        var check = formvalidation($scope.allvalidation);
-        if (check) {
-            console.log("valid");
-            console.log($scope.a, $scope.b);
-            MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
-
-        } else {
-            console.log("not valid");
-            $scope.showPopup7();
-        }
-    }
-    $scope.showPopup7 = function () {
-        $scope.data = {}
-
-        // An elaborate, custom popup
-        var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Its Mandatory</p>',
-            title: 'Enter Amount!',
-            scope: $scope,
-
-        });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 1500);
-    };
-
-    //	$scope.user = $.jStorage.get("user1");
-    //	$scope.addbalance = function (amount, reason) {
-    //		$scope.a = amount;
-    //		$scope.b = reason;
-    //		console.log($scope.a, $scope.b);
-    //		MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
-    //	};
-    //	$scope.amount = 0;
-    $scope.amount = 1000;
-    $scope.percent = parseFloat(user.percentpayment);
-
-    $ionicModal.fromTemplateUrl('templates/addbalance.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
-    $scope.add = {
-        amountinr: 0,
-        amount: 0,
-        reason: ""
-    };
-
-    $scope.changeamountinr = function (amount) {
-        $scope.add.amountinr = amount * $scope.percent / 100;
-    };
-    $scope.changeamount = function (amountinr) {
-        $scope.add.amount = amountinr / $scope.percent * 100;
-    };
-
-    $scope.openedit = function () {
-        $scope.modal.show();
-    }
-
-    $scope.closeModal = function () {
-        $scope.modal.hide();
-    };
-    //popup
-    $scope.showPopup = function () {
-        $scope.data = {}
-
-        // An elaborate, custom popup
-        var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
-            title: 'Your Request Sent!',
-            scope: $scope,
-
-        });
-        $timeout(function () {
-            myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 1500);
-    };
-
-
-
-    //PAY U MONEY
-
-
-
-    $scope.topayment = function () {
-        ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
-
-        //        stopinterval = $interval(callAtInterval, 10000);
-    }
-
-
-
-})
-
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading) {
-    //view products start
     var viewmyproductscallback = function (data, status) {
         console.log(data);
         $scope.products = data;
@@ -1562,6 +1816,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.prodimg = '';
     //insert product wit validation
     //	$scope.ap="";
+	$scope.showloading();
     $scope.insertproduct = function (ap) {
             $scope.allvalidation = [{
                 field: $scope.ap.name,
@@ -1695,6 +1950,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
+	  $scope.showloading();
     $scope.editproducts = function (products) {
         $scope.editpro = products;
         $scope.allvalidation = [{
@@ -1883,8 +2139,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('OrderCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices) {
-    $scope.tabvalue = 1;
+.controller('OrderCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices,$ionicLoading,$timeout) {
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
+	$scope.tabvalue = 1;
     var viewmyproductorderscallback = function (data, status) {
         $scope.ordr = data.queryresult;
         console.log($scope.ordr);
@@ -1934,7 +2199,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('DealerprdCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
     var getalluserproductscallback = function (data, status) {
         $scope.break = data.queryresult;
         $scope.shopname = $scope.break[0].shopname;
@@ -1948,7 +2221,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
 .controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-    var getnotificationcallback = function (data, status) {
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
+	var getnotificationcallback = function (data, status) {
         $scope.notification = data;
         console.log($scope.notification);
     }
@@ -1961,6 +2243,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
         //all products
+	$scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+        $timeout(function () {
+            $ionicLoading.hide();
+        }, 10000);
+    };
+    $scope.showloading();
         $scope.disableid = $.jStorage.get("user1");
         var getalluserproductscallback = function (data, status) {
             //			console.log(data.queryresult);
