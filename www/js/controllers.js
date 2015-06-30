@@ -37,11 +37,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //log out
     var logoutcallback = function (data, status) {
-//        $ionicLoading.hide();
+        //        $ionicLoading.hide();
         console.log("logged out");
     }
     $scope.logoutfunction = function () {
-//        $scope.showloading();
+        //        $scope.showloading();
         $scope.loginid = $.jStorage.get("user1");
         console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
@@ -961,7 +961,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
         }
         $scope.buyproduct = function (form) {
-          
+
             $scope.allvalidation = [{
                 field: $scope.form.name,
                 validation: ""
@@ -993,7 +993,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
-				  $scope.showloading();
+                $scope.showloading();
                 $scope.isDisabled = 1;
                 $scope.form = form;
                 //			console.log($scope.form);
@@ -1230,21 +1230,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-    var options = {
-        quality: 20,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        saveToPhotoAlbum: true
-    };
-
     //    var options = {
-    //        maximumImagesCount: 1,
-    //        width: 800,
-    //        height: 800,
-    //        quality: 80
+    //        quality: 20,
+    //        destinationType: Camera.DestinationType.FILE_URI,
+    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //        allowEdit: true,
+    //        encodingType: Camera.EncodingType.JPEG,
+    //        saveToPhotoAlbum: true
     //    };
+
+    var options = {
+        maximumImagesCount: 1,
+        width: 800,
+        height: 800,
+        quality: 80
+    };
 
     var changeprofilephoto = function (result) {
         console.log(result);
@@ -1280,7 +1280,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(resultImage);
 
             $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
+            console.log(adminurl);
+            $scope.uploadPhoto(myserverbase + "imageuploadprofile", changeprofilephoto, resultImage[0]);
 
         }, function (err) {
             // An error occured. Show a message to the user
@@ -1329,29 +1330,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //Upload photo
 
     //File Upload parameters: source, filePath, options
-   $scope.uploadPhoto = function (serverpath, callback) {
-
-        //        console.log("function called");
-        $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
+    $scope.uploadPhoto = function (serverpath, callback, imagepath) {
+        
+        console.log(imagepath);
+        console.log(serverpath);
+        $cordovaFileTransfer.upload(serverpath, imagepath, {})
             .then(function (result) {
                 console.log(result);
                 callback(result);
-                $ionicLoading.hide();
-                //$scope.addretailer.store_image = $scope.filename2;
             }, function (err) {
-                // Error
                 console.log(err);
             }, function (progress) {
-                // constant progress updates
-                $ionicLoading.show({
-                    //        template: 'We are fetching the best rates for you.',
-
-                    content: 'Uploading Image',
-                    animation: 'fade-in',
-                    showBackdrop: true,
-                    maxWidth: 200,
-                    showDelay: '0'
-                });
                 console.log("progress");
             });
 
