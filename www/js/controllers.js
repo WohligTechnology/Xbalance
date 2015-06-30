@@ -1328,14 +1328,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //Upload photo
 
     //File Upload parameters: source, filePath, options
-    $scope.uploadPhoto = function (serverpath, callback) {
+   $scope.uploadPhoto = function (serverpath, callback) {
 
         //        console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
             .then(function (result) {
                 console.log(result);
-                var data = JSON.parse(result.response);
-                callback(data);
+                callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
             }, function (err) {
@@ -1352,7 +1351,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     maxWidth: 200,
                     showDelay: '0'
                 });
+                console.log("progress");
             });
+
     };
 
 
