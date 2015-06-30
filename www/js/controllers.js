@@ -37,11 +37,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //log out
     var logoutcallback = function (data, status) {
-        $ionicLoading.hide();
+//        $ionicLoading.hide();
         console.log("logged out");
     }
     $scope.logoutfunction = function () {
-        $scope.showloading();
+//        $scope.showloading();
         $scope.loginid = $.jStorage.get("user1");
         console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
