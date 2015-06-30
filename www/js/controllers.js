@@ -1280,7 +1280,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(resultImage);
 
             $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(myserverbase + "imageuploadprofile?user=" + user.id, changeprofilephoto);
+            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
 
         }, function (err) {
             // An error occured. Show a message to the user
