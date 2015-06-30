@@ -1229,21 +1229,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-    //    var options = {
-    //        quality: 20,
-    //        destinationType: Camera.DestinationType.FILE_URI,
-    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //        allowEdit: true,
-    //        encodingType: Camera.EncodingType.JPEG,
-    //        saveToPhotoAlbum: true
-    //    };
-
-    var options = {
-        maximumImagesCount: 1,
-        width: 800,
-        height: 800,
-        quality: 80
-    };
+        var options = {
+            quality: 20,
+            destinationType: Camera.DestinationType.FILE_URI,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            saveToPhotoAlbum: true
+        };
+      
+//    var options = {
+//        maximumImagesCount: 1,
+//        width: 800,
+//        height: 800,
+//        quality: 80
+//    };
 
     var changeprofilephoto = function (result) {
         console.log(result);
@@ -1354,6 +1354,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 });
             });
     };
+};
 
 
 // shop profile
