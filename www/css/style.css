@@ -813,6 +813,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 .input-div img {
     width: auto;
     height: 60px;
+    padding:0 5px;
 }
 
 .membershipno input {
@@ -860,7 +861,7 @@ i.icon.ion-record.icon-actived {
 }
 
 .col.input-div button {
-    padding: 0 5px;
+    padding: 0;
     border: 0px;
     margin: 0px;
     height: 60px;
