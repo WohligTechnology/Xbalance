@@ -52,7 +52,7 @@
     <gap:plugin name="org.apache.cordova.file-transfer"/>
     <gap:plugin name="org.apache.cordova.media-capture" version="0.3.3" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" source="plugins.cordova.io" />
-    <gap:plugin name="https://github.com/wymsee/cordova-imagePicker.git" source="npm" />
+    <gap:plugin name="https://github.com/wymsee/cordova-imagePicker.git" source="git" />
 
     <feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" onload="true" />
