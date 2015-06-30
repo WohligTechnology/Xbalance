@@ -860,7 +860,7 @@ i.icon.ion-record.icon-actived {
 }
 
 .col.input-div button {
-    padding: 0;
+    padding: 0 5px;
     border: 0px;
     margin: 0px;
     height: 60px;
