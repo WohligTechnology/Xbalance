@@ -1354,7 +1354,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 });
             });
     };
-};
 
 
 // shop profile
