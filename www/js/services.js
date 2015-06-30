@@ -76,7 +76,8 @@ myservices.factory('MyServices', function ($http) {
 					'shopcontact1': profile.shopcontact1,
 					'shopcontact2': profile.shopcontact2,
 					'shopemail': profile.shopemail,
-					'website': profile.website
+					'website': profile.website,
+					'shoplogo': profile.shoplogo
 				}
 			}).success(updateprofilecallback);
 		},
