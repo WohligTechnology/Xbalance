@@ -8,6 +8,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
     $scope.product = {};
     $scope.searchproduct = function (product) {
+	
         $scope.p = product;
         console.log($scope.p.productname);
         console.log($scope.p.membershipno);
@@ -31,17 +32,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
-        });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
+        });       
     };
-    $scope.showloading();
+  
     //log out
     var logoutcallback = function (data, status) {
+		$ionicLoading.hide();
         console.log("logged out");
     }
     $scope.logoutfunction = function () {
+		  $scope.showloading();
         $scope.loginid = $.jStorage.get("user1");
         console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
@@ -441,14 +441,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+       
     };
-    $scope.showloading();
+ 
     $scope.sorting = 0;
     var fulldatasorted = [];
     $scope.getsort = function (content) {
+		   $scope.showloading();
             $scope.modal1.hide();
             console.log($scope.sprfull);
             if (content == 0) {
@@ -471,9 +471,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //product detail
     var getsingleproductcallback = function (data, status) {
         $scope.getpro = data;
+		 $ionicLoading.hide();
         //			console.log($scope.getsinglepro);
     }
     $scope.getproduct = function (id) {
+		   $scope.showloading();
         console.log(id);
         MyServices.getsingleproduct(id, getsingleproductcallback);
         $location.url("/app/productdetail/" + id);
@@ -491,6 +493,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     var searchproductcallback = function (data, status) {
+		$ionicLoading.hide();
             //		console.log(data);
             $scope.spr = data;
             $scope.sprfull = data;
@@ -516,6 +519,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
         //	MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
     MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
+	$scope.showloading();
     $scope.i = $.jStorage.get("user1");
 
     var homecallback = function (data, status) {
@@ -552,19 +556,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
-        });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
+        });     
     };
     $scope.showloading();
 
 
     var searchcallback = function (data, status) {
+		 $ionicLoading.hide();
         $scope.shops = data;
 
     }
     MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.online, $stateParams.offline, searchcallback);
+	  $scope.showloading();
     var getareacategorycallback = function (data, status) {
         $scope.recall = data;
         $ionicLoading.hide();
@@ -928,9 +931,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
+            
+      
     };
     $scope.showloading();
     $scope.prodid = $stateParams.prodid;
@@ -939,10 +941,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.detailid = $.jStorage.get("user1");
     console.log($scope.detailid);
     var getuserdetailscallback = function (data, status) {
+		$ionicLoading.hide();
         $scope.form = data[0];
         //		console.log($scope.form);
         //buying details
         var buyproductcallback = function (data, status) {
+			$ionicLoading.hide();
             if (data == "-2") {
                 $scope.isDisabled = 0;
                 $scope.showPopuppurchase();
@@ -957,6 +961,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
         }
         $scope.buyproduct = function (form) {
+			    $scope.showloading();
             $scope.allvalidation = [{
                 field: $scope.form.name,
                 validation: ""
@@ -1148,14 +1153,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
     };
     $scope.showloading();
     $scope.totaltr = 0;
     $scope.totalsr = 0;
     var transactioncallback = function (data, status) {
+		 $ionicLoading.hide();
         $scope.t = data;
 
         //purchase
@@ -1793,12 +1796,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
     };
     $scope.showloading();
     var viewmyproductscallback = function (data, status) {
+		   $ionicLoading.hide();
         console.log(data);
         $scope.products = data;
     }
@@ -1820,6 +1821,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //add products start
     $scope.ap = [];
     var createproductcallback = function (data, status) {
+		 $ionicLoading.hide();
         console.log(data);
         $scope.insertprodid = data;
         if (data == "-1") {
@@ -1832,24 +1834,25 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.prodimg = '';
     //insert product wit validation
     //	$scope.ap="";
-    $scope.showloading();
+   
     $scope.insertproduct = function (ap) {
+		 $scope.showloading();
             $scope.allvalidation = [{
                 field: $scope.ap.name,
                 validation: ""
-        }, {
+         }, {
                 field: $scope.ap.price,
                 validation: ""
-        }, {
+         }, {
                 field: $scope.ap.quantity,
                 validation: ""
          }, {
                 field: $scope.ap.category,
                 validation: ""
-  }, {
+		 }, {
                 field: $scope.ap.description,
                 validation: ""
-  }];
+          }];
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
@@ -1885,6 +1888,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     var addproductimage = function (result) {
+		 $ionicLoading.hide();
         console.log(result);
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
@@ -1893,6 +1897,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
     $scope.addproductimage = function () {
+		$scope.showloading();
         console.log("take picture");
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
@@ -1910,6 +1915,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     //product details start
     var getsingleproductcallback = function (data, status) {
+		$ionicLoading.hide();
         $scope.prodetails = data;
         console.log($scope.prodetails);
         if ($scope.prodetails.status == 1) {
@@ -1922,6 +1928,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     }
     $scope.productdetails = function (id) {
+		$scope.showloading();
             MyServices.getsingleproduct(id, getsingleproductcallback);
         }
         //product details end
@@ -1933,6 +1940,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.home($scope.insertid, homecallback);
     //edit products and status start
     var editproductcallback = function (data, status) {
+		$ionicLoading.hide();
         console.log(data);
         if (data == "0") {
             $scope.showPopup15();
@@ -1968,6 +1976,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.showloading();
     $scope.editproducts = function (products) {
+			$scope.showloading();
         $scope.editpro = products;
         $scope.allvalidation = [{
             field: $scope.editpro.name,
@@ -2029,11 +2038,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.changeproductstatus(id, status, changeproductstatuscallback);
     }
     var deleteproductcallback = function (data, status) {
+		$ionicLoading.hide();
         console.log(data);
         $scope.modal2.hide();
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
     }
     $scope.deleteproduct = function (prodid, user) {
+		$scope.showloading();
             MyServices.deleteproduct(prodid, user, deleteproductcallback);
         }
         //edit products and status end
@@ -2050,6 +2061,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //upload editproductimage start
     var editproductimage = function (result) {
+		$ionicLoading.hide();
         console.log(result.response);
         $scope.abc = JSON.parse(result.response);
         $scope.prodetails.image = $scope.abc.value;
@@ -2060,6 +2072,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //		$scope.prodimg = $scope.xyz.value;
     }
     $scope.editproductimage = function () {
+	$scope.showloading();
         //		console.log(id);
         console.log("take picture");
         $cordovaCamera.getPicture(options).then(function (imageData) {
@@ -2160,13 +2173,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
     };
     $scope.showloading();
     $scope.tabvalue = 1;
     var viewmyproductorderscallback = function (data, status) {
+		 $ionicLoading.hide();
         $scope.ordr = data.queryresult;
         console.log($scope.ordr);
     }
@@ -2219,12 +2230,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
     };
     $scope.showloading();
     var getalluserproductscallback = function (data, status) {
+		 $ionicLoading.hide();
         $scope.break = data.queryresult;
         $scope.shopname = $scope.break[0].shopname;
         $scope.break = partitionarray($scope.break, 3);
@@ -2263,18 +2272,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.show({
                 template: '<ion-spinner class="spinner-royal"></ion-spinner>'
             });
-            $timeout(function () {
-                $ionicLoading.hide();
-            }, 10000);
         };
         $scope.showloading();
         $scope.disableid = $.jStorage.get("user1");
         var getalluserproductscallback = function (data, status) {
+			 $ionicLoading.hide();
             //			console.log(data.queryresult);
             $location.url("/app/dealerprd/" + $scope.getsinglepro.user);
 
         }
         $scope.getallprod = function (id) {
+			 $scope.showloading();
             MyServices.getalluserproducts(id, getalluserproductscallback);
         }
 
@@ -2283,6 +2291,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.prodid = $stateParams.id;
         console.log($scope.prodid);
         var getsingleproductcallback = function (data, status) {
+			 $ionicLoading.hide();
             $scope.getsinglepro = data;
             console.log($scope.getsinglepro);
 
