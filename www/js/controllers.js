@@ -961,7 +961,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
         }
         $scope.buyproduct = function (form) {
-            $scope.showloading();
+          
             $scope.allvalidation = [{
                 field: $scope.form.name,
                 validation: ""
@@ -993,6 +993,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
+				  $scope.showloading();
                 $scope.isDisabled = 1;
                 $scope.form = form;
                 //			console.log($scope.form);
