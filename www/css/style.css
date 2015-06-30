@@ -810,7 +810,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 
 .input-div img {
-    width: 100%;
+    width: auto;
     height: 60px;
 }
 
@@ -1077,4 +1077,7 @@ input.text-right :-moz-placeholder { text-align:right; }
 
 .row.productsCol .col img {
     height: 90px;
+}
+.col.input-div{
+    text-align: center;
 }
