@@ -30,7 +30,7 @@
                 </div>
 -->
             </div>
-			 <div class="centers" ng-if="mypurchase.length==0">No Purchase.</div>
+			 <div class="centers" ng-if="mypurchase.length==0 && tabvalue == 1">No Purchase.</div>
             <div class="list" ng-if="tabvalue == 2" ng-if="ordr.length>0">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
                 <div class="item item-thumbnail-left" ng-click="opensale(o);" ng-repeat="o in ordr">
@@ -40,7 +40,7 @@
                     <h3 class="leftnames">Order ID: <span>{{o.id}}</span></h3>
                 </div>
             </div>
-            <div class="centers" ng-if="ordr.length==0">No Sell.</div>
+            <div class="centers" ng-if="ordr.length==0 && tabvalue == 2">No Sell.</div>
         </div>
     </ion-content>
 </ion-view>
