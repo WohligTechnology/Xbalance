@@ -934,14 +934,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     };
-    $scope.showloading();
+//    $scope.showloading();
     $scope.prodid = $stateParams.prodid;
     console.log($scope.prodid);
     $scope.isDisabled = 0;
     $scope.detailid = $.jStorage.get("user1");
     console.log($scope.detailid);
     var getuserdetailscallback = function (data, status) {
-        $ionicLoading.hide();
+//        $ionicLoading.hide();
         $scope.form = data[0];
         //		console.log($scope.form);
         //buying details
@@ -1882,7 +1882,7 @@ $scope.closeModals = function () {
         }, 2000);
     };
     var addproductimage = function (result) {
-        $ionicLoading.hide();
+//        $ionicLoading.hide();
         console.log(result);
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
@@ -1891,7 +1891,7 @@ $scope.closeModals = function () {
     }
 
     $scope.addproductimage = function () {
-        $scope.showloading();
+//        $scope.showloading();
         console.log("take picture");
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
