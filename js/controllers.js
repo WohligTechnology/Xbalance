@@ -1213,7 +1213,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer,$cordovaImagePicker) {
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({
