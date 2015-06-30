@@ -9,6 +9,6 @@ echo "################################";
 echo "################################";
 echo "################################";
 echo "################################";
-echo shell_exec("ionic build android");
+echo shell_exec("cordova build android");
 
 ?>
