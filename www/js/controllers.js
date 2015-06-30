@@ -934,14 +934,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     };
-//    $scope.showloading();
+    //    $scope.showloading();
     $scope.prodid = $stateParams.prodid;
     console.log($scope.prodid);
     $scope.isDisabled = 0;
     $scope.detailid = $.jStorage.get("user1");
     console.log($scope.detailid);
     var getuserdetailscallback = function (data, status) {
-//        $ionicLoading.hide();
+        //        $ionicLoading.hide();
         $scope.form = data[0];
         //		console.log($scope.form);
         //buying details
@@ -1229,21 +1229,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-        var options = {
-            quality: 20,
-            destinationType: Camera.DestinationType.FILE_URI,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            allowEdit: true,
-            encodingType: Camera.EncodingType.JPEG,
-            saveToPhotoAlbum: true
-        };
-      
-//    var options = {
-//        maximumImagesCount: 1,
-//        width: 800,
-//        height: 800,
-//        quality: 80
-//    };
+    var options = {
+        quality: 20,
+        destinationType: Camera.DestinationType.FILE_URI,
+        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        saveToPhotoAlbum: true
+    };
+
+    //    var options = {
+    //        maximumImagesCount: 1,
+    //        width: 800,
+    //        height: 800,
+    //        quality: 80
+    //    };
 
     var changeprofilephoto = function (result) {
         console.log(result);
@@ -1354,232 +1354,238 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 });
             });
     };
-};
 
 
-// shop profile
-$scope.pro = $.jStorage.get("user1"); $scope.epro = {};
-var shopphotocallback = function (data, status) {
-    $scope.pic = data;
-    console.log($scope.pic);
-    $ionicLoading.hide();
 
-}
-var shopproductphotocallback = function (data, status) {
-    $scope.image = data;
-
-}
-var getallcategory1callback = function (data, status) {
-    $scope.cat = data;
-    console.log($scope.cat);
-}
-var updatecatcallback = function (data, status) {
-    console.log(data);
-}
-$scope.updatecat = function (c) {
-    $scope.cats = c;
-    console.log('Category Id: ' + $scope.cats);
-    MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
-}
-var getareacallback = function (data, status) {
-    console.log(data);
-    $scope.areas = data;
-}
-var updateareacallback = function (data, status) {
-    console.log(data);
-}
-$scope.updatearea = function (a) {
-    $scope.ar = a;
-    console.log('Area Id: ' + $scope.ar);
-    MyServices.updatearea(user.id, $scope.ar, updateareacallback);
-}
-var shopprofilecallback = function (data, status) {
-        $scope.profile = data;
-        MyServices.getallcategory1(getallcategory1callback);
-        MyServices.getarea(getareacallback);
+    // shop profile
+    $scope.pro = $.jStorage.get("user1");
+    $scope.epro = {};
+    var shopphotocallback = function (data, status) {
+        $scope.pic = data;
+        console.log($scope.pic);
+        $ionicLoading.hide();
 
     }
-    //    $scope.profile.categoryid=$scope.profile.category;
-    //		$scope.profile.areaid=$scope.profile.area;
-MyServices.profile($scope.pro, shopprofilecallback); MyServices.shopphoto($scope.pro, shopphotocallback); MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
-//edit profile
+    var shopproductphotocallback = function (data, status) {
+        $scope.image = data;
 
-$scope.editpro = function (profile) {
-    $scope.epro = profile;
-    console.log($scope.epro);
-}
-//    $scope.sp=$.jStorage.get("sp");
-//	console.log("In profile");
-////	console.log($scope.sp);
-////	
-var updateprofilecallback = function (data, status) {
-    if (data == "false") {
-
-        console.log("no data");
-    } else {
-        console.log("Updated");
-        //			MyServices.profile($scope.pro, shopprofilecallback);
-        $scope.showeditPopup();
-
-        $location.url("/app/profile");
     }
-}
-$scope.profileupdate = function (profile) {
-    $scope.updatedata = profile;
-    console.log($scope.updatedata);
-    $scope.id = $.jStorage.get("user1");
-    console.log($scope.id);
-    MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
+    var getallcategory1callback = function (data, status) {
+        $scope.cat = data;
+        console.log($scope.cat);
+    }
+    var updatecatcallback = function (data, status) {
+        console.log(data);
+    }
+    $scope.updatecat = function (c) {
+        $scope.cats = c;
+        console.log('Category Id: ' + $scope.cats);
+        MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
+    }
+    var getareacallback = function (data, status) {
+        console.log(data);
+        $scope.areas = data;
+    }
+    var updateareacallback = function (data, status) {
+        console.log(data);
+    }
+    $scope.updatearea = function (a) {
+        $scope.ar = a;
+        console.log('Area Id: ' + $scope.ar);
+        MyServices.updatearea(user.id, $scope.ar, updateareacallback);
+    }
+    var shopprofilecallback = function (data, status) {
+            $scope.profile = data;
+            MyServices.getallcategory1(getallcategory1callback);
+            MyServices.getarea(getareacallback);
+
+        }
+        //    $scope.profile.categoryid=$scope.profile.category;
+        //		$scope.profile.areaid=$scope.profile.area;
+    MyServices.profile($scope.pro, shopprofilecallback);
+    MyServices.shopphoto($scope.pro, shopphotocallback);
+    MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
+    //edit profile
+
+    $scope.editpro = function (profile) {
+            $scope.epro = profile;
+            console.log($scope.epro);
+        }
+        //    $scope.sp=$.jStorage.get("sp");
+        //	console.log("In profile");
+        ////	console.log($scope.sp);
+        ////	
+    var updateprofilecallback = function (data, status) {
+        if (data == "false") {
+
+            console.log("no data");
+        } else {
+            console.log("Updated");
+            //			MyServices.profile($scope.pro, shopprofilecallback);
+            $scope.showeditPopup();
+
+            $location.url("/app/profile");
+        }
+    }
+    $scope.profileupdate = function (profile) {
+        $scope.updatedata = profile;
+        console.log($scope.updatedata);
+        $scope.id = $.jStorage.get("user1");
+        console.log($scope.id);
+        MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
 
 
 
-}
+    }
 
-$scope.showeditPopup = function () {
+    $scope.showeditPopup = function () {
 
-    var myPopup = $ionicPopup.show({
-        template: '<p class="text-center">Your profile has been updated successfully!</p>',
-        title: 'Profile Updated',
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your profile has been updated successfully!</p>',
+            title: 'Profile Updated',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+    $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
+        id: '2',
         scope: $scope,
-
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal2 = modal;
     });
-    $timeout(function () {
-        myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 2000);
-}; $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
-    id: '2',
-    scope: $scope,
-    animation: 'slide-in-up'
-}).then(function (modal) {
-    $scope.oModal2 = modal;
-});
 
-$scope.openPassword = function () {
-    $scope.oModal2.show();
-};
+    $scope.openPassword = function () {
+        $scope.oModal2.show();
+    };
 
-$scope.closePassword = function () {
-    $scope.oModal2.hide();
-};
-var changepasswordcallback = function (data, status) {
-    if (data == "-1") {
-        console.log("new and confirm do not match ");
-        $scope.showpasswordPopup1();
-    } else {
-        $scope.p = data;
-        console.log($scope.p);
-        $scope.showpasswordPopup();
-        $scope.pass = {};
+    $scope.closePassword = function () {
         $scope.oModal2.hide();
+    };
+    var changepasswordcallback = function (data, status) {
+        if (data == "-1") {
+            console.log("new and confirm do not match ");
+            $scope.showpasswordPopup1();
+        } else {
+            $scope.p = data;
+            console.log($scope.p);
+            $scope.showpasswordPopup();
+            $scope.pass = {};
+            $scope.oModal2.hide();
+        }
     }
-}
 
-$scope.pass = {};
+    $scope.pass = {};
 
-$scope.changepass = function () {
-    //		$scope.passwrd = pass;
-    $scope.id = $.jStorage.get("user1");
-    //		$scope.passwrd = pass;
-    $scope.allvalidation = [{
-        field: $scope.pass.oldpassword,
-        validation: ""
+    $scope.changepass = function () {
+            //		$scope.passwrd = pass;
+            $scope.id = $.jStorage.get("user1");
+            //		$scope.passwrd = pass;
+            $scope.allvalidation = [{
+                field: $scope.pass.oldpassword,
+                validation: ""
         }, {
-        field: $scope.pass.newpassword,
-        validation: ""
+                field: $scope.pass.newpassword,
+                validation: ""
    }, {
-        field: $scope.pass.confirmpassword,
-        validation: ""
+                field: $scope.pass.confirmpassword,
+                validation: ""
    }];
-    var check = formvalidation($scope.allvalidation);
-    if (check) {
-        console.log("valid");
-        MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
+            var check = formvalidation($scope.allvalidation);
+            if (check) {
+                console.log("valid");
+                MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
 
-    } else {
-        console.log("not valid");
-        $scope.showPopup8();
-    }
-}
-//	$scope.changepass = function (pass) {
-//		$scope.passwrd = pass;
-//		$scope.id = $.jStorage.get("user1");
-//		$scope.passwrd = pass;
-//		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
-//	}
-$scope.showPopup8 = function () {
+            } else {
+                console.log("not valid");
+                $scope.showPopup8();
+            }
+        }
+        //	$scope.changepass = function (pass) {
+        //		$scope.passwrd = pass;
+        //		$scope.id = $.jStorage.get("user1");
+        //		$scope.passwrd = pass;
+        //		MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
+        //	}
+    $scope.showPopup8 = function () {
 
-    var myPopup = $ionicPopup.show({
-        template: '<p class="text-center">Please Enter Mandatory Fields</p>',
-        title: "Sorry Cannot Proceed!!",
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Please Enter Mandatory Fields</p>',
+            title: "Sorry Cannot Proceed!!",
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+    $scope.showpasswordPopup1 = function () {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">New Password and Confirm Password do not Match!</p>',
+            title: "Sorry Cannot Proceed!!",
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+    $scope.showpasswordPopup = function () {
+
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your password has updated successfully!</p>',
+            title: 'Password Updated',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+    //PROfILE IMAGE
+    $ionicModal.fromTemplateUrl('templates/image-modal1.html', {
         scope: $scope,
-
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modals = modal;
     });
-    $timeout(function () {
-        myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 2000);
-}; $scope.showpasswordPopup1 = function () {
 
-    var myPopup = $ionicPopup.show({
-        template: '<p class="text-center">New Password and Confirm Password do not Match!</p>',
-        title: "Sorry Cannot Proceed!!",
+    $scope.openpswds = function (num) {
+        console.log(num);
+        $scope.modals.show();
+        setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+
+    };
+
+    $scope.closeModal = function () {
+        $scope.modals.hide();
+    };
+
+    $ionicModal.fromTemplateUrl('templates/image-shop1.html', {
         scope: $scope,
-
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modalss = modal;
     });
-    $timeout(function () {
-        myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 2000);
-}; $scope.showpasswordPopup = function () {
 
-    var myPopup = $ionicPopup.show({
-        template: '<p class="text-center">Your password has updated successfully!</p>',
-        title: 'Password Updated',
-        scope: $scope,
+    $scope.openshop = function (num) {
+        console.log(num);
+        $scope.modalss.show();
+        setTimeout(function () {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
 
-    });
-    $timeout(function () {
-        myPopup.close(); //close the popup after 3 seconds for some reason
-    }, 2000);
-};
-//PROfILE IMAGE
-$ionicModal.fromTemplateUrl('templates/image-modal1.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-}).then(function (modal) {
-    $scope.modals = modal;
-});
+    };
 
-$scope.openpswds = function (num) {
-    console.log(num);
-    $scope.modals.show();
-    setTimeout(function () {
-        $ionicSlideBoxDelegate.slide(num);
-    }, 200);
-
-};
-
-$scope.closeModal = function () {
-    $scope.modals.hide();
-};
-
-$ionicModal.fromTemplateUrl('templates/image-shop1.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-}).then(function (modal) {
-    $scope.modalss = modal;
-});
-
-$scope.openshop = function (num) {
-    console.log(num);
-    $scope.modalss.show();
-    setTimeout(function () {
-        $ionicSlideBoxDelegate.slide(num);
-    }, 200);
-
-};
-
-$scope.closeModals = function () {
-    $scope.modalss.hide();
-};
+    $scope.closeModals = function () {
+        $scope.modalss.hide();
+    };
 
 })
 
@@ -1882,7 +1888,7 @@ $scope.closeModals = function () {
         }, 2000);
     };
     var addproductimage = function (result) {
-//        $ionicLoading.hide();
+        //        $ionicLoading.hide();
         console.log(result);
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
@@ -1891,7 +1897,7 @@ $scope.closeModals = function () {
     }
 
     $scope.addproductimage = function () {
-//        $scope.showloading();
+        //        $scope.showloading();
         console.log("take picture");
         $cordovaCamera.getPicture(options).then(function (imageData) {
             // Success! Image data is here
