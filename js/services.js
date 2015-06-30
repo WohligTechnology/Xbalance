@@ -1,5 +1,5 @@
-var adminbase = "http://wohlig.co.in/osb/";
-//var adminbase = "http://localhost/osb/";
+//var adminbase = "http://wohlig.co.in/osb/";
+var adminbase = "http://192.168.2.28/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
