@@ -1229,14 +1229,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
-    //			var options = {
-    //				quality: 20,
-    //				destinationType: Camera.DestinationType.FILE_URI,
-    //				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-    //				allowEdit: true,
-    //				encodingType: Camera.EncodingType.JPEG,
-    //				saveToPhotoAlbum: true
-    //			};
+    			var options = {
+    				quality: 20,
+    				destinationType: Camera.DestinationType.FILE_URI,
+    				sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    				allowEdit: true,
+    				encodingType: Camera.EncodingType.JPEG,
+    				saveToPhotoAlbum: true
+    			};
 
     var options = {
         maximumImagesCount: 1,
@@ -2049,14 +2049,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
         //edit products and status end
         //Hide when on PC
-        //					var options = {
-        //						quality: 20,
-        //						destinationType: Camera.DestinationType.FILE_URI,
-        //						sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        //						allowEdit: true,
-        //						encodingType: Camera.EncodingType.JPEG,
-        //						saveToPhotoAlbum: true
-        //					};
+        					var options = {
+        						quality: 20,
+        						destinationType: Camera.DestinationType.FILE_URI,
+        						sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+        						allowEdit: true,
+        						encodingType: Camera.EncodingType.JPEG,
+        						saveToPhotoAlbum: true
+        					};
 
 
     //upload editproductimage start
