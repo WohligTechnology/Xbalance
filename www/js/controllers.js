@@ -51,6 +51,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function (data, status) {
         $ionicLoading.hide();
+		console.log(data.sellingapproval.length);
         $scope.approvalcount = data.sellingapproval.length;
         console.log(data.sellingapproval.length);
     }
@@ -642,6 +643,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     $scope.callpurchase = function (profile) {
+		$scope.send={};
         $scope.modal.show();
     };
 
