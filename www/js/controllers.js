@@ -1254,11 +1254,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.profile.shoplogo = result.value;
     };
 
-    var changeshopphoto = function (result) {
-        MyServices.shopphoto($scope.pro, shopphotocallback);
-        MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
-    };
-
     $scope.changeprofileimage = function () {
         console.log("take picture");
         //        $cordovaCamera.getPicture(options).then(function (imageData) {
@@ -1291,7 +1286,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     };
 
-    $scope.changeshopimage = function (id) {
+    var changeshopphoto = function (result) {
+        MyServices.shopphoto($scope.pro, shopphotocallback);
+        MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
+    };
+    
+    $scope.changeshopimage = function () {
         console.log("take picture");
 
         //        $cordovaCamera.getPicture(options).then(function (imageData) {
