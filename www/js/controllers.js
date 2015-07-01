@@ -1291,7 +1291,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     };
     
-    $scope.changeshopimage = function () {
+    $scope.changeshopimage = function (id) {
         console.log("take picture");
 
         //        $cordovaCamera.getPicture(options).then(function (imageData) {
@@ -1323,9 +1323,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     var changeproductimagesuccess = function (result) {
+        MyServices.shopphoto($scope.pro, shopphotocallback);
+        MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
         console.log(result);
-        $scope.i.photo = JSON.parse(result.response).value;
-        console.log($scope.i.photo);
+//        $scope.i.photo = JSON.parse(result.response).value;
+//        console.log($scope.i.photo);
     }
 
     $scope.changeproductimage = function (id) {
