@@ -229,21 +229,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     $urlRouterProvider.otherwise('/app/home');
 })
 
-.filter('serverimage', function() {
-    return function(image) {
-        return imgpath + image;
-    };
-});
-  
-//.filter('serverimage', function () {
-//    return function (image) {
-//        if (image == null || image == '') {
-//            return "http://wohlig.co.in/osb/uploads/samsung-galaxy-grand-neo-gt-i9060-dual-sim-android-mobile-phone-white-medium_80c25a81e9c2b1eb126cdb01dc6da394-80x80.jpg";
-//        } else {
-//            return imgpath + image;
-//        }
+//.filter('serverimage', function() {
+//    return function(image) {
+//        return imgpath + image;
 //    };
 //});
+  
+.filter('serverimage', function () {
+    return function (image) {
+        if (image == null || image == '') {
+            return "img/noimage.png";
+        } else {
+            return imgpath + image;
+        }
+    };
+});
 
 function partitionarray(myarray, number) {
             var arrlength = myarray.length;

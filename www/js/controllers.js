@@ -1277,6 +1277,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(resultImage);
 
             $scope.cameraimage = resultImage[0];
+            $.jStorage.set("proileimg",resultImage[0]);
             console.log(adminurl);
             $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
 
