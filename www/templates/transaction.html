@@ -21,9 +21,9 @@
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
 
-                <p class="royal padding text-center" ng-if="t.purchased=='';">No transactions yet.</p>
+                <p class="royal padding text-center" ng-if="!t.purchased">No transactions yet.</p>
 
-                <div class="incard transcard" ng-if="t.purchased!='';">
+                <div class="incard transcard" ng-if="t.purchased">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left listmk">
                             <span class="item-note">{{finalpurchase}}</span>
@@ -56,8 +56,8 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold';">
-                <p class="royal padding text-center" ng-if="t.sales=='';">No transactions yet.</p>
-                <div class="incard transcard" ng-if="t.sales!='';">
+                <p class="royal padding text-center" ng-if="t.sales.length==0">No transactions yet.</p>
+                <div class="incard transcard" ng-if="t.sales.length!=0">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left listmk">
                             <span class="item-note">{{finalsales}}</span>
