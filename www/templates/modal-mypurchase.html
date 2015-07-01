@@ -1,59 +1,68 @@
 <ion-modal-view>
-    <ion-header-bar class="bar-royal" align-title="center">
-        <h1 class="title">My Purchase</h1>
-        <div class="buttons">
-            <button class="button button-clear" ng-click="closepurchase()">Close</button>
-        </div>
-    </ion-header-bar>
-    <ion-content class="padding">
-        <div class="incard">
-            <div class="list profile-cont padtop5">
-                     <ion-item class="item-left">
-                    <h2>Purchased From</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getp.shopname}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Date</h2>
-                    <div class="pull-right item-right text-capitalize">
-						{{getp.timestamp}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Name</h2>
-                    <div class="pull-right item-right text-capitalize">
+	<ion-header-bar class="bar-royal" align-title="center">
+		<h1 class="title">My Purchase</h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="closepurchase()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="padding">
+		<div class="incard">
+			<div class="list profile-cont padtop5">
+				<ion-item class="item-left">
+					<h2>Product Name</h2>
+					<div class="pull-right item-right text-capitalize">
 						{{getp.productname}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Email Id</h2>
-                    <div class="pull-right item-right text-capitalize">
-						{{getp.email}}
-                    </div>
-                </ion-item>
-
-                <ion-item class="item-left">
-                    <h2>Price</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getp.price}}
-                    </div>
-                </ion-item>
-
-                <ion-item class="item-left">
-                    <h2>Order Id</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getp.id}}
-                    </div>
-                </ion-item>
-          
-                <ion-item class="item-left">
-                    <h2>Quantity</h2>
-                    <div class="pull-right item-right text-capitalize">
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Quantity</h2>
+					<div class="pull-right item-right text-capitalize">
 						{{getp.quantity}}
-                    </div>
-                </ion-item>
-            </div>
-        </div>
-    </ion-content>
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Price</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.price}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Order Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.id}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Purchased From</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.shopname}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Address</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.address}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Contact No</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.personalcontact}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Email Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.email1}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Date</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getp.timestamp}}
+					</div>
+				</ion-item>
+			</div>
+		</div>
+	</ion-content>
 </ion-modal-view>

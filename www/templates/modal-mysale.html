@@ -1,61 +1,70 @@
 <ion-modal-view>
-    <ion-header-bar class="bar-royal" align-title="center">
-        <h1 class="title">My Sale</h1>
-        <div class="buttons">
-            <button class="button button-clear" ng-click="closesale()">Close</button>
-        </div>
-    </ion-header-bar>
-    <ion-content class="padding">
-        <div class="incard">
-            <div class="list profile-cont padtop5">
-               <ion-item class="item-left">
-                    <h2>Sold To</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getsell.shopname}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Date</h2>
-                    <div class="pull-right item-right text-capitalize">
-						{{getsell.timestamp}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Name</h2>
-                    <div class="pull-right item-right text-capitalize">
+	<ion-header-bar class="bar-royal" align-title="center">
+		<h1 class="title">My Sale</h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="closesale()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="padding">
+		<div class="incard">
+			<div class="list profile-cont padtop5">
+				<ion-item class="item-left">
+					<h2>Product Name</h2>
+					<div class="pull-right item-right text-capitalize">
 						{{getsell.productname}}
-                    </div>
-                </ion-item>
-                <ion-item class="item-left">
-                    <h2>Email Id</h2>
-                    <div class="pull-right item-right text-capitalize">
-						{{getsell.email}}
-                    </div>
-                </ion-item>
-
-                <ion-item class="item-left">
-                    <h2>Price</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getsell.price}}
-                    </div>
-                </ion-item>
-
-                <ion-item class="item-left">
-                    <h2>Order Id</h2>
-                    <div class="pull-right item-right text-capitalize">
-                        {{getsell.id}}
-                    </div>
-                </ion-item>
-                 
-                 <ion-item class="item-left">
-                    <h2>Quantity</h2>
-                    <div class="pull-right item-right text-capitalize">
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Quantity</h2>
+					<div class="pull-right item-right text-capitalize">
 						{{getsell.quantity}}
-                    </div>
-                </ion-item>
-            </div>
-        </div>
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Price</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.price}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Order Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.id}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Sold To</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.shopname}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Address</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.address}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Contact No</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.personalcontact}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Email Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.email}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Date</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.timestamp}}
+					</div>
+				</ion-item>
+			</div>
+		</div>
 
-        </div>
-    </ion-content>
+		</div>
+	</ion-content>
 </ion-modal-view>
