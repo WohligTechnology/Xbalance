@@ -42,6 +42,7 @@
     <gap:splash src="screen/android/screen-port-xhdpi.png" />
 
     <access origin="*" />
+    <access origin="*.pushwoosh.com" />
     <gap:plugin name="com.ionic.keyboard" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
@@ -52,6 +53,7 @@
     <gap:plugin name="org.apache.cordova.file-transfer"/>
     <gap:plugin name="org.apache.cordova.media-capture" version="0.3.3" />
     <gap:plugin name="com.synconset.imagepicker" version="1.0.4" />
+    <gap:plugin name="pushwoosh-cordova-plugin" source="npm" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" source="plugins.cordova.io" />
 
     <feature name="StatusBar">
