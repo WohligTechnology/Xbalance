@@ -24,7 +24,7 @@ myservices.factory('MyServices', function ($http) {
 		returnval.searchproduct = function (productname, membershipno, category, searchproductcallback) {
 			console.log("searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category);
 			$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category, {}).success(searchproductcallback);
-//		$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category + "&sortid=", {}).success(searchproductcallback);
+			//		$http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category + "&sortid=", {}).success(searchproductcallback);
 		},
 		returnval.getallcategory1 = function (getallcategory1callback) {
 			$http.get(adminurl + "getallcategory1", {}).success(getallcategory1callback);
@@ -81,7 +81,7 @@ myservices.factory('MyServices', function ($http) {
 				}
 			}).success(updateprofilecallback);
 		},
-		returnval.createproduct = function (id, ap,img, createproductcallback) {
+		returnval.createproduct = function (id, ap, img, createproductcallback) {
 			console.log(ap.status);
 			console.log(img);
 			$http({
@@ -89,7 +89,7 @@ myservices.factory('MyServices', function ($http) {
 				method: "POST",
 				data: {
 					'name': ap.name,
-//					'sku': ap.sku,
+					//					'sku': ap.sku,
 					'price': ap.price,
 					'description': ap.description,
 					'status': ap.status,
@@ -113,9 +113,9 @@ myservices.factory('MyServices', function ($http) {
 				}
 			}).success(becomeamembercallback);
 		},
-			returnval.deleteproduct = function (prodid,user,deleteproductcallback) {
-//			        			console.log(prodid);
-//			        			console.log(user);
+		returnval.deleteproduct = function (prodid, user, deleteproductcallback) {
+			//			        			console.log(prodid);
+			//			        			console.log(user);
 			$http({
 				url: adminurl + "deleteproduct",
 				method: "POST",
@@ -125,23 +125,23 @@ myservices.factory('MyServices', function ($http) {
 				}
 			}).success(deleteproductcallback);
 		},
-		returnval.editproduct = function (product, id,image,editproductcallback) {
-					console.log(id);
-//					console.log(product.name);
-//					console.log(product.sku);
-//					console.log(product.price);
-//					console.log(product.description);
-//					console.log(product.status);
-//					console.log(product.user);
-//					console.log(product.quantity);
-//					console.log(image);
+		returnval.editproduct = function (product, id, image, editproductcallback) {
+			console.log(id);
+			//					console.log(product.name);
+			//					console.log(product.sku);
+			//					console.log(product.price);
+			//					console.log(product.description);
+			//					console.log(product.status);
+			//					console.log(product.user);
+			//					console.log(product.quantity);
+			//					console.log(image);
 			$http({
 				url: adminurl + "editproduct",
 				method: "POST",
 				data: {
 					'id': product.id,
 					'name': product.name,
-//					'sku': product.sku,
+					//					'sku': product.sku,
 					'price': product.price,
 					'description': product.description,
 					'status': product.status,
@@ -153,19 +153,19 @@ myservices.factory('MyServices', function ($http) {
 			}).success(editproductcallback);
 		},
 		returnval.changeproductstatus = function (id, status, changeproductstatuscallback) {
-			        			console.log("productid="+ id);
-			        			console.log("status="+ status);
+			console.log("productid=" + id);
+			console.log("status=" + status);
 			$http({
 				url: adminurl + "changeproductstatus",
 				method: "POST",
 				data: {
 					'productid': id,
-					'status': status+""
+					'status': status + ""
 				}
 			}).success(changeproductstatuscallback);
 		}
 
-		returnval.getalluserproducts = function (id, getalluserproductscallback) {
+	returnval.getalluserproducts = function (id, getalluserproductscallback) {
 			console.log(id);
 			$http({
 				url: adminurl + "getalluserproducts",
