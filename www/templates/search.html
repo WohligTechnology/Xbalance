@@ -1,14 +1,14 @@
 <ion-view view-title="Offline" class="bar-royal">
     <ion-content class="padding searcher">
-        <div class="incard search" ng-controller="HomeCtrl">
+        <div class="incard search">
             <div class="header-card">Offline Search</div>
             <label class="item item-input item-select area">
                 <div class="input-label">
                     City
                 </div>
-                <select ng-model="home.area">
+                <select>
                     <option value="">Mumbai</option>
-                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
+<!--                    <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>-->
                 </select>
             </label>
 
@@ -17,7 +17,7 @@
                     Area
                 </div>
                 <select ng-model="home.area">
-                    <option value="">All</option>
+                    <option value="0">All</option>
                     <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
                 </select>
             </label>
@@ -28,7 +28,7 @@
                     Categories
                 </div>
                 <select ng-model="home.category">
-                    <option value="">All</option>
+                    <option value="0">All</option>
                     <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
                 </select>
 
