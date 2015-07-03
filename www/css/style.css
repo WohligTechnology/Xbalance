@@ -115,9 +115,14 @@ button.btn-smalls {
     width: 90%;
 }
 
-.searcher .incard .item+.item {
+.search .item+.item {
+  border-top: 1px solid #ddd;
+}
+/*
+.searcher .item+.item {
     border-top: 1px solid #ddd;
 }
+*/
 
 .incard .item {
     padding: 5px 10px;
@@ -422,7 +427,7 @@ p.info {
 
 .incard .item.item-input {
     padding: 5px 15px;
-    border-width: 0px;
+    border-width: 0px !important;
     margin: 0;
 }
 
@@ -782,7 +787,7 @@ ion-item.item.item-thumbnail-left.trns-add {
 }
 
 .col.prename {
-    white-space: pre-wrap;
+    white-space: normal;
     text-transform: capitalize;
 }
 
