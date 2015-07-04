@@ -188,6 +188,9 @@ myservices.factory('MyServices', function ($http) {
         returnval.getsingleproduct = function (id, getsingleproductcallback) {
             $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
         },
+		returnval.isnewuserstatuschange = function (id, isnewuserstatuschangecallback) {
+            $http.get(adminurl + "isnewuserstatuschange?user=" + id, {}).success(isnewuserstatuschangecallback);
+        },
         returnval.buyproduct = function (userid, prodid, user, buyproductcallback) {
             console.log(userid);
             console.log(prodid);
