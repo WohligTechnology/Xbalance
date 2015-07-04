@@ -20,14 +20,14 @@
                 <div class="input-label">
                     Categories
                 </div>
+<!--
                 <select ng-model="product.category" ng-options="cat.id as cat.name for cat in category">
                 </select>
-<!--
-           <select ng-model="product.category">
-			   {{category}}
-               <option ng-repeat="cat in category" value={{cat.id}}>{{cat.id}}{{cat.name}}</option>
-            </select>
+                
 -->
+           <select ng-model="product.category">
+               <option ng-repeat="cat in category" value={{cat.id}}>{{cat.name}}</option>
+            </select>
             
             </label>
 

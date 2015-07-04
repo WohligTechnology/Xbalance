@@ -85,6 +85,7 @@ function onPushwooshiOSInitialized(pushToken)
 	pushNotification.getPushwooshHWID(
 		function(token) {
 			console.warn('Pushwoosh HWID: ' + token);
+            $.jStorage.set("token", token);
 		}
 	);
 
