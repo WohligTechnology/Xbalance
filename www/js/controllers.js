@@ -68,16 +68,71 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval, $cordovaImagePicker) {
     //home page
 
-    var yourbalancecallback = function (data, status) {
 
+    $ionicModal.fromTemplateUrl('templates/changepassword.html', {
+        id: '1',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal = modal;
+    });
+
+    $scope.openPassword = function () {
+        $scope.oModal.show();
+    };
+
+    $scope.closePassword = function () {
+        $.jStorage.set("isnewuser", "no")
+        $scope.oModal.hide();
+    };
+
+    $scope.showpasswordPopup1 = function () {
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">New Password and Confirm Password do not Match!</p>',
+            title: "Sorry Cannot Proceed!!",
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+
+    $scope.pass = {};
+    var changepasscallback = function (data, status) {
+        console.log(data);
+        if (data == "-1") {
+            console.log("new and confirm do not match ");
+            $scope.showpasswordPopup1();
+        } else {
+            $scope.oModal.hide();
+        }
+    }
+
+    $scope.changepass = function () {
+        console.log($scope.pass);
+        MyServices.changepassword($.jStorage.get("user1"), $scope.pass, changepasscallback)
+    }
+
+
+    var isnewusercallback = function (data, status) {
+        console.log(data);
+        if (data.onlinestatus == 1) {
+            console.log("isnew=1");
+            $scope.openPassword();
+        }
+    }
+
+    var yourbalancecallback = function (data, status) {
         if (data == "false") {
             console.log("no data");
         } else {
             $ionicLoading.hide();
-            console.log(data);
-            $scope.pb = data;
+            console.log("call is new user");
+            MyServices.isnewuser($.jStorage.get("user1"), isnewusercallback);
         }
-
+        console.log(data);
+        $scope.pb = data;
     }
 
 
@@ -579,7 +634,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 })
 
-.controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+.controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({
@@ -607,6 +662,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     MyServices.searchresult($stateParams.area, $stateParams.category, $stateParams.online, $stateParams.offline, searchcallback);
 
+    $scope.showPopup = function () {
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">No such membership number exists.</p>',
+            title: 'No Match Found!',
+            scope: $scope,
+
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
+
     function onmembershipid(shopid) {
         if (shopid) {
             $location.url("/app/shop/" + shopid);
@@ -614,16 +681,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.showPopup();
         }
     };
-    
-    $scope.home={};
-    $scope.home.area=0;
-    $scope.home.category=0;
-    
+
+    $scope.home = {};
+    $scope.home.area = 0;
+    $scope.home.category = 0;
+    $scope.home.membershipno = "";
+
     $scope.memfunc = function (home) {
         console.log(home);
         purchasebalance = parseFloat(user.purchasebalance);
+        console.log(purchasebalance);
         if (purchasebalance > 0) {
-            if (home.membershipno != undefined && home.membershipno != "" && !home.membershipno) {
+            if (home.membershipno != undefined && home.membershipno != "") {
                 console.log("if");
                 MyServices.getshopidmebership(home.membershipno, onmembershipid);
             } else {
