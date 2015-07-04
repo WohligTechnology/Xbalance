@@ -83,18 +83,19 @@
         </div>
 
         <div class="incard">
-            <div class="button-block bars">
-                <a class="button button-royal button-block" ng-click="searchproduct(product);">Online</a>
-                <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
-                <a class="button button-royal button-block" ng-click="memfunc(home);">Offline</a>
+            <div class="button-bar bars padding">
+                <!--                <a class="button button-royal button-block" ng-click="searchproduct(product);">Online</a>-->
+                <a class="button  button-royal" ng-click="searchproduct(product);" ng-class="offlineclass">Online</a>
+                <a class="button  button-royal" ng-click="memfunc(home);">Offline</a>
+                <!--                <a class="button button-royal button-block" ng-click="memfunc(home);">Offline</a>-->
             </div>
-<!--
+            <!--
 
             <div class="header-card" ng-if="tabvalue == 1">Find Products</div>
             <div class="header-card" ng-if="tabvalue == 2">Find Shops</div>
 -->
 
-<!--
+            <!--
             <div class="" ng-if="tabvalue == 1">
                 <label class="item item-input item-select area">
                     <div class="input-label">
@@ -140,7 +141,7 @@
                 </div>
             </div>
 -->
-<!--
+            <!--
             <div class="" ng-if="tabvalue == 2">
                 <label class="item item-input item-select area">
                     <div class="input-label">
