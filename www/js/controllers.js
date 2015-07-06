@@ -1308,7 +1308,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices, $ionicLoading, $timeout) {
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices, $ionicLoading, $timeout, $ionicModal) {
     //	
     $scope.showloading = function () {
         $ionicLoading.show({
@@ -1321,7 +1321,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var transactioncallback = function (data, status) {
         $ionicLoading.hide();
         $scope.t = data;
-
+        console.log($scope.t);
         //purchase
         for (var i = 0; i < $scope.t.purchased.length; i++) {
             $scope.totaltr = $scope.totaltr + parseInt($scope.t.purchased[i].amount);
@@ -1367,9 +1367,41 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.admin = "bold";
     }
 
+    $ionicModal.fromTemplateUrl('templates/modaltransaction-mypurchase.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
 
-    //  GET USER DETAILS
-    //    $scope.user = MyServices.getuser();
+    $scope.openpurchase = function (p) {
+        if (p.reason.substr(0, 9) == 'ORDER ID:') {
+            $scope.getp = p;
+            $scope.modal.show();
+        }
+    };
+
+    $scope.closepurchase = function () {
+        $scope.modal.hide();
+    };
+
+    $ionicModal.fromTemplateUrl('templates/modaltransaction-mysale.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.modal1 = modal;
+    });
+
+    $scope.opensale = function (o) {
+        if (o.reason.substr(0, 9) == 'ORDER ID:') {
+            $scope.getsell = o;
+            $scope.modal1.show();
+        }
+    };
+
+    $scope.closesale = function () {
+        $scope.modal1.hide();
+    };
 
 })
 
@@ -2520,4 +2552,24 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
 
-.controller('SuggestionCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});
+.controller('SuggestionCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
+
+    $scope.suggestion = {};
+
+    var submitsuggestioncallback = function (data, status) {
+        console.log(data);
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your Suggestion is Submitted!</p>',
+            title: 'Suggestion Submitted',
+            scope: $scope,
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+        $scope.suggestion = {};
+    }
+    $scope.submitsuggestion = function () {
+        console.log($scope.suggestion.msg);
+        MyServices.submitsuggestion($scope.suggestion.msg, submitsuggestioncallback);
+    }
+});

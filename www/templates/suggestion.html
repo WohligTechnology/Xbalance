@@ -3,10 +3,10 @@
         <div class="incard">
             <div class="suggestion">
                <div class="text-suggestion">
-                <textarea placeholder="Suggestion" class="text-area"></textarea>
+                <textarea placeholder="Suggestion" class="text-area" ng-model="suggestion.msg"></textarea>
                 </div>
                 <div class="padding-horizontal">
-                    <button class="button button-block button-balanced" type="submit">Submit</button>
+                    <button class="button button-block button-balanced" type="submit" ng-click="submitsuggestion();">Submit</button>
                 </div>
             </div>
         </div>

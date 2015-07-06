@@ -252,7 +252,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             return imgpath + image;
         }
     };
-});
+})
+
+.filter('cmdate', [
+    '$filter', function($filter) {
+        return function(input, format) {
+            return $filter('date')(new Date(input), format);
+        };
+    }
+]);
 
 function partitionarray(myarray, number) {
             var arrlength = myarray.length;

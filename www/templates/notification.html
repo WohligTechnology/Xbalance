@@ -2,8 +2,8 @@
     <ion-content class="padding">
        <p class="royal padding text-center" ng-if="notification.length==0">No Notifications yet.</p>
         <div class="incard notification" ng-repeat="n in notification">
-            <div class="header-cards">Business
-                <span style="float:right; font-size:14px;">{{n.date}}</span>
+            <div class="header-cards">{{n.time}}
+                <span style="float:right; font-size:14px;">{{n.date | cmdate:'dd MMM yyyy'}}</span>
             </div>
             <p>{{n.message}}</p>
         </div>
