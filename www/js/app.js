@@ -60,6 +60,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                 controller: 'AboutCtrl'
             }
         }
+    })  
+    .state('app.suggestion', {
+        url: "/suggestion",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/suggestion.html",
+                controller: 'SuggestionCtrl'
+            }
+        }
     })
 
     .state('app.faq', {

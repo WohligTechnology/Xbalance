@@ -2482,39 +2482,42 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
 .controller('ProductdetailCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-        //all products
-        $scope.showloading = function () {
-            $ionicLoading.show({
-                template: '<ion-spinner class="spinner-royal"></ion-spinner>'
-            });
-        };
+    //all products
+    $scope.showloading = function () {
+        $ionicLoading.show({
+            template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+        });
+    };
+    $scope.showloading();
+    $scope.disableid = $.jStorage.get("user1");
+    var getalluserproductscallback = function (data, status) {
+        $ionicLoading.hide();
+        //			console.log(data.queryresult);
+        $location.url("/app/dealerprd/" + $scope.getsinglepro.user);
+
+    }
+    $scope.getallprod = function (id) {
         $scope.showloading();
-        $scope.disableid = $.jStorage.get("user1");
-        var getalluserproductscallback = function (data, status) {
-            $ionicLoading.hide();
-            //			console.log(data.queryresult);
-            $location.url("/app/dealerprd/" + $scope.getsinglepro.user);
-
-        }
-        $scope.getallprod = function (id) {
-            $scope.showloading();
-            MyServices.getalluserproducts(id, getalluserproductscallback);
-        }
+        MyServices.getalluserproducts(id, getalluserproductscallback);
+    }
 
 
 
-        $scope.prodid = $stateParams.id;
-        console.log($scope.prodid);
-        var getsingleproductcallback = function (data, status) {
-            $ionicLoading.hide();
-            $scope.getsinglepro = data;
-            console.log($scope.getsinglepro);
+    $scope.prodid = $stateParams.id;
+    console.log($scope.prodid);
+    var getsingleproductcallback = function (data, status) {
+        $ionicLoading.hide();
+        $scope.getsinglepro = data;
+        console.log($scope.getsinglepro);
 
-        }
-        MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
-        $scope.openform1 = function (productid) {
-            $location.url("/app/checkout/" + productid);
-        }
+    }
+    MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);
+    $scope.openform1 = function (productid) {
+        $location.url("/app/checkout/" + productid);
+    }
 
-    })
-    .controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});
+})
+
+.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+
+.controller('SuggestionCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});

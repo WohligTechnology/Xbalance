@@ -998,7 +998,8 @@ p.addb-p {
 .centers {
     position: absolute;
     top: 50%;
-/*    background-color: #fff;*/
+    /*    background-color: #fff;*/
+    
     width: 100%;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -1099,4 +1100,15 @@ input.text-right:-moz-placeholder {
 
 .col.input-div {
     text-align: center;
+}
+
+textarea.text-area {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ddd;
+}
+
+.text-suggestion {
+    padding: 0 20px 0 0;
 }

@@ -22,7 +22,7 @@ if(!empty($_GET)) {
   <body onload="submitPayuForm()">
     <h2>PayU Form</h2>
     <form action="http://localhost/xbalance/payumoney/PayUmoney_form.php" method="post" name="payuForm">
-      <table>
+      <table class="pay-u-form">
         <tr>
           <td><b>Mandatory Parameters</b></td>
         </tr>
