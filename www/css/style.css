@@ -1123,3 +1123,15 @@ textarea.text-area {
   color: #fff;
   text-decoration: underline;
 }
+.round-circle-invalid {
+    border: 2px solid #EF473A;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+    margin: auto;
+    background: #EF473A;
+    color: #fff;
+    margin-bottom: 10px;
+}

@@ -750,7 +750,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     function purchaseoverlimit() {
         var myPopup = $ionicPopup.show({
-            template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Purchase is Overlimit!</p>',
+            template: '<div class="text-center"><h2 class="ion-close-round assertive round-circle-invalid"></h2><p>Purchase is Overlimit!</p>',
             title: 'Overlimit Purchase!',
             scope: $scope,
         });
@@ -915,7 +915,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading) {
-    
+
     $scope.email = {};
     $scope.showloading = function () {
         $ionicLoading.show({
