@@ -61,7 +61,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
     };
 
-
+    $scope.getbadgecount = function () {
+        MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+    }
 
 })
 
