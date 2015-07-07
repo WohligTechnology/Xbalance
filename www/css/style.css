@@ -1112,3 +1112,14 @@ textarea.text-area {
 .text-suggestion {
     padding: 0 20px 0 0;
 }
+.pull-left {
+    float: left;
+    font-size: 12px;
+    color: #909090;
+    margin-top: -3px;
+}
+.registration.pull-left {
+  padding-top: 10px;
+  color: #fff;
+  text-decoration: underline;
+}

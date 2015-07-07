@@ -289,6 +289,9 @@ myservices.factory('MyServices', function ($http) {
             callback(data.id)
         });
     };
+    returnval.forgotpassword = function (email, forgotpasswordcallback) {
+        $http.get(adminurl + "forgotpassword?email=" + email, {}).success(forgotpasswordcallback);
+    };
     returnval.isnewuser = function (userid, isnewusercallback) {
         $http.get(adminurl + "isnewuser?user=" + userid, {}).success(isnewusercallback);
     };

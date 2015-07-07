@@ -1,0 +1,22 @@
+ <ion-modal-view>
+    <ion-header-bar class="bar-royal" align-title="center">
+        <h1 class="title">Forgot Password</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closePassword();">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="incard">
+            <form>
+                <div class="list">
+                    <div class="item item-input">
+                        <input type="email" placeholder="Email*" ng-model="email">
+                    </div>
+                    <div class="padding-horizontal btn-rest">
+                        <button class="button button-block button-balanced" ng-click="forgotpass(email);" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-modal-view>

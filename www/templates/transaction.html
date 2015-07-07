@@ -29,7 +29,7 @@
                             <span class="item-note">{{finalpurchase}}</span>
                             <h2 class="bold">Total</h2>
                         </ion-item>
-                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-click="openpurchase(tr);">
+                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-click="openpurchase(tr);">
                             <div class="row">
                                 <div class="col-25">
                                     <div class="sell-img">
@@ -39,6 +39,7 @@
                                 <div class="col-75">
                                     <div class="sell-cont trans">
                                         <span class="item-note">-{{tr.amount}}</span>
+                                        <!--                                        <span class="item-note" ng-if="tr.reason.substr(0,9)=='ORDER ID:'">{{tr.amount}}</span>-->
                                         <h2>{{tr.shopname}}</h2>
                                         <p>Date: {{tr.date | cmdate:'dd MMM yyyy'}}</p>
                                         <p>Time: {{tr.time}}</p>
@@ -74,14 +75,16 @@
                                 </div>
                                 <div class="col-75">
                                     <div class="sell-cont trans">
-                                        <span class="item-note">-{{tr.amount}}</span>
+                                        <span class="item-note" ng-if="tr.reason.substr(0,9)!='ORDER ID:'">-{{tr.amount}}</span>
+                                        <span class="item-note" ng-if="tr.reason.substr(0,9)=='ORDER ID:'">{{tr.amount}}</span>
+                                        <!--                                        <span class="item-note">-{{tr.amount}}</span>-->
                                         <h2>{{tr.shopname}}</h2>
                                         <p>Date: {{tr.date | cmdate:'dd MMM yyyy'}}</p>
                                         <p>Time: {{tr.time}}</p>
                                         <p>Transaction Id: {{tr.id}}</p>
                                         <p ng-if="tr.reason!='' && tr.reason.substr(0,9)!='ORDER ID:'">Description: {{tr.reason}}</p>
                                         <p ng-if="tr.reason!='' && tr.reason.substr(0,9)=='ORDER ID:'">{{tr.reason}}</p>
-<!--                                        <p ng-if="tr.reason!=''">Description: {{tr.reason}}</p>-->
+                                        <!--                                        <p ng-if="tr.reason!=''">Description: {{tr.reason}}</p>-->
                                     </div>
                                 </div>
                             </div>

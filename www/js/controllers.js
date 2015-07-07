@@ -939,6 +939,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.oModal1.hide();
     };
 
+    $ionicModal.fromTemplateUrl('templates/forgotpswd.html', {
+        id: '2',
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function (modal) {
+        $scope.oModal2 = modal;
+    });
+
+    $scope.openPassword = function () {
+        $scope.oModal2.show();
+    };
+
+    $scope.closePassword = function () {
+        $scope.oModal2.hide();
+    };
 
     var token = $.jStorage.get("token");
     console.log(token);
@@ -946,14 +961,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     token = $.jStorage.set("token", token);
     console.log(token);
 
-    if (token == null) {
-        initPushwoosh();
-        token = $.jStorage.get("token");
-        console.log(token);
-        $.jStorage.flush();
-        token = $.jStorage.set("token", token);
-        console.log(token);
-    }
+    //    if (token == null) {
+    //        initPushwoosh();
+    //        token = $.jStorage.get("token");
+    //        console.log(token);
+    //        $.jStorage.flush();
+    //        token = $.jStorage.set("token", token);
+    //        console.log(token);
+    //    }
 
     $scope.user1 = {
         membershipno: "",
@@ -1078,9 +1093,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
+
     $scope.onlogin = function (user1) {
         MyServices.login(user1, logincallback);
     };
+    var forgotpasswordcallback=function(data,status){
+    console.log(data);   
+    }
+    $scope.forgotpass = function (emailid) {
+        console.log(emailid);
+        MyServices.forgotpassword(emailid, forgotpasswordcallback);
+    }
 
 })
 
@@ -1318,13 +1341,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
     $scope.totaltr = 0;
     $scope.totalsr = 0;
+
     var transactioncallback = function (data, status) {
         $ionicLoading.hide();
         $scope.t = data;
         console.log($scope.t);
         //purchase
         for (var i = 0; i < $scope.t.purchased.length; i++) {
-            $scope.totaltr = $scope.totaltr + parseInt($scope.t.purchased[i].amount);
+            if ($scope.t.purchased[i].reason.substr(0, 9) != "ORDER ID:") {
+                $scope.totaltr = $scope.totaltr + parseInt($scope.t.purchased[i].amount);
+            }
         }
         console.log($scope.totaltr);
 
@@ -1669,6 +1695,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
+
     $ionicModal.fromTemplateUrl('templates/resetpswd.html', {
         id: '2',
         scope: $scope,
@@ -1684,6 +1711,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.closePassword = function () {
         $scope.oModal2.hide();
     };
+
     var changepasswordcallback = function (data, status) {
         if (data == "-1") {
             console.log("new and confirm do not match ");
