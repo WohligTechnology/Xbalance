@@ -915,6 +915,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading) {
+    
+    $scope.email = {};
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -952,6 +954,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     $scope.closePassword = function () {
+        $scope.email = {};
         $scope.oModal2.hide();
     };
 
@@ -1082,7 +1085,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     $scope.showPopup1 = function () {
-
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Sorry you are already logged in!!!</p>',
             title: 'Already Logged In',
@@ -1097,12 +1099,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.onlogin = function (user1) {
         MyServices.login(user1, logincallback);
     };
-    var forgotpasswordcallback=function(data,status){
-    console.log(data);   
+
+    var forgotpasswordcallback = function (data, status) {
+        console.log(data);
+        $scope.closePassword();
+        $scope.email = {};
     }
-    $scope.forgotpass = function (emailid) {
-        console.log(emailid);
-        MyServices.forgotpassword(emailid, forgotpasswordcallback);
+    $scope.forgotpass = function () {
+        console.log($scope.email.emailid);
+        MyServices.forgotpassword($scope.email.emailid, forgotpasswordcallback);
     }
 
 })
