@@ -1,0 +1,72 @@
+<ion-modal-view>
+	<ion-header-bar class="bar-royal" align-title="center">
+		<h1 class="title">Sale Transaction</h1>
+		<div class="buttons">
+			<button class="button button-clear" ng-click="closesale()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content class="padding">
+		<div class="incard">
+			<div class="list profile-cont padtop5">
+				<ion-item class="item-left">
+					<h2>Shop Name</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.shopname}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Date</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.date}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Time</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.time}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Transaction Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.id}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Contact Email</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.email1}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Description</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.reason}}
+					</div>
+				</ion-item>
+<!--
+				<ion-item class="item-left">
+					<h2>Contact No</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.personalcontact}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Email Id</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.email1}}
+					</div>
+				</ion-item>
+				<ion-item class="item-left">
+					<h2>Date</h2>
+					<div class="pull-right item-right text-capitalize">
+						{{getsell.orderdate | cmdate:'dd MMM yyyy'}}
+					</div>
+				</ion-item>
+-->
+			</div>
+		</div>
+
+		</div>
+	</ion-content>
+</ion-modal-view>
