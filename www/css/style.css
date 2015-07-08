@@ -941,8 +941,8 @@ h3.leftname {
     margin-top: 4px!important;
 }
 
-.blue {
-    color: #3185D7;
+.blue input {
+    color: #3185D7 !important;
 }
 
 .title.title-left.header-item {

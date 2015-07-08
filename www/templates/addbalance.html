@@ -25,10 +25,10 @@
                     </label>
                     <div class="row pad">
                         <div class="col">
-                           <p class="addb-p"> Purchase Value</p> 
+                            <p class="addb-p"> Purchase Value</p>
                         </div>
                         <div class="col">
-                           <p class="addb-p">Sell Value</p> 
+                            <p class="addb-p">Sell Value</p>
                         </div>
                     </div>
                     <div class="row pad">
@@ -51,7 +51,12 @@
                     </label>
 -->
                     <div class="padding-horizontal">
-                        <button class="button button-block button-balanced" type="submit" ng-click="addbalance(add.amount,add.reason);">Add Balance</button>
+                        <button class="button button-block button-balanced" type="submit" ng-click="openpayu(add.amount,add.reason);">Pay Online</button>
+                        <!--                        <button class="button button-block button-balanced" type="submit" ng-click="topayment()">Add Balance</button>-->
+                    </div>
+
+                    <div class="padding-horizontal">
+                        <button class="button button-block button-balanced" type="submit" ng-click="addbalance(add.amount,add.reason);">Request to Admin</button>
                         <!--                        <button class="button button-block button-balanced" type="submit" ng-click="topayment()">Add Balance</button>-->
                     </div>
 
