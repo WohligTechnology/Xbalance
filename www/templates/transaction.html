@@ -44,7 +44,7 @@
                                         <p>Date: {{tr.date | cmdate:'dd MMM yyyy'}}</p>
                                         <p>Time: {{tr.time}}</p>
                                         <p>Transaction Id: {{tr.id}}</p>
-                                        <p ng-if="tr.reason!='' && tr.reason.substr(0,9)!='ORDER ID:'">Description: {{tr.reason}}</p>
+<!--                                        <p ng-if="tr.reason!='' && tr.reason.substr(0,9)!='ORDER ID:'">Description: {{tr.reason}}</p>-->
                                         <p ng-if="tr.reason!='' && tr.reason.substr(0,9)=='ORDER ID:'">{{tr.reason}}</p>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                         <p>Date: {{tr.date | cmdate:'dd MMM yyyy'}}</p>
                                         <p>Time: {{tr.time}}</p>
                                         <p>Transaction Id: {{tr.id}}</p>
-                                        <p ng-if="tr.reason!='' && tr.reason.substr(0,9)!='ORDER ID:'">Description: {{tr.reason}}</p>
+<!--                                        <p ng-if="tr.reason!='' && tr.reason.substr(0,9)!='ORDER ID:'">Description: {{tr.reason}}</p>-->
                                         <p ng-if="tr.reason!='' && tr.reason.substr(0,9)=='ORDER ID:'">{{tr.reason}}</p>
                                         <!--                                        <p ng-if="tr.reason!=''">Description: {{tr.reason}}</p>-->
                                     </div>
