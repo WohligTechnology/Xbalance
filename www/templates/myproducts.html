@@ -10,7 +10,7 @@
                      <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
                     <img ng-src="{{pro.image|serverimage}}">
                     <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
-                    <h3 class="leftname">Price: <span>{{pro.price}}</span></h3>
+                    <h3 class="leftname">Price: <span>Rs. {{pro.price}}</span></h3>
                     <h3 class="leftname">Quantity: <span>{{pro.quantity}}</span></h3>
                     <h3 class="leftname" ng-if="pro.status==1">Status: <span>Active</span></h3>
                     <h3 class="leftname" ng-if="pro.status==0">Status: <span>Inactive</span></h3>
