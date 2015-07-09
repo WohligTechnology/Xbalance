@@ -6,6 +6,7 @@ var chintansglobal = {};
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup, $cordovaImagePicker) {
+
     $scope.product = {};
     //	$scope.searchproduct = function (product) {
     //
@@ -67,9 +68,44 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval, $cordovaImagePicker) {
+.controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval, $cordovaImagePicker, $ionicPlatform, $state) {
     //home page
+    console.log($state.current.name);
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        console.log("back button detected");
+        if ($state.current.name == "app.home") {
+            $scope.showConfirmPopup();
+        }
+    }, 100);
 
+    $scope.showConfirmPopup = function () {
+        $scope.data = {}
+
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+            title: 'Exit?',
+            subTitle: 'Are you sure you want to  exit?',
+            scope: $scope,
+            buttons: [{
+                text: 'No',
+                onTap: function () {
+                    return false;
+                }
+                }, {
+                text: 'Yes',
+                onTap: function () {
+                    return true;
+                }
+                }]
+        });
+        myPopup.then(function (res) {
+            console.log('Tapped!', res);
+            if (res == true) {
+                console.log("exit !!");
+                navigator.app.exitApp();
+            }
+        });
+    };
 
     $ionicModal.fromTemplateUrl('templates/changepassword.html', {
         id: '1',
@@ -522,7 +558,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 })
 
-.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $timeout) {
+.controller('ProductCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $timeout, $ionicPlatform, $state) {
+
+    console.log($state.current.name);
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
 
     $scope.productname1 = $stateParams.name;
     $scope.membershipno1 = $stateParams.mem;
@@ -680,7 +725,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 })
 
-.controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
+.controller('SearchCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $ionicPlatform) {
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({
@@ -1305,8 +1350,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 })
 
-.controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading) {
+.controller('SellingCtrl', function ($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicPlatform, $state) {
     //Loading Package
+
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
+
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -1377,8 +1431,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices, $ionicLoading, $timeout, $ionicModal) {
-    //	
+.controller('TransactionCtrl', function ($scope, $stateParams, $ionicPopup, $location, MyServices, $ionicLoading, $timeout, $ionicModal, $ionicPlatform, $state) {
+
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
+
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -1525,7 +1587,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker) {
+.controller('ProfileCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker, $ionicPlatform, $state) {
+
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
+
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({
@@ -2127,8 +2198,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
+.controller('MyproductsCtrl', function ($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $ionicPlatform, $state) {
     //view products start
+
+    console.log($state.current.name);
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        console.log("back button detected");
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
 
     var options = {
         maximumImagesCount: 1,
@@ -2610,19 +2691,26 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 
-.controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+.controller('NotificationCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPlatform, $state) {
+
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
+
     $scope.showloading = function () {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
         });
-        $timeout(function () {
-            $ionicLoading.hide();
-        }, 10000);
     };
     $scope.showloading();
     var getnotificationcallback = function (data, status) {
         $scope.notification = data;
         console.log($scope.notification);
+        $ionicLoading.hide();
     }
 
     $scope.notificationid = $.jStorage.get("user1");
@@ -2668,9 +2756,25 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
+.controller('EventCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPlatform, $state) {
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
+})
 
-.controller('SuggestionCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
+.controller('SuggestionCtrl', function ($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $ionicPlatform, $state) {
+
+    $ionicPlatform.registerBackButtonAction(function (event) {
+        if ($state.current.name == "app.home") {
+            navigator.app.exitApp();
+        } else {
+            navigator.app.backHistory();
+        }
+    }, 100);
 
     $scope.suggestion = {};
 
