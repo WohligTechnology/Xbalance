@@ -520,7 +520,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function (modal) {
-        $scope.modal = modal;
+        $scope.modalbal = modal;
     });
     $scope.add = {
         amountinr: 0,
@@ -531,16 +531,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.changeamountinr = function (amount) {
         $scope.add.amountinr = amount * $scope.percent / 100;
     };
+
     $scope.changeamount = function (amountinr) {
-        $scope.add.amount = amountinr / $scope.percent * 100;
+        console.log(amountinr);
+        console.log(parseFloat(user.percentpayment));
+        $scope.add.amount = amountinr / parseFloat(user.percentpayment) * 100;
     };
 
-    $scope.openedit = function () {
-        $scope.modal.show();
+    $scope.openeditss = function () {
+        $scope.modalbal.show();
     }
 
     $scope.closeModal = function () {
-        $scope.modal.hide();
+        $scope.modalbal.hide();
     };
     //popup
     $scope.showPopup = function () {
