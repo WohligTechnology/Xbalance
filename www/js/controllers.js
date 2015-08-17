@@ -2256,6 +2256,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         if (data == "-1") {
             $scope.showPopup6();
         }
+        else if(data){
+         $scope.showPopup11();
+        }
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
         $scope.ap = {};
         $scope.modal.hide();
@@ -2263,7 +2266,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.prodimg = '';
     //insert product wit validation
     //	$scope.ap="";
+     $scope.showPopup11 = function () {
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Your Product is created!!</p>',
+            title: 'Please wait for approval!',
+            scope: $scope,
 
+        });
+        $timeout(function () {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+    };
     $scope.insertproduct = function (ap) {
             $scope.showloading();
             $scope.allvalidation = [{
