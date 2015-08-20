@@ -2255,9 +2255,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.insertprodid = data;
         if (data == "-1") {
             $scope.showPopup6();
-        }
-        else if(data){
-         $scope.showPopup11();
+        } else if (data) {
+            $scope.showPopup11();
         }
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
         $scope.ap = {};
@@ -2266,7 +2265,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.prodimg = '';
     //insert product wit validation
     //	$scope.ap="";
-     $scope.showPopup11 = function () {
+    $scope.showPopup11 = function () {
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Your Product is created!!</p>',
             title: 'Please wait for approval!',
@@ -2275,10 +2274,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 3000);
     };
     $scope.insertproduct = function (ap) {
-            $scope.showloading();
             $scope.allvalidation = [{
                 field: $scope.ap.name,
                 validation: ""
@@ -2291,13 +2289,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
          }, {
                 field: $scope.ap.category,
                 validation: ""
-   }, {
+        }, {
                 field: $scope.ap.description,
                 validation: ""
           }];
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
+                $scope.showloading();
                 $scope.ap = ap;
                 if ($scope.ap.status == true) {
                     $scope.ap.status = 1;

@@ -9,7 +9,7 @@
         <div class="incard">
             <form ng-submit="">
                 <div class="list">
-                    <div class="profile-img"> 
+                    <div class="profile-img">
                         <img ng-src={{prodimg|serverimage}} ng-click="addproductimage();">
                         <div class="holder">Add Image</div>
                     </div>
@@ -22,21 +22,22 @@
                     <div class="item  item-input text-capitalize">
                         <input type="number" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
                     </div>
-<!--
+                    <!--
                     <div class="item  item-input text-capitalize">
                         <input type="text" placeholder="SKU" ng-model="ap.sku">
                     </div>
 -->
-                     <label class="item item-input item-select area">
-                <div class="input-label">
-                    Category
-                </div>
-                <select ng-model="ap.category" ng-class="allvalidation[3].validation" required>
-                    <option value="">All</option>
-                    <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                </select>
-            </label>
-<!--
+
+                    <label class="item item-input item-select area">
+                        <div class="input-label">
+                            Category
+                        </div>
+                        <select ng-model="ap.category" ng-class="allvalidation[3].validation" required>
+                            <option value="">Select Category</option>
+                            <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                        </select>
+                    </label>
+                    <!--
                    <label class="item item-input item-select area">
                         <div class="input-label">
                             <span style="font-weight:bold;">Category</span>
@@ -60,8 +61,8 @@
                         <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
                     </div>
                     <div class="padding">
-                <button class="button button-block button-assertive" ng-click="insertproduct(ap);">Save</button>
-            </div>
+                        <button class="button button-block button-assertive" ng-click="insertproduct(ap);">Save</button>
+                    </div>
                 </div>
             </form>
         </div>

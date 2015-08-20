@@ -6,14 +6,15 @@
     <ion-content class="padding">
         <div class="incard" ng-if="products!=0">
             <div class="list">
-<!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
-                     <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
+                <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
+                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
                     <img ng-src="{{pro.image|serverimage}}">
                     <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
                     <h3 class="leftname">Price: <span>Rs. {{pro.price}}</span></h3>
                     <h3 class="leftname">Quantity: <span>{{pro.quantity}}</span></h3>
-                    <h3 class="leftname" ng-if="pro.status==1">Status: <span>Active</span></h3>
-                    <h3 class="leftname" ng-if="pro.status==0">Status: <span>Inactive</span></h3>
+                    <h3 class="leftname" ng-if="pro.status==1 && pro.moderated==1">Status: <span>Active</span></h3>
+                    <h3 class="leftname" ng-if="pro.status==0 && pro.moderated==1">Status: <span>Inactive</span></h3>
+                    <h3 class="leftname" ng-if="pro.moderated==0">Status: <span style="color:red">Wait for Approval</span></h3>
                     <!--
                 <a class="item item-thumbnail-left bod-bottom" href="#">
                     <img src="img/icon.png">
