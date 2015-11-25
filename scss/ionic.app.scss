@@ -6,14 +6,20 @@ For example, you might change some of the default colors:
 */
 
 $light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
+$stable:                          #D2D2D2 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
+$balanced:                        #F78330 !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
-$royal:                           #886aea !default;
+$royal:                           #363435 !default;
 $dark:                            #444 !default;
+
+$font-family-sans-serif:          "PT Sans", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
+$font-family-light-sans-serif:    "PT Sans", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
+
+$base-background-color:           #D2D2D2 !default;
+$base-color:                      #363435 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
