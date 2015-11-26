@@ -65,8 +65,8 @@
                 </div>
             </div>
 
-            <div class="padding-horizontal">
-                <a class="button button-block button-outline button-balanced" ng-click="searchproduct(product);">Search</a>
+            <div class="padding-horizontal text-center">
+                <a class="button pr-button button-balanced" ng-click="searchproduct(product);">Search</a>
             </div>
         </div>
 
@@ -77,8 +77,8 @@
                 <span ng-click="getproduct(s.productid)">
 <!--                    <a href="#/app/productdetail">-->
                         <img ng-src={{s.image|serverimage}}  class="full-image">
-                        <h5 class="bold">{{s.name}}</h5>
-                        <h5>{{s.price}}</h5>
+                        <h5 class="bold mb">{{s.name}}</h5>
+                        <h5 class="mt">{{s.price}}</h5>
                         </span>
 <!--                    </a>-->
                 </div>

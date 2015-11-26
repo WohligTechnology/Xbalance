@@ -20,8 +20,20 @@
         </div>
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
+                <div class="incard">
+                    <div class="list">
+                        <div class="text-center royal padding" ng-if="t.purchased=='';">
+                            <figure>
+                                <img src="img/not.jpg" class="full-image" style="width:110px;">
 
-                <p class="royal padding text-center" ng-if="t.purchased=='';">No transactions yet.</p>
+                            </figure>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--                <p class="royal padding text-center" ng-if="t.purchased=='';">No transactions yet.</p>-->
 
                 <div class="incard transcard" ng-if="t.purchased!='';">
                     <div class="list">
@@ -29,7 +41,7 @@
                             <span class="item-note">{{finalpurchase}}</span>
                             <h2 class="bold">Total</h2>
                         </ion-item>
-                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
+                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
                             <div class="row">
                                 <div class="col-25">
                                     <div class="sell-img">
@@ -56,7 +68,20 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold';">
-                <p class="royal padding text-center" ng-if="t.sales=='';">No transactions yet.</p>
+                <div class="incard">
+                    <div class="list">
+                        <div class="text-center royal padding" ng-if="t.sales=='';">
+                            <figure>
+                                <img src="img/not.jpg" class="full-image" style="width:110px;">
+
+                            </figure>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="incard transcard" ng-if="t.sales!='';">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left listmk">
@@ -89,7 +114,18 @@
                 </div>
             </div>
             <div class="bold-list" ng-if="admin=='bold'">
-                <p class="royal padding text-center" ng-if="t.admin=='';">No transactions yet.</p>
+                <div class="incard">
+                    <div class="list">
+                        <div class="text-center royal padding" ng-if="t.admin=='';">
+                            <figure>
+                                <img src="img/not.jpg" class="full-image" style="width:110px;">
+
+                            </figure>
+
+
+                        </div>
+                    </div>
+                </div>
                 <div class="incard padding-horizontal" ng-if="t.admin!='';">
                     <div class="list">
                         <ion-item class="item item-thumbnail-left listmk no-left">

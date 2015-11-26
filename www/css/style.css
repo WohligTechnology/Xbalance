@@ -58,7 +58,10 @@
 .results .item {
     margin: 0px!important;
 }
+.input-label {
 
+    font-size: 14px;
+}
 .prod-info {
     padding: 10px 20px;
 }
@@ -425,13 +428,15 @@ p.info {
     -moz-box-shadow: 0 1px 1px 0 #aaa;
     box-shadow: 0 1px 1px 0 #aaa;
     margin-bottom: 10px;
+        padding: 0px 0px 15px 0px;
 }
 
 .header-card {
-    padding: 10px 15px;
+    padding: 15px 15px;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
 
 .incard .item.item-input {
@@ -558,17 +563,19 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .incard .item.header h2 {
-    font-weight: bold;
+   
     color: #3b3f42;
     font-size: 14px;
     text-transform: uppercase;
 }
 
 .profile-img h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     margin-top: 8px;
-    text-transform: uppercase;
+    color:#888;
+  
+        font-family: 'quicksand';
 }
 
 .sell-cont.trans h2 {
@@ -607,10 +614,6 @@ ion-item.item-left.item {
 
 .btn-edit button {
     font-size: small;
-}
-
-ion-item.my-balcont.item {
-    border-bottom: 1px solid rgba(221, 221, 221, 0.4);
 }
 
 .item.item-input.itemimage button img {
@@ -668,7 +671,7 @@ p.home-p {
 
 h5.member {
     padding-left: 8px;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .holder {
@@ -677,7 +680,7 @@ h5.member {
     color: white;
     font-size: 14px;
     display: block;
-    margin: -15px auto 0;
+    margin: 0px auto 0;
     position: relative;
 }
 
@@ -705,7 +708,7 @@ h5.member {
 ion-item.item-left.item h2 {
     float: left;
     padding-left: 5px;
-    font-weight: bold;
+   
     color: #3b3f42;
     font-size: 14px;
     text-transform: uppercase;
@@ -724,7 +727,7 @@ ion-item.item-left.item h2 {
     border-color: #1A1E24;
     padding: 8px 0 0 0;
     line-height: 1;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .add-amt h2 {
@@ -893,7 +896,7 @@ a.item.item-thumbnail-left.bod-bottom {
 }
 
 .incard .item {
-    padding: 6px 15px;
+        padding: 6px 15px 20px 15px;
     margin: 0;
     border: 0;
 }
@@ -956,7 +959,7 @@ h3.leftname {
 
 .header-cards {
     padding: 3px 0px;
-    font-weight: bold;
+   
     font-size: 16px;
     border-bottom: 1px solid #ddd;
 }

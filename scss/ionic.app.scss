@@ -5,25 +5,119 @@ in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 */
 
-$light:                           #fff !default;
-$stable:                          #D2D2D2 !default;
-$positive:                        #387ef5 !default;
-$calm:                            #11c1f3 !default;
-$balanced:                        #F78330 !default;
-$energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
-$royal:                           #363435 !default;
-$dark:                            #444 !default;
-
-
-$font-family-sans-serif:          "lato", "quicksand", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif !default;
-$font-family-light-sans-serif:    "lato", "quicksand", "HelveticaNeue-Light", "Roboto-Light", "Segoe UI-Light", sans-serif-light !default;
-
-$base-background-color:           #D2D2D2 !default;
-$base-color:                      #363435 !default;
-
+$light: #fff !default;
+$stable: #D2D2D2 !default;
+$positive: #387ef5 !default;
+$calm: #11c1f3 !default;
+$balanced: #F78330 !default;
+$energized: #ffc900 !default;
+$assertive: #ef473a !default;
+$royal: #363435 !default;
+$dark: #444 !default;
+$icon: #8e8e8e !default;
+$icon-font: #888 !default;
+$font-family-sans-serif: "quicksand",
+"lato",
+"Helvetica Neue",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "quicksand",
+"lato",
+"HelveticaNeue-Light",
+"Roboto-Light",
+"Segoe UI-Light",
+sans-serif-light !default;
+$base-background-color: #D2D2D2 !default;
+$base-color: #363435 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+.ionic-body,
+body {
+    font-size: 14px;
+}
+.menu {
+    .list {
+        a {
+            font-size: 12px;
+            font-weight: 400;
+            padding: 13px 2px 13px 14px !important;
+            color: $icon-font;
+            font-family: 'quicksand';
+            text-transform: uppercase;
+            i {
+                font-size: 18px;
+                font-weight: 400;
+                padding-right: 11px;
+                color: $icon;
+            }
+        }
+    }
+}
+.bar {
+    .title {
+        font-size: 15px;
+    }
+}
+.balance {
+    padding-right: 30px;
+    .label-name {
+        font-size: 13px;
+    }
+}
+ul {
+    list-style: none;
+    display: block;
+    li {
+        display: inline-block;
+    }
+}
+.my-balcont {
+    ul {
+        @extend ul;
+        text-align: center;
+    }
+    li {
+        padding: 2px 15px 10px 15px;
+    }
+}
+.pr-button {
+    line-height: 27px;
+    min-height: 32px;
+    font-size: 13px;
+}
+.tb-button {
+    line-height: 38px;
+    min-height: 40px
+}
+.p20 {
+    padding-top: 20px;
+}
+.mt {
+    margin-top: 4px;
+}
+.mb {
+    margin-bottom: 0px;
+}
+.image-hold {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    background-size: contain;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin: 0 auto;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.incard {
+    p{
+         padding: 17px 0px 6px 0px;
+    font-size: 13px;   
+    }
+
+}

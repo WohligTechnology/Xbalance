@@ -48,6 +48,8 @@
                         <div class="item item-input">
                             <input type="text" placeholder="Website" ng-model="profile.website">
                         </div>
+                        <div class="m20">
+                       
                         <div class="item item-input item-text-wrap header">
                             <h2>Shops Photos</h2>
                         </div>
@@ -55,9 +57,15 @@
 
 
                             <div class="col input-div" ng-repeat="i in pic" ng-click="changeshopimage(i.id);">
+<!--
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
+                                
+-->
+                                		<div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
+
+								</div>
                             </div>
 
                             <div class="col input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
@@ -83,16 +91,23 @@
                             </div>
 
                         </div>
-
+                             </div>
+<div class="m20">
+                       
                         <div class="item item-input item-text-wrap header">
                             <h2>Products Photos</h2>
                         </div>
                        <div class="row">
 
                            <div class="col input-div" ng-repeat="i in image" ng-click="changeproductimage(i.id);">
+<!--
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
+-->
+                               	<div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
+
+								</div>
                             </div>
 
                             <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
@@ -115,8 +130,9 @@
                             </div>
 
                         </div>
-                        <div class="padding-horizontal btn-rest">
-                            <button class="button button-block button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
+     </div>
+                        <div class="padding-horizontal btn-rest text-center p20">
+                            <button class="button pr-button button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
                         </div>
                     </div>
                 </form>

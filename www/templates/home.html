@@ -1,10 +1,5 @@
 <ion-view hide-nav-bar="true">
 
-    <!--
-    <ion-nav-buttons side="right">
-        <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
-    </ion-nav-buttons>
--->
     <ion-header-bar class="bar-royal">
         <div class="buttons button-left">
             <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
@@ -15,15 +10,6 @@
             <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
         </div>
     </ion-header-bar>
-
-    <!--
-    <div class="header">
-        <h1 class="title">Home</h1>
-        <ion-nav-buttons side="right">
-            <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="dorefresh();"></button>
-        </ion-nav-buttons>
-    </div>
--->
 
     <ion-content class="padding">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
@@ -37,66 +23,46 @@
 
             <div class="padtop5">
                 <ion-item class="my-balcont">
-                    <div class="row text-center">
-                        <div class="col">
-                            <div class="balance bod-right">
+
+                <ul class="text-center">
+                    <li>
+                        <div class="balance bod-right">
                                 <h4 class="balanced">{{pb.yourbalance.purchasebalance}}</h4>
                                 <div class="label-name">
                                     Purchase Balance
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="balance">
+                    </li>
+                    <li>
+                        <div class="balance">
                                 <h4 class="balanced">{{pb.yourbalance.salesbalance}}</h4>
                                 <div class="label-name">
                                     Sell Balance
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                    </li>
+                    </ul>
                 </ion-item>
             </div>
 
-            <div class="padding-horizontal" ng-controller="YourBalCtrl">
-                <button class="button button-block button-balanced" ng-click="openedit();">
+            <div class="padding-horizontal text-center" ng-controller="YourBalCtrl">
+                <button class="button button-balanced pr-button" ng-click="openedit();">
                     Add Balance
                 </button>
             </div>
-
-
-
-            <!--  jagruti teting
-                    <form action="http://wohlig.co.in/osb/payumoney/PayUMoney_form.php" method="post">
-                        <input type="text" name="amount">
-                        <input type="text" name="firstname">
-                        <input type="text" name="email">
-                        <input type="text" name="phone">
-                        <input type="text" name="productinfo">
-                        <input type="text" name="surl" value="http://wohlig.co.in/osb/payumoney/success.php">
-                        <input type="text" name="furl" value="http://wohlig.co.in/osb/payumoney/failure.php">
-                        <input type="submit" value="Pay">
-                    </form>
--->
 
 
         </div>
 
         <div class="incard">
             <div class="button-bar bars">
-                <a class="button button-outline button-royal" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
+                <a class="button button-outline button-balanced tb-button" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
                 <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
-                <a class="button button-outline button-royal" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
+                <a class="button button-outline button-balanced tb-button" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
             </div>
 
             <div class="header-card" ng-if="tabvalue == 1">Find Products</div>
             <div class="header-card" ng-if="tabvalue == 2">Find Shops</div>
-            <!--
-            <label class="item item-input area">
-                <span class="input-label">Area</span>
-                <input type="text" placeholder="Enter Your Area">
-            </label>
--->
 
             <div class="" ng-if="tabvalue == 1">
                 <label class="item item-input item-select area">
@@ -139,9 +105,9 @@
                         <input type="text" id="normal-field" ng-model="product.membershipno">
                     </div>
                 </div>
-                <div class="padding-horizontal">
+                <div class="padding-horizontal text-center p20">
                     <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
-                    <button class="button button-block button-outline button-balanced" ng-click="searchproduct(product);">Search</button>
+                    <button class="button button-balanced pr-button" ng-click="searchproduct(product);">Search</button>
                 </div>
             </div>
             <div class="" ng-if="tabvalue == 2">
@@ -188,9 +154,16 @@
                         <input type="text" id="normal-field" ng-model="home.membershipno">
                     </div>
                 </div>
-                <div class="padding-horizontal">
-                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>
+                <div class="padding-horizontal text-center">
+                    <button class="button button-balanced pr-button" ng-click="memfunc(home);">Search</button>
                 </div>
+<!--
+                     <div class="padding-horizontal text-center" ng-controller="YourBalCtrl">
+                <button class="button button-balanced pr-button" ng-click="openedit();">
+                    Add Balance
+                </button>
+            </div>
+-->
             </div>
 
         </div>

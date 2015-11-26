@@ -2987,7 +2987,7 @@ a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, i, u, center,
-dl, dt, dd, ol, ul, li,
+dl, dt, dd, ol, ul, .my-balcont ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, fieldset,
@@ -3001,7 +3001,7 @@ time, mark, audio, video {
   font: inherit;
   font-size: 100%; }
 
-ol, ul {
+ol, ul, .my-balcont ul {
   list-style: none; }
 
 blockquote, q {
@@ -3328,7 +3328,7 @@ body,
   color: #363435;
   word-wrap: break-word;
   font-size: 14px;
-  font-family: "lato", "quicksand", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "quicksand", "lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 20px;
   text-rendering: optimizeLegibility;
   -webkit-backface-visibility: hidden;
@@ -3566,7 +3566,7 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   color: #363435;
   font-weight: 500;
-  font-family: "lato", "quicksand", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "quicksand", "lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   line-height: 1.2; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small,
   .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small {
@@ -5052,7 +5052,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
   white-space: nowrap;
   font-weight: 400;
   font-size: 14px;
-  font-family: "lato", "quicksand", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+  font-family: "quicksand", "lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
   opacity: 0.7; }
   .tab-item:hover {
     cursor: pointer; }
@@ -6861,7 +6861,7 @@ input,
 button,
 select,
 textarea {
-  font-family: "lato", "quicksand", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
+  font-family: "quicksand", "lato", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif; }
 
 .item-input {
   display: -webkit-box;
@@ -9078,3 +9078,75 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.ionic-body,
+body {
+  font-size: 14px; }
+
+.menu .list a {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 13px 2px 13px 14px !important;
+  color: #888;
+  font-family: 'quicksand';
+  text-transform: uppercase; }
+  .menu .list a i {
+    font-size: 18px;
+    font-weight: 400;
+    padding-right: 11px;
+    color: #8e8e8e; }
+
+.bar .title {
+  font-size: 15px; }
+
+.balance {
+  padding-right: 30px; }
+  .balance .label-name {
+    font-size: 13px; }
+
+ul, .my-balcont ul {
+  list-style: none;
+  display: block; }
+  ul li, .my-balcont ul li {
+    display: inline-block; }
+
+.my-balcont ul {
+  text-align: center; }
+
+.my-balcont li {
+  padding: 2px 15px 10px 15px; }
+
+.pr-button {
+  line-height: 27px;
+  min-height: 32px;
+  font-size: 13px; }
+
+.tb-button {
+  line-height: 38px;
+  min-height: 40px; }
+
+.p20 {
+  padding-top: 20px; }
+
+.mt {
+  margin-top: 4px; }
+
+.mb {
+  margin-bottom: 0px; }
+
+.image-hold {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+  margin: 0 auto; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.incard p {
+  padding: 17px 0px 6px 0px;
+  font-size: 13px; }

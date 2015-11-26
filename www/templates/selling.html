@@ -1,6 +1,18 @@
 <ion-view view-title="Selling Approval">
-    <div class="centers" ng-if="req.length==0">No approvals yet.</div>
+
     <ion-content class="padding">
+<div class="incard">
+        <div class="list">
+             <div class="text-center royal padding" ng-if="req.length==0">
+                    <figure>
+                        <img src="img/noap.jpg" class="full-image" style="width:110px;">
+
+                    </figure>
+
+
+                </div>
+    </div>
+        </div>
         <div class="incard" ng-repeat="r in req">
             <div class="list">
                 <ion-item class="item item-thumbnail-left item-text-wrap">
@@ -23,9 +35,12 @@
                                 <button class="button button-small button-outline button-assertive" ng-click="decline(r,reason);">Decline</button>
                             </div>
                         </div>
+                    </div>
+
                 </ion-item>
-                </div>
+       
             </div>
+
         </div>
     </ion-content>
 </ion-view>

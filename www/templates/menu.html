@@ -11,45 +11,56 @@
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left" width=200>
-        <ion-header-bar class="bar-royal">
-            <h1 class="title">Menu</h1>
+        <ion-header-bar class="bar-balanced">
+            <h3 class="title">Menu</h3>
         </ion-header-bar>
         <ion-content>
-            <ion-list>
+            <ion-list class="menus">
                 <ion-item nav-clear menu-close href="#/app/home" ng-click="homecall();">
+                      <i class="icon ln-home3 side-menu-i"></i>
                     <span>Home</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/profile">
+                      <i class="icon ln-user side-menu-i"></i>
                     <span>My Profile</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/myproducts">
+                      <i class="icon ln-cube side-menu-i"></i>
                     <span>My Products</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close href="#/app/orders">
+                      <i class="icon ln-cart-full side-menu-i"></i>
                     <span>Orders</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close href="#/app/selling">
+                      <i class="icon ln-tags side-menu-i"></i>
                     <span>Selling Approvals</span>
                     <span ng-hide="approvalcount==0" class="badge badge-assertive">{{approvalcount}}</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/transaction">
+                      <i class="icon ln-cash side-menu-i"></i>
                     <span>Transaction History</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/events">
+                      <i class="icon ln-calendar2 side-menu-i"></i>
                     <span>Events</span>
                 </ion-item> 
                    <ion-item nav-clear menu-close href="#/app/notification">
+                         <i class="icon ln-bell side-menu-i"></i>
                     <span>Notification</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/aboutus">
+                      <i class="icon ln-clipboard side-menu-i"></i>
                     <span>About Us</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/faq">
+                      <i class="icon ln-question side-menu-i"></i>
                     <span>FAQ</span>
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/login" ng-click="logoutfunction();">
+                      <i class="icon ln-arrow-right side-menu-i"></i>
                     <span>Logout</span>
                 </ion-item>
                 </div>

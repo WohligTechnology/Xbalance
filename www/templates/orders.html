@@ -1,9 +1,9 @@
 <ion-view view-title="My Orders">
-   
-    
+
+
     <div class="tabs-striped  tabs-top tabs-background-royal tabs-color-light">
         <div class="tabs">
-            <a class="tab-item" ng-click="tabvalue = 1;"  ng-class="{'active': tabvalue == 1}">
+            <a class="tab-item" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">
         My Purchase
       </a>
             <a class="tab-item" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">
@@ -29,18 +29,30 @@
                     <h3 class="leftnames">Transaction ID: <span>{{o.transactionid}}</span></h3>
                 </div>
 -->
+                <div class="text-center royal padding" ng-if="mypurchase.length==0">
+                    <figure>
+                        <img src="img/nopr.jpg" class="full-image" style="width:110px;">
+
+                    </figure>
+                </div>
             </div>
-			 <div class="centers" ng-if="mypurchase.length==0">No Purchase.</div>
+
             <div class="list" ng-if="tabvalue == 2" ng-if="ordr.length>0">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="o in ordr">-->
                 <div class="item item-thumbnail-left" ng-click="opensale(o);" ng-repeat="o in ordr">
-                   <img ng-src={{o.productimage|serverimage}}>
+                    <img ng-src={{o.productimage|serverimage}}>
                     <h3 class="leftnames">Name: <span>{{o.productname}}</span></h3>
                     <h3 class="leftnames">Price: <span>{{o.price}}</span></h3>
                     <h3 class="leftnames">Order ID: <span>{{o.id}}</span></h3>
                 </div>
+                <div class="royal text-center padding" ng-if="ordr.length==0">
+                    <figure>
+                        <img src="img/nosale.jpg" class="full-image" style="width:110px;">
+
+                    </figure>
+                </div>
             </div>
-            <div class="centers" ng-if="ordr.length==0">No Sell.</div>
+
         </div>
     </ion-content>
 </ion-view>
