@@ -77,15 +77,23 @@
                 <span ng-click="getproduct(s.productid)">
 <!--                    <a href="#/app/productdetail">-->
                         <img ng-src={{s.image|serverimage}}  class="full-image">
-                        <h5 class="bold mb">{{s.name}}</h5>
+                        <h5 class="bold">{{s.name}}</h5>
                         <h5 class="mt">{{s.price}}</h5>
                         </span>
 <!--                    </a>-->
                 </div>
                  
             </div>
-          
+          <div class="list" >
+            <div class="text-center" ng-if="spr.length==0">
+                         <figure>
+                        <img src="img/nop.jpg" class="full-image" style="width:110px;">
+
+                    </figure>
+
+              </div>
+            </div>
         </div>
-         <div class="centers-pro" ng-if="spr.length==0">No Products Found.</div>
+         
     </ion-content>
 </ion-view>

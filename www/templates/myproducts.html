@@ -2,12 +2,13 @@
     <ion-nav-buttons side="right">
         <button class="button button-icon ion-plus-round small-icon" ng-click="openedit();"></button>
     </ion-nav-buttons>
-    <div class="centered" ng-if="products==0">No Products Uploaded.</div>{{products.length}}
+
+
     <ion-content class="padding">
         <div class="incard" ng-if="products!=0">
             <div class="list">
-<!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
-                     <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
+                <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
+                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id); openprdtedit();">
                     <img ng-src="{{pro.image|serverimage}}">
                     <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
                     <h3 class="leftname">Price: <span>{{pro.price}}</span></h3>
@@ -27,6 +28,16 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div class="incard">
+            <div class="list">
+                <div class="text-center padding" ng-if="products==0">
+                    <figure>
+                        <img src="img/nop.jpg" class="full-image" style="width:110px;">
+
+                    </figure>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>
