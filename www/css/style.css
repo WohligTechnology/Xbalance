@@ -135,7 +135,10 @@ button.btn-smalls {
 .searcher .incard .item+.item {
     border-top: 1px solid #ddd;
 }
-
+.prod-info.about p {
+    margin: 0;
+    padding-bottom: 0;
+}
 .incard .item {
     padding: 5px 10px;
     margin: 0;
@@ -428,7 +431,7 @@ p.info {
     -moz-box-shadow: 0 1px 1px 0 #aaa;
     box-shadow: 0 1px 1px 0 #aaa;
     margin-bottom: 10px;
-        padding: 0px 0px 15px 0px;
+/*        padding: 0px 0px 4px 0px;*/
 }
 
 .header-card {
@@ -460,13 +463,16 @@ ion-item.category.item h3 {
 }
 
 .balanced.amount {
-    background: #3185D7;
+    background: #F78330;
     color: white;
-    padding: 5px 15px;
+    padding: 5px 10px 5px 12px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
     margin-top: 0px;
+}
+.p15{
+    padding-bottom: 15px;
 }
 
 ion-item.area.item {
@@ -496,7 +502,7 @@ ion-item.area.item h3 {
 
 ion-footer-bar.footer-shop {
     padding: 0;
-    background: #3185D7;
+    background: #F78330;
 }
 
 .btn-shop {
@@ -633,14 +639,14 @@ ion-item.item-left.item {
 }
 
 .round-circle {
-    border: 2px solid #3185D7;
+    border: 2px solid #F78330;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
     height: 35px;
     width: 35px;
     margin: auto;
-    background: #3185D7;
+    background: #F78330;
     color: #fff;
     margin-bottom: 10px;
 }
@@ -724,8 +730,8 @@ ion-item.item-left.item h2 {
     -webkit-border-radius: 0px!important;
     -moz-border-radius: 0px!important;
     border-radius: 0px!important;
-    border-color: #1A1E24;
-    padding: 8px 0 0 0;
+    /* border-color: #1A1E24; */
+    padding: 12px 0 0 0;
     line-height: 1;
     font-size: 12px;
 }
@@ -946,11 +952,11 @@ h3.leftname {
 }
 
 .blue {
-    color: #3185D7;
+    color: #F78330;
 }
 
 .title.title-left.header-item {
-    text-align: center;
+/*    text-align: center;*/
 }
 
 .incard.notification {
@@ -1068,14 +1074,27 @@ button.button.button-icon.button-clear.ion-navicon.hide {
 .bar .buttons .hide.no-hide {
     display: block;
 }
+.button-bar>.button {
 
+    border-width: 0px 0 0px 0px;
+
+}
 .padtop5 .item-note {
     color: #aaa;
     font-size: 14px;
     position: absolute;
     right: 17px;
 }
+.button-bar>.button:last-child {
+    border-right-width: 0px;
 
+}
+.button.bold {
+    background: #f78330;
+}
+.button.activated{
+    background-color: #f78330 !important;
+}
 .buy-inputdetails {
     text-align: right;
     background-color: white!important;
@@ -1094,4 +1113,20 @@ input.text-right :-moz-placeholder { text-align:right; }
 
 .row.productsCol .col img {
     height: 90px;
+}
+.sell-img {
+    width: 100%;
+    height: 85px;
+    overflow: hidden;
+}
+.sell-cont.trans p {
+    padding: 0;
+}
+.incard.transcard .item {
+    min-height: 85px!important;
+    border-bottom: 0px solid #ddd;
+    padding-bottom: 5px;
+}
+.incard.search-offline .list ion-item {
+    padding: 6px 0px;
 }

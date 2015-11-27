@@ -6,7 +6,10 @@
                     <div class="list">
                         <div class="profile-img" ng-click="changeprofileimage()">
                             <img src="{{profile.shoplogo|serverimage}}">
-                            <div class="holder">Edit</div>
+<!--                            <div class="holder">Edit</div>-->
+                                  <div class="padding-horizontal text-center">
+                    <button class="button button-balanced pr-button">Edit</button>
+                </div>
                         </div>
                         <div class="item item-input text-capitalize">
                             <input type="text" placeholder="Name" ng-model="profile.shopname">
@@ -131,7 +134,7 @@
 
                         </div>
      </div>
-                        <div class="padding-horizontal btn-rest text-center p20">
+                        <div class="padding-horizontal btn-rest text-center p20 p15">
                             <button class="button pr-button button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
                         </div>
                     </div>

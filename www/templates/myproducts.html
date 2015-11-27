@@ -23,15 +23,15 @@
                 </a>
 -->
                 </div>
-                <div class="padding">
-                    <button class="button button-block button-assertive" ng-click="openedit();">Add More Products</button>
+                <div class="padding text-center">
+                    <button class="button pr-button button-balanced" ng-click="openedit();">Add More Products</button>
                 </div>
             </div>
         </div>
         </div>
-        <div class="incard">
+        <div class="incard" ng-if="products==0">
             <div class="list">
-                <div class="text-center padding" ng-if="products==0">
+                <div class="text-center padding" >
                     <figure>
                         <img src="img/nop.jpg" class="full-image" style="width:110px;">
 

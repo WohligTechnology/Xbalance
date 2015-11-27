@@ -11,7 +11,10 @@
                 <div class="list prd-form">
                     <div class="profile-img" ng-click="editproductimage();">
                         <img ng-src="{{prodetails.image|serverimage}}">
-                        <div class="holder">Edit</div>
+                       
+                                      <div class="padding-horizontal text-center">
+                    <button class="button button-balanced pr-button">Edit</button>
+                </div>
                     </div>
 <!--
                     <div class="profile-img" ng-click="changeprofileimage()">
@@ -65,7 +68,7 @@
             </form>
             <div class="padding">
                 <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>       
-                         <button class="button button-block button-assertive" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
+                         <button class="button button-block button-balanced" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
             </div>
         </div>
         </div>

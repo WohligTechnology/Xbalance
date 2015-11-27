@@ -9148,5 +9148,11 @@ ul, .my-balcont ul {
   margin-top: 20px; }
 
 .incard p {
-  padding: 17px 0px 6px 0px;
+  padding: 13px 0 6px;
   font-size: 13px; }
+
+.image-modal .slider-slide {
+  height: 250px;
+  vertical-align: top;
+  top: 50%;
+  max-height: 400px; }

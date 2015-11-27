@@ -34,7 +34,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
     //log out
@@ -242,7 +242,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
 
@@ -420,7 +420,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.topayment = function () {
         ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
 
-        //        stopinterval = $interval(callAtInterval, 10000);
+        //        stopinterval = $interval(callAtInterval, 2000);
     }
 
 
@@ -451,7 +451,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 1000);
     };
     $scope.showloading();
     $scope.sorting = 0;
@@ -563,7 +563,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
 
@@ -601,7 +601,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
 
@@ -777,7 +777,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $ionicModal.fromTemplateUrl('templates/registration.html', {
         id: '1',
@@ -938,7 +938,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 1000);
     };
     $scope.showloading();
     $scope.prodid = $stateParams.prodid;
@@ -1025,7 +1025,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
+            }, 2000);
         };
         $scope.showPopup5 = function () {
 
@@ -1037,7 +1037,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
+            }, 2000);
         };
         $scope.showPopupquantity = function () {
 
@@ -1049,7 +1049,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function () {
                 myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 3000);
+            }, 2000);
         };
 
         $ionicModal.fromTemplateUrl('templates/modal-form.html', {
@@ -1086,7 +1086,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
 
@@ -1158,7 +1158,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
     $scope.totaltr = 0;
@@ -1229,7 +1229,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
 
@@ -1614,7 +1614,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //        });
     //        $timeout(function () {
     //            $ionicLoading.hide();
-    //        }, 10000);
+    //        }, 2000);
     //    };
     //    $scope.showloading();
     //
@@ -1788,7 +1788,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    $scope.topayment = function () {
     //        ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
     //
-    //        //        stopinterval = $interval(callAtInterval, 10000);
+    //        //        stopinterval = $interval(callAtInterval, 2000);
     //    }
     //
     //
@@ -1803,7 +1803,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
     var viewmyproductscallback = function (data, status) {
@@ -2170,7 +2170,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 1000);
     };
     $scope.showloading();
     $scope.tabvalue = 1;
@@ -2181,6 +2181,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.uid = $.jStorage.get("user1");
     MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
     var viewallorderscallback = function (data, status) {
+         $ionicLoading.hide();
         console.log(data.queryresult);
         $scope.mypurchase = data.queryresult;
     }
@@ -2229,7 +2230,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
     var getalluserproductscallback = function (data, status) {
@@ -2251,7 +2252,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 10000);
+        }, 2000);
     };
     $scope.showloading();
     var getnotificationcallback = function (data, status) {
@@ -2273,7 +2274,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function () {
                 $ionicLoading.hide();
-            }, 10000);
+            }, 2000);
         };
         $scope.showloading();
         $scope.disableid = $.jStorage.get("user1");

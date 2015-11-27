@@ -20,9 +20,9 @@
         </div>
         <div class="padding">
             <div class="bold-list" ng-if="purchased=='bold'">
-                <div class="incard">
+                <div class="incard" ng-if="t.purchased=='';">
                     <div class="list">
-                        <div class="text-center royal padding" ng-if="t.purchased=='';">
+                        <div class="text-center royal padding" >
                             <figure>
                                 <img src="img/not.jpg" class="full-image" style="width:110px;">
 
@@ -68,9 +68,9 @@
             </div>
 
             <div class="bold-list" ng-if="sale=='bold';">
-                <div class="incard">
+                <div class="incard"  ng-if="t.sales=='';">
                     <div class="list">
-                        <div class="text-center royal padding" ng-if="t.sales=='';">
+                        <div class="text-center royal padding">
                             <figure>
                                 <img src="img/not.jpg" class="full-image" style="width:110px;">
 
@@ -114,9 +114,9 @@
                 </div>
             </div>
             <div class="bold-list" ng-if="admin=='bold'">
-                <div class="incard">
+                <div class="incard" ng-if="t.admin=='';">
                     <div class="list">
-                        <div class="text-center royal padding" ng-if="t.admin=='';">
+                        <div class="text-center royal padding" >
                             <figure>
                                 <img src="img/not.jpg" class="full-image" style="width:110px;">
 

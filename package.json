@@ -34,7 +34,8 @@
       "id": "com.synconset.imagepicker"
     },
     "pushwoosh-cordova-plugin",
-    "cordova-plugin-media-capture"
+    "cordova-plugin-media-capture",
+    "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
     "ios",

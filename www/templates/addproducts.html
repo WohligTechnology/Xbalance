@@ -11,7 +11,10 @@
                 <div class="list">
                     <div class="profile-img"> 
                         <img ng-src={{prodimg|serverimage}} ng-click="addproductimage();">
-                        <div class="holder">Add Image</div>
+<!--                        <div class="holder">Add Image</div>-->
+                                      <div class="padding-horizontal text-center">
+                    <button class="button button-balanced pr-button">Add Image</button>
+                </div>
                     </div>
                     <div class="item item-input text-capitalize">
                         <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
@@ -59,8 +62,8 @@
                     <div class="item  item-input text-capitalize">
                         <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
                     </div>
-                    <div class="padding">
-                <button class="button button-block button-assertive" ng-click="insertproduct(ap);">Save</button>
+                    <div class="padding text-center">
+                <button class="button pr-button button-balanced" ng-click="insertproduct(ap);">Save</button>
             </div>
                 </div>
             </form>
