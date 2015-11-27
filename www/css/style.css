@@ -1130,3 +1130,14 @@ input.text-right :-moz-placeholder { text-align:right; }
 .incard.search-offline .list ion-item {
     padding: 6px 0px;
 }
+ion-item.item.actives a {
+    color: #F78330 !important;
+}
+
+ion-item.item.actives a i {
+    color: #F78330 !important;
+}
+
+ion-item.item.item-complex.actives {
+    border-left: 3px solid #F78330;
+}

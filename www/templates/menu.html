@@ -16,50 +16,50 @@
         </ion-header-bar>
         <ion-content>
             <ion-list class="menus">
-                <ion-item nav-clear menu-close href="#/app/home" ng-click="homecall();">
+                <ion-item nav-clear menu-close  ui-sref-active="actives" ui-sref="app.home" ng-click="homecall();">
                       <i class="icon ln-home3 side-menu-i"></i>
                     <span>Home</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/profile">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.profile" >
                       <i class="icon ln-user side-menu-i"></i>
                     <span>My Profile</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/myproducts">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.myproducts" >
                       <i class="icon ln-cube side-menu-i"></i>
                     <span>My Products</span>
                 </ion-item>
 
-                <ion-item nav-clear menu-close href="#/app/orders">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.orders" >
                       <i class="icon ln-cart-full side-menu-i"></i>
                     <span>Orders</span>
                 </ion-item>
 
-                <ion-item nav-clear menu-close href="#/app/selling">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.selling" >
                       <i class="icon ln-tags side-menu-i"></i>
                     <span>Selling Approvals</span>
                     <span ng-hide="approvalcount==0" class="badge badge-assertive">{{approvalcount}}</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/transaction">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.transaction">
                       <i class="icon ln-cash side-menu-i"></i>
                     <span>Transaction History</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/events">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.events" >
                       <i class="icon ln-calendar2 side-menu-i"></i>
                     <span>Events</span>
                 </ion-item> 
-                   <ion-item nav-clear menu-close href="#/app/notification">
+                   <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.notification" >
                          <i class="icon ln-bell side-menu-i"></i>
                     <span>Notification</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/aboutus">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.aboutus">
                       <i class="icon ln-clipboard side-menu-i"></i>
                     <span>About Us</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/faq">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.faq" >
                       <i class="icon ln-question side-menu-i"></i>
                     <span>FAQ</span>
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/login" ng-click="logoutfunction();">
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="login" ng-click="logoutfunction();">
                       <i class="icon ln-arrow-right side-menu-i"></i>
                     <span>Logout</span>
                 </ion-item>
