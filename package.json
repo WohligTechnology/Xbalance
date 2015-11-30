@@ -33,7 +33,6 @@
       "locator": "https://github.com/wymsee/cordova-imagePicker.git",
       "id": "com.synconset.imagepicker"
     },
-    "pushwoosh-cordova-plugin",
     "cordova-plugin-media-capture",
     "cordova-plugin-crosswalk-webview",
     "org.apache.cordova.camera"

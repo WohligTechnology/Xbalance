@@ -104,8 +104,8 @@
     </feature>
     <feature name="Camera">
         <param name="ios-package" value="CDVCamera" />
+        <param name="ios-package" value="cordova-plugin-camera" />
     </feature>
-
     <preference name="xwalkVersion" value="15+" />
     <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
     <preference name="xwalkMode" value="embedded" />
