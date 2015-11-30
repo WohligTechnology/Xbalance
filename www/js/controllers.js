@@ -1243,7 +1243,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
   document.addEventListener("deviceready", function() {
     options = {
       quality: 20,
-      destinationType: Camera.DestinationType.FILE_URI,
       sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
       allowEdit: true,
       encodingType: Camera.EncodingType.JPEG,
