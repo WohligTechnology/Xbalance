@@ -35,7 +35,8 @@
     },
     "pushwoosh-cordova-plugin",
     "cordova-plugin-media-capture",
-    "cordova-plugin-crosswalk-webview"
+    "cordova-plugin-crosswalk-webview",
+    "org.apache.cordova.camera"
   ],
   "cordovaPlatforms": [
     "ios",

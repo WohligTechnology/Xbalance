@@ -60,7 +60,7 @@ myservices.factory('MyServices', function ($http) {
 		},
 		//				returnval.shopproduct=function(id,shopproductcallback){
 		//	 $http.get(adminurl + "shopproduct?id="+id,{}).success(shopproductcallback);
-		//	
+		//
 		//	},
 		returnval.updateprofile = function (id, profile, updateprofilecallback) {
 			//        			console.log(profile);
@@ -69,6 +69,7 @@ myservices.factory('MyServices', function ($http) {
 				method: "POST",
 				data: {
 					'id': id,
+					'shoplogo':profile.shoplogo,
 					'shopname': profile.shopname,
 					'address': profile.billingaddress,
 					'description': profile.description,

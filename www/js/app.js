@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+.run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -25,11 +25,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(0);
     $stateProvider
 
-    .state('login', {
+        .state('login', {
         url: "/login",
         templateUrl: "templates/login.html",
         controller: 'LoginCtrl'
@@ -109,25 +109,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })
 
-    
-	.state('app.productdetail', {
-        url: "/productdetail/:id",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/buydetails.html",
-                controller: 'ProductdetailCtrl'
+
+    .state('app.productdetail', {
+            url: "/productdetail/:id",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/buydetails.html",
+                    controller: 'ProductdetailCtrl'
+                }
             }
-        }
-    })	
-.state('app.dealerprd', {
-        url: "/dealerprd/:id",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/dealerprd.html",
-                controller: 'DealerprdCtrl'
+        })
+        .state('app.dealerprd', {
+            url: "/dealerprd/:id",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/dealerprd.html",
+                    controller: 'DealerprdCtrl'
+                }
             }
-        }
-    })
+        })
         .state('app.addbalance', {
             url: "/addbalance",
             views: {
@@ -139,60 +139,60 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         })
 
     .state('app.transaction', {
-        url: "/transaction",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/transaction.html",
-                controller: 'TransactionCtrl'
+            url: "/transaction",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/transaction.html",
+                    controller: 'TransactionCtrl'
+                }
             }
-        }
-    })
-    .state('app.myproducts', {
-        url: "/myproducts",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/myproducts.html",
-                controller: 'MyproductsCtrl'
+        })
+        .state('app.myproducts', {
+            url: "/myproducts",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/myproducts.html",
+                    controller: 'MyproductsCtrl'
+                }
             }
-        }
-    })
+        })
         .state('app.notification', {
-        url: "/notification",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/notification.html",
-                controller: 'NotificationCtrl'
+            url: "/notification",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/notification.html",
+                    controller: 'NotificationCtrl'
+                }
             }
-        }
-    })
-            .state('app.events', {
-        url: "/events",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/events.html",
-                controller: 'EventCtrl'
+        })
+        .state('app.events', {
+            url: "/events",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/events.html",
+                    controller: 'EventCtrl'
+                }
             }
-        }
-    })
-    
+        })
+
     .state('app.orders', {
-        url: "/orders",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/orders.html",
-                controller: 'OrderCtrl'
+            url: "/orders",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/orders.html",
+                    controller: 'OrderCtrl'
+                }
             }
-        }
-    })  
-    .state('app.products', {
-        url: "/products/:name/:mem/:cat",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/product.html",
-                controller: 'ProductCtrl'
+        })
+        .state('app.products', {
+            url: "/products/:name/:mem/:cat",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/product.html",
+                    controller: 'ProductCtrl'
+                }
             }
-        }
-    })
+        })
 
     .state('app.profile', {
         url: "/profile",
@@ -203,7 +203,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
-    
+
     .state('app.checkout', {
         url: "/checkout/:prodid",
         views: {
@@ -229,12 +229,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     $urlRouterProvider.otherwise('/app/home');
 })
 
-.filter('serverimage', function() {
-    return function(image) {
-        return imgpath + image;
+.filter('serverimage', function () {
+    return function (image) {
+        if (image) {
+            return imgpath + image;
+        } else {
+            return "img/noimg.jpg";
+        }
     };
 });
-  
+
 //.filter('serverimage', function () {
 //    return function (image) {
 //        if (image == null || image == '') {
@@ -246,24 +250,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 //});
 
 function partitionarray(myarray, number) {
-            var arrlength = myarray.length;
-            var newarray = [];
-            var j = -1;
-            for (var i = 0; i < arrlength; i++) {
-                if (i % number == 0) {
-                    j++;
-                    newarray[j] = [];
-                }
-                newarray[j].push(myarray[i]);
-            }
-            return newarray;
-        };
+    var arrlength = myarray.length;
+    var newarray = [];
+    var j = -1;
+    for (var i = 0; i < arrlength; i++) {
+        if (i % number == 0) {
+            j++;
+            newarray[j] = [];
+        }
+        newarray[j].push(myarray[i]);
+    }
+    return newarray;
+};
 
 var formvalidation = function (allvalidation) {
     var isvalid2 = true;
     for (var i = 0; i < allvalidation.length; i++) {
-//        console.log("checking");
-//        console.log(allvalidation[i].field);
+        //        console.log("checking");
+        //        console.log(allvalidation[i].field);
         if (allvalidation[i].field == "" || !allvalidation[i].field || allvalidation[i].field == "Please select" || allvalidation[i].field == "Please Select") {
             allvalidation[i].validation = "ng-dirty";
             isvalid2 = false;

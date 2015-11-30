@@ -52,7 +52,7 @@
                             <input type="text" placeholder="Website" ng-model="profile.website">
                         </div>
                         <div class="m20">
-                       
+
                         <div class="item item-input item-text-wrap header">
                             <h2>Shops Photos</h2>
                         </div>
@@ -64,21 +64,21 @@
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
-                                
+
 -->
                                 		<div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
 
 								</div>
                             </div>
 
-                            <div class="col input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
+                            <div class="col-33 input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
                                 </div>
                             </div>
 
-                            <div class="col input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
+                            <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
@@ -86,7 +86,7 @@
                             </div>
 
 
-                            <div class="input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
+                            <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
                                 <div class="img-profile">
                                     <img src="img/add.png">
                                     <div class="holder2">Edit</div>
@@ -96,7 +96,7 @@
                         </div>
                              </div>
 <div class="m20">
-                       
+
                         <div class="item item-input item-text-wrap header">
                             <h2>Products Photos</h2>
                         </div>
