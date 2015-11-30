@@ -9093,14 +9093,14 @@ body {
   .menu .list a i {
     font-size: 18px;
     font-weight: 400;
-    padding-right: 11px;
+    padding-right: 8px;
     color: #8e8e8e; }
 
 .bar .title {
   font-size: 15px; }
 
 .balance {
-  padding-right: 30px; }
+  padding-right: 28px; }
   .balance .label-name {
     font-size: 13px; }
 
@@ -9114,7 +9114,7 @@ ul, .my-balcont ul {
   text-align: center; }
 
 .my-balcont li {
-  padding: 2px 15px 10px 15px; }
+  padding: 2px 10px 10px; }
 
 .pr-button {
   line-height: 27px;
@@ -9156,3 +9156,9 @@ ul, .my-balcont ul {
   vertical-align: top;
   top: 50%;
   max-height: 400px; }
+
+.menus .badge {
+  padding: 2px 7px;
+  border-radius: 10px;
+  right: 8px;
+  font-size: 11px; }

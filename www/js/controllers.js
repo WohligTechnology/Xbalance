@@ -50,7 +50,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
   var sellingapprovalcallback = function(data, status) {
     $ionicLoading.hide();
     $scope.approvalcount = data.sellingapproval.length;
-    $scope.approvalcount = 1;
+//    $scope.approvalcount = 1;
     console.log(data.sellingapproval.length);
   }
 
