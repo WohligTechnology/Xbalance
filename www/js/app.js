@@ -21,7 +21,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         /*if (cordova.platformId == 'android') {
             StatusBar.backgroundColorByHexString("#2c333d");
         }*/
-        app.initialize();
+        // app.initialize();
     });
 })
 
