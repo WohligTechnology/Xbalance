@@ -1337,19 +1337,33 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.changeproductimage = function (id) {
         console.log("take picture");
         console.log("ID " + id);
-        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //            // Success! Image data is here
+        //            console.log("here in upload image");
+        //            console.log(imageData);
+        //            if (imageData.substring(0, 21) == "content://com.android") {
+        //                var photo_split = imageData.split("%3A");
+        //                imageData = "content://media/external/images/media/" + photo_split[1];
+        //            }
+        //            $scope.cameraimage = imageData;
+        //            $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
+        //        }, function (err) {
+        //            // An error occured. Show a message to the user
+        //        });
+
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
-            console.log(imageData);
-            if (imageData.substring(0, 21) == "content://com.android") {
-                var photo_split = imageData.split("%3A");
-                imageData = "content://media/external/images/media/" + photo_split[1];
-            }
-            $scope.cameraimage = imageData;
+
+            console.log(resultImage);
+
+            $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
+
         }, function (err) {
             // An error occured. Show a message to the user
         });
+
     };
 
 
