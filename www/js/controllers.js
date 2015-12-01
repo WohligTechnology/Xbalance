@@ -1848,13 +1848,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
 
     //Hide when on PC
+    //    var options = {
+    //        quality: 20,
+    //        destinationType: Camera.DestinationType.FILE_URI,
+    //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+    //        allowEdit: true,
+    //        encodingType: Camera.EncodingType.JPEG,
+    //        saveToPhotoAlbum: true
+    //    };
+
     var options = {
-        quality: 20,
-        destinationType: Camera.DestinationType.FILE_URI,
-        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        saveToPhotoAlbum: true
+        maximumImagesCount: 1,
+        width: 800,
+        height: 800,
+        quality: 80
     };
 
     var viewmyproductscallback = function (data, status) {
@@ -1957,16 +1964,29 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.addproductimage = function () {
         console.log("take picture");
-        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //            // Success! Image data is here
+        //            console.log("here in upload image");
+        //            console.log(imageData);
+        //            if (imageData.substring(0, 21) == "content://com.android") {
+        //                var photo_split = imageData.split("%3A");
+        //                imageData = "content://media/external/images/media/" + photo_split[1];
+        //            }
+        //            $scope.cameraimage = imageData;
+        //            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
+        //        }, function (err) {
+        //            // An error occured. Show a message to the user
+        //        });
+
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
-            console.log(imageData);
-            if (imageData.substring(0, 21) == "content://com.android") {
-                var photo_split = imageData.split("%3A");
-                imageData = "content://media/external/images/media/" + photo_split[1];
-            }
-            $scope.cameraimage = imageData;
+
+            console.log(resultImage);
+
+            $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
+
         }, function (err) {
             // An error occured. Show a message to the user
         });
@@ -2116,19 +2136,33 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.editproductimage = function () {
         //		console.log(id);
         console.log("take picture");
-        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //        $cordovaCamera.getPicture(options).then(function (imageData) {
+        //            // Success! Image data is here
+        //            console.log("here in upload image");
+        //            console.log(imageData);
+        //            if (imageData.substring(0, 21) == "content://com.android") {
+        //                var photo_split = imageData.split("%3A");
+        //                imageData = "content://media/external/images/media/" + photo_split[1];
+        //            }
+        //            $scope.cameraimage = imageData;
+        //            $scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
+        //        }, function (err) {
+        //            // An error occured. Show a message to the user
+        //        });
+
+        $cordovaImagePicker.getPictures(options).then(function (resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
-            console.log(imageData);
-            if (imageData.substring(0, 21) == "content://com.android") {
-                var photo_split = imageData.split("%3A");
-                imageData = "content://media/external/images/media/" + photo_split[1];
-            }
-            $scope.cameraimage = imageData;
+
+            console.log(resultImage);
+
+            $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
+
         }, function (err) {
             // An error occured. Show a message to the user
         });
+
     };
     //upload editproductimage end
 
