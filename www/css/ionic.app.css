@@ -9085,7 +9085,7 @@ body {
 
 .menu .list a {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 600;
   padding: 13px 2px 13px 14px !important;
   color: #888;
   font-family: 'quicksand';
@@ -9162,3 +9162,8 @@ ul, .my-balcont ul {
   border-radius: 10px;
   right: 8px;
   font-size: 11px; }
+
+.space {
+  margin: 0 10px; }
+  .space input {
+    width: 100%; }
