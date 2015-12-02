@@ -73,6 +73,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('HomeCtrl', function ($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval) {
     //home page
 
+    $scope.showAddBtn = true;
+
     var yourbalancecallback = function (data, status) {
 
         if (data == "false") {
@@ -248,7 +250,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function () {
             $ionicLoading.hide();
-        }, 2000);
+        }, 5000);
     };
     $scope.showloading();
 
@@ -303,6 +305,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     var balanceaddcallback = function (data, status) {
         console.log(data);
+        $scope.showAddBtn = true;
+        $scope.modal.hide();
         $scope.orderidd = data;
         //        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
         if (data == "false") {
@@ -330,6 +334,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     };
     $scope.addbalance = function (amount, reason) {
+        $scope.showAddBtn = false;
         $scope.user = $.jStorage.get("user1");
         $scope.a = amount;
         $scope.b = reason;
@@ -598,6 +603,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('ShopCtrl', function ($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading, $ionicSlideBoxDelegate) {
 
+    $scope.showPurchaseBtn = true;
+
     //Loading Package
     $scope.showloading = function () {
         $ionicLoading.show({
@@ -655,7 +662,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     var purchaserequestcallback = function (data, status) {
-
+        $scope.modal.hide();
+        $ionicLoading.hide();
+        $scope.showPurchaseBtn = true;
         if (data == "false") {
 
             console.log("balance not added");
@@ -674,19 +683,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     $scope.sendamt = function (amount, reason) {
-
+        $scope.showPurchaseBtn = false;
         amount = parseFloat(amount);
         if (amount > $scope.purchaselimit) {
             purchaseoverlimit();
         } else {
-
+            $ionicLoading.show();
             $scope.amt = amount;
             console.log($scope.amt);
             $scope.userfrom = $.jStorage.get("user1");
             //		console.log($scope.pid.shopprofile[0].id);
             MyServices.purchaserequest($scope.userfrom, shopid, amount, reason, purchaserequestcallback);
         }
-        $scope.modal.hide();
     };
 
     $scope.send = {

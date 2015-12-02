@@ -25,7 +25,7 @@
                         <input type="text" maxlength="200" ng-model="send.reason">
                     </label>
                     <div class="padding-horizontal">
-                        <button class="button button-block button-balanced"  ng-click="sendamt(send.amount,send.reason);">Request</button>
+                        <button class="button button-block button-balanced" ng-show="showPurchaseBtn"  ng-click="sendamt(send.amount,send.reason);">Request</button>
                     </div>
                 </div>
             </form>
