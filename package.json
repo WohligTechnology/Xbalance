@@ -26,16 +26,8 @@
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-camera",
-    "cordova-plugin-file-transfer",
-    "cordova-plugin-file",
-    {
-      "locator": "https://github.com/wymsee/cordova-imagePicker.git",
-      "id": "com.synconset.imagepicker"
-    },
-    "cordova-plugin-media-capture",
-    "cordova-plugin-crosswalk-webview",
-    "org.apache.cordova.camera"
+    "com.synconset.imagepicker",
+    "cordova-plugin-file-transfer"
   ],
   "cordovaPlatforms": [
     "ios",
