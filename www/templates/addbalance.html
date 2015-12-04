@@ -11,17 +11,17 @@
                 <div class="list">
                     <label class="item item-input">
                         <span class="input-label">Amount in Barter:</span>
-                        <input type="text" ng-model="add.amount" ng-change="changeamountinr(add.amount);" class="disable" disabled>
+                        <input type="text" placeholder="Amount in Barter" ng-model="add.amount" ng-change="changeamountinr(add.amount);" class="disable" disabled>
                     </label>
                     <label class="item item-input">
                         <span class="input-label">Amount in INR*:</span>
-                        <input type="tel" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);" class="disable" ng-class="allvalidation[0].validation" required>
+                        <input type="tel" placeholder="Amount in INR" ng-model="add.amountinr" ng-change="changeamount(add.amountinr);" class="disable" ng-class="allvalidation[0].validation" required>
                         <!-- <span>{{add.amount*percent/100|number:2}}   </span>    -->
                     </label>
 
                     <label class="item item-input">
                         <span class="input-label">Reason:</span>
-                        <input type="text" ng-model="add.reason" class="disable">
+                        <input type="text" placeholder="Reason" ng-model="add.reason" class="disable">
                     </label>
                     <div class="row pad">
                         <div class="col">
@@ -33,10 +33,10 @@
                     </div>
                     <div class="row ">
                         <div class="col-50">
-                            <div class="space"> <input type="text" ng-model="add.amount" class="disable" disabled></div>
+                            <div class="space"> <input type="text" placeholder="Purchase Value" ng-model="add.amount" class="disable" disabled></div>
                         </div>
                         <div class="col-50">
-                            <div class="space"> <input type="text" ng-model="add.amount" class="disable" disabled></div>
+                            <div class="space"> <input type="text" placeholder="Sell Value" ng-model="add.amount" class="disable" disabled></div>
                         </div>
                     </div>
 
