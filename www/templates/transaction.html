@@ -1,6 +1,6 @@
 <ion-view view-title="Transaction">
     <ion-content class="searcher">
-        <div class="button-bar bar-royal transbtn">
+        <div class="button-bar bar-balanced transbtn">
             <div class="button" ng-class="purchased" ng-click="changepurchase();">
                 Trade Value
                 <br>Purchase
@@ -44,8 +44,9 @@
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
                             <div class="row">
                                 <div class="col-25">
-                                    <div class="sell-img">
-                                        <img src="{{tr.shoplogo|serverimage}}">
+                                    <div class="">
+<!--                                        <img src="{{tr.shoplogo|serverimage}}">-->
+                                        <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
                                     </div>
                                 </div>
                                 <div class="col-75">
@@ -91,8 +92,9 @@
                         <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
                             <div class="row">
                                 <div class="col-25">
-                                    <div class="sell-img">
-                                        <img src="{{tr.shoplogo|serverimage}}">
+                                    <div class="">
+<!--                                        <img src="">-->
+                                        <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
                                     </div>
                                 </div>
                                 <div class="col-75">

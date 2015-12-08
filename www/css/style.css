@@ -1079,6 +1079,14 @@ button.button.button-icon.button-clear.ion-navicon.hide {
     border-width: 0px 0 0px 0px;
 
 }
+.img-hlodss {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .padtop5 .item-note {
     color: #aaa;
     font-size: 14px;
@@ -1090,7 +1098,8 @@ button.button.button-icon.button-clear.ion-navicon.hide {
 
 }
 .button.bold {
-    background: #f78330;
+        border-bottom: 2px solid;
+    background-color: #f78330 !important;
 }
 .button.activated{
     background-color: #f78330 !important;
