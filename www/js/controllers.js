@@ -5,7 +5,30 @@ var chintansglobal = {};
 
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup, $cordovaNetwork) {
+
+    document.addEventListener("deviceready", function() {
+
+        var type = $cordovaNetwork.getNetwork();
+
+        var isOnline = $cordovaNetwork.isOnline();
+
+        var isOffline = $cordovaNetwork.isOffline();
+
+        console.log("isOffline = " + $cordovaNetwork.isOffline());
+        if (isOffline == true) {
+            var myPopup = $ionicPopup.show({
+                template: '<p class="text-center">Please connect to internet and restart the app.</p>',
+                title: 'No Internet Connection',
+                scope: $scope,
+
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 5000);
+        }
+    });
+
     $scope.product = {};
     $scope.searchproduct = function(product) {
         $scope.p = product;
@@ -48,6 +71,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //your balance
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function(data, status) {
+        console.log(data);
         $ionicLoading.hide();
         $scope.approvalcount = data.sellingapproval.length;
         //    $scope.approvalcount = 1;
@@ -55,7 +79,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
     if ($.jStorage.get("user1")) {
-        $scope.sell = $.jStorage.get("user1").id;
+        $scope.sell = $.jStorage.get("user1");
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
 
         globalfunctionapproval = function() {
@@ -789,7 +813,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading) {
+.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform) {
+
+    $ionicPlatform.registerBackButtonAction(function(event) {
+        event.preventDefault();
+    }, 100);
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'

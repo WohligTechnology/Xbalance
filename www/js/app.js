@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function ($ionicPlatform) {
-    $ionicPlatform.ready(function () {
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -18,14 +18,48 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             StatusBar.overlaysWebView(true);
             StatusBar.styleLightContent();
         }
-        /*if (cordova.platformId == 'android') {
-            StatusBar.backgroundColorByHexString("#2c333d");
-        }*/
-        // app.initialize();
+        try {
+            console.log("here");
+            push = PushNotification.init({
+                "android": {
+                    "senderID": "694450719069",
+                    "icon": "img/icon.png"
+                },
+                "ios": {
+                    "alert": "true",
+                    "badge": "true",
+                    "sound": "true"
+                },
+                "windows": {}
+            });
+
+            push.on('registration', function(data) {
+                console.log(data);
+                $.jStorage.set("device", data.registrationId);
+                // var isIOS = ionic.Platform.isIOS();
+                // var isAndroid = ionic.Platform.isAndroid();
+                // if (isIOS) {
+                //     $.jStorage.set("os", "ios");
+                // } else if (isAndroid) {
+                //     $.jStorage.set("os", "android");
+                // }
+            });
+
+            push.on('notification', function(data) {
+                console.log(data);
+            });
+
+            push.on('error', function(e) {
+                conosle.log("ERROR");
+                console.log(e);
+            });
+        } catch (e) {
+            console.log(e)
+        }
     });
 })
 
-.config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     $ionicConfigProvider.views.maxCache(0);
     $stateProvider
 
@@ -229,8 +263,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     $urlRouterProvider.otherwise('/app/home');
 })
 
-.filter('serverimage', function () {
-    return function (image) {
+.filter('serverimage', function() {
+    return function(image) {
         if (image) {
             return imgpath + image;
         } else {
@@ -263,7 +297,7 @@ function partitionarray(myarray, number) {
     return newarray;
 };
 
-var formvalidation = function (allvalidation) {
+var formvalidation = function(allvalidation) {
     var isvalid2 = true;
     for (var i = 0; i < allvalidation.length; i++) {
         //        console.log("checking");

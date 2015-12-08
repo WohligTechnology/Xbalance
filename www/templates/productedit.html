@@ -24,7 +24,7 @@
 -->
                     <div class="item item-input text-capitalize">
                         <span class="input-label">Name</span>
-                        <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" required>
+                        <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" required disabled>
                     </div>
                     <div class="item  item-input text-capitalize">
                         <span class="input-label">Price</span>
@@ -53,7 +53,7 @@
                         <div class="input-label">
                             <span style="font-weight:bold;">Category</span>
                         </div>
-                        <select ng-model="prodetails.category" ng-class="allvalidation[3].validation" required>
+                        <select ng-model="prodetails.category" ng-class="allvalidation[3].validation" required disabled>
                             <option value="">All</option>
                             <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                         </select>
@@ -62,7 +62,7 @@
                         <h2>Description</h2>
                     </div>
                     <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required></textarea>
+                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required disabled></textarea>
                     </div>
                 </div>
             </form>
