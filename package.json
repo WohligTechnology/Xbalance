@@ -26,13 +26,11 @@
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-file-transfer",
     "phonegap-plugin-push",
-    "phonegap-plugin-push@^1.4.5",
-    "phonegap-plugin-push@1.4.5"
+    "cordova-plugin-file-transfer"
   ],
   "cordovaPlatforms": [
-    "ios",
-    "android"
+    "android",
+    "ios"
   ]
 }
