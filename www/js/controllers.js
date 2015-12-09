@@ -843,10 +843,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.oModal1.hide();
     };
 
-
+    var deviceId = $.jStorage.get("device");
     var token = $.jStorage.get("token");
     $.jStorage.flush();
-    token = $.jStorage.set("token", token);
+    $.jStorage.set("token", token);
+    $.jStorage.set("device", deviceId);
 
     $scope.user1 = {
         membershipno: "",
