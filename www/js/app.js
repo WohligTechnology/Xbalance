@@ -36,13 +36,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             push.on('registration', function(data) {
                 console.log(data);
                 $.jStorage.set("device", data.registrationId);
-                // var isIOS = ionic.Platform.isIOS();
-                // var isAndroid = ionic.Platform.isAndroid();
-                // if (isIOS) {
-                //     $.jStorage.set("os", "ios");
-                // } else if (isAndroid) {
-                //     $.jStorage.set("os", "android");
-                // }
+                var isIOS = ionic.Platform.isIOS();
+                var isAndroid = ionic.Platform.isAndroid();
+                if (isIOS) {
+                    $.jStorage.set("os", "iOS");
+                } else if (isAndroid) {
+                    $.jStorage.set("os", "Android");
+                }
             });
 
             push.on('notification', function(data) {

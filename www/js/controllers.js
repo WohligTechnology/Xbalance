@@ -845,9 +845,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     var deviceId = $.jStorage.get("device");
     var token = $.jStorage.get("token");
+    var OS = $.jStorage.get("os");
     $.jStorage.flush();
     $.jStorage.set("token", token);
     $.jStorage.set("device", deviceId);
+    $.jStorage.set("os", OS);
 
     $scope.user1 = {
         membershipno: "",
