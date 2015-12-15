@@ -278,12 +278,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.logout = function(loginid, logoutcallback) {
             $http.get(adminurl + "logout?loginid=" + loginid, {}).success(logoutcallback);
+        },
+        returnval.getshopidmebership = function(data, callback) {
+            $http.get(adminurl + "shopprofilemem?mem=" + data, {}).success(callback);
         };
-    returnval.getshopidmebership = function(data, callback) {
-        $http.get(adminurl + "shopprofilemem?mem=" + data).success(function(data) {
-            console.log(data.id);
-            callback(data.id)
-        });
-    };
     return returnval;
 });
