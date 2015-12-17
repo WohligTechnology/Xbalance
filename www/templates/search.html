@@ -33,7 +33,7 @@
                         <div class="col">Sell Balance</div>
                     </div>
                 </ion-item>
-                <ion-item href="#/app/shop/{{shop.id}}" ng-click="shopclick(shop);" ng-repeat="shop in shops ">
+                <ion-item href="#/app/shop/{{shop.id}}" ng-click="shopclick(shop);" ng-repeat="shop in shops" ng-if="myId!=shop.id">
                     <div class="row">
                         <div class="col prename"></i>{{shop.name}}</div>
                         <div class="col"><span class="balanced amount">{{shop.sellbalance}}</span>

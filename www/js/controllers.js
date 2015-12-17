@@ -600,6 +600,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.showloading();
 
+    console.log("My Id = " + $.jStorage.get("user").id);
+    $scope.myId = $.jStorage.get("user").id;
 
     var searchcallback = function(data, status) {
         $scope.shops = data;
@@ -713,11 +715,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            $scope.showPurchaseBtn = false;
             amount = parseFloat(amount);
             if (amount > $scope.purchaselimit) {
+                $scope.showPurchaseBtn = true;
                 purchaseoverlimit();
             } else {
+                $scope.showPurchaseBtn = false;
                 $ionicLoading.show();
                 $scope.amt = amount;
                 console.log($scope.amt);
@@ -1200,7 +1203,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showPopup4 = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">You have insufficient purchase balance!!!</p>',
+            template: '<p class="text-center">Insufficient purchase balance of buyer !!!</p>',
             title: 'Oops sorry cannot proceed!!!',
             scope: $scope,
 
@@ -1437,7 +1440,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //File Upload parameters: source, filePath, options
     $scope.uploadPhoto = function(serverpath, callback) {
-
         console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
             .then(function(result) {
