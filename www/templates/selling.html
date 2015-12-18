@@ -1,17 +1,13 @@
 <ion-view view-title="Selling Approval">
-
     <ion-content class="padding">
-<div class="incard" ng-if="req.length==0">
-        <div class="list">
-             <div class="text-center royal padding" >
+        <div class="incard" ng-if="req.length==0">
+            <div class="list">
+                <div class="text-center royal padding">
                     <figure>
                         <img src="img/noap.jpg" class="full-image" style="width:110px;">
-
                     </figure>
-
-
                 </div>
-    </div>
+            </div>
         </div>
         <div class="incard" ng-repeat="r in req">
             <div class="list">
@@ -19,8 +15,7 @@
                     <div class="row">
                         <div class="col-25">
                             <div class="">
-                                     <div class="img-hlodss" ng-style="{'background-image':'url({{r.shoplogo|serverimage}})'}"></div>
-                               
+                                <div class="img-hlodss" ng-style="{'background-image':'url({{r.shoplogo|serverimage}})'}"></div>
                             </div>
                         </div>
                         <div class="col-75" ng->
@@ -28,20 +23,14 @@
                                 <h2>{{r.shopname}}</h2>
                                 <p>Amount: {{r.amount}}</p>
                                 <p ng-if="r.reason">Reason: {{r.reason}}</p>
-
                                 <textarea style="width:100%;font-size:13px;border: 1px solid #ccc;margin: 10px 0;padding: 4px;" ng-model="reason" rows="3" placeholder="Enter your reason"></textarea>
-
                                 <button class="button button-small button-outline button-balanced" ng-click="accept(r,reason);">Accept</button>
-
                                 <button class="button button-small button-outline button-assertive" ng-click="decline(r,reason);">Decline</button>
                             </div>
                         </div>
                     </div>
-
                 </ion-item>
-       
             </div>
-
         </div>
     </ion-content>
 </ion-view>

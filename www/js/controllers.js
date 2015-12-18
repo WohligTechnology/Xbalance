@@ -1187,30 +1187,41 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     $scope.reason = "";
     $scope.accept = function(r, reason) {
-        console.log("amt" + r.amount);
-        console.log("pb" + r.purchasebalance);
-        console.log(r.id);
-        if (parseInt(r.purchasebalance) <= r.amount) {
+        // console.log("amt" + r.amount);
+        // console.log("pb" + r.purchasebalance);
+        // console.log(r.id);
+        if (parseInt(r.purchasebalance) < r.amount) {
             console.log("in if");
             $scope.showPopup4();
         } else {
-            console.log("in else");
-            MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
-            $scope.showloading();
+            MyServices.yourbalance($.jStorage.get("user1"), function(mybal) {
+                console.log(mybal);
+                if (parseInt(mybal.yourbalance.salesbalance) >= r.amount) {
+                    $scope.showloading();
+                    MyServices.accepted(r.id, reason, 1, acceptstatuscallback);
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        template: '<p class="text-center">Your sale balance is low !!!</p>',
+                        title: 'Oops sorry cannot proceed!!!',
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 3000);
+                }
+            });
         }
     }
 
     $scope.showPopup4 = function() {
-
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Insufficient purchase balance of buyer !!!</p>',
             title: 'Oops sorry cannot proceed!!!',
             scope: $scope,
-
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 3000);
     };
     $scope.decline = function(r, reason) {
         console.log("Decline");
