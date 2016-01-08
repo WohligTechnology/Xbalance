@@ -1150,3 +1150,7 @@ ion-item.item.actives a i {
 ion-item.item.item-complex.actives {
     border-left: 3px solid #F78330;
 }
+.main-png{
+        height: 30px;
+    margin: 0 auto;
+}
