@@ -177,7 +177,9 @@ ion-item.item.item-complex {
     border: 1px solid #3c3c3c;
     cursor: pointer;
 }
-
+.top49{
+  
+}
 .gallery-item a img {
     display: block;
     width: 100%;
@@ -186,7 +188,7 @@ ion-item.item.item-complex {
 
 @media only screen and (max-width: 480px) {
     /* Small desktop / ipad view: 3 tiles */
-    
+
     .gallery-item {
         width: 33.3%;
     }
@@ -425,7 +427,7 @@ p.info {
     -moz-border-radius: 3px;
     border-radius: 3px;
     /* border: 1px solid #ddd; */
-    
+
     overflow: hidden;
     -webkit-box-shadow: 0 1px 1px 0 #aaa;
     -moz-box-shadow: 0 1px 1px 0 #aaa;
@@ -569,7 +571,7 @@ ion-footer-bar.footer-shop h4 {
 }
 
 .incard .item.header h2 {
-   
+
     color: #3b3f42;
     font-size: 14px;
     text-transform: uppercase;
@@ -580,7 +582,7 @@ ion-footer-bar.footer-shop h4 {
     font-weight: bold;
     margin-top: 8px;
     color:#888;
-  
+
         font-family: 'quicksand';
 }
 
@@ -714,7 +716,7 @@ h5.member {
 ion-item.item-left.item h2 {
     float: left;
     padding-left: 5px;
-   
+
     color: #3b3f42;
     font-size: 14px;
     text-transform: uppercase;
@@ -864,7 +866,7 @@ h2.bold {
 
 .ng-invalid.ng-dirty {
     /*   border-bottom: 1px solid red !important;*/
-    
+
     border-bottom: 2px solid red !important;
 }
 
@@ -965,7 +967,7 @@ h3.leftname {
 
 .header-cards {
     padding: 3px 0px;
-   
+
     font-size: 16px;
     border-bottom: 1px solid #ddd;
 }
@@ -1020,7 +1022,7 @@ p.addb-p {
 .centers-pro {
     position: absolute;
     /*  top: 50%;*/
-    
+
     background-color: #fff;
     width: 100%;
     -webkit-border-radius: 5px;
@@ -1048,7 +1050,7 @@ ion-footer-bar.footer-shop h4 {
 .pop-width {
     padding: 7%;
     /*    margin: 0 auto;*/
-    
+
     -webkit-transform: translateY(50%);
     -moz-transform: translateY(50%);
     -ms-transform: translateY(50%);
