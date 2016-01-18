@@ -162,8 +162,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.home($scope.user, homecallback);
 
     function onmembershipid(shopid) {
+        console.log(shopid);
         if (shopid) {
-            $location.url("/app/shop/" + shopid);
+            $location.url("/app/shop/" + shopid.id);
         } else {
             $scope.showPopup();
         }

@@ -54,6 +54,7 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {
+          console.log(id);
             $http.get(adminurl + "shopproductphoto?id=" + id, {}).success(shopproductphotocallback);
         },
         //              returnval.shopproduct=function(id,shopproductcallback){
