@@ -178,7 +178,7 @@ ion-item.item.item-complex {
     cursor: pointer;
 }
 .top49{
-  
+
 }
 .gallery-item a img {
     display: block;
@@ -1155,4 +1155,21 @@ ion-item.item.item-complex.actives {
 .main-png{
         height: 30px;
     margin: 0 auto;
+}
+.down{
+  position: absolute;
+bottom: 0;
+width: 100%;
+left: 0;
+
+}
+.down .button.button-block{
+  margin: 0px;
+}
+.has-down{
+  bottom: 47px;
+}
+.checkbox input:checked+.checkbox-icon:before, .checkbox input:checked:before {
+    background: #F78330;
+    border-color: #F78330;
 }

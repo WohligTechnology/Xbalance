@@ -14,7 +14,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //     var isOnline = $cordovaNetwork.isOnline();
     //
     //     var isOffline = $cordovaNetwork.isOffline();
-    //  
+    //
     //     console.log("isOffline = " + $cordovaNetwork.isOffline());
     //     if (isOffline == true) {
     //         var myPopup = $ionicPopup.show({
@@ -96,6 +96,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval) {
     //home page
+
+    $ionicModal.fromTemplateUrl('templates/terms.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modalterms = modal;
+    });
+
+    $scope.openmodals = function() {
+        $scope.modalterms.show();
+    };
+    $scope.closemodals = function() {
+        $scope.modalterms.hide();
+    };
 
     $scope.showAddBtn = true;
 
