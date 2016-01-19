@@ -14,7 +14,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //     var isOnline = $cordovaNetwork.isOnline();
     //
     //     var isOffline = $cordovaNetwork.isOffline();
-    //
+    //  
     //     console.log("isOffline = " + $cordovaNetwork.isOffline());
     //     if (isOffline == true) {
     //         var myPopup = $ionicPopup.show({
