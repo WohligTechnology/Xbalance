@@ -23,9 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             push = PushNotification.init({
                 "android": {
                     "senderID": "694450719069",
-                    "icon": "img/icon",
-                    "sound": true,
-                    "vibrate": true
+                    'icon': 'icon'
                 },
                 "ios": {
                     "alert": "true",

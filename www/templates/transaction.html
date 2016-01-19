@@ -44,7 +44,7 @@
                               <span class="item-note">-{{tr.amount}}</span>
                               <h2>{{tr.shopname}}</h2>
                               <p>Date: {{tr.date | date:'longDate'}}</p>
-                              <!-- <p>Time: {{tr.time}}</p> -->
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
                               <p>Transaction Id: {{tr.id}}</p>
                            </div>
                         </div>
@@ -87,7 +87,7 @@
                               <span class="item-note">{{tr.amount}}</span>
                               <h2>{{tr.shopname}}</h2>
                               <p>Date: {{tr.date | date:'longDate'}}</p>
-                              <!-- <p>Time: {{tr.time}}</p> -->
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
                               <p>Transaction Id: {{tr.id}}</p>
                            </div>
                         </div>
@@ -119,7 +119,7 @@
                   <ion-item class="item" ng-repeat="tr in t.admin">
                      <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
                      <p><b>Amount in INR:</b> {{tr.amount}}</p>
-                     <p><b>Date:</b> {{tr.date}}</p>
+                     <p><b>Date:</b> {{tr.date | date:'longDate'}}</p>
                      <p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>
                   </ion-item>
                </div>

@@ -272,6 +272,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var shopprofilecallback = function(data, status) {
         console.log(data);
         $scope.profileuser = data;
+        $scope.percent = parseFloat($scope.profileuser.percentpayment);
     }
     MyServices.profile($scope.pro, shopprofilecallback);
 
@@ -409,7 +410,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //  };
     //  $scope.amount = 0;
     $scope.amount = 1000;
-    $scope.percent = parseFloat(user.percentpayment);
 
     $ionicModal.fromTemplateUrl('templates/addbalance.html', {
         scope: $scope,
@@ -721,21 +721,35 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.allvalidation = [{
             field: $scope.send.amount,
             validation: ""
+        }, {
+            field: $scope.send.reamount,
+            validation: ""
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            amount = parseFloat(amount);
-            if (amount > $scope.purchaselimit) {
-                $scope.showPurchaseBtn = true;
-                purchaseoverlimit();
+            if ($scope.send.amount == $scope.send.reamount) {
+                amount = parseFloat(amount);
+                if (amount > $scope.purchaselimit) {
+                    $scope.showPurchaseBtn = true;
+                    purchaseoverlimit();
+                } else {
+                    $scope.showPurchaseBtn = false;
+                    $ionicLoading.show();
+                    $scope.amt = amount;
+                    console.log($scope.amt);
+                    $scope.userfrom = $.jStorage.get("user1");
+                    //      console.log($scope.pid.shopprofile[0].id);
+                    MyServices.purchaserequest($scope.userfrom, shopid, amount, reason, purchaserequestcallback);
+                }
             } else {
-                $scope.showPurchaseBtn = false;
-                $ionicLoading.show();
-                $scope.amt = amount;
-                console.log($scope.amt);
-                $scope.userfrom = $.jStorage.get("user1");
-                //      console.log($scope.pid.shopprofile[0].id);
-                MyServices.purchaserequest($scope.userfrom, shopid, amount, reason, purchaserequestcallback);
+                var myPopup = $ionicPopup.show({
+                    template: '<p class="text-center">Amount Mismatch</p>',
+                    title: 'Error !!',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 4000);
             }
         }
     };
@@ -927,6 +941,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //become a member end
 
     var logincallback = function(data, status) {
+        $ionicLoading.hide();
         if (data == "false") {
             console.log(data);
             console.log("Login Failed");
@@ -987,6 +1002,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     $scope.onlogin = function(user1) {
+        $scope.showloading();
         MyServices.login(user1, logincallback);
     };
 
@@ -1279,6 +1295,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 if (!n.orderdate) {
                     $scope.totalPurcahse += parseInt(n.amount);
                 }
+                n.timestamp = new Date(n.timestamp);
+                console.log(n.timestamp)
+                // console.log($scope.totalPurcahse);
+            })
+            _.each($scope.t.purchased, function(n) {
+                n.timestamp = new Date(n.timestamp);
+                console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);
             })
         });
@@ -1972,11 +1995,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             template: '<p class="text-center">Low Sales Balance!!</p>',
             title: 'Oops product cannot be added!',
             scope: $scope,
-
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 5000);
+        }, 4000);
     };
 
     //add products start
@@ -2043,7 +2065,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             template: '<p class="text-center">Please Enter Mandatory Fields!!</p>',
             title: 'Sorry!!',
             scope: $scope,
-
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
