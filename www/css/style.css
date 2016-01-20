@@ -1173,3 +1173,14 @@ left: 0;
     background: #F78330;
     border-color: #F78330;
 }
+.para{
+  text-align: justify;
+  padding: 5px;
+}
+
+.mytab table,th,td{
+  border: 1px solid #000;
+}
+.mytab td{
+  padding: 5px;
+}
