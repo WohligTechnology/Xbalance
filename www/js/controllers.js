@@ -2,7 +2,7 @@ var globalfunctionapproval = {};
 var ref = 0;
 var sorts = {};
 var chintansglobal = {};
-
+var count = 0;
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup, $cordovaNetwork) {
@@ -104,11 +104,47 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.modalterms = modal;
     });
 
+    $scope.accept = {};
+    $scope.accept.terms = false;
+
+    $scope.acceptTerms = function() {
+        console.log($scope.accept);
+        if ($scope.accept.terms == true) {
+            MyServices.acceptTerms($.jStorage.get("user1"), function(data) {
+                console.log(data);
+                if (data != "false") {
+                    $scope.modalterms.hide();
+                    $scope.showPushPopup();
+                }
+            });
+        } else {
+            var myPopup = $ionicPopup.show({
+                template: '<p class="text-center">Please Accept the Terms & Conditions</p>',
+                title: '<b>Accept Terms<b>',
+                scope: $scope,
+            });
+            $timeout(function() {
+                myPopup.close(); //close the popup after 3 seconds for some reason
+            }, 3000);
+        }
+    }
+
     $scope.openmodals = function() {
         $scope.modalterms.show();
     };
     $scope.closemodals = function() {
         $scope.modalterms.hide();
+    };
+
+    $scope.showPushPopup = function() {
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center"><b>Please enable push notification setting to receive notification from SWAP<b></p>',
+            title: '<b>Enable Push Notification<b>',
+            scope: $scope,
+        });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 5000);
     };
 
     $scope.showAddBtn = true;
@@ -282,14 +318,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.d = {};
     //GET USER PROFILE
+
     $scope.pro = $.jStorage.get("user1");
     var shopprofilecallback = function(data, status) {
         console.log(data);
         $scope.profileuser = data;
         $scope.percent = parseFloat($scope.profileuser.percentpayment);
+        ++count;
+        console.log("count=" + count);
     }
     MyServices.profile($scope.pro, shopprofilecallback);
 
+    MyServices.profile($scope.pro, function(data) {
+        if (data.termsaccept == "0") {
+            $scope.openmodals();
+        }
+    });
 
     //Loading Package
     $scope.showloading = function() {
@@ -1311,12 +1355,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }
                 n.timestamp = new Date(n.timestamp);
                 console.log(n.timestamp)
-                // console.log($scope.totalPurcahse);
+                    // console.log($scope.totalPurcahse);
             })
             _.each($scope.t.purchased, function(n) {
                 n.timestamp = new Date(n.timestamp);
                 console.log(n.timestamp)
-                // console.log($scope.totalPurcahse);
+                    // console.log($scope.totalPurcahse);
             })
         });
 

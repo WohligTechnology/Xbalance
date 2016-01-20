@@ -54,7 +54,7 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {
-          console.log(id);
+            console.log(id);
             $http.get(adminurl + "shopproductphoto?id=" + id, {}).success(shopproductphotocallback);
         },
         //              returnval.shopproduct=function(id,shopproductcallback){
@@ -282,6 +282,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.getshopidmebership = function(data, callback) {
             $http.get(adminurl + "shopprofilemem?mem=" + data, {}).success(callback);
+        },
+        returnval.acceptTerms = function(id, callback) {
+            $http.get(adminurl + "updateterms?id=" + id + "&termsaccept=1", {}).success(callback);
         };
     return returnval;
 });
