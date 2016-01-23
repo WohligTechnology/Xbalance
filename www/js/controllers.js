@@ -72,7 +72,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function(data, status) {
         console.log(data);
-        $ionicLoading.hide();
         $scope.approvalcount = data.sellingapproval.length;
         //    $scope.approvalcount = 1;
         console.log(data.sellingapproval.length);
@@ -83,7 +82,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
 
         globalfunctionapproval = function() {
-            MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+            MyServices.sellingapproval($.jStorage.get("user1"), sellingapprovalcallback);
         };
 
         $scope.notificationid = $.jStorage.get("user1");
@@ -96,6 +95,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval) {
     //home page
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
 
     $ionicModal.fromTemplateUrl('templates/terms.html', {
         scope: $scope,
@@ -224,7 +225,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function() {
                 myPopup.close(); //close the popup after 3 seconds for some reason
-            }, 2000);
+            }, 3000);
         }
     };
 
@@ -238,7 +239,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 3000);
     };
 
     $scope.showPopupNoBalance = function() {
@@ -251,7 +252,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 3000);
     };
 
     //search shop
@@ -342,7 +343,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 5000);
+        }, 10000);
     };
     $scope.showloading();
 
@@ -398,7 +399,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var balanceaddcallback = function(data, status) {
         console.log(data);
         $scope.showAddBtn = true;
-        $scope.modal.hide();
+        // $scope.modal.hide();
         $scope.orderidd = data;
         //        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
         if (data == "false") {
@@ -545,6 +546,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    console.log($scope.membershipno1);
     //    console.log($scope.category1);
     //  $scope.content={};
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -657,6 +662,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('SearchCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
     //Loading Package
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -697,6 +706,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('ShopCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, MyServices, $stateParams, $ionicLoading, $ionicSlideBoxDelegate) {
 
     $scope.showPurchaseBtn = true;
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
 
     //Loading Package
     $scope.showloading = function() {
@@ -1069,6 +1081,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('FaqCtrl', function($scope, $stateParams) {})
 
 .controller('checkout', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -1238,6 +1254,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.hideAccept = false;
 
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -1327,6 +1346,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('TransactionCtrl', function($scope, $stateParams, $ionicPopup, $location, MyServices, $ionicLoading, $timeout) {
     //
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading = function() {
         $ionicLoading.show({
             template: '<ion-spinner class="spinner-royal"></ion-spinner>'
@@ -1354,13 +1377,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     $scope.totalPurcahse += parseInt(n.amount);
                 }
                 n.timestamp = new Date(n.timestamp);
-                console.log(n.timestamp)
-                    // console.log($scope.totalPurcahse);
+                // console.log(n.timestamp)
+                // console.log($scope.totalPurcahse);
             })
             _.each($scope.t.purchased, function(n) {
                 n.timestamp = new Date(n.timestamp);
-                console.log(n.timestamp)
-                    // console.log($scope.totalPurcahse);
+                // console.log(n.timestamp)
+                // console.log($scope.totalPurcahse);
             })
         });
 
@@ -1403,6 +1426,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker) {
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
     //Loading Package
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -2022,6 +2048,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.showloading();
 
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     //Hide when on PC
     //    var options = {
     //        quality: 20,
@@ -2426,6 +2455,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 1000);
     };
+
+    if ($.jStorage.get("user1"))
+        globalfunctionapproval();
+
     $scope.showloading();
     $scope.tabvalue = 1;
     var viewmyproductorderscallback = function(data, status) {
@@ -2512,6 +2545,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var getnotificationcallback = function(data, status) {
         $ionicLoading.hide();
         $scope.notification = data;
+        _.each(data, function(n) {
+            if (n.date) {
+                n.date = new Date(n.date);
+            }
+        })
         console.log($scope.notification);
     }
 
