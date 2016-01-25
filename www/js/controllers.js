@@ -172,6 +172,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
+    setInterval(function() {
+        MyServices.yourbalance($.jStorage.get("user1"), yourbalancecallback);
+        MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+    }, 50000);
+
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
         MyServices.yourbalance($scope.bal, yourbalancecallback);
@@ -325,8 +330,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log(data);
         $scope.profileuser = data;
         $scope.percent = parseFloat($scope.profileuser.percentpayment);
-        ++count;
-        console.log("count=" + count);
     }
     MyServices.profile($scope.pro, shopprofilecallback);
 
