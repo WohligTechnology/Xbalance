@@ -93,8 +93,42 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval) {
+.controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval, $ionicPlatform, $state) {
     //home page
+    $ionicPlatform.registerBackButtonAction(function(event) {
+        console.log("back pressed = " + $state.current.name);
+        if ($state.current.name != "app.home") {
+            exitCount = 0;
+            navigator.app.backHistory();
+        } else {
+            var myPopup = $ionicPopup.show({
+                template: "<b><p>Are you sure you want to exit?</p></b>",
+                title: '<b>Exit !</b>',
+                scope: $scope,
+                buttons: [{
+                    text: 'No',
+                    type: 'button-assertive',
+                    onTap: function(e) {
+                        return false;
+                    }
+                }, {
+                    text: '<b>Yes</b>',
+                    type: 'button-balanced',
+                    onTap: function(e) {
+                        return true;
+                    }
+                }]
+            });
+            myPopup.then(function(res) {
+                console.log('Tapped!', res);
+                myPopup.close()
+                if (res == true) {
+                    navigator.app.exitApp();
+                }
+            });
+        }
+    }, 100);
+
     if ($.jStorage.get("user1"))
         globalfunctionapproval();
 
@@ -915,7 +949,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform) {
 
     $ionicPlatform.registerBackButtonAction(function(event) {
-        event.preventDefault();
+        console.log("back pressed");
+        if ($state.current.name == "login") {
+            navigator.app.exitApp();
+        }
     }, 100);
 
     $scope.showloading = function() {
