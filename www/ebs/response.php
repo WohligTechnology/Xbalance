@@ -2,9 +2,9 @@
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
-$secret_key = "Your Secret Key";	 // Pass Your Registered Secret Key from EBS secure Portal
+$secret_key = "1fef78ef406c6178f253e8c11335d171";	 // Pass Your Registered Secret Key from EBS secure Portal
 if(isset($_REQUEST)){
-	 $response = $_REQUEST;	 
+	 $response = $_REQUEST;
 }
 ?>
 <HTML>
@@ -32,14 +32,14 @@ if(isset($_REQUEST)){
         </tr>
 <?php
 		foreach( $response as $key => $value) {
-?>			
+?>
         <tr>
             <td class="fieldName" width="50%"><?php echo $key; ?></td>
             <td class="fieldName" align="left" width="50%"><?php echo $value; ?></td>
         </tr>
 <?php
 		}
-?>		
+?>
 	</table>
 </center>
 <table width='100%' cellpadding='0' cellspacing="0" ><tr><th width='90%'>&nbsp;</th></tr></table>

@@ -1,5 +1,5 @@
 var adminbase = "http://wohlig.co.in/osb/admin/";
-// var adminbase = "http://localhost/osb/";
+// var adminbase = "http://192.168.0.127/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -164,7 +164,6 @@ myservices.factory('MyServices', function($http) {
                 }
             }).success(changeproductstatuscallback);
         }
-
     returnval.getalluserproducts = function(id, getalluserproductscallback) {
             console.log(id);
             $http({
@@ -282,6 +281,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.getshopidmebership = function(data, callback) {
             $http.get(adminurl + "shopprofilemem?mem=" + data, {}).success(callback);
+        },
+        returnval.getTransactionStatus = function(id, callback) {
+            $http.get(adminurl + "getTransactionStatus?id=" + id, {}).success(callback);
         },
         returnval.acceptTerms = function(id, callback) {
             $http.get(adminurl + "updateterms?id=" + id + "&termsaccept=1", {}).success(callback);
