@@ -452,7 +452,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.addBalanceObj.mode = "TEST";
             console.log($scope.addBalanceObj);
 
-            var ref = window.open("http://wohlig.co.in/osb/paymentgateway/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=LIVE&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://wohlig.co.in/osb/admin/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=yes');
+            var ref = cordova.InAppBrowser.open("http://wohlig.co.in/osb/paymentgateway/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=LIVE&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://wohlig.co.in/osb/admin/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=yes');
 
             ref.addEventListener('exit', function(event) {
                 clearInterval(callInterval);
@@ -490,63 +490,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     }
                 });
             }, 2000);
-
-            // $timeout(function() {
-            //     var winName = 'MyWindow';
-            //     var myForm = document.getElementById("frmTransaction");
-            //     var ref = window.open('', winName);
-            //     // var ref = cordova.InAppBrowser.open('', winName);
-            //     myForm.target = winName;
-            //     myForm.submit();
-            //     var callInterval = setInterval(function() {
-            //         MyServices.getTransactionStatus($scope.addBalanceObj.orderid, function(statusval) {
-            //             console.log(statusval);
-            //             if (statusval.paymentstatus == "1" || statusval.paymentstatus == 1) {
-            //                 ref.close();
-            //                 clearInterval(callInterval);
-            //                 var myPopup = $ionicPopup.show({
-            //                     template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Balance added</p>',
-            //                     title: 'Payment Successfull!'
-            //                 });
-            //                 $timeout(function() {
-            //                     myPopup.close();
-            //                     $scope.modal.hide();
-            //                     window.location.reload();
-            //                 }, 1500);
-            //             } else if (statusval.paymentstatus == "2" || statusval.paymentstatus == 2) {
-            //                 ref.close();
-            //                 clearInterval(callInterval);
-            //                 var myPopup = $ionicPopup.show({
-            //                     template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Balance not added</p>',
-            //                     title: 'Payment Falied!'
-            //                 });
-            //                 $timeout(function() {
-            //                     myPopup.close();
-            //                     $scope.modal.hide();
-            //                     window.location.reload();
-            //                 }, 1500);
-            //             }
-            //         });
-            //     }, 2000);
-            // }, 1000);
-
-
-            // var myPopup = $ionicPopup.show({
-            //     template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
-            //     title: 'Your Request Sent!',
-            //     scope: $scope,
-            // });
-            // $timeout(function() {
-            //     myPopup.close();
-            // }, 1500);
-
-            //JAGRUTI PAYUMONEY
-            //            ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=" + data + "&firstname=" + $scope.profileuser.shopname + "&amount=" + $scope.add.amount + "&email=" + $scope.profileuser.shopemail + "&phone=" + $scope.profileuser.shopcontact2 + "&productinfo=xbalance&surl=http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data + "&furl=wohlig.com", '_blank', 'location=no');
-            //
-            //            stopinterval = $interval(callAtInterval, 2000);
-            //            ref.addEventListener('exit', function (event) {
-            //                $interval.cancel(stopinterval);
-            //            });
         }
     };
 
@@ -565,6 +508,38 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log("valid");
             console.log($scope.a, $scope.b);
             MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
+        } else {
+            console.log("not valid");
+            $scope.showPopup7();
+        }
+    }
+
+    $scope.addbalanceRequest = function(amount, reason) {
+        $scope.showAddBtn = false;
+        $scope.user = $.jStorage.get("user1");
+        $scope.a = amount;
+        $scope.addBalanceObj.barterAmt = parseFloat(amount);
+        $scope.b = reason;
+        $scope.allvalidation = [{
+            field: $scope.a,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            console.log("valid");
+            console.log($scope.a, $scope.b);
+            MyServices.balanceadd($scope.user, $scope.a, function(data) {
+                if (data != "false") {
+                    var myPopup = $ionicPopup.show({
+                        template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Request Submitted</p>',
+                        title: 'Success!'
+                    });
+                    $timeout(function() {
+                        myPopup.close();
+                        $scope.modal.hide();
+                    }, 1500);
+                }
+            }, $scope.b);
         } else {
             console.log("not valid");
             $scope.showPopup7();
@@ -1807,9 +1782,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.id = $.jStorage.get("user1");
         console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
-
-
-
     }
 
     $scope.showeditPopup = function() {

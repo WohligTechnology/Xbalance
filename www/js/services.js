@@ -62,7 +62,6 @@ myservices.factory('MyServices', function($http) {
         //
         //  },
         returnval.updateprofile = function(id, profile, updateprofilecallback) {
-            //                  console.log(profile);
             $http({
                 url: adminurl + "updateprofile",
                 method: "POST",
@@ -75,7 +74,10 @@ myservices.factory('MyServices', function($http) {
                     'shopcontact1': profile.shopcontact1,
                     'shopcontact2': profile.shopcontact2,
                     'shopemail': profile.shopemail,
-                    'website': profile.website
+                    'website': profile.website,
+                    'billingcity': profile.billingcity,
+                    'billingstate': profile.billingstate,
+                    'billingpincode': profile.billingpincode
                 }
             }).success(updateprofilecallback);
         },
