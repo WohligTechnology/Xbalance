@@ -55,7 +55,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
     //log out
@@ -773,7 +773,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
 
@@ -830,7 +830,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 15000);
     }
 
 
@@ -1025,7 +1025,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $ionicModal.fromTemplateUrl('templates/registration.html', {
         id: '1',
@@ -1367,7 +1367,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
 
@@ -1540,7 +1540,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
 
@@ -2144,7 +2144,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
 
     $scope.showloading();
@@ -2618,7 +2618,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
     var getalluserproductscallback = function(data, status) {
@@ -2640,7 +2640,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
         $timeout(function() {
             $ionicLoading.hide();
-        }, 2000);
+        }, 15000);
     };
     $scope.showloading();
     var getnotificationcallback = function(data, status) {
@@ -2668,7 +2668,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             $timeout(function() {
                 $ionicLoading.hide();
-            }, 2000);
+            }, 15000);
         };
         $scope.showloading();
         $scope.disableid = $.jStorage.get("user1");
@@ -2686,6 +2686,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.prodid = $stateParams.id;
         console.log($scope.prodid);
         var getsingleproductcallback = function(data, status) {
+            $ionicLoading.hide();
             $scope.getsinglepro = data;
             console.log($scope.getsinglepro);
 

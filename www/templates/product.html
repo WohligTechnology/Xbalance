@@ -1,8 +1,8 @@
 <ion-view view-title="Products">
-   
-     <ion-nav-buttons side="right">
+
+     <!-- <ion-nav-buttons side="right">
         <button class="button button-icon ion-arrow-swap small-icon arrows" ng-click="opensort();"></button>
-    </ion-nav-buttons>
+    </ion-nav-buttons> -->
     <ion-content class="padding">
         <div class="incard">
             <div class="header-card">Online Search</div>
@@ -28,7 +28,7 @@
                <option ng-repeat="cat in category" value={{cat.id}}>{{cat.id}}{{cat.name}}</option>
             </select>
 -->
-            
+
             </label>
 
 <!--
@@ -42,7 +42,7 @@
                     </select>
                 </label>
 -->
-           
+
             <div class="row">
                 <div class="col">
                     <h5 class="member">Keyword</h5>
@@ -82,7 +82,7 @@
                         </span>
 <!--                    </a>-->
                 </div>
-                 
+
             </div>
           <div class="list" >
             <div class="text-center" ng-if="spr.length==0">
@@ -94,6 +94,6 @@
               </div>
             </div>
         </div>
-         
+
     </ion-content>
 </ion-view>
