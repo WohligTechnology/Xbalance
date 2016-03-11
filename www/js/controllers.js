@@ -209,7 +209,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     setInterval(function() {
         MyServices.yourbalance($.jStorage.get("user1"), yourbalancecallback);
         MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
-    }, 50000);
+    }, 900000);
 
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
@@ -452,13 +452,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.addBalanceObj.mode = "TEST";
             console.log($scope.addBalanceObj);
 
+            //for LIVE
             var ref = cordova.InAppBrowser.open("http://wohlig.co.in/osb/paymentgateway/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=LIVE&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://wohlig.co.in/osb/admin/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=no');
+
+            //for TEST & LOCAL
+            // var ref = window.open("http://192.168.0.127/paymentgateway/ebs/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=TEST&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://192.168.0.127/osb/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=no');
 
             ref.addEventListener('exit', function(event) {
                 clearInterval(callInterval);
             });
-
-            // var ref = cordova.InAppBrowser.open("http://192.168.0.127/paymentgateway/ebs/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=TEST&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://192.168.0.127/osb/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=yes');
 
             var callInterval = setInterval(function() {
                 MyServices.getTransactionStatus($scope.addBalanceObj.orderid, function(statusval) {
@@ -1010,14 +1012,41 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform) {
+.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
 
     $ionicPlatform.registerBackButtonAction(function(event) {
         console.log("back pressed");
         if ($state.current.name == "login") {
-            navigator.app.exitApp();
+            // navigator.app.exitApp();
+            var myPopup = $ionicPopup.show({
+                template: "<b><p>Are you sure you want to exit?</p></b>",
+                title: '<b>Exit !</b>',
+                scope: $scope,
+                buttons: [{
+                    text: 'No',
+                    type: 'button-assertive',
+                    onTap: function(e) {
+                        return false;
+                    }
+                }, {
+                    text: '<b>Yes</b>',
+                    type: 'button-balanced',
+                    onTap: function(e) {
+                        return true;
+                    }
+                }]
+            });
+            myPopup.then(function(res) {
+                console.log('Tapped!', res);
+                myPopup.close()
+                if (res == true) {
+                    navigator.app.exitApp();
+                }
+            });
         }
     }, 100);
+
+    console.log("Current State : " + $state.current.name);
 
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -1467,7 +1496,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.totalsr = 0;
     var transactioncallback = function(data, status) {
         $scope.t = data;
-        console.log(data);
         $scope.totalPurcahse = 0;
         MyServices.yourbalance($.jStorage.get("user1"), function(mybal) {
             $ionicLoading.hide();
@@ -1489,6 +1517,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 // console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);
             })
+            _.each($scope.t.admin, function(n) {
+                n.timestamp = new Date(n.timestamp);
+            })
+            console.log($scope.t);
         });
 
     }

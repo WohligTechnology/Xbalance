@@ -10,8 +10,8 @@
             <br>Sales
          </div>
          <div class="button" ng-class="admin" ng-click="chnageadmin();">
-            Cash Amount
-            <br>Received
+            Payment
+            <br>History
          </div>
       </div>
       <div class="padding">
@@ -119,7 +119,7 @@
                   <ion-item class="item" ng-repeat="tr in t.admin">
                      <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
                      <p><b>Amount in INR:</b> {{tr.amount}}</p>
-                     <p><b>Date:</b> {{tr.date | date:'longDate'}}</p>
+                     <p><b>Date:</b> {{tr.timestamp | date:'MMMM d, y h:mm a'}}</p>
                      <p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>
                   </ion-item>
                </div>

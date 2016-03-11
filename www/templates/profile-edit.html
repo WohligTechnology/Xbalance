@@ -16,13 +16,6 @@
                   </div>
                   <!--Select-->
                   <div class="item item-input item-select text-capitalize">
-                     <div class="input-label different">Area</div>
-                     <select ng-model="profile.areaid">
-                        <option value="">All</option>
-                        <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
-                     </select>
-                  </div>
-                  <div class="item item-input item-select text-capitalize">
                      <div class="input-label different">Category</div>
                      <select ng-model="profile.categoryid">
                         <option value="">All</option>
@@ -35,6 +28,16 @@
                   </div>
                   <div class="item item-input">
                      <input type="text" placeholder="City" ng-model="profile.billingcity">
+                  </div>
+                  <div class="item item-input item-select text-capitalize">
+                     <div class="input-label different">Area</div>
+                     <select ng-options="a.id as a.name for a in areas" ng-model="profile.areaid">
+
+                     </select>
+                     <!-- <select ng-model="profile.areaid">
+                        <option value="">All</option>
+                        <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
+                     </select> -->
                   </div>
                   <div class="item item-input">
                      <input type="text" placeholder="State" ng-model="profile.billingstate">
