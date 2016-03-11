@@ -1,5 +1,5 @@
 var adminbase = "http://wohlig.co.in/osb/admin/";
-// var adminbase = "http://localhost/osb/";
+// var adminbase = "http://192.168.0.127/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -54,6 +54,7 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {
+            console.log(id);
             $http.get(adminurl + "shopproductphoto?id=" + id, {}).success(shopproductphotocallback);
         },
         //              returnval.shopproduct=function(id,shopproductcallback){
@@ -61,7 +62,6 @@ myservices.factory('MyServices', function($http) {
         //
         //  },
         returnval.updateprofile = function(id, profile, updateprofilecallback) {
-            //                  console.log(profile);
             $http({
                 url: adminurl + "updateprofile",
                 method: "POST",
@@ -74,7 +74,10 @@ myservices.factory('MyServices', function($http) {
                     'shopcontact1': profile.shopcontact1,
                     'shopcontact2': profile.shopcontact2,
                     'shopemail': profile.shopemail,
-                    'website': profile.website
+                    'website': profile.website,
+                    'billingcity': profile.billingcity,
+                    'billingstate': profile.billingstate,
+                    'billingpincode': profile.billingpincode
                 }
             }).success(updateprofilecallback);
         },
@@ -163,7 +166,6 @@ myservices.factory('MyServices', function($http) {
                 }
             }).success(changeproductstatuscallback);
         }
-
     returnval.getalluserproducts = function(id, getalluserproductscallback) {
             console.log(id);
             $http({
@@ -281,6 +283,12 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.getshopidmebership = function(data, callback) {
             $http.get(adminurl + "shopprofilemem?mem=" + data, {}).success(callback);
+        },
+        returnval.getTransactionStatus = function(id, callback) {
+            $http.get(adminurl + "getTransactionStatus?id=" + id, {}).success(callback);
+        },
+        returnval.acceptTerms = function(id, callback) {
+            $http.get(adminurl + "updateterms?id=" + id + "&termsaccept=1", {}).success(callback);
         };
     return returnval;
 });

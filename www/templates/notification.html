@@ -3,7 +3,7 @@
        <p class="royal padding text-center" ng-if="notification.length==0">No Notifications yet.</p>
         <div class="incard notification" ng-repeat="n in notification">
             <div class="header-cards">Business
-                <span style="float:right; font-size:14px;">{{n.date}}</span>
+                <span style="float:right; font-size:14px;">{{n.date | date:'dd MMM yyyy'}} {{n.time | ampmtime}}</span>
             </div>
             <p>{{n.message}}</p>
         </div>

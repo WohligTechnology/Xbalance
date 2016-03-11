@@ -1,148 +1,140 @@
 <ion-view view-title="Edit Profile">
-    <ion-content class="padding">
-        <ion-list>
-            <div class="incard">
-                <form ng-submit="">
-                    <div class="list">
-                        <div class="profile-img" ng-click="changeprofileimage()">
-                            <img src="{{profile.shoplogo|serverimage}}">
-<!--                            <div class="holder">Edit</div>-->
-                                  <div class="padding-horizontal text-center">
-                    <button class="button button-balanced pr-button">Edit</button>
-                </div>
-                        </div>
-                        <div class="item item-input text-capitalize">
-                            <input type="text" placeholder="Name" ng-model="profile.shopname">
-                        </div>
+   <ion-content class="padding">
+      <ion-list>
+         <div class="incard">
+            <form ng-submit="">
+               <div class="list">
+                  <div class="profile-img">
+                     <img src="{{profile.shoplogo|serverimage}}">
+                     <!--                            <div class="holder">Edit</div>-->
+                     <div class="padding-horizontal text-center">
+                        <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button>
+                     </div>
+                  </div>
+                  <div class="item item-input text-capitalize">
+                     <input type="text" placeholder="Name" ng-model="profile.shopname">
+                  </div>
+                  <!--Select-->
+                  <div class="item item-input item-select text-capitalize">
+                     <div class="input-label different">Category</div>
+                     <select ng-model="profile.categoryid">
+                        <option value="">All</option>
+                        <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                     </select>
+                  </div>
+                  <!--Select-->
+                  <div class="item item-input text-capitalize">
+                     <textarea placeholder="Address" ng-model="profile.billingaddress"></textarea>
+                  </div>
+                  <div class="item item-input">
+                     <input type="text" placeholder="City" ng-model="profile.billingcity">
+                  </div>
+                  <div class="item item-input item-select text-capitalize">
+                     <div class="input-label different">Area</div>
+                     <select ng-options="a.id as a.name for a in areas" ng-model="profile.areaid">
 
-                        <!--Select-->
-                        <div class="item item-input item-select text-capitalize">
-                            <div class="input-label different">Area</div>
-                            <select ng-model="profile.areaid">
-								<option value="">All</option>
-                                <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
-                            </select>
-                        </div>
-                        <div class="item item-input item-select text-capitalize">
-                            <div class="input-label different">Category</div>
-                            <select ng-model="profile.categoryid">
-                               <option value="">All</option>
-                                <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                            </select>
-                        </div>
-                        <!--Select-->
-
-                        <div class="item item-input text-capitalize">
-                            <textarea placeholder="Address" ng-model="profile.billingaddress"></textarea>
-                        </div>
-                        <div class="item text-capitalize">
-                            <textarea placeholder="Description" ng-model="profile.description"></textarea>
-                        </div>
-                        <div class="item item-input">
-                            <input type="tel" maxlength="10" placeholder="Mobile No." ng-model="profile.shopcontact1">
-                        </div>
-                        <div class="item item-input">
-                            <input type="tel" maxlength="10" placeholder="Landline No." ng-model="profile.shopcontact2">
-                        </div>
-
-                        <div class="item item-input">
-                            <input type="email" placeholder="Email Id" ng-model="profile.shopemail">
-                        </div>
-                        <div class="item item-input">
-                            <input type="text" placeholder="Website" ng-model="profile.website">
-                        </div>
-                        <div class="m20">
-
-                        <div class="item item-input item-text-wrap header">
-                            <h2>Shops Photos</h2>
-                        </div>
-                        <div class="row">
-
-
-                            <div class="col input-div" ng-repeat="i in pic" ng-click="changeshopimage(i.id);">
-<!--
+                     </select>
+                     <!-- <select ng-model="profile.areaid">
+                        <option value="">All</option>
+                        <option ng-repeat="a in areas" value="{{a.id}}">{{a.name}}</option>
+                     </select> -->
+                  </div>
+                  <div class="item item-input">
+                     <input type="text" placeholder="State" ng-model="profile.billingstate">
+                  </div>
+                  <div class="item item-input">
+                     <input type="tel" maxlength="6" placeholder="Pincode" ng-model="profile.billingpincode">
+                  </div>
+                  <div class="item text-capitalize">
+                     <textarea placeholder="Description" ng-model="profile.description"></textarea>
+                  </div>
+                  <div class="item item-input">
+                     <input type="tel" maxlength="10" placeholder="Mobile No." ng-model="profile.shopcontact1">
+                  </div>
+                  <div class="item item-input">
+                     <input type="tel" maxlength="10" placeholder="Landline No." ng-model="profile.shopcontact2">
+                  </div>
+                  <div class="item item-input">
+                     <input type="email" placeholder="Email Id" ng-model="profile.shopemail">
+                  </div>
+                  <div class="item item-input">
+                     <input type="text" placeholder="Website" ng-model="profile.website">
+                  </div>
+                  <div class="m20">
+                     <div class="item item-input item-text-wrap header">
+                        <h2>Shops Photos</h2>
+                     </div>
+                     <div class="row">
+                        <div class="col input-div" ng-repeat="i in pic" ng-click="changeshopimage(i.id);">
+                           <!--
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
 
 -->
-                                		<div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
-
-								</div>
-                            </div>
-
-                            <div class="col-33 input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-
-                            <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-
+                           <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
+                           </div>
                         </div>
-                             </div>
-<div class="m20">
-
-                        <div class="item item-input item-text-wrap header">
-                            <h2>Products Photos</h2>
+                        <div class="col-33 input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
                         </div>
-                       <div class="row">
-
-                           <div class="col input-div" ng-repeat="i in image" ng-click="changeproductimage(i.id);">
-<!--
+                        <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
+                        </div>
+                        <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="m20">
+                     <div class="item item-input item-text-wrap header">
+                        <h2>Products Photos</h2>
+                     </div>
+                     <div class="row">
+                        <div class="col input-div" ng-repeat="i in image" ng-click="changeproductimage(i.id);">
+                           <!--
                                 <div class="img-profile">
                                     <img ng-src="{{i.photo|serverimage}}">
                                 </div>
 -->
-                               	<div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
-
-								</div>
-                            </div>
-
-                            <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-                            <div class="col input-div" ng-if="image.length==0 || image.length==1" ng-click="changeproductimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-                            <div class="col input-div" ng-if="image.length==0 || image.length==1 ||  image.length==2" ng-click="changeproductimage('');">
-                                <div class="img-profile">
-                                    <img src="img/add.png">
-                                    <div class="holder2">Edit</div>
-                                </div>
-                            </div>
-
+                           <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
+                           </div>
                         </div>
-     </div>
-                        <div class="padding-horizontal btn-rest text-center p20 p15">
-                            <button class="button pr-button button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
+                        <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
                         </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </ion-list>
-
-    </ion-content>
+                        <div class="col input-div" ng-if="image.length==0 || image.length==1" ng-click="changeproductimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
+                        </div>
+                        <div class="col input-div" ng-if="image.length==0 || image.length==1 ||  image.length==2" ng-click="changeproductimage('');">
+                           <div class="img-profile">
+                              <img src="img/add.png">
+                              <div class="holder2">Edit</div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="padding-horizontal btn-rest text-center p20 p15">
+                     <button class="button pr-button button-balanced" type="submit" ng-click="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">Update</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </ion-list>
+   </ion-content>
 </ion-view>

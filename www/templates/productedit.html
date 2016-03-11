@@ -1,76 +1,72 @@
 <ion-modal-view>
-    <ion-header-bar class="bar-royal" align-title="center">
-        <h1 class="title">Edit Product</h1>
-        <div class="buttons">
-            <button class="button button-clear" ng-click="closeprdtedit()">Close</button>
-        </div>
-    </ion-header-bar>
-    <ion-content class="padding">
-        <div class="incard">
-            <form ng-submit="">
-                <div class="list prd-form">
-                    <div class="profile-img" ng-click="editproductimage();">
-                        <img ng-src="{{prodetails.image|serverimage}}">
-                       
-                                      <div class="padding-horizontal text-center">
-                    <button class="button button-balanced pr-button">Edit</button>
-                </div>
-                    </div>
-<!--
+   <ion-header-bar class="bar-royal" align-title="center">
+      <h1 class="title">Edit Product</h1>
+      <div class="buttons">
+         <button class="button button-clear" ng-click="closeprdtedit()">Close</button>
+      </div>
+   </ion-header-bar>
+   <ion-content class="padding">
+      <div class="incard">
+         <form ng-submit="">
+            <div class="list prd-form">
+               <div class="profile-img">
+                  <img ng-src="{{prodetails.image|serverimage}}">
+               </div>
+               <!--
                     <div class="profile-img" ng-click="changeprofileimage()">
                             <img src="{{profile.shoplogo|serverimage}}">
                             <div class="holder">Edit</div>
                         </div>
 -->
-                    <div class="item item-input text-capitalize">
-                        <span class="input-label">Name</span>
-                        <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" required disabled>
-                    </div>
-                    <div class="item  item-input text-capitalize">
-                        <span class="input-label">Price</span>
-                        <input type="text" placeholder="Price" ng-model="prodetails.price" class="text-right" ng-class="allvalidation[1].validation" required>
-                    </div>
-                    <div class="item  item-input text-capitalize">
-                        <span class="input-label">Quantity</span>
-                        <input type="text" placeholder="Quantity" ng-model="prodetails.quantity" class="text-right" ng-class="allvalidation[2].validation" required>
-                    </div>
-<!--
+               <div class="item item-input">
+                  <span class="input-label">Name</span>
+                  <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" readonly>
+               </div>
+               <div class="item  item-input">
+                  <span class="input-label">Price</span>
+                  <input type="tel" placeholder="Price" ng-model="prodetails.price" class="text-right" ng-class="allvalidation[1].validation" required>
+               </div>
+               <div class="item  item-input">
+                  <span class="input-label">Quantity</span>
+                  <input type="tel" placeholder="Quantity" ng-model="prodetails.quantity" class="text-right" ng-class="allvalidation[2].validation" required>
+               </div>
+               <!--
                     <div class="item  item-input text-capitalize">
                         <span class="input-label">SKU</span>
                         <input type="text" placeholder="SKU" ng-model="prodetails.sku" class="text-right">
                     </div>
 -->
-                    <div class="item item-toggle">
-                        <span style="font-weight:bold;">Status</span>
-                        <label class="toggle toggle-balanced">
-                            <input type="checkbox" ng-model="prodetails.status" >
-                            <div class="track">
-                                <div class="handle"></div>
-                            </div>
-                        </label>
-                    </div>
-                    <label class="item item-input item-select area">
-                        <div class="input-label">
-                            <span style="font-weight:bold;">Category</span>
-                        </div>
-                        <select ng-model="prodetails.category" ng-class="allvalidation[3].validation" required disabled>
-                            <option value="">All</option>
-                            <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                        </select>
-                    </label>
-                    <div class="item item-input item-text-wrap header">
-                        <h2>Description</h2>
-                    </div>
-                    <div class="item  item-input text-capitalize">
-                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required disabled></textarea>
-                    </div>
-                </div>
-            </form>
-            <div class="padding">
-                <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>       
-                         <button class="button button-block button-balanced" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
+               <div class="item item-toggle">
+                  <span style="font-weight:bold;">Status</span>
+                  <label class="toggle toggle-balanced">
+                     <input type="checkbox" ng-model="prodetails.status">
+                     <div class="track">
+                        <div class="handle"></div>
+                     </div>
+                  </label>
+               </div>
+               <label class="item item-input item-select area">
+                  <div class="input-label">
+                     <span style="font-weight:bold;">Category</span>
+                  </div>
+                  <select ng-model="prodetails.category" ng-class="allvalidation[3].validation" disabled>
+                     <option value="">All</option>
+                     <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                  </select>
+               </label>
+               <div class="item item-input item-text-wrap header">
+                  <h2>Description</h2>
+               </div>
+               <div class="item  item-input">
+                  <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required disabled></textarea>
+               </div>
             </div>
-        </div>
-        </div>
-    </ion-content>
+         </form>
+         <div class="padding">
+            <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>
+            <button class="button button-block button-balanced" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
+         </div>
+      </div>
+      </div>
+   </ion-content>
 </ion-modal-view>

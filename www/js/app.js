@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             push = PushNotification.init({
                 "android": {
                     "senderID": "694450719069",
-                    "icon": "img/icon.png"
+                    'icon': 'icon'
                 },
                 "ios": {
                     "alert": "true",
@@ -271,6 +271,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             return "img/noimg.jpg";
         }
     };
+})
+
+.filter('ampmtime', function() {
+    return function(value) {
+        if (!value) {
+            return '';
+        }
+        var split = value.split(':');
+        var minutes = parseInt(split[1]) + 30;
+        var hours = parseInt(split[0]) + 5;
+        if (minutes >= 60) {
+            hours += 1;
+            minutes = minutes - 60;
+        }
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        if (hours < 10) {
+            hours = "0" + hours
+        }
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+    }
 });
 
 //.filter('serverimage', function () {

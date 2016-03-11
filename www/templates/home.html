@@ -18,6 +18,7 @@
             <div class="profile-img" ng-controller="ProfileCtrl">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
                 <h3>{{profile.shopname}}</h3>
+                <h3>Membership Id : {{profile.membershipno}}</h3>
             </div>
 
 
@@ -50,6 +51,11 @@
                     Add Balance
                 </button>
             </div>
+            <!-- <div class="padding-horizontal text-center p15" ng-controller="HomeCtrl">
+                <button class="button button-balanced pr-button" ng-click="openWindow();">
+                Pay
+                </button>
+            </div> -->
 
 
         </div>

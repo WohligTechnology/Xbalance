@@ -1,151 +1,129 @@
 <ion-view view-title="Transaction">
-    <ion-content class="searcher">
-        <div class="button-bar bar-balanced transbtn">
-            <div class="button" ng-class="purchased" ng-click="changepurchase();">
-                Trade Value
-                <br>Purchase
+   <ion-content class="searcher">
+      <div class="button-bar bar-balanced transbtn">
+         <div class="button" ng-class="purchased" ng-click="changepurchase();">
+            Trade Value
+            <br>Purchase
+         </div>
+         <div class="button" ng-class="sale" ng-click="chnagesale();">
+            Trade Value
+            <br>Sales
+         </div>
+         <div class="button" ng-class="admin" ng-click="chnageadmin();">
+            Payment
+            <br>History
+         </div>
+      </div>
+      <div class="padding">
+         <div class="bold-list" ng-if="purchased=='bold'">
+            <div class="incard" ng-if="t.sales.length==0">
+               <div class="list">
+                  <div class="text-center royal padding">
+                     <figure>
+                        <img src="img/not.jpg" class="full-image" style="width:110px;">
+                     </figure>
+                  </div>
+               </div>
             </div>
-            <div class="button" ng-class="sale" ng-click="chnagesale();">
-                Trade Value
-                <br>Sales
-            </div>
-            <div class="button" ng-class="admin" ng-click="chnageadmin();">
-                <!--
-                Transaction
-                <br>Charges
--->
-                Cash Amount
-                <br>Received
-            </div>
-        </div>
-        <div class="padding">
-            <div class="bold-list" ng-if="purchased=='bold'">
-                <div class="incard" ng-if="t.purchased=='';">
-                    <div class="list">
-                        <div class="text-center royal padding" >
-                            <figure>
-                                <img src="img/not.jpg" class="full-image" style="width:110px;">
-
-                            </figure>
-
-
+            <div class="incard transcard" ng-if="t.sales.length>0">
+               <div class="list">
+                  <ion-item class="item item-thumbnail-left listmk">
+                     <span class="item-note">{{totalPurcahse}}</span>
+                     <h2 class="bold">Total</h2>
+                  </ion-item>
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-if="!tr.orderdate">
+                     <div class="row">
+                        <div class="col-25">
+                           <div class="">
+                              <!--                                        <img src="{{tr.shoplogo|serverimage}}">-->
+                              <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
+                           </div>
                         </div>
-                    </div>
-                </div>
-
-                <!--                <p class="royal padding text-center" ng-if="t.purchased=='';">No transactions yet.</p>-->
-
-                <div class="incard transcard" ng-if="t.purchased!='';">
-                    <div class="list">
-                        <ion-item class="item item-thumbnail-left listmk">
-                            <span class="item-note">{{finalpurchase}}</span>
-                            <h2 class="bold">Total</h2>
-                        </ion-item>
-                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales">
-                            <div class="row">
-                                <div class="col-25">
-                                    <div class="">
-<!--                                        <img src="{{tr.shoplogo|serverimage}}">-->
-                                        <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
-                                    </div>
-                                </div>
-                                <div class="col-75">
-                                    <div class="sell-cont trans">
-                                        <span class="item-note">-{{tr.amount}}</span>
-                                        <h2>{{tr.shopname}}</h2>
-                                        <p>Date: {{tr.date}}</p>
-                                        <p>Time: {{tr.time}}</p>
-                                        <p>Transaction Id: {{tr.id}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-item>
-                        <ion-item class="item item-thumbnail-left listmk">
-                            <span class="item-note">{{t.totalpurchase.purchasebalance}}</span>
-                            <h2 class="bold">Remaining</h2>
-                        </ion-item>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bold-list" ng-if="sale=='bold';">
-                <div class="incard"  ng-if="t.sales=='';">
-                    <div class="list">
-                        <div class="text-center royal padding">
-                            <figure>
-                                <img src="img/not.jpg" class="full-image" style="width:110px;">
-
-                            </figure>
-
-
+                        <div class="col-75">
+                           <div class="sell-cont trans">
+                              <span class="item-note">-{{tr.amount}}</span>
+                              <h2>{{tr.shopname}}</h2>
+                              <p>Date: {{tr.date | date:'longDate'}}</p>
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
+                              <p>Transaction Id: {{tr.id}}</p>
+                           </div>
                         </div>
-                    </div>
-                </div>
-
-
-                <div class="incard transcard" ng-if="t.sales!='';">
-                    <div class="list">
-                        <ion-item class="item item-thumbnail-left listmk">
-                            <span class="item-note">{{finalsales}}</span>
-                            <h2 class="bold">Total</h2>
-                        </ion-item>
-                        <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased">
-                            <div class="row">
-                                <div class="col-25">
-                                    <div class="">
-<!--                                        <img src="">-->
-                                        <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
-                                    </div>
-                                </div>
-                                <div class="col-75">
-                                    <div class="sell-cont trans">
-                                        <span class="item-note">-{{tr.amount}}</span>
-                                        <h2>{{tr.shopname}}</h2>
-                                        <p>Date: {{tr.date}}</p>
-                                        <p>Time: {{tr.time}}</p>
-                                        <p>Transaction Id: {{tr.id}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </ion-item>
-                        <ion-item class="item item-thumbnail-left listmk">
-                            <span class="item-note">{{t.totalsales.salesbalance}}</span>
-                            <h2 class="bold">Remaining</h2>
-                        </ion-item>
-                    </div>
-                </div>
+                     </div>
+                  </ion-item>
+                  <ion-item class="item item-thumbnail-left listmk">
+                     <span class="item-note">{{purchaseRemaining}}</span>
+                     <h2 class="bold">Remaining</h2>
+                  </ion-item>
+               </div>
             </div>
-            <div class="bold-list" ng-if="admin=='bold'">
-                <div class="incard" ng-if="t.admin=='';">
-                    <div class="list">
-                        <div class="text-center royal padding" >
-                            <figure>
-                                <img src="img/not.jpg" class="full-image" style="width:110px;">
+         </div>
 
-                            </figure>
-
-
+         <div class="bold-list" ng-if="sale=='bold';">
+            <div class="incard" ng-if="t.purchased.length==0">
+               <div class="list">
+                  <div class="text-center royal padding">
+                     <figure>
+                        <img src="img/not.jpg" class="full-image" style="width:110px;">
+                     </figure>
+                  </div>
+               </div>
+            </div>
+            <div class="incard transcard" ng-if="t.purchased.length>0">
+               <div class="list">
+                  <!-- <ion-item class="item item-thumbnail-left listmk">
+                     <span class="item-note">{{finalsales}}</span>
+                     <h2 class="bold">Total</h2>
+                  </ion-item> -->
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased" ng-if="!tr.orderdate">
+                     <div class="row">
+                        <div class="col-25">
+                           <div class="">
+                              <!--                                        <img src="">-->
+                              <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
+                           </div>
                         </div>
-                    </div>
-                </div>
-                <div class="incard padding-horizontal" ng-if="t.admin!='';">
-                    <div class="list">
-                        <ion-item class="item item-thumbnail-left listmk no-left">
-                            <span class="item-note">{{t.transaction.totaltransaction}}</span>
-                            <h2 class="bold">Total amount in Barter</h2>
-                        </ion-item>
-
-                        <ion-item class="item" ng-repeat="tr in t.admin">
-                            <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
-                            <p><b>Amount in INR:</b> {{tr.amount}}</p>
-                            <p><b>Date:</b> {{tr.date}}</p>
-                            <p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>
-
-                        </ion-item>
-
-                    </div>
-                </div>
+                        <div class="col-75">
+                           <div class="sell-cont trans">
+                              <span class="item-note">{{tr.amount}}</span>
+                              <h2>{{tr.shopname}}</h2>
+                              <p>Date: {{tr.date | date:'longDate'}}</p>
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
+                              <p>Transaction Id: {{tr.id}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </ion-item>
+                  <!-- <ion-item class="item item-thumbnail-left listmk">
+                     <span class="item-note">{{t.totalsales.salesbalance}}</span>
+                     <h2 class="bold">Remaining</h2>
+                  </ion-item> -->
+               </div>
             </div>
-
-    </ion-content>
+         </div>
+         <div class="bold-list" ng-if="admin=='bold'">
+            <div class="incard" ng-if="t.admin=='';">
+               <div class="list">
+                  <div class="text-center royal padding">
+                     <figure>
+                        <img src="img/not.jpg" class="full-image" style="width:110px;">
+                     </figure>
+                  </div>
+               </div>
+            </div>
+            <div class="incard padding-horizontal" ng-if="t.admin!='';">
+               <div class="list">
+                  <ion-item class="item item-thumbnail-left listmk no-left">
+                     <span class="item-note">{{t.transaction.totaltransaction}}</span>
+                     <h2 class="bold">Total amount in Barter</h2>
+                  </ion-item>
+                  <ion-item class="item" ng-repeat="tr in t.admin">
+                     <p><b>Amount in Barter:</b> {{tr.payableamount}}</p>
+                     <p><b>Amount in INR:</b> {{tr.amount}}</p>
+                     <p><b>Date:</b> {{tr.timestamp | date:'MMMM d, y h:mm a'}}</p>
+                     <p ng-if='tr.approvalreason!="";'><b>Reason:</b> {{tr.approvalreason}}</p>
+                  </ion-item>
+               </div>
+            </div>
+         </div>
+   </ion-content>
 </ion-view>
