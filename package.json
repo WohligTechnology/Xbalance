@@ -26,10 +26,9 @@
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
+    "cordova-plugin-file-transfer",
     "phonegap-plugin-push",
     "cordova-plugin-file-transfer",
-    "phonegap-plugin-push@~1.4.5",
-    "cordova-plugin-file-transfer@~1.4.0",
     "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
