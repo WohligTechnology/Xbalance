@@ -1722,15 +1722,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 console.log(err);
             }, function(progress) {
                 // constant progress updates
-                $ionicLoading.show({
-                    //        template: 'We are fetching the best rates for you.',
-
-                    content: 'Uploading Image',
-                    animation: 'fade-in',
-                    showBackdrop: true,
-                    maxWidth: 200,
-                    showDelay: '0'
-                });
+                
                 console.log("progress");
             });
 
