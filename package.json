@@ -21,15 +21,20 @@
     "cordova-plugin-console",
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
-    "com.ionic.keyboard",
+    "ionic-plugin-keyboard",
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
     "cordova-plugin-file-transfer",
-    "phonegap-plugin-push",
-    "cordova-plugin-file-transfer",
-    "cordova-plugin-crosswalk-webview"
+    "cordova-plugin-crosswalk-webview",
+    {
+      "variables": {
+        "SENDER_ID": "694450719069"
+      },
+      "locator": "phonegap-plugin-push"
+    },
+    "phonegap-plugin-push"
   ],
   "cordovaPlatforms": [
     "android",
