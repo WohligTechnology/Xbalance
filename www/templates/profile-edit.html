@@ -8,7 +8,8 @@
                      <img src="{{profile.shoplogo|serverimage}}">
                      <!--                            <div class="holder">Edit</div>-->
                      <div class="padding-horizontal text-center">
-                        <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button>
+                        <upload-image no-view ng-click="changeprofileimage()" ng-callback="changeprofilephoto"></upload-image>
+                        <!-- <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button> -->
                      </div>
                   </div>
                   <div class="item item-input text-capitalize">
@@ -74,24 +75,28 @@
 -->
                            <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col-33 input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1" ng-click="changeshopimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col-33 input-div" ng-if="pic.length==0 || pic.length==1 ||  pic.length==2" ng-click="changeshopimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                      </div>
                   </div>
@@ -108,24 +113,28 @@
 -->
                            <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col input-div" ng-if="image.length==0 || image.length==1" ng-click="changeproductimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                         <div class="col input-div" ng-if="image.length==0 || image.length==1 ||  image.length==2" ng-click="changeproductimage('');">
                            <div class="img-profile">
                               <img src="img/add.png">
                               <div class="holder2">Edit</div>
                            </div>
+                           <upload-image no-view ng-callback="changeshopphoto"></upload-image>
                         </div>
                      </div>
                   </div>

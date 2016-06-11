@@ -1,0 +1,27 @@
+<div class="form-group">
+  <!-- <label for="exampleInputEmail1" style="margin:5px;">Image Upload</label> -->
+
+  <div class="img-box" ng-if="image && !isMultiple" ng-hide="noShow">
+    <img ng-src="{{image.url}}" imageonload="upload(image)" type="{{image.file.type}}"/>
+    <div class="delete-image">
+     <i class="ln ln-cross"></i>
+    </div>
+  </div>
+  <div class="clearfix" ng-if="image && isMultiple" ng-hide="noShow">
+    <div class="img-box" style="float:left;"  ng-repeat="sImage in image">
+      <img alt="" ng-src="{{sImage.url}}" imageonload="upload(sImage)" type="{{sImage.file.type}}"/>
+      <div class="delete-image">
+       <i class="ln ln-cross"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-upload btn btn-primary btn-outline btn-small create-btn">
+    <input id="inputImage" ng-show="!isMultiple" type="file" accept="image/*" image="image" title="Choose Files" class="button button-balanced pr-button">
+    <input id="inputImage" ng-show="isMultiple" type="file" accept="image/*" image="image" title="Choose Multiple Files" class="button button-balanced pr-button" onchange="angular.element(this).scope().clearOld()" multiple>
+    <span ng-show="!isMultiple">Upload File</span>
+    <span ng-show="isMultiple">Upload Files</span>
+    <!-- <a class="btn btn-primary btn-outline btn-small create-btn" ng-if="!isMultiple">Choose File</a> -->
+    <!-- <a class="btn btn-primary btn-outline btn-small create-btn" ng-if="isMultiple">Choose Files</a> -->
+  </div>
+</div>

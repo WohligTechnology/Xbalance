@@ -3,7 +3,7 @@ var ref = 0;
 var sorts = {};
 var chintansglobal = {};
 var count = 0;
-angular.module('starter.controllers', ['myservices', 'ngCordova'])
+angular.module('starter.controllers', ['myservices', 'ngCordova', 'imageupload', ])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup, $cordovaNetwork) {
 
@@ -15,7 +15,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //
     //     var isOffline = $cordovaNetwork.isOffline();
     //
-    //     console.log("isOffline = " + $cordovaNetwork.isOffline());
+    //     //console.log("isOffline = " + $cordovaNetwork.isOffline());
     //     if (isOffline == true) {
     //         var myPopup = $ionicPopup.show({
     //             template: '<p class="text-center">Please connect to internet and restart the app.</p>',
@@ -32,9 +32,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.product = {};
     $scope.searchproduct = function(product) {
         $scope.p = product;
-        console.log($scope.p.productname);
-        console.log($scope.p.membershipno);
-        console.log($scope.p.category);
+        //console.log($scope.p.productname);
+        //console.log($scope.p.membershipno);
+        //console.log($scope.p.category);
         if ($scope.p.productname == undefined) {
             $scope.p.productname = 0;
         }
@@ -60,21 +60,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
     //log out
     var logoutcallback = function(data, status) {
-        console.log("logged out");
+        //console.log("logged out");
     }
     $scope.logoutfunction = function() {
         $scope.loginid = $.jStorage.get("user1");
-        console.log($scope.loginid);
+        //console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
     }
 
     //your balance
     $scope.approvalcount = 0;
     var sellingapprovalcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.approvalcount = data.sellingapproval.length;
         //    $scope.approvalcount = 1;
-        console.log(data.sellingapproval.length);
+        //console.log(data.sellingapproval.length);
     }
 
     if ($.jStorage.get("user1")) {
@@ -96,7 +96,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('HomeCtrl', function($scope, MyServices, $ionicModal, $location, $ionicPopup, $timeout, $stateParams, $ionicLoading, $interval, $ionicPlatform, $state) {
     //home page
     $ionicPlatform.registerBackButtonAction(function(event) {
-        console.log("back pressed = " + $state.current.name);
+        //console.log("back pressed = " + $state.current.name);
         if ($state.current.name != "app.home") {
             exitCount = 0;
             navigator.app.backHistory();
@@ -120,7 +120,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }]
             });
             myPopup.then(function(res) {
-                console.log('Tapped!', res);
+                //console.log('Tapped!', res);
                 myPopup.close()
                 if (res == true) {
                     navigator.app.exitApp();
@@ -143,10 +143,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.accept.terms = false;
 
     $scope.acceptTerms = function() {
-        console.log($scope.accept);
+        //console.log($scope.accept);
         if ($scope.accept.terms == true) {
             MyServices.acceptTerms($.jStorage.get("user1"), function(data) {
-                console.log(data);
+                //console.log(data);
                 if (data != "false") {
                     $scope.modalterms.hide();
                     $scope.showPushPopup();
@@ -187,10 +187,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var yourbalancecallback = function(data, status) {
 
         if (data == "false") {
-            console.log("no data");
+            //console.log("no data");
         } else {
             $ionicLoading.hide();
-            console.log(data);
+            //console.log(data);
             $scope.pb = data;
             if ($scope.pb.purchasebalance == "")
                 $scope.pb.purchasebalance = 0;
@@ -201,9 +201,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
 
-    console.log("Your Balance Exec");
+    //console.log("Your Balance Exec");
     $scope.bal = $.jStorage.get("user1");
-    console.log($scope.bal);
+    //console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
     setInterval(function() {
@@ -212,10 +212,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }, 900000);
 
     $scope.pullrefresh = function() {
-        console.log("Do Refresh");
+        //console.log("Do Refresh");
         MyServices.yourbalance($scope.bal, yourbalancecallback);
         $scope.showloading();
-        console.log('Refresh Called');
+        //console.log('Refresh Called');
         //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
     };
@@ -227,9 +227,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //  $scope.productname1 = $stateParams.name;
     //  $scope.membershipno1 = $stateParams.mem;
     //  $scope.category1 = $stateParams.cat;
-    //  console.log($scope.productname1);
-    //  console.log($scope.membershipno1);
-    //  console.log($scope.category1);
+    //  //console.log($scope.productname1);
+    //  //console.log($scope.membershipno1);
+    //  //console.log($scope.category1);
     $scope.home = {
         area: "",
         category: "",
@@ -252,7 +252,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.home($scope.user, homecallback);
 
     function onmembershipid(shopid) {
-        console.log(shopid);
+        //console.log(shopid);
         if (shopid.id) {
             $location.url("/app/shop/" + shopid.id);
         } else {
@@ -305,7 +305,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.varonline = 0;
             $scope.onlineclass = "";
         }
-        console.log($scope.varonline);
+        //console.log($scope.varonline);
     }
     $scope.offline = function() {
         if ($scope.varoffline == 0) {
@@ -315,7 +315,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.varoffline = 0;
             $scope.offlineclass = "";
         }
-        console.log($scope.varoffline);
+        //console.log($scope.varoffline);
     }
 
     $scope.memfunc = function(home) {
@@ -361,7 +361,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.pro = $.jStorage.get("user1");
     var shopprofilecallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.profileuser = data;
         $scope.percent = parseFloat($scope.profileuser.percentpayment);
     }
@@ -387,10 +387,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var yourbalancecallback = function(data, status) {
 
         if (data == "false") {
-            console.log("no data");
+            //console.log("no data");
         } else {
             $ionicLoading.hide();
-            console.log(data);
+            //console.log(data);
             $scope.pb = data;
             if ($scope.pb.purchasebalance == "")
                 $scope.pb.purchasebalance = 0;
@@ -401,34 +401,34 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
 
-    console.log("Your Balance Exec");
+    //console.log("Your Balance Exec");
     $scope.bal = $.jStorage.get("user1");
-    console.log($scope.bal);
+    //console.log($scope.bal);
     MyServices.yourbalance($scope.bal, yourbalancecallback);
 
     $scope.dorefresh = function() {
-        console.log("Do Refresh");
+        //console.log("Do Refresh");
         MyServices.yourbalance($scope.bal, yourbalancecallback);
         $scope.showloading();
-        console.log('Refresh Called');
+        //console.log('Refresh Called');
         //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
     };
     chintansglobal.changebalance = $scope.dorefresh;
 
     var checkstate = function(data, status) {
-        console.log(data);
+        //console.log(data);
         if (data == "1") {
-            console.log("Facebook Login");
+            //console.log("Facebook Login");
             $interval.cancel(stopinterval);
             ref.close();
         } else {
-            console.log("Do nothing");
+            //console.log("Do nothing");
         }
     };
 
     var callAtInterval = function() {
-        console.log("hey hey in inerval");
+        //console.log("hey hey in inerval");
         MyServices.checkstatus($scope.orderidd, checkstate);
     };
 
@@ -442,15 +442,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
 
     var balanceaddcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.showAddBtn = true;
         $scope.orderidd = data;
         if (data == "false") {
-            console.log("balance not added");
+            //console.log("balance not added");
         } else {
             $scope.addBalanceObj.orderid = data;
             $scope.addBalanceObj.mode = "TEST";
-            console.log($scope.addBalanceObj);
+            //console.log($scope.addBalanceObj);
 
             //for LIVE
             var ref = window.open("http://swaap.in/paymentgateway/submit.php?account_id=19042&address=" + $scope.addBalanceObj.billingaddress + "&amount=" + $scope.addBalanceObj.amount + "&bank_code=&card_brand=&channel=0&city=" + $scope.addBalanceObj.billingcity + "&country=IND&currency=INR&description=SWAAP Add Balance&display_currency=&display_currency_rates=&email=" + $scope.addBalanceObj.shopemail + "&emi=&mode=LIVE&name=" + $scope.addBalanceObj.shopname + "&page_id=&payment_mode=&payment_option=&phone=" + $scope.addBalanceObj.shopcontact1 + "&postal_code=" + $scope.addBalanceObj.billingpincode + "&reference_no=" + $scope.addBalanceObj.orderid + "&return_url=http://swaap.in/admin/index.php/json/responseCheck&ship_address=&ship_city=&ship_country=&ship_name=&ship_phone=&ship_postal_code=" + $scope.addBalanceObj.barterAmt + "&ship_state=&state=" + $scope.addBalanceObj.billingstate, '_blank', 'location=no');
@@ -464,7 +464,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             var timer = setInterval(function() {
                 if (ref.closed) {
-                    console.log("closed");
+                    //console.log("closed");
                     clearInterval(timer);
                     clearInterval(callInterval);
                 }
@@ -472,7 +472,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             var callInterval = setInterval(function() {
                 MyServices.getTransactionStatus($scope.addBalanceObj.orderid, function(statusval) {
-                    console.log(statusval);
+                    //console.log(statusval);
                     if (statusval.paymentstatus == "1" || statusval.paymentstatus == 1) {
                         ref.close();
                         clearInterval(callInterval);
@@ -515,11 +515,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            console.log("valid");
-            console.log($scope.a, $scope.b);
+            //console.log("valid");
+            //console.log($scope.a, $scope.b);
             MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
         } else {
-            console.log("not valid");
+            //console.log("not valid");
             $scope.showPopup7();
         }
     }
@@ -536,8 +536,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            console.log("valid");
-            console.log($scope.a, $scope.b);
+            //console.log("valid");
+            //console.log($scope.a, $scope.b);
             MyServices.balanceadd($scope.user, $scope.a, function(data) {
                 if (data != "false") {
                     var myPopup = $ionicPopup.show({
@@ -551,7 +551,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }
             }, $scope.b);
         } else {
-            console.log("not valid");
+            //console.log("not valid");
             $scope.showPopup7();
         }
     }
@@ -574,7 +574,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //  $scope.addbalance = function (amount, reason) {
     //      $scope.a = amount;
     //      $scope.b = reason;
-    //      console.log($scope.a, $scope.b);
+    //      //console.log($scope.a, $scope.b);
     //      MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
     //  };
     //  $scope.amount = 0;
@@ -653,9 +653,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //     }
     //   $scope.product.productname=$scope.productname1
     //       $scope.product.membershipno = $scope.membershipno1 ;
-    //    console.log($scope.productname1);
-    //    console.log($scope.membershipno1);
-    //    console.log($scope.category1);
+    //    //console.log($scope.productname1);
+    //    //console.log($scope.membershipno1);
+    //    //console.log($scope.category1);
     //  $scope.content={};
 
     if ($.jStorage.get("user1"))
@@ -674,13 +674,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var fulldatasorted = [];
     $scope.getsort = function(content) {
             $scope.modal1.hide();
-            console.log($scope.sprfull);
+            //console.log($scope.sprfull);
             if (content == 0) {
 
                 fulldatasorted = _.sortBy($scope.sprfull, function(n) {
                     return parseFloat(n.price);
                 });
-                console.log(fulldatasorted);
+                //console.log(fulldatasorted);
                 $scope.spr = partitionarray(fulldatasorted, 3);
 
 
@@ -688,17 +688,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 fulldatasorted = _.sortBy($scope.sprfull, function(n) {
                     return -1 * parseFloat(n.price);
                 });
-                console.log(fulldatasorted);
+                //console.log(fulldatasorted);
                 $scope.spr = partitionarray(fulldatasorted, 3);
             }
         }
         //product detail
     var getsingleproductcallback = function(data, status) {
         $scope.getpro = data;
-        //          console.log($scope.getsinglepro);
+        //          //console.log($scope.getsinglepro);
     }
     $scope.getproduct = function(id) {
-        console.log(id);
+        //console.log(id);
         MyServices.getsingleproduct(id, getsingleproductcallback);
         $location.url("/app/productdetail/" + id);
     }
@@ -715,18 +715,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     var searchproductcallback = function(data, status) {
-            //      console.log(data);
+            //      //console.log(data);
             $scope.spr = data;
             $scope.sprfull = data;
-            console.log($scope.spr);
+            //console.log($scope.spr);
             if ($scope.spr == "-1") {
                 $scope.showPopupw();
                 $location.url("/app/home");
             } else {
                 $scope.spr = partitionarray($scope.spr, 3);
-                console.log("partition data");
-                console.log($scope.spr);
-                //      console.log($scope.spr);
+                //console.log("partition data");
+                //console.log($scope.spr);
+                //      //console.log($scope.spr);
 
                 $scope.product.productname = $stateParams.name;
                 if ($scope.product.productname == 0)
@@ -787,7 +787,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.showloading();
 
-    console.log("My Id = " + $.jStorage.get("user").id);
+    //console.log("My Id = " + $.jStorage.get("user").id);
     $scope.myId = $.jStorage.get("user").id;
 
     var searchcallback = function(data, status) {
@@ -798,7 +798,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var getareacategorycallback = function(data, status) {
         $scope.recall = data;
         $ionicLoading.hide();
-        console.log(data);
+        //console.log(data);
     }
     MyServices.getareacategory($stateParams.area, $stateParams.category, getareacategorycallback);
 
@@ -806,7 +806,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.demo = [];
     var searchcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.demo = data;
         $.jStorage.set("demo", data);
     };
@@ -853,12 +853,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         if (newsalesbalance < $scope.purchaselimit) {
             $scope.purchaselimit = newsalesbalance;
         }
-        console.log($scope.profile);
+        //console.log($scope.profile);
     }
     shopid = $stateParams.id;
     $scope.shopid = $stateParams.id;
     $scope.userid = user.id;
-    console.log(shopid);
+    //console.log(shopid);
     MyServices.profile(shopid, shopprofilecallback);
     var shopphotocallback = function(data, status) {
         $scope.shoppic = data;
@@ -883,9 +883,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.showPurchaseBtn = true;
         if (data == "false") {
 
-            console.log("balance not added");
+            //console.log("balance not added");
         } else {
-            console.log("balance added");
+            //console.log("balance added");
         }
         var myPopup = $ionicPopup.show({
             template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Please Wait for the Approval!</p>',
@@ -917,9 +917,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     $scope.showPurchaseBtn = false;
                     $ionicLoading.show();
                     $scope.amt = amount;
-                    console.log($scope.amt);
+                    //console.log($scope.amt);
                     $scope.userfrom = $.jStorage.get("user1");
-                    //      console.log($scope.pid.shopprofile[0].id);
+                    //      //console.log($scope.pid.shopprofile[0].id);
                     MyServices.purchaserequest($scope.userfrom, shopid, amount, reason, purchaserequestcallback);
                 }
             } else {
@@ -985,7 +985,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     });
 
     $scope.openpswd = function(num) {
-        console.log(num);
+        //console.log(num);
         $scope.modals.show();
         setTimeout(function() {
             $ionicSlideBoxDelegate.slide(num);
@@ -1006,7 +1006,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     });
 
     $scope.openshops = function(num) {
-        console.log(num);
+        //console.log(num);
         $scope.modalss.show();
         setTimeout(function() {
             $ionicSlideBoxDelegate.slide(num);
@@ -1023,7 +1023,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
 
     $ionicPlatform.registerBackButtonAction(function(event) {
-        console.log("back pressed");
+        //console.log("back pressed");
         if ($state.current.name == "login") {
             // navigator.app.exitApp();
             var myPopup = $ionicPopup.show({
@@ -1045,7 +1045,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }]
             });
             myPopup.then(function(res) {
-                console.log('Tapped!', res);
+                //console.log('Tapped!', res);
                 myPopup.close()
                 if (res == true) {
                     navigator.app.exitApp();
@@ -1054,7 +1054,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     }, 100);
 
-    console.log("Current State : " + $state.current.name);
+    //console.log("Current State : " + $state.current.name);
 
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -1095,12 +1095,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //become a member start
     var becomeamembercallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         if (data == "0") {
-            console.log("No data found");
+            //console.log("No data found");
         } else {
             $scope.showPopup2();
-            console.log("successfull registration");
+            //console.log("successfull registration");
             $scope.register = [];
             $scope.oModal1.hide();
         }
@@ -1133,7 +1133,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //        } else {
         if (check) {
             $scope.reg = register;
-            console.log($scope.reg);
+            //console.log($scope.reg);
             MyServices.becomeamember($scope.reg, becomeamembercallback);
 
         } else {
@@ -1154,18 +1154,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var logincallback = function(data, status) {
         $ionicLoading.hide();
         if (data == "false") {
-            console.log(data);
-            console.log("Login Failed");
+            //console.log(data);
+            //console.log("Login Failed");
             $scope.showPopup();
         } else if (data == -1) {
-            console.log("already logged in!!");
+            //console.log("already logged in!!");
             $scope.showPopup1();
         } else {
-            //          console.log(data);
+            //          //console.log(data);
             data = data.replace('"', "");
-            //          console.log(data);
+            //          //console.log(data);
             data = parseInt(data);
-            console.log(data);
+            //console.log(data);
             user1 = data;
             $.jStorage.set("user1", data);
             user = data;
@@ -1236,13 +1236,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.showloading();
     $scope.prodid = $stateParams.prodid;
-    console.log($scope.prodid);
+    //console.log($scope.prodid);
     $scope.isDisabled = 0;
     $scope.detailid = $.jStorage.get("user1");
-    console.log($scope.detailid);
+    //console.log($scope.detailid);
     var getuserdetailscallback = function(data, status) {
         $scope.form = data[0];
-        //      console.log($scope.form);
+        //      //console.log($scope.form);
         //buying details
         var buyproductcallback = function(data, status) {
             if (data == "-2") {
@@ -1252,7 +1252,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.isDisabled = 0;
                 $scope.showPopupquantity();
             } else {
-                console.log("result: " + data);
+                //console.log("result: " + data);
                 $scope.showPopup5();
                 $scope.modal1.hide();
                 $location.url("/app/home");
@@ -1310,7 +1310,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     }]
                 });
                 myPopup.then(function(res) {
-                    console.log('Tapped!', res);
+                    //console.log('Tapped!', res);
                     myPopup.close()
                     if (res == true) {
                         $scope.isDisabled = 1;
@@ -1411,11 +1411,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //SELLING APPROVAL
     var sellingapprovalcallback = function(data, status) {
         $scope.req = data.sellingapproval;
-        console.log($scope.req);
+        //console.log($scope.req);
         $ionicLoading.hide();
     }
     $scope.sell = $.jStorage.get("user1");
-    console.log($scope.sell);
+    //console.log($scope.sell);
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
     $scope.showPopup = function() {
         $scope.data = {}
@@ -1425,7 +1425,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
     var acceptstatuscallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $ionicLoading.hide();
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
         globalfunctionapproval();
@@ -1434,17 +1434,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.reason = "";
     $scope.accept = function(r, reason) {
         $scope.hideAccept = true;
-        // console.log("amt" + r.amount);
-        // console.log("pb" + r.purchasebalance);
-        // console.log(r.id);
+        // //console.log("amt" + r.amount);
+        // //console.log("pb" + r.purchasebalance);
+        // //console.log(r.id);
         if (parseInt(r.purchasebalance) < r.amount) {
-            console.log("in if");
+            //console.log("in if");
             $scope.showPopup4();
             $scope.hideAccept = false;
         } else {
             $scope.hideAccept = true;
             MyServices.yourbalance($.jStorage.get("user1"), function(mybal) {
-                console.log(mybal);
+                //console.log(mybal);
                 if (parseInt(mybal.yourbalance.salesbalance) >= r.amount) {
                     $scope.hideAccept = true;
                     $scope.showloading();
@@ -1475,8 +1475,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 3000);
     };
     $scope.decline = function(r, reason) {
-        console.log("Decline");
-        console.log(r);
+        //console.log("Decline");
+        //console.log(r);
         $scope.hideAccept = true;
         MyServices.accepted(r.id, reason, 2, acceptstatuscallback);
         $scope.showloading();
@@ -1507,7 +1507,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.totalPurcahse = 0;
         MyServices.yourbalance($.jStorage.get("user1"), function(mybal) {
             $ionicLoading.hide();
-            console.log(mybal);
+            //console.log(mybal);
             //purchase
             $scope.purchaseRemaining = mybal.yourbalance.purchasebalance;
             $scope.saleRemaining = mybal.yourbalance.salesbalance;
@@ -1517,18 +1517,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     $scope.totalPurcahse += parseInt(n.amount);
                 }
                 n.timestamp = new Date(n.timestamp);
-                // console.log(n.timestamp)
-                // console.log($scope.totalPurcahse);
+                // //console.log(n.timestamp)
+                // //console.log($scope.totalPurcahse);
             })
             _.each($scope.t.purchased, function(n) {
                 n.timestamp = new Date(n.timestamp);
-                // console.log(n.timestamp)
-                // console.log($scope.totalPurcahse);
+                // //console.log(n.timestamp)
+                // //console.log($scope.totalPurcahse);
             })
             _.each($scope.t.admin, function(n) {
                 n.timestamp = new Date(n.timestamp);
             })
-            console.log($scope.t);
+            //console.log($scope.t);
         });
 
     }
@@ -1603,135 +1603,46 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         quality: 80
     };
 
-    var changeprofilephoto = function(result) {
-        console.log(result);
-        console.log(result.response);
-        $scope.xyz = JSON.parse(result.response);
-        console.log($scope.xyz);
-        $scope.profile.shoplogo = $scope.xyz.value
+    $scope.changeprofilephoto = function(result) {
+        //console.log(result);
+        $scope.profile.shoplogo = result.value
     };
 
-    var changeshopphoto = function(result) {
+    $scope.changeshopphoto = function(result) {
         MyServices.shopphoto($scope.pro, shopphotocallback);
         MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     };
 
     $scope.changeprofileimage = function() {
-        console.log("take picture");
-
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-
-            console.log(resultImage);
-
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
-
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-
+        uploadurl = adminurl + "imageuploadprofile?user=" + user.id;
     };
 
     $scope.changeshopimage = function(id) {
-        console.log("take picture");
-
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadshop?id=" + id + "&user=" + user.id, changeshopphoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-
-            console.log(resultImage);
-
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "imageuploadshop?id=" + id + "&user=" + user.id, changeshopphoto);
-
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-
+        uploadurl = adminurl + "imageuploadshop?id=" + id + "&user=" + user.id;
     };
 
     $scope.changeproductimage = function(id) {
-        console.log("take picture");
-        console.log("ID " + id);
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-
-            console.log(resultImage);
-
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
-
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
-
+        uploadurl = adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id;
     };
-
-
 
     //Upload photo
 
     //File Upload parameters: source, filePath, options
     $scope.uploadPhoto = function(serverpath, callback) {
-        console.log("function called");
+        //console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
             .then(function(result) {
-                console.log(result);
+                //console.log(result);
                 callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
             }, function(err) {
                 // Error
-                console.log(err);
+                //console.log(err);
             }, function(progress) {
                 // constant progress updates
 
-                console.log("progress");
+                //console.log("progress");
             });
 
     };
@@ -1742,7 +1653,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.epro = {};
     var shopphotocallback = function(data, status) {
         $scope.pic = data;
-        console.log($scope.pic);
+        //console.log($scope.pic);
         $ionicLoading.hide();
 
     }
@@ -1752,31 +1663,31 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     var getallcategory1callback = function(data, status) {
         $scope.cat = data;
-        console.log($scope.cat);
+        //console.log($scope.cat);
     }
     var updatecatcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
     }
     $scope.updatecat = function(c) {
         $scope.cats = c;
-        console.log('Category Id: ' + $scope.cats);
+        //console.log('Category Id: ' + $scope.cats);
         MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
     }
     var getareacallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.areas = data;
     }
     var updateareacallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
     }
     $scope.updatearea = function(a) {
         $scope.ar = a;
-        console.log('Area Id: ' + $scope.ar);
+        //console.log('Area Id: ' + $scope.ar);
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
     }
     var shopprofilecallback = function(data, status) {
             $scope.profile = data;
-            console.log(data);
+            //console.log(data);
             MyServices.getallcategory1(getallcategory1callback);
             MyServices.getarea(getareacallback);
 
@@ -1790,18 +1701,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.editpro = function(profile) {
             $scope.epro = profile;
-            console.log($scope.epro);
+            //console.log($scope.epro);
         }
         //    $scope.sp=$.jStorage.get("sp");
-        //  console.log("In profile");
-        ////    console.log($scope.sp);
+        //  //console.log("In profile");
+        ////    //console.log($scope.sp);
         ////
     var updateprofilecallback = function(data, status) {
         if (data == "false") {
 
-            console.log("no data");
+            //console.log("no data");
         } else {
-            console.log("Updated");
+            //console.log("Updated");
             //          MyServices.profile($scope.pro, shopprofilecallback);
             $scope.showeditPopup();
 
@@ -1810,9 +1721,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }
     $scope.profileupdate = function(profile) {
         $scope.updatedata = profile;
-        console.log($scope.updatedata);
+        //console.log($scope.updatedata);
         $scope.id = $.jStorage.get("user1");
-        console.log($scope.id);
+        //console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
     }
 
@@ -1845,11 +1756,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     var changepasswordcallback = function(data, status) {
         if (data == "-1") {
-            console.log("new and confirm do not match ");
+            //console.log("new and confirm do not match ");
             $scope.showpasswordPopup1();
         } else {
             $scope.p = data;
-            console.log($scope.p);
+            //console.log($scope.p);
             $scope.showpasswordPopup();
             $scope.pass = {};
             $scope.oModal2.hide();
@@ -1874,11 +1785,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }];
             var check = formvalidation($scope.allvalidation);
             if (check) {
-                console.log("valid");
+                //console.log("valid");
                 MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
 
             } else {
-                console.log("not valid");
+                //console.log("not valid");
                 $scope.showPopup8();
             }
         }
@@ -1933,7 +1844,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     });
 
     $scope.openpswds = function(num) {
-        console.log(num);
+        //console.log(num);
         $scope.modals.show();
         setTimeout(function() {
             $ionicSlideBoxDelegate.slide(num);
@@ -1953,7 +1864,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     });
 
     $scope.openshop = function(num) {
-        console.log(num);
+        //console.log(num);
         $scope.modalss.show();
         setTimeout(function() {
             $ionicSlideBoxDelegate.slide(num);
@@ -1974,7 +1885,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    //GET USER PROFILE
     //    $scope.pro = $.jStorage.get("user1");
     //    var shopprofilecallback = function (data, status) {
-    //        console.log(data);
+    //        //console.log(data);
     //        $scope.profileuser = data;
     //    }
     //    MyServices.profile($scope.pro, shopprofilecallback);
@@ -1994,56 +1905,56 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    var yourbalancecallback = function (data, status) {
     //
     //        if (data == "false") {
-    //            console.log("no data");
+    //            //console.log("no data");
     //        } else {
     //            $ionicLoading.hide();
-    //            console.log(data);
+    //            //console.log(data);
     //            $scope.pb = data;
     //        }
     //
     //    }
     //
     //
-    //    console.log("Your Balance Exec");
+    //    //console.log("Your Balance Exec");
     //    $scope.bal = $.jStorage.get("user1");
-    //    console.log($scope.bal);
+    //    //console.log($scope.bal);
     //    MyServices.yourbalance($scope.bal, yourbalancecallback);
     //
     //    $scope.dorefresh = function () {
-    //        console.log("Do Refresh");
+    //        //console.log("Do Refresh");
     //        MyServices.yourbalance($scope.bal, yourbalancecallback);
     //        $scope.showloading();
-    //        console.log('Refresh Called');
+    //        //console.log('Refresh Called');
     //        //Stop the ion-refresher from spinning
     //        $scope.$broadcast('scroll.refreshComplete');
     //    };
     //    chintansglobal.changebalance = $scope.dorefresh;
     //
     //    var checkstate = function (data, status) {
-    //        console.log(data);
+    //        //console.log(data);
     //        if (data == "1") {
-    //            console.log("Facebook Login");
+    //            //console.log("Facebook Login");
     //            $interval.cancel(stopinterval);
     //            ref.close();
     //        } else {
-    //            console.log("Do nothing");
+    //            //console.log("Do nothing");
     //        }
     //    };
     //
     //    var callAtInterval = function () {
-    //        console.log("hey hey in inerval");
+    //        //console.log("hey hey in inerval");
     //        MyServices.checkstatus($scope.orderidd, checkstate);
     //    };
     //
     //
     //    var balanceaddcallback = function (data, status) {
-    //        console.log(data);
+    //        //console.log(data);
     //        $scope.orderidd = data;
     //        $scope.succurl = "http://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=" + data
     //        if (data == "false") {
-    //            console.log("balance not added");
+    //            //console.log("balance not added");
     //        } else {
-    //            console.log("balance added");
+    //            //console.log("balance added");
     //            // An elaborate, custom popup
     //            var myPopup = $ionicPopup.show({
     //                template: '<div class="text-center"><h2 class="ion-checkmark-round balanced round-circle"></h2><p>Your Request has been sent.</p>',
@@ -2075,12 +1986,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //        }];
     //        var check = formvalidation($scope.allvalidation);
     //        if (check) {
-    //            console.log("valid");
-    //            console.log($scope.a, $scope.b);
+    //            //console.log("valid");
+    //            //console.log($scope.a, $scope.b);
     //            MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
     //
     //        } else {
-    //            console.log("not valid");
+    //            //console.log("not valid");
     //            $scope.showPopup7();
     //        }
     //    }
@@ -2103,7 +2014,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //    //    $scope.addbalance = function (amount, reason) {
     //    //        $scope.a = amount;
     //    //        $scope.b = reason;
-    //    //        console.log($scope.a, $scope.b);
+    //    //        //console.log($scope.a, $scope.b);
     //    //        MyServices.balanceadd($scope.user, $scope.a, balanceaddcallback, $scope.b);
     //    //    };
     //    //    $scope.amount = 0;
@@ -2203,7 +2114,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     var viewmyproductscallback = function(data, status) {
         $ionicLoading.hide();
-        console.log(data);
+        //console.log(data);
         $scope.products = data;
     }
     $scope.myid = $.jStorage.get("user1");
@@ -2224,7 +2135,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //add products start
     $scope.ap = [];
     var createproductcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.insertprodid = data;
         if (data == "-1") {
             $scope.showPopup6();
@@ -2263,14 +2174,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.ap = ap;
                 if ($scope.ap.status == true) {
                     $scope.ap.status = 1;
-                    console.log($scope.ap.status);
+                    //console.log($scope.ap.status);
                 }
                 if ($scope.ap.status == false) {
                     $scope.ap.status = 0;
-                    console.log($scope.ap.status);
+                    //console.log($scope.ap.status);
                 }
-                console.log($scope.ap);
-                console.log("before:" + $scope.prodimg);
+                //console.log($scope.ap);
+                //console.log("before:" + $scope.prodimg);
                 $scope.insertid = $.jStorage.get("user1");
                 MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
             } else {
@@ -2290,47 +2201,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-    var addproductimage = function(result) {
-        console.log(result);
-        console.log(result.response);
-        $scope.xyz = JSON.parse(result.response);
-        console.log($scope.xyz);
-        $scope.prodimg = $scope.xyz.value;
+    $scope.addproductimagecallback = function(result) {
+        //console.log(result);
+        $scope.prodimg = result.value;
     }
 
     $scope.addproductimage = function() {
-        console.log("take picture");
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-
-            console.log(resultImage);
-
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
+        uploadurl = adminurl + "addproductimage";
     };
     //product details start
     var getsingleproductcallback = function(data, status) {
         $scope.prodetails = data;
-        console.log($scope.prodetails);
+        //console.log($scope.prodetails);
         if ($scope.prodetails.status == 1) {
             //          $scope.prodetails.status = "Available";
             $scope.prodetails.status = true;
@@ -2346,13 +2228,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //product details end
         //categories
     var homecallback = function(data, status) {
-        console.log(data.category);
+        //console.log(data.category);
         $scope.cat = data.category;
     }
     MyServices.home($scope.insertid, homecallback);
     //edit products and status start
     var editproductcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         if (data == "0") {
             $scope.showPopup15();
         } else if (data == "1") {
@@ -2406,14 +2288,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }];
         var check = formvalidation($scope.allvalidation);
         if (check) {
-            console.log($scope.editpro);
+            //console.log($scope.editpro);
             if ($scope.editpro.status == true) {
                 $scope.editpro.status = 1;
             }
             if ($scope.editpro.status == false) {
                 $scope.editpro.status = 0;
             }
-            console.log("in edit product:" + $scope.prodetails.image);
+            //console.log("in edit product:" + $scope.prodetails.image);
             MyServices.editproduct($scope.editpro, $scope.insertid, $scope.prodetails.image, editproductcallback);
 
         } else {
@@ -2434,21 +2316,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     var changeproductstatuscallback = function(data, status) {
-        console.log("change status:" + data);
+        //console.log("change status:" + data);
     }
     $scope.editstatus = function(id, status) {
-        console.log(id);
+        //console.log(id);
         if (status == true) {
             status = 1;
         }
         if (status == false) {
             status = 0;
         }
-        console.log(status);
+        //console.log(status);
         MyServices.changeproductstatus(id, status, changeproductstatuscallback);
     }
     var deleteproductcallback = function(data, status) {
-        console.log(data);
+        //console.log(data);
         $scope.modal2.hide();
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
     }
@@ -2460,37 +2342,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //upload editproductimage start
     var editproductimage = function(result) {
-        console.log(result.response);
+        //console.log(result.response);
         $scope.abc = JSON.parse(result.response);
         $scope.prodetails.image = $scope.abc.value;
-        console.log("in edit image success:" + $scope.prodetails.image);
-        //      console.log(result.response);
+        //console.log("in edit image success:" + $scope.prodetails.image);
+        //      //console.log(result.response);
         //      $scope.xyz = JSON.parse(result.response);
-        //      console.log($scope.xyz);
+        //      //console.log($scope.xyz);
         //      $scope.prodimg = $scope.xyz.value;
     }
     $scope.editproductimage = function() {
-        //      console.log(id);
-        console.log("take picture");
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
-            console.log("here in upload image");
+            //console.log("here in upload image");
 
-            console.log(resultImage);
+            //console.log(resultImage);
 
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
@@ -2507,16 +2373,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //File Upload parameters: source, filePath, options
     $scope.uploadPhoto = function(serverpath, callback) {
 
-        //        console.log("function called");
+        //        //console.log("function called");
         $cordovaFileTransfer.upload(serverpath, $scope.cameraimage, options)
             .then(function(result) {
-                console.log(result);
+                //console.log(result);
                 callback(result);
                 $ionicLoading.hide();
                 //$scope.addretailer.store_image = $scope.filename2;
             }, function(err) {
                 // Error
-                console.log(err);
+                //console.log(err);
             }, function(progress) {
                 // constant progress updates
                 $ionicLoading.show({
@@ -2528,7 +2394,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     maxWidth: 200,
                     showDelay: '0'
                 });
-                console.log("progress");
+                //console.log("progress");
             });
 
     };
@@ -2596,13 +2462,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.tabvalue = 1;
     var viewmyproductorderscallback = function(data, status) {
         $scope.ordr = data.queryresult;
-        console.log($scope.ordr);
+        //console.log($scope.ordr);
     }
     $scope.uid = $.jStorage.get("user1");
     MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
     var viewallorderscallback = function(data, status) {
         $ionicLoading.hide();
-        console.log(data.queryresult);
+        //console.log(data.queryresult);
         $scope.mypurchase = data.queryresult;
     }
     MyServices.viewallorders($scope.uid, viewallorderscallback);
@@ -2657,7 +2523,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.break = data.queryresult;
         $scope.shopname = $scope.break[0].shopname;
         $scope.break = partitionarray($scope.break, 3);
-        console.log($scope.break);
+        //console.log($scope.break);
 
     }
     $scope.getprod = $stateParams.id;
@@ -2683,7 +2549,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 n.date = new Date(n.date);
             }
         })
-        console.log($scope.notification);
+        //console.log($scope.notification);
     }
 
     $scope.notificationid = $.jStorage.get("user1");
@@ -2705,7 +2571,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.showloading();
         $scope.disableid = $.jStorage.get("user1");
         var getalluserproductscallback = function(data, status) {
-            //          console.log(data.queryresult);
+            //          //console.log(data.queryresult);
             $location.url("/app/dealerprd/" + $scope.getsinglepro.user);
 
         }
@@ -2716,11 +2582,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
         $scope.prodid = $stateParams.id;
-        console.log($scope.prodid);
+        //console.log($scope.prodid);
         var getsingleproductcallback = function(data, status) {
             $ionicLoading.hide();
             $scope.getsinglepro = data;
-            console.log($scope.getsinglepro);
+            //console.log($scope.getsinglepro);
 
         }
         MyServices.getsingleproduct($scope.prodid, getsingleproductcallback);

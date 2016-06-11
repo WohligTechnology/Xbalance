@@ -19,7 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             StatusBar.styleLightContent();
         }
         try {
-            console.log("here");
+            //console.log("here");
             push = PushNotification.init({
                 "android": {
                     "senderID": "694450719069",
@@ -34,7 +34,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             });
 
             push.on('registration', function(data) {
-                console.log(data);
+                //console.log(data);
                 $.jStorage.set("device", data.registrationId);
                 var isIOS = ionic.Platform.isIOS();
                 var isAndroid = ionic.Platform.isAndroid();
@@ -46,15 +46,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             });
 
             push.on('notification', function(data) {
-                console.log(data);
+                //console.log(data);
             });
 
             push.on('error', function(e) {
                 conosle.log("ERROR");
-                console.log(e);
+                //console.log(e);
             });
         } catch (e) {
-            console.log(e)
+            //console.log(e)
         }
     });
 })
@@ -296,17 +296,75 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
     }
+})
+
+.directive('uploadImage', function($http) {
+    return {
+        templateUrl: 'templates/directive/uploadFile.html',
+        scope: {
+            model: '=ngModel',
+            callback: "=ngCallback"
+        },
+        link: function($scope, element, attrs) {
+            $scope.isMultiple = false;
+            $scope.inObject = false;
+            if (attrs.multiple || attrs.multiple === "") {
+                $scope.isMultiple = true;
+                $("#inputImage").attr("multiple", "ADD");
+            }
+            if (attrs.noView || attrs.noView === "") {
+                $scope.noShow = true;
+            }
+            if (attrs.inobj || attrs.inobj === "") {
+                $scope.inObject = true;
+            }
+            $scope.clearOld = function() {
+                $scope.model = [];
+            };
+            $scope.upload = function(image) {
+                var Template = this;
+                image.hide = true;
+                var formData = new FormData();
+                formData.append('file', image.file, image.name);
+                $http.post(uploadurl, formData, {
+                    headers: {
+                        'Content-Type': undefined
+                    },
+                    transformRequest: angular.identity
+                }).success(function(data) {
+                  //console.log(data);
+                    if ($scope.callback) {
+                        $scope.callback(data);
+                    } else {
+                        if ($scope.isMultiple) {
+                            if ($scope.inObject) {
+                                $scope.model.push({
+                                    "image": data.data[0]
+                                });
+                            } else {
+                                $scope.model.push(data.data[0]);
+                            }
+                        } else {
+                            $scope.model = data.data[0];
+                        }
+                    }
+                });
+            };
+        }
+    };
+})
+
+.directive('imageonload', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('load', function() {
+                scope.$apply(attrs.imageonload);
+            });
+        }
+    };
 });
 
-//.filter('serverimage', function () {
-//    return function (image) {
-//        if (image == null || image == '') {
-//            return "http://wohlig.co.in/osb/uploads/samsung-galaxy-grand-neo-gt-i9060-dual-sim-android-mobile-phone-white-medium_80c25a81e9c2b1eb126cdb01dc6da394-80x80.jpg";
-//        } else {
-//            return imgpath + image;
-//        }
-//    };
-//});
 
 function partitionarray(myarray, number) {
     var arrlength = myarray.length;
@@ -325,8 +383,8 @@ function partitionarray(myarray, number) {
 var formvalidation = function(allvalidation) {
     var isvalid2 = true;
     for (var i = 0; i < allvalidation.length; i++) {
-        //        console.log("checking");
-        //        console.log(allvalidation[i].field);
+        //        //console.log("checking");
+        //        //console.log(allvalidation[i].field);
         if (allvalidation[i].field == "" || !allvalidation[i].field || allvalidation[i].field == "Please select" || allvalidation[i].field == "Please Select") {
             allvalidation[i].validation = "ng-dirty";
             isvalid2 = false;

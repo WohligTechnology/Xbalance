@@ -13,7 +13,8 @@
                   <img ng-src={{prodimg|serverimage}}>
                   <!--                        <div class="holder">Add Image</div>-->
                   <div class="padding-horizontal text-center">
-                     <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
+                     <!-- <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button> -->
+                     <upload-image no-view ng-click="addproductimage()" ng-callback="addproductimagecallback"></upload-image>
                   </div>
                </div>
                <div class="item item-input">

@@ -1011,3 +1011,15 @@ ion-item.item.item-complex.actives {
 .mytab td {
   padding: 5px;
 }
+.view-container {
+  position: absolute;
+  display: block;
+  width: 1000px;
+  height: 100%;
+  margin: 0 auto;
+  left: 50%;
+  transform: translatex(-50%);
+}
+body {
+  background-color: rgba(171, 171, 171, 0.82);
+}

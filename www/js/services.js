@@ -4,6 +4,7 @@ var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
 var user = {};
+var uploadurl = "";
 //var user=$.jStorage.get("user");
 
 myservices.factory('MyServices', function($http) {
@@ -15,11 +16,10 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "login?membershipno=" + user1.membershipno + "&password=" + user1.password + "&token=" + $.jStorage.get("device") + "&os=" + $.jStorage.get("os"), {}).success(logincallback);
         },
         returnval.home = function(user, homecallback) {
-            //        console.log("Demo");
             $http.get(adminurl + "home?user=" + user, {}).success(homecallback);
         },
         returnval.searchproduct = function(productname, membershipno, category, searchproductcallback) {
-            console.log("searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category);
+            ////console.log("searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category);
             $http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category, {}).success(searchproductcallback);
             //      $http.get(adminurl + "searchproduct?product=" + productname + "&membershipno=" + membershipno + "&category=" + category + "&sortid=", {}).success(searchproductcallback);
         },
@@ -33,7 +33,7 @@ myservices.factory('MyServices', function($http) {
 
         },
         returnval.searchresult = function(area, category, online, offline, searchcallback) {
-            console.log("searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline);
+            //console.log("searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline);
             $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline, {}).success(searchcallback);
         },
         returnval.getareacategory = function(area, category, getareacategorycallback) {
@@ -54,7 +54,7 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {
-            console.log(id);
+            //console.log(id);
             $http.get(adminurl + "shopproductphoto?id=" + id, {}).success(shopproductphotocallback);
         },
         //              returnval.shopproduct=function(id,shopproductcallback){
@@ -82,8 +82,8 @@ myservices.factory('MyServices', function($http) {
             }).success(updateprofilecallback);
         },
         returnval.createproduct = function(id, ap, img, createproductcallback) {
-            console.log(ap.status);
-            console.log(img);
+            //console.log(ap.status);
+            //console.log(img);
             $http({
                 url: adminurl + "createproduct",
                 method: "POST",
@@ -101,7 +101,7 @@ myservices.factory('MyServices', function($http) {
             }).success(createproductcallback);
         },
         returnval.becomeamember = function(register, becomeamembercallback) {
-            //                  console.log(profile);
+            //                  //console.log(profile);
             $http({
                 url: adminurl + "becomeamember",
                 method: "POST",
@@ -116,8 +116,8 @@ myservices.factory('MyServices', function($http) {
             }).success(becomeamembercallback);
         },
         returnval.deleteproduct = function(prodid, user, deleteproductcallback) {
-            //                              console.log(prodid);
-            //                              console.log(user);
+            //                              //console.log(prodid);
+            //                              //console.log(user);
             $http({
                 url: adminurl + "deleteproduct",
                 method: "POST",
@@ -128,15 +128,15 @@ myservices.factory('MyServices', function($http) {
             }).success(deleteproductcallback);
         },
         returnval.editproduct = function(product, id, image, editproductcallback) {
-            console.log(id);
-            //                  console.log(product.name);
-            //                  console.log(product.sku);
-            //                  console.log(product.price);
-            //                  console.log(product.description);
-            //                  console.log(product.status);
-            //                  console.log(product.user);
-            //                  console.log(product.quantity);
-            //                  console.log(image);
+            //console.log(id);
+            //                  //console.log(product.name);
+            //                  //console.log(product.sku);
+            //                  //console.log(product.price);
+            //                  //console.log(product.description);
+            //                  //console.log(product.status);
+            //                  //console.log(product.user);
+            //                  //console.log(product.quantity);
+            //                  //console.log(image);
             $http({
                 url: adminurl + "editproduct",
                 method: "POST",
@@ -155,8 +155,8 @@ myservices.factory('MyServices', function($http) {
             }).success(editproductcallback);
         },
         returnval.changeproductstatus = function(id, status, changeproductstatuscallback) {
-            console.log("productid=" + id);
-            console.log("status=" + status);
+            //console.log("productid=" + id);
+            //console.log("status=" + status);
             $http({
                 url: adminurl + "changeproductstatus",
                 method: "POST",
@@ -167,7 +167,7 @@ myservices.factory('MyServices', function($http) {
             }).success(changeproductstatuscallback);
         }
     returnval.getalluserproducts = function(id, getalluserproductscallback) {
-            console.log(id);
+            //console.log(id);
             $http({
                 url: adminurl + "getalluserproducts",
                 method: "POST",
@@ -177,7 +177,7 @@ myservices.factory('MyServices', function($http) {
             }).success(getalluserproductscallback);
         },
         returnval.getuserdetails = function(id, getuserdetailscallback) {
-            console.log(id);
+            //console.log(id);
             $http({
                 url: adminurl + "getuserdetails",
                 method: "POST",
@@ -190,9 +190,9 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "getsingleproduct?id=" + id, {}).success(getsingleproductcallback);
         },
         returnval.buyproduct = function(userid, prodid, user, buyproductcallback) {
-            console.log(userid);
-            console.log(prodid);
-            console.log(user.personalcontact);
+            //console.log(userid);
+            //console.log(prodid);
+            //console.log(user.personalcontact);
             $http({
                 url: adminurl + "buyproduct",
                 method: "POST",
@@ -218,7 +218,7 @@ myservices.factory('MyServices', function($http) {
             }).success(buyproductcallback);
         },
         returnval.viewmyproductorders = function(user, viewmyproductorderscallback) {
-            //                  console.log(profile);
+            //                  //console.log(profile);
             $http({
                 url: adminurl + "viewmyproductorders",
                 method: "POST",
@@ -228,7 +228,7 @@ myservices.factory('MyServices', function($http) {
             }).success(viewmyproductorderscallback);
         },
         returnval.viewallorders = function(user, viewallorderscallback) {
-            //                  console.log(profile);
+            //                  //console.log(profile);
             $http({
                 url: adminurl + "viewallorders",
                 method: "POST",
@@ -238,19 +238,19 @@ myservices.factory('MyServices', function($http) {
             }).success(viewallorderscallback);
         },
         /*  returnval.updateprofile=function(id,p,updateprofilecallback){
-                    console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
+                    //console.log("updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website);
              $http.get(adminurl + "updateprofile?id="+id+"&shopname="+p.shopname+"&area="+p.area+"&category="+p.category+"&address="+p.address+"&description="+p.description+"&shopcontact1="+p.shopcontact1+"&shopcontact2="+p.shopcontact2+"&shopemail="+p.shopemail+"&website="+p.website,{}).success(updateprofilecallback);
             },*/
         returnval.updatecat = function(user, id, updatecatcallback) {
-            console.log("updatecat?user=" + user + "&id=" + id);
+            //console.log("updatecat?user=" + user + "&id=" + id);
             $http.get(adminurl + "updatecat?user=" + user + "&id=" + id, {}).success(updatecatcallback);
         }
     returnval.updatearea = function(user, id, updateareacallback) {
-        //      console.log("updatearea?user=" + user + "&id=" + id);
+        //      //console.log("updatearea?user=" + user + "&id=" + id);
         $http.get(adminurl + "updatearea?user=" + user + "&id=" + id, {}).success(updateareacallback);
     }
     returnval.balanceadd = function(user, a, balanceaddcallback, reason) {
-            console.log("addbalance?user=" + user + "&amount=" + a);
+            //console.log("addbalance?user=" + user + "&amount=" + a);
             $http.get(adminurl + "addbalance?user=" + user + "&amount=" + a + "&reason=" + reason, {}).success(balanceaddcallback);
         },
         returnval.sellingapproval = function(sell, sellingapprovalcallback) {
@@ -269,7 +269,7 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "yourbalance?user=" + JSON.parse(u), {}).success(yourbalancecallback);
         },
         returnval.mem = function(c, memcallback) {
-            console.log("searchresult?area=''&category=''&membershipno=" + c);
+            //console.log("searchresult?area=''&category=''&membershipno=" + c);
             $http.get(adminurl + "searchresult?area=''&category=''&membershipno=" + c, {}).success(memcallback);
         },
         returnval.purchaserequest = function(userfrom, userto, amount, reason, purchaserequestcallback) {
