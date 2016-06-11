@@ -34,7 +34,8 @@
       },
       "locator": "phonegap-plugin-push"
     },
-    "phonegap-plugin-push"
+    "phonegap-plugin-push",
+    "cordova-plugin-ignore-lint-translation"
   ],
   "cordovaPlatforms": [
     "android",

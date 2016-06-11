@@ -59,8 +59,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $httpProvider) {
     $ionicConfigProvider.views.maxCache(0);
+    $httpProvider.defaults.withCredentials = true;
     $stateProvider
 
         .state('login', {
