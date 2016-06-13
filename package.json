@@ -27,7 +27,6 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
     "cordova-plugin-file-transfer",
-    "cordova-plugin-crosswalk-webview",
     {
       "variables": {
         "SENDER_ID": "694450719069"
@@ -37,7 +36,7 @@
     "phonegap-plugin-push"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }
