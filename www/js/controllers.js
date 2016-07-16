@@ -1182,14 +1182,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showPopup2 = function() {
 
         var myPopup = $ionicPopup.show({
-            template: '<p class="text-center">Successfully registered!!</p>',
-            title: 'Thankyou',
+            template: '<p class="text-center">Your details have been sent for approval</p>',
+            title: 'Thank You for registering',
             scope: $scope,
 
         });
         $timeout(function() {
             myPopup.close(); //close the popup after 3 seconds for some reason
-        }, 2000);
+        }, 4000);
     };
 
     $scope.showPopup1 = function() {
