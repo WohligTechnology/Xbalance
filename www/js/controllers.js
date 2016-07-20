@@ -1611,20 +1611,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.changeprofileimage = function() {
         console.log("take picture");
 
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadprofile?user=" + user.id, changeprofilephoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
@@ -1640,23 +1626,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     };
 
+    $scope.removeProfileImage = function() {
+        $scope.profile.shoplogo = "";
+    }
+
     $scope.changeshopimage = function(id) {
         console.log("take picture");
-
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadshop?id=" + id + "&user=" + user.id, changeshopphoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
@@ -1675,20 +1650,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.changeproductimage = function(id) {
         console.log("take picture");
         console.log("ID " + id);
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "imageuploadproduct?id=" + id + "&user=" + user.id, changeshopphoto);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
@@ -1738,10 +1699,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.hide();
 
     }
+
+    $scope.deleteShopPhoto = function(index) {
+        $scope.pic.splice(index, 1);
+    }
+
     var shopproductphotocallback = function(data, status) {
         $scope.image = data;
 
     }
+
+    $scope.deleteProductsPhoto = function(index) {
+        $scope.image.splice(index, 1);
+    }
+
+
     var getallcategory1callback = function(data, status) {
         $scope.cat = data;
         console.log($scope.cat);
@@ -1866,9 +1838,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }];
             var check = formvalidation($scope.allvalidation);
             if (check) {
-                console.log("valid");
-                MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
+                if ($scope.pass.oldpassword != $scope.pass.newpassword) {
+                    console.log("valid");
+                    MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        template: '<p class="text-center">Old password and new password cannot be same</p>',
+                        title: "Sorry Cannot Proceed!!",
+                        scope: $scope,
 
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 4000);
+                }
             } else {
                 console.log("not valid");
                 $scope.showPopup8();
