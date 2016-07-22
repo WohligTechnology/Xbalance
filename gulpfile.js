@@ -6,6 +6,9 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var create = require('gulp-cordova-create');
+var plugin = require('gulp-cordova-plugin');
+var android = require('gulp-cordova-build-android');
 
 var paths = {
   sass: ['./scss/**/*.scss']
@@ -29,6 +32,20 @@ gulp.task('sass', function(done) {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
 });
+
+gulp.task('build', function() {
+  return gulp.src('dist')
+    .pipe(create())
+    .pipe(android({
+      release: true,
+      storeFile: 'wohlig.keystore',
+      keyAlias: 'wohlig'
+    }))
+    .pipe(gulp.dest('apk'));
+});
+// ~/Library/Android/sdk/build-tools/23.0.1/zipalign -v 4 platforms/android/build/outputs/apk/android-release.apk app-publish.apk
+// ~/Library/Android/sdk/build-tools/23.0.1/zipalign -v 4 apk/android-release.apk app-publish.apk
+
 
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()

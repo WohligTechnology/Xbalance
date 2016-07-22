@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.onestopbarter.swaap" version="0.0.2" versionCode="1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.onestopbarter.swaap" version="0.1" versionCode="23" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://phonegap.com/ns/1.0">
     <name>Swaap</name>
     <description>Be Smarter. Do Barter.</description>
     <author email="info@wohlig.com" href="http://www.wohlig.com">Wohlig</author>
