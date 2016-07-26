@@ -2704,4 +2704,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
 
     })
+    .controller('HotelCtrl', function($scope,$filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+      $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
+      console.log($scope.today);
+      $ionicLoading.hide();
+    })
     .controller('EventCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});

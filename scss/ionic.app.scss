@@ -148,3 +148,11 @@ ul {
         width: 100%;
     }
 }
+.strong-tabs {
+  background-color: $balanced;
+  .tab-item {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}

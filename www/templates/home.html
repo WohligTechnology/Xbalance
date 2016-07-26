@@ -2,8 +2,7 @@
 
     <ion-header-bar class="bar-balanced">
         <div class="buttons button-left">
-            <button class="button button-icon ion-navicon no-hide" menu-toggle="left">
-            </button>
+            <button class="button button-icon ion-navicon no-hide" menu-toggle="left"></button>
         </div>
         <img src="img/main.png" class="main-png">
         <div class="buttons button-right">
@@ -11,37 +10,37 @@
         </div>
     </ion-header-bar>
 
-    <ion-content class="padding">
+    <ion-content class="padding has-tabs">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
         <div class="incard">
             <div class="profile-img" ng-controller="ProfileCtrl">
                 <img ng-src="{{profile.shoplogo|serverimage}}">
                 <h3>{{profile.shopname}}</h3>
-                <h3>Membership Id : {{profile.membershipno}}</h3>
+                <h3>Membership Id :
+                    {{profile.membershipno}}</h3>
             </div>
-
 
             <div class="padtop5">
                 <ion-item class="my-balcont">
 
-                <ul class="text-center">
-                    <li>
-                        <div class="balance bod-right">
+                    <ul class="text-center">
+                        <li>
+                            <div class="balance bod-right">
                                 <h4 class="balanced">{{pb.yourbalance.purchasebalance}}</h4>
                                 <div class="label-name">
                                     Purchase Balance
                                 </div>
                             </div>
-                    </li>
-                    <li>
-                        <div class="balance">
+                        </li>
+                        <li>
+                            <div class="balance">
                                 <h4 class="balanced">{{pb.yourbalance.salesbalance}}</h4>
                                 <div class="label-name">
                                     Sell Balance
                                 </div>
                             </div>
-                    </li>
+                        </li>
                     </ul>
                 </ion-item>
             </div>
@@ -51,127 +50,21 @@
                     Add Balance
                 </button>
             </div>
-            <!-- <div class="padding-horizontal text-center p15" ng-controller="HomeCtrl">
-                <button class="button button-balanced pr-button" ng-click="openWindow();">
-                Pay
-                </button>
-            </div> -->
-
 
         </div>
 
-        <div class="incard">
-            <div class="button-bar bars">
-                <a class="button button-outline button-balanced tb-button" ng-click="tabvalue = 1;" ng-class="{'active': tabvalue == 1}">Online</a>
-                <!--                <a class="button button-outline button-royal" ng-click="offline()" ng-class="offlineclass">Offline</a>  -->
-                <a class="button button-outline button-balanced tb-button" ng-click="tabvalue = 2;" ng-class="{'active': tabvalue == 2}">Offline</a>
-            </div>
-
-            <div class="header-card" ng-if="tabvalue == 1">Find Products</div>
-            <div class="header-card" ng-if="tabvalue == 2">Find Shops</div>
-
-            <div class="" ng-if="tabvalue == 1">
-                <label class="item item-input item-select area">
-                    <div class="input-label">
-                        Area
-                    </div>
-                    <select ng-model="home.area">
-                        <option value="">Mumbai</option>
-                        <!--                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>-->
-                    </select>
-                </label>
-
-                <label class="item item-input item-select area">
-                    <div class="input-label">
-                        Categories
-                    </div>
-                    <select ng-model="product.category">
-                        <option value="">All</option>
-                        <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
-                    </select>
-                </label>
-
-                <div class="row">
-                    <div class="col">
-                        <h5 class="member">Keyword</h5>
-                    </div>
-                    <div class="col membershipno">
-                        <input type="text" id="" ng-model="product.productname">
-                    </div>
-                </div>
-                <div class="home-or">
-                    <h6>- OR -</h6>
-                </div>
-                <!--            <div class="item item-input area">-->
-                <div class="row">
-                    <div class="col">
-                        <h5 class="member">Shop Name</h5>
-                    </div>
-                    <div class="col membershipno">
-                        <input type="text" id="normal-field" ng-model="product.membershipno">
-                    </div>
-                </div>
-                <div class="padding-horizontal text-center p20 p15">
-                    <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
-                    <button class="button button-balanced pr-button" ng-click="searchproduct(product);">Search</button>
-                </div>
-            </div>
-            <div class="" ng-if="tabvalue == 2">
-                <label class="item item-input item-select area">
-                    <div class="input-label">
-                        City
-                    </div>
-                    <select ng-model="home.area">
-                        <option value="">Mumbai</option>
-                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
-                    </select>
-                </label>
-
-                <label class="item item-input item-select area">
-                    <div class="input-label">
-                        Area
-                    </div>
-                    <select ng-model="home.area">
-                        <option value="">All</option>
-                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>
-                    </select>
-                </label>
-
-
-                <label class="item item-input item-select area">
-                    <div class="input-label">
-                        Categories
-                    </div>
-                    <select ng-model="home.category">
-                        <option value="">All</option>
-                        <option ng-repeat="categories in user.category" value="{{categories.id}}">{{categories.name}}</option>
-                    </select>
-
-                </label>
-                <div class="home-or">
-                    <h6>- OR -</h6>
-                </div>
-                <!--            <div class="item item-input area">-->
-                <div class="row">
-                    <div class="col">
-                        <h5 class="member">Membership No.</h5>
-                    </div>
-                    <div class="col membershipno">
-                        <input type="text" id="normal-field" ng-model="home.membershipno">
-                    </div>
-                </div>
-                <div class="padding text-center">
-                    <button class="button button-balanced pr-button" ng-click="memfunc(home);">Search</button>
-                </div>
-<!--
-                     <div class="padding-horizontal text-center" ng-controller="YourBalCtrl">
-                <button class="button button-balanced pr-button" ng-click="openedit();">
-                    Add Balance
-                </button>
-            </div>
--->
-            </div>
-
-        </div>
     </ion-content>
+
+    <div class="tabs-striped tabs-color-light tabs strong-tabs">
+        <a class="tab-item" ui-sref="app.home-online">
+            Online
+        </a>
+        <a class="tab-item" ui-sref="app.home-offline">
+            Offline
+        </a>
+        <a class="tab-item" ui-sref="app.home-hotel">
+            Hotels
+        </a>
+    </div>
+
 </ion-view>

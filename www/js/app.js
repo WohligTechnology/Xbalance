@@ -123,6 +123,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     })
 
+    .state('app.home-online', {
+        url: "/home/online",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/home-online.html",
+                controller: 'HomeCtrl'
+            }
+        }
+    })
+
+    .state('app.home-offline', {
+        url: "/home/offline",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/home-offline.html",
+                controller: 'HomeCtrl'
+            }
+        }
+    })
+
+    .state('app.home-hotel', {
+        url: "/home/hotel",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/home-hotel.html",
+                controller: 'HotelCtrl'
+            }
+        }
+    })
+
     .state('app.selling', {
         url: "/selling",
         views: {
