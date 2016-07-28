@@ -13,12 +13,22 @@
     <ion-content class="padding has-tabs">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
+        <ion-slide-box>
+            <ion-slide>
+                <img src="http://onestopbarter.com/lib/img/1.jpg" class="full-image"/>
+            </ion-slide>
+            <ion-slide>
+                <img src="http://onestopbarter.com/lib/img/2.jpg" class="full-image"/>
+            </ion-slide>
+        </ion-slide-box>
+
         <div class="incard">
-            <div class="profile-img" ng-controller="ProfileCtrl">
-                <img ng-src="{{profile.shoplogo|serverimage}}">
-                <h3>{{profile.shopname}}</h3>
-                <h3>Membership Id :
-                    {{profile.membershipno}}</h3>
+
+            <div class="item item-avatar div-img" ng-controller="ProfileCtrl">
+                <div class="imgy" style="background-image: url({{profile.shoplogo|serverimage}});"></div>
+                <h2>{{profile.shopname}}</h2>
+                <p>Membership Id:
+                    {{profile.membershipno}}</p>
             </div>
 
             <div class="padtop5">

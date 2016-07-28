@@ -156,3 +156,24 @@ ul {
     text-transform: uppercase;
   }
 }
+.div-img {
+  padding: 15px 15px 6px !important;
+  padding-left: 72px !important;
+  border-bottom: 1px solid #eaeaea !important;
+  p {
+    padding: 0;
+  }
+  .imgy {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: 41px;
+    max-height: 41px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #eaeaea;
+  }
+}

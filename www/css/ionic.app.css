@@ -9174,3 +9174,22 @@ ul, .my-balcont ul {
     font-weight: bold;
     font-size: 16px;
     text-transform: uppercase; }
+
+.div-img {
+  padding: 15px 15px 6px !important;
+  padding-left: 72px !important;
+  border-bottom: 1px solid #eaeaea !important; }
+  .div-img p {
+    padding: 0; }
+  .div-img .imgy {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    max-width: 41px;
+    max-height: 41px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #eaeaea; }
