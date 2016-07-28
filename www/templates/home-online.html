@@ -1,10 +1,10 @@
-<ion-view view-title="Find Products">
+<ion-view view-title="Online">
     <ion-content class="padding">
 
 
 
-        <div class="incard">
-
+        <div class="incard brdr-select">
+          <div class="header-card">Find Products</div>
             <div>
                 <label class="item item-input item-select area">
                     <div class="input-label">
@@ -15,7 +15,6 @@
                         <!--                        <option ng-repeat="areas in user.area" value="{{areas.id}}">{{areas.name}}</option>-->
                     </select>
                 </label>
-
                 <label class="item item-input item-select area">
                     <div class="input-label">
                         Categories
@@ -26,32 +25,24 @@
                     </select>
                 </label>
 
-                <div class="row">
-                    <div class="col">
-                        <h5 class="member">Keyword</h5>
-                    </div>
-                    <div class="col membershipno">
-                        <input type="text" id="" ng-model="product.productname">
-                    </div>
-                </div>
+                <label class="item item-input">
+                  <span class="input-label">Keyword</span>
+                    <input type="text" ng-model="product.productname">
+                </label>
                 <div class="home-or">
                     <h6>- OR -</h6>
                 </div>
                 <!--            <div class="item item-input area">-->
-                <div class="row">
-                    <div class="col">
-                        <h5 class="member">Shop Name</h5>
-                    </div>
-                    <div class="col membershipno">
-                        <input type="text" id="normal-field" ng-model="product.membershipno">
-                    </div>
-                </div>
+                <label class="item item-input">
+                  <span class="input-label">Shop Name</span>
+                    <input type="text" ng-model="product.membershipno">
+                </label>
                 <div class="padding-horizontal text-center p20 p15">
                     <!--                    <button class="button button-block button-outline button-balanced" ng-click="memfunc(home);">Search</button>-->
                     <button class="button button-balanced pr-button" ng-click="searchproduct(product);">Search</button>
                 </div>
             </div>
-            
+
 
         </div>
     </ion-content>

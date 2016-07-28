@@ -177,3 +177,23 @@ ul {
     border: 1px solid #eaeaea;
   }
 }
+.brdr-select {
+  .item-input input {
+    border: 1px solid $balanced;
+    text-align: right;
+    padding: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 5px;
+    right: 13px;
+    width: 47%;
+  }
+  .item-select select {
+      width: 47%;
+      border: 1px solid $balanced;
+      border-radius: 0;
+      margin: 3px;
+      padding-right: 15px;
+      right: 10px;
+  }
+}

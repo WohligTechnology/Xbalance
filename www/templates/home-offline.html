@@ -1,9 +1,9 @@
-<ion-view view-title="Find Shops">
+<ion-view view-title="Offline">
 
     <ion-content class="padding">
 
-        <div class="incard">
-
+        <div class="incard brdr-select">
+            <div class="header-card">Find Shops</div>
             <label class="item item-input item-select area">
                 <div class="input-label">
                     City
@@ -38,14 +38,12 @@
                 <h6>- OR -</h6>
             </div>
             <!--            <div class="item item-input area">-->
-            <div class="row">
-                <div class="col">
-                    <h5 class="member">Membership No.</h5>
-                </div>
-                <div class="col membershipno">
-                    <input type="text" id="normal-field" ng-model="home.membershipno">
-                </div>
-            </div>
+
+            <label class="item item-input">
+              <span class="input-label">Membership No.</span>
+                <input type="text" ng-model="home.membershipno">
+            </label>
+
             <div class="padding text-center">
                 <button class="button button-balanced pr-button" ng-click="memfunc(home);">Search</button>
             </div>
