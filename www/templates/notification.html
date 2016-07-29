@@ -1,7 +1,17 @@
 <ion-view view-title="Notification">
+  <ion-nav-buttons side="right">
+    <div class="dh-relative">
+      <button class="button button-icon ln-bell small-icon btn-view" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
+      <span class="badge badge-assertive btn-set span-abs">0</span>
+    </div>
+
+  </ion-nav-buttons>
     <ion-content class="padding">
        <p class="royal padding text-center" ng-if="notification.length==0">No Notifications yet.</p>
         <div class="incard notification" ng-repeat="n in notification">
+          <div class="close-btn">
+            <i class="ln-cross"></i>
+          </div>
             <div class="header-cards">Business
                 <span style="float:right; font-size:14px;">{{n.date | date:'dd MMM yyyy'}} {{n.time | ampmtime}}</span>
             </div>

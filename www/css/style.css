@@ -3,6 +3,7 @@
 @font-face {
   font-family: 'quicksand';
   src: url('../fonts/Quicksand-Regular.ttf');
+  font-weight: 400;
 }
 @font-face {
   font-family: 'quicksand';
@@ -22,6 +23,9 @@
   font-family: 'lato';
   src: url('../fonts/Lato-Bold.ttf');
   font-weight: 700;
+}
+body{
+      font-weight: 700;
 }
 .bg-xb {
   background-image: url('../img/login-bg.png');
@@ -88,12 +92,15 @@ button.btn-small {
 }
 .prod-info h4 {
   text-align: center;
+      font-weight: 700;
 }
 .prod-info p {
   text-align: justify;
+      font-weight: 700;
 }
 h1.title {
   text-align: center;
+      font-weight: 700;
 }
 button.btn-smalls {
   width: 50%;
@@ -399,6 +406,7 @@ p.info {
 }
 ion-item.area.item h3 {
   padding-left: 10px;
+    font-weight: 700;
 }
 ion-item.category.item h3 {
   font-weight: 700;
@@ -460,7 +468,7 @@ ion-item.product.item h2 {
   text-transform: uppercase;
 }
 .incard .item.header {
-  font-weight: 100;
+  font-weight: 700;
   font-size: 16px;
   padding-bottom: 0px;
   padding-top: 5px;
@@ -495,6 +503,7 @@ ion-footer-bar.footer-shop h4 {
   color: #3b3f42;
   font-size: 14px;
   text-transform: uppercase;
+  font-weight: 700;
 }
 .profile-img h3 {
   font-size: 15px;
@@ -546,6 +555,10 @@ ion-item.item-left.item {
   min-height: 0;
   line-height: 0;
   border: 0;
+}
+input[type=search], input[type=text], input[type=password], input[type=datetime], input[type=datetime-local], input[type=date], input[type=month], input[type=time], input[type=week], input[type=number], input[type=email], input[type=url], input[type=tel], input[type=color], textarea {
+    border: 0;
+    font-weight: 700;
 }
 .round-circle {
   border: 2px solid #F78330;
@@ -616,6 +629,8 @@ ion-item.item-left.item h2 {
   color: #3b3f42;
   font-size: 14px;
   text-transform: uppercase;
+  font-weight: 700;
+
 }
 .item.item-royal {
   border-color: #1b1f25;
@@ -801,6 +816,7 @@ input.text-right {
 }
 h3.leftname {
   margin-top: 4px!important;
+  font-weight: 700;
 }
 .blue {
   color: #F78330;
@@ -810,11 +826,13 @@ h3.leftname {
 }
 .incard.notification {
   padding: 10px 15px 0px;
+  position: relative;
 }
 .header-cards {
   padding: 3px 0px;
   font-size: 16px;
   border-bottom: 1px solid #ddd;
+  margin-top: 15px;
 }
 .bar .button.button-icon.small-icon.arrows:before {
   font-size: 22px;
@@ -1010,4 +1028,61 @@ ion-item.item.item-complex.actives {
 }
 .mytab td {
   padding: 5px;
+}
+.width100{
+
+      width: 100% !important;
+        border: 1px solid #d2d2d2 !important;
+        width: 100% !important;
+        margin-top: 10px;
+
+}
+.btn-set{
+  height: 20px;
+width: 20px;
+text-align: center;
+padding: 2px 6px;
+}
+.dh-relative{
+  position: relative;
+  margin: 0px 2px 0px 0px;
+  padding: 0px 3px;
+}
+.dh-relative .button{
+  padding: 0;
+}
+.span-abs{
+  position: absolute;
+right: -4px;
+top: 14px;
+}
+.input-label{
+  font-weight: 700;
+}
+.close-btn {
+    float: right;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+.close-btn i{
+  background: #f78330;
+color: #fff;
+border-radius: 50%;
+height: 20px;
+width: 20px;
+display: block;
+text-align: center;
+font-size: 9px;
+line-height: 220%;
+}
+.incard p {
+    padding: 13px 0 6px;
+    font-size: 15px;
+}
+.pr-button {
+    font-size: 15px;
+}
+.balance .label-name{
+  font-size: 15px;
 }

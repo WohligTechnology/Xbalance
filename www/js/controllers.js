@@ -1212,6 +1212,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('FaqCtrl', function($scope, $stateParams) {})
+.controller('ContactusCtrl', function($scope, $stateParams) {})
 
 .controller('checkout', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
 
@@ -1562,6 +1563,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker) {
+
+
+      $scope.pullrefresh = function() {
+          console.log("Do Refresh");
+          MyServices.yourbalance($scope.bal, yourbalancecallback);
+          $scope.showloading();
+          console.log('Refresh Called');
+          //Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
+      };
 
     if ($.jStorage.get("user1"))
         globalfunctionapproval();

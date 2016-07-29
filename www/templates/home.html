@@ -6,6 +6,10 @@
         </div>
         <img src="img/main.png" class="main-png">
         <div class="buttons button-right">
+          <div class="dh-relative">
+            <button class="button button-icon ln-bell small-icon btn-view" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
+            <span class="badge badge-assertive btn-set span-abs">0</span>
+          </div>
             <button class="button button-icon ion-ios-loop-strong small-icon" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
         </div>
     </ion-header-bar>

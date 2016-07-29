@@ -1,8 +1,13 @@
 <ion-view view-title="Profile">
    <ion-nav-buttons side="right">
+     <div class="dh-relative">
+       <button class="button button-icon ln-bell small-icon btn-view" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
+       <span class="badge badge-assertive btn-set span-abs">0</span>
+     </div>
       <a class="button button-icon ion-edit small-icon" ng-click="editpro(profile);" href="#/app/profile/edit"></a>
    </ion-nav-buttons>
    <ion-content class="padding">
+           <!-- <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher> -->
       <div class="incard">
          <div class="profile-img">
             <img ng-src="{{profile.shoplogo|serverimage}}">

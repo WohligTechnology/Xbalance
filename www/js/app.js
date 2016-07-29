@@ -85,6 +85,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
             }
         }
     })
+    .state('app.contactus', {
+        url: "/contactus",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/contactus.html",
+                controller: 'ContactusCtrl'
+            }
+        }
+    })
 
     .state('app.about', {
         url: "/aboutus",

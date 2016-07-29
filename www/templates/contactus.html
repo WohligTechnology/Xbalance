@@ -1,0 +1,40 @@
+<ion-view view-title="Contact Us">
+  <ion-nav-buttons side="right">
+    <div class="dh-relative">
+      <button class="button button-icon ln-bell small-icon btn-view" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
+      <span class="badge badge-assertive btn-set span-abs">0</span>
+    </div>
+
+  </ion-nav-buttons>
+    <ion-content class="padding">
+        <div class="incard">
+            <div class="padding">
+              <div class="list">
+
+                <label class="item item-input item-select">
+                  <div class="input-label">
+                    Query
+                  </div>
+                  <select>
+                    <option>Query1</option>
+                    <option selected>Query2</option>
+                    <option>Query2</option>
+                  </select>
+                </label>
+                <div class="">
+                  <label class="item item-input item-stacked-label">
+                    <span class="input-label">Description</span>
+                    <textarea name="" id="" cols="30" rows="10" class="width100"></textarea>
+                  </label>
+                </div>
+
+              </div>
+              <div class="mt15 text-center">
+                <button class="button button-balanced pr-button">
+                    Submit
+                </button>
+              </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

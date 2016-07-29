@@ -27,11 +27,13 @@
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.myproducts" >
                       <i class="icon ln-cube side-menu-i"></i>
                    My Products
+                     <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.orders" >
                       <i class="icon ln-cart-full side-menu-i"></i>
                     Orders
+                      <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
                 </ion-item>
 
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.selling" >
@@ -42,15 +44,17 @@
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.transaction">
                       <i class="icon ln-cash side-menu-i"></i>
                    Transaction History
+                     <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.events" >
                       <i class="icon ln-calendar2 side-menu-i"></i>
                     <span>Events</span>
+                      <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
                 </ion-item>
                    <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.notification" >
                          <i class="icon ln-bell side-menu-i"></i>
                     Notification
-<!--                      <span class="badge badge-balanced">{{notiCount}}</span>-->
+  <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.about">
                       <i class="icon ln-clipboard side-menu-i"></i>
@@ -59,6 +63,10 @@
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.faq" >
                       <i class="icon ln-question side-menu-i"></i>
                    FAQ
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.contactus" >
+                      <i class="icon ln-contacts side-menu-i"></i>
+                   Contact Us
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="login" ng-click="logoutfunction();">
                       <i class="icon ln-arrow-right side-menu-i"></i>
