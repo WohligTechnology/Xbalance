@@ -40,6 +40,10 @@ body{
 }
 .home-or h6 {
   text-align: center;
+  font-weight: 700;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+  font-weight: 700;
 }
 .input.itemproducts {
   font-size: 12px;
@@ -452,7 +456,7 @@ ion-footer-bar.footer-shop {
 }
 .pull-right {
   float: right;
-  font-size: 12px;
+  font-size: 14px;
   color: #909090;
   margin-top: -3px;
 }
@@ -472,6 +476,17 @@ ion-item.product.item h2 {
   font-size: 16px;
   padding-bottom: 0px;
   padding-top: 5px;
+}
+.slider-pager.hide {
+    display: block;
+}
+.slider-pager .slider-pager-page {
+    display: inline-block;
+    margin: 0 3px;
+    width: 15px;
+    color: #f78330;
+    text-decoration: none;
+    opacity: .3;
 }
 label.item.area input {
   text-align: right;
@@ -560,6 +575,31 @@ input[type=search], input[type=text], input[type=password], input[type=datetime]
     border: 0;
     font-weight: 700;
 }
+.tabs-striped.tabs-color-light .tab-item {
+    color: rgb(255, 255, 255) !important;
+    opacity: 1;
+}
+.bar .title {
+    font-size: 16px;
+    font-weight: 700 !important;
+}
+.bar-balanced .button.button-clear {
+    border-color: transparent;
+    background: 0 0;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+}
+.item-select select {
+
+    font-weight: 700;
+}
+.tabs-striped.tabs-color-light .tab-item {
+    color: rgba(255,255,255,.4);
+    opacity: 1;
+    font-weight: 700;
+}
 .round-circle {
   border: 2px solid #F78330;
   -webkit-border-radius: 100%;
@@ -595,6 +635,7 @@ p.home-p {
 h5.member {
   padding-left: 8px;
   font-size: 14px;
+  font-weight: 700;
 }
 .holder {
   background: rgba(0, 0, 0, 0.4);
@@ -796,7 +837,7 @@ a.item.item-thumbnail-left.bod-bottom {
 }
 .buy-form .input-label {
   color: #A3A3A3;
-  font-weight: 500;
+  font-weight: 700;
 }
 ion-content.has-headers.has-header {
   top: 94px;
@@ -957,9 +998,18 @@ button.button.button-icon.button-clear.ion-navicon.hide {
   color: #B9B9B9!important;
 }
 .item-input textarea {
-  width: 56%;
+  width: 100%;
+  border: 1px solid #d2d2d2;
+  padding: 3px 2px 0px 4px;
 }
-
+textarea {
+  width: 100%;
+  border: 1px solid #d2d2d2;
+  padding: 3px 2px 0px 4px;
+}
+.button.button-balanced {
+    font-weight: 700;
+}
 /* webkit solution */
 
 input.text-right::-webkit-input-placeholder {
@@ -1085,4 +1135,9 @@ line-height: 220%;
 }
 .balance .label-name{
   font-size: 15px;
+}
+.cd-head{
+  text-align: center;
+padding: 0px 0px 6px 0px;
+color: #f78330;
 }
