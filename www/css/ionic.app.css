@@ -9180,8 +9180,7 @@ ul, .my-balcont ul {
   padding-left: 72px !important;
   border-bottom: 1px solid #eaeaea !important; }
   .div-img p {
-    padding: 0;
-  font-size: 15px;}
+    padding: 0; }
   .div-img .imgy {
     position: absolute;
     top: 16px;
@@ -9212,14 +9211,3 @@ ul, .my-balcont ul {
   margin: 3px;
   padding-right: 15px;
   right: 10px; }
-  .width100{
-    .item-stacked-label{
-      textarea{
-        width: 100% !important;
-        border: 1px solid #d2d2d2;
-          width: 100% !important;
-          margin-top: 10px;
-      }
-    }
-
-  }
