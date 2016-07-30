@@ -6,10 +6,70 @@
     </div>
 
   </ion-nav-buttons>
+  <div class="tabs-striped tabs-background-balanced tabs-color-light">
+     <div class="tabs">
+        <a class="tab-item {{classp}}"  ng-click="tabchanges('faq',1)">
+       FAQ
+     </a>
+        <a class="tab-item {{classv}}" ng-click="tabchanges('help',2)">
+       Help
+     </a>
+     </div>
+  </div>
     <ion-content class="padding">
         <div class="incard">
             <div class="padding">
-                <div class="faq-cont">
+               <div class="list" ng-if="tabs=='faq'">
+                 <div class="list">
+
+   <label class="item item-input item-select">
+     <div class="input-label">
+    Question
+     </div>
+     <select>
+       <option>What is Barter ??? </option>
+       <option selected>What is Barter Trade ???</option>
+       <option>What are advantages of barter trade ???</option>
+       <option>How is Trade value Define???</option>
+       <option>Why do organization join a barter Trade Network???</option>
+       <option>How Does SWAAP Work???</option>
+       <option>What does it process to join SWAAP ??? </option>
+       <option>Are there any tax advantages to barter??? </option>
+     </select>
+   </label>
+<div class="ans">
+  <p>An exchange of goods and services without cash. i.e You buy what you need and sell what you have without exchange of money</p>
+</div>
+ </div>
+               </div>
+               <div class="list" ng-if="tabs=='help'">
+                 <div class="list">
+
+                   <label class="item item-input item-select">
+                     <div class="input-label">
+                       Query
+                     </div>
+                     <select>
+                       <option>Query1</option>
+                       <option selected>Query2</option>
+                       <option>Query2</option>
+                     </select>
+                   </label>
+                   <div class="">
+                     <label class="item item-input item-stacked-label">
+                       <span class="input-label">Description</span>
+                       <textarea name="" id="" cols="30" rows="10" class="width100"></textarea>
+                     </label>
+                   </div>
+
+                 </div>
+                 <div class="mt15 text-center">
+                   <button class="button button-balanced pr-button">
+                       Submit
+                   </button>
+                 </div>
+               </div>
+                <!-- <div class="faq-cont">
                     <p>
                         <b>What is Barter ??? </b>
                         <br/>An exchange of goods and services without cash. i.e You buy what you need and sell what you have without exchange of money
@@ -70,7 +130,7 @@
                         <b> Are there any tax advantages to barter??? </b>
                         <br/>There are no tax advantages or disadvantages to barter. The Internal Revenue Service considers barter income as the same as cash income for tax purposes. Trading should be considered a marketing tool, not a tax tool.
                     </p>
-                </div>
+                </div> -->
 
             </div>
         </div>

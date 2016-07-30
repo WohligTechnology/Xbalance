@@ -1141,3 +1141,7 @@ line-height: 220%;
 padding: 0px 0px 6px 0px;
 color: #f78330;
 }
+a.tab-item.active-tab {
+    border-top: 2px solid;
+    margin-top: -2px;
+}

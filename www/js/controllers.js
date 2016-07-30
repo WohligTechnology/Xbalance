@@ -1211,7 +1211,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('FaqCtrl', function($scope, $stateParams) {})
+.controller('FaqCtrl', function($scope, $stateParams) {
+
+  $scope.tabs = 'faq';
+  $scope.classp = 'active-tab';
+  $scope.classv = '';
+
+
+  $scope.tabchanges = function(tabs, a) {
+      //        console.log(tab);
+      $scope.tabs = tabs;
+      if (a == 1) {
+
+          $scope.classp = "active-tab";
+          $scope.classv = '';
+
+      } else {
+
+          $scope.classp = '';
+          $scope.classv = "active-tab";
+      }
+  };
+
+
+})
 .controller('ContactusCtrl', function($scope, $stateParams) {})
 
 .controller('checkout', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
