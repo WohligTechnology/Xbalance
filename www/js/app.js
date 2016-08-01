@@ -77,23 +77,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
     })
 
     .state('app.search', {
-        url: "/search/:area/:category/:online/:offline",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/search.html",
-                controller: 'SearchCtrl'
+            url: "/search/:area/:category/:online/:offline",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/search.html",
+                    controller: 'SearchCtrl'
+                }
             }
-        }
-    })
-    .state('app.contactus', {
-        url: "/contactus",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/contactus.html",
-                controller: 'ContactusCtrl'
+        })
+        .state('app.contactus', {
+            url: "/contactus",
+            views: {
+                'menuContent': {
+                    templateUrl: "templates/contactus.html",
+                    controller: 'ContactusCtrl'
+                }
             }
-        }
-    })
+        })
 
     .state('app.about', {
         url: "/aboutus",
@@ -329,11 +329,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         hours = hours ? hours : 12; // the hour '0' should be '12'
         minutes = minutes < 10 ? '0' + minutes : minutes;
         if (hours < 10) {
-            hours = "0" + hours
+            hours = "0" + hours;
         }
         var strTime = hours + ':' + minutes + ' ' + ampm;
         return strTime;
-    }
+    };
+})
+.filter('moment', function() {
+    return function(dateString, format) {
+        return moment(dateString).format(format);
+    };
 });
 
 //.filter('serverimage', function () {

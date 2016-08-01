@@ -1212,7 +1212,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('FaqCtrl', function($scope, $stateParams) {
-
+        $scope.contact = {};
         $scope.tabs = 'faq';
         $scope.classp = 'active-tab';
         $scope.classv = '';
@@ -1232,7 +1232,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.classv = "active-tab";
             }
         };
-
+        var contactcallback=function(data,status){
+console.log(data);
+        }
+        $scope.submitContact = function() {
+            MyServices.submitsuggestion($scope.contact, contactcallback);
+        }
 
     })
     .controller('ContactusCtrl', function($scope, $stateParams) {})
@@ -2738,15 +2743,34 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
 
     })
-    .controller('HotelCtrl', function($scope, $filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+    .controller('HotelCtrl', function($scope, $filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
         $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
-        console.log($scope.today);
+        // console.log($scope.today);
         $ionicLoading.hide();
         $scope.hotel = {};
-        var getHotelCallback=function(data,status){
-          console.log(data);
+        var getHotelCallback = function(data, status) {
+            console.log(data);
+            if (data.value == true) {
+                $scope.hotel = {};
+                var myPopup = $ionicPopup.show({
+                    template: '<p class="text-center">Thankyou for Submission</p>',
+                    title: '<b>Submitted!<b>',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 3000);
+                $location.url("/app/home");
+            }
         }
         $scope.submitHotel = function() {
+            $scope.hotel.checkout = new Date($scope.hotel.checkout)
+            $scope.hotel.checkin = new Date($scope.hotel.checkin)
+            $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
+            $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
+            console.log($scope.hotel.checkout);
+            console.log($scope.hotel.checkin);
+
             MyServices.submitHotel($scope.hotel, getHotelCallback);
             $scope.openform1 = function(productid) {
                 $location.url("/app/checkout/" + productid);

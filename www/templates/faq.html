@@ -1,74 +1,62 @@
 <ion-view view-title="FAQ's & Help">
-  <ion-nav-buttons side="right">
-    <div class="dh-relative">
-      <button class="button button-icon ln-bell small-icon btn-view" ng-controller="YourBalCtrl" ng-click="pullrefresh();"></button>
-      <span class="badge badge-assertive btn-set span-abs">0</span>
-    </div>
 
-  </ion-nav-buttons>
-  <div class="tabs-striped tabs-background-balanced tabs-color-light">
-     <div class="tabs">
-        <a class="tab-item {{classp}}"  ng-click="tabchanges('faq',1)">
+    <div class="tabs-striped tabs-background-balanced tabs-color-light">
+        <div class="tabs">
+            <a class="tab-item {{classp}}" ng-click="tabchanges('faq',1)">
        FAQ
      </a>
-        <a class="tab-item {{classv}}" ng-click="tabchanges('help',2)">
+            <a class="tab-item {{classv}}" ng-click="tabchanges('help',2)">
        Help
      </a>
-     </div>
-  </div>
+        </div>
+    </div>
     <ion-content class="padding">
         <div class="incard">
             <div class="padding">
-               <div class="list" ng-if="tabs=='faq'">
-                 <div class="list">
+                <div class="list" ng-if="tabs=='faq'">
+                    <div class="list">
 
-   <label class="item item-input item-select">
-     <div class="input-label">
-    Question
-     </div>
-     <select>
-       <option>What is Barter ??? </option>
-       <option selected>What is Barter Trade ???</option>
-       <option>What are advantages of barter trade ???</option>
-       <option>How is Trade value Define???</option>
-       <option>Why do organization join a barter Trade Network???</option>
-       <option>How Does SWAAP Work???</option>
-       <option>What does it process to join SWAAP ??? </option>
-       <option>Are there any tax advantages to barter??? </option>
-     </select>
-   </label>
-<div class="ans">
-  <p>An exchange of goods and services without cash. i.e You buy what you need and sell what you have without exchange of money</p>
-</div>
- </div>
-               </div>
-               <div class="list" ng-if="tabs=='help'">
-                 <div class="list">
+                        <label class="item item-input item-select">
+                            <div class="input-label">
+                                Question
+                            </div>
+                            <select>
+                                <option>What is Barter ??? </option>
+                                <option selected>What is Barter Trade ???</option>
+                                <option>What are advantages of barter trade ???</option>
+                                <option>How is Trade value Define???</option>
+                                <option>Why do organization join a barter Trade Network???</option>
+                                <option>How Does SWAAP Work???</option>
+                                <option>What does it process to join SWAAP ??? </option>
+                                <option>Are there any tax advantages to barter??? </option>
+                            </select>
+                        </label>
+                        <div class="ans">
+                            <p>An exchange of goods and services without cash. i.e You buy what you need and sell what you have without exchange of money</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="list" ng-if="tabs=='help'">
+                    <div class="list">
 
-                   <label class="item item-input item-select">
-                     <div class="input-label">
-                       Query
-                     </div>
-                     <select>
-                       <option>Query1</option>
-                       <option selected>Query2</option>
-                       <option>Query2</option>
-                     </select>
-                   </label>
-                   <div class="">
-                     <label class="item item-input item-stacked-label">
-                       <span class="input-label">Description</span>
-                       <textarea name="" id="" cols="30" rows="10" class="width100"></textarea>
-                     </label>
-                   </div>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Email</span>
+                            <input type="email" placeholder="Enter Email ID" ng-model="contact.user">
+                        </label>
+                        <div class="">
+                            <label class="item item-input item-stacked-label">
+                                <span class="input-label">Description</span>
+                                <textarea name="" id="" cols="30" rows="10" ng-model="contact.message" class="width100" placeholder="Enter description"></textarea>
+                            </label>
+                        </div>
 
-                 </div>
-                 <div class="mt15 text-center">
-                   <button class="button button-balanced pr-button">
-                       Submit
-                   </button>
-                 </div>
-               </div>
+                    </div>
+                    <div class="mt15 text-center">
+                        <button class="button button-balanced pr-button" ng-click="submitContact();">
+                            Submit
+                        </button>
+                    </div>
+                </div>
                 <!-- <div class="faq-cont">
                     <p>
                         <b>What is Barter ??? </b>

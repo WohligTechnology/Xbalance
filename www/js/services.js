@@ -101,24 +101,21 @@ myservices.factory('MyServices', function($http) {
             }).success(createproductcallback);
         },
         returnval.submitHotel = function(hotel, hotelcallback) {
-          console.log(hotel);
-            // console.log(ap.status);
-            // console.log(img);
-            // $http({
-            //     url: adminurl + "createproduct",
-            //     method: "POST",
-            //     data: {
-            //         'name': ap.name,
-            //         //                  'sku': ap.sku,
-            //         'price': ap.price,
-            //         'description': ap.description,
-            //         'status': ap.status,
-            //         'user': id,
-            //         'quantity': ap.quantity,
-            //         'category': ap.category,
-            //         'image': img
-            //     }
-            // }).success(hotelcallback);
+            $http({
+                url: adminurl + "hotelSubmit",
+                method: "POST",
+                data: {
+                    'country': hotel.country,
+                    'city': hotel.city,
+                    'hotelname': hotel.hotelname,
+                    'checkin': hotel.checkin,
+                    'checkout': hotel.checkout,
+                    'user': $.jStorage.get("user").id,
+                    'room': hotel.room,
+                    'adult': hotel.adult,
+                    'children': hotel.children
+                }
+            }).success(hotelcallback);
         },
         returnval.becomeamember = function(register, becomeamembercallback) {
             //                  console.log(profile);
@@ -297,6 +294,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.changepassword = function(id, pass, changepasswordcallback) {
             $http.get(adminurl + "changepassword?id=" + id + "&oldpassword=" + pass.oldpassword + "&newpassword=" + pass.newpassword + "&confirmpassword=" + pass.confirmpassword, {}).success(changepasswordcallback);
+        },
+        returnval.submitsuggestion = function(contact, suggestioncallback) {
+            $http.get(adminurl + "changepassword?user=" + contact.user + "&suggestion=" + contact.suggestion, {}).success(suggestioncallback);
         },
         returnval.logout = function(loginid, logoutcallback) {
             $http.get(adminurl + "logout?loginid=" + loginid, {}).success(logoutcallback);
