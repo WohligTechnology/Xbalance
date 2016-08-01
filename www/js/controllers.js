@@ -1213,29 +1213,29 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('FaqCtrl', function($scope, $stateParams) {
 
-  $scope.tabs = 'faq';
-  $scope.classp = 'active-tab';
-  $scope.classv = '';
+        $scope.tabs = 'faq';
+        $scope.classp = 'active-tab';
+        $scope.classv = '';
 
 
-  $scope.tabchanges = function(tabs, a) {
-      //        console.log(tab);
-      $scope.tabs = tabs;
-      if (a == 1) {
+        $scope.tabchanges = function(tabs, a) {
+            //        console.log(tab);
+            $scope.tabs = tabs;
+            if (a == 1) {
 
-          $scope.classp = "active-tab";
-          $scope.classv = '';
+                $scope.classp = "active-tab";
+                $scope.classv = '';
 
-      } else {
+            } else {
 
-          $scope.classp = '';
-          $scope.classv = "active-tab";
-      }
-  };
+                $scope.classp = '';
+                $scope.classv = "active-tab";
+            }
+        };
 
 
-})
-.controller('ContactusCtrl', function($scope, $stateParams) {})
+    })
+    .controller('ContactusCtrl', function($scope, $stateParams) {})
 
 .controller('checkout', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $ionicLoading, $ionicModal, $location) {
 
@@ -1588,14 +1588,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker) {
 
 
-      $scope.pullrefresh = function() {
-          console.log("Do Refresh");
-          MyServices.yourbalance($scope.bal, yourbalancecallback);
-          $scope.showloading();
-          console.log('Refresh Called');
-          //Stop the ion-refresher from spinning
-          $scope.$broadcast('scroll.refreshComplete');
-      };
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        MyServices.yourbalance($scope.bal, yourbalancecallback);
+        $scope.showloading();
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
 
     if ($.jStorage.get("user1"))
         globalfunctionapproval();
@@ -2738,9 +2738,19 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
 
     })
-    .controller('HotelCtrl', function($scope,$filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
-      $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
-      console.log($scope.today);
-      $ionicLoading.hide();
+    .controller('HotelCtrl', function($scope, $filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
+        $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
+        console.log($scope.today);
+        $ionicLoading.hide();
+        $scope.hotel = {};
+        var getHotelCallback=function(data,status){
+          console.log(data);
+        }
+        $scope.submitHotel = function() {
+            MyServices.submitHotel($scope.hotel, getHotelCallback);
+            $scope.openform1 = function(productid) {
+                $location.url("/app/checkout/" + productid);
+            }
+        }
     })
     .controller('EventCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});

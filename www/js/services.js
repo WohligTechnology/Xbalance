@@ -1,5 +1,5 @@
-var adminbase = "http://swaap.in/admin/";
-// var adminbase = "http://192.168.0.124/osb/";
+// var adminbase = "http://swaap.in/admin/";
+var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -99,6 +99,26 @@ myservices.factory('MyServices', function($http) {
                     'image': img
                 }
             }).success(createproductcallback);
+        },
+        returnval.submitHotel = function(hotel, hotelcallback) {
+          console.log(hotel);
+            // console.log(ap.status);
+            // console.log(img);
+            // $http({
+            //     url: adminurl + "createproduct",
+            //     method: "POST",
+            //     data: {
+            //         'name': ap.name,
+            //         //                  'sku': ap.sku,
+            //         'price': ap.price,
+            //         'description': ap.description,
+            //         'status': ap.status,
+            //         'user': id,
+            //         'quantity': ap.quantity,
+            //         'category': ap.category,
+            //         'image': img
+            //     }
+            // }).success(hotelcallback);
         },
         returnval.becomeamember = function(register, becomeamembercallback) {
             //                  console.log(profile);
