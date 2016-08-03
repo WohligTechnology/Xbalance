@@ -11,7 +11,7 @@
                     <div class="input-label">
                         Country
                     </div>
-                    <select ng-model="hotel.country">
+                    <select ng-model="hotel.country" ng-class="allvalidation[0].validation">
                         <option value="">Select</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -266,7 +266,7 @@
                     <div class="input-label">
                         City
                     </div>
-                    <select ng-model="hotel.city">
+                    <select ng-model="hotel.city" ng-class="allvalidation[1].validation">
                         <option value="">Select</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="NaviMumbai">NaviMumbai</option>
@@ -277,7 +277,7 @@
                     <div class="input-label">
                         Hotels
                     </div>
-                    <select ng-model="hotel.hotelname">
+                    <select ng-model="hotel.hotelname" ng-class="allvalidation[2].validation">
                         <option value="">Select</option>
                         <option value="Taj">Taj</option>
                         <option value="Oberoi">Oberoi</option>
@@ -286,17 +286,17 @@
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Check in date</span>
-                    <input type="date" ng-model="hotel.checkin">
+                    <input type="date" ng-model="hotel.checkin" ng-class="allvalidation[3].validation">
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Check out date</span>
-                    <input type="date" ng-model="hotel.checkout">
+                    <input type="date" ng-model="hotel.checkout" ng-class="allvalidation[4].validation">
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Number of Rooms
                     </div>
-                    <select ng-model="hotel.room">
+                    <select ng-model="hotel.room" ng-class="allvalidation[5].validation">
                         <option value="">Select</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -308,7 +308,7 @@
                     <div class="input-label">
                         Number of Adults
                     </div>
-                    <select ng-model="hotel.adult">
+                    <select ng-model="hotel.adult" ng-class="allvalidation[6].validation">
                         <option value="">Select</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -320,7 +320,7 @@
                     <div class="input-label">
                         Number of Childrens
                     </div>
-                    <select ng-model="hotel.children">
+                    <select ng-model="hotel.children" ng-class="allvalidation[7].validation">
                         <option value="">Select</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
