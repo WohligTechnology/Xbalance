@@ -296,7 +296,18 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "changepassword?id=" + id + "&oldpassword=" + pass.oldpassword + "&newpassword=" + pass.newpassword + "&confirmpassword=" + pass.confirmpassword, {}).success(changepasswordcallback);
         },
         returnval.submitsuggestion = function(contact, suggestioncallback) {
-            $http.get(adminurl + "changepassword?user=" + contact.user + "&suggestion=" + contact.suggestion, {}).success(suggestioncallback);
+          // console.log(contact);
+          //   $http.get(adminurl + "submitsuggestion?user=" + contact.user + "&suggestion=" + contact.message + "&userid=" + $.jStorage.get("user").id, {}).success(suggestioncallback);
+          $http({
+              url: adminurl + "submitsuggestion",
+              method: "POST",
+              data: {
+                  'userid': $.jStorage.get("user").id,
+                  'user':  contact.user,
+                  'suggestion':  contact.message
+
+              }
+          }).success(suggestioncallback);
         },
         returnval.logout = function(loginid, logoutcallback) {
             $http.get(adminurl + "logout?loginid=" + loginid, {}).success(logoutcallback);

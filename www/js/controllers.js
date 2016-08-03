@@ -1211,11 +1211,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('FaqCtrl', function($scope, $stateParams) {
+.controller('FaqCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices,$location) {
         $scope.contact = {};
         $scope.tabs = 'faq';
         $scope.classp = 'active-tab';
         $scope.classv = '';
+        $scope.question = 1;
+
+        $scope.getDropDownValue=function(question){
+          $scope.question=question;
+          console.log($scope.question);
+        }
 
 
         $scope.tabchanges = function(tabs, a) {
@@ -1234,9 +1240,50 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         };
         var contactcallback = function(data, status) {
             console.log(data);
+            if (data.value == true) {
+              $scope.contact = {};
+                var myPopup = $ionicPopup.show({
+                    title: 'Successfully Submitted!!',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+                $location.url("/app/home");
+
+            }
+            else{
+              var myPopup = $ionicPopup.show({
+                  title: 'Something went wrong!!',
+                  scope: $scope,
+              });
+              $timeout(function() {
+                  myPopup.close(); //close the popup after 3 seconds for some reason
+              }, 1500);
+            }
         }
         $scope.submitContact = function() {
-            MyServices.submitsuggestion($scope.contact, contactcallback);
+
+            $scope.allvalidation = [{
+                field: $scope.contact.user,
+                validation: ""
+            }, {
+                field: $scope.contact.message,
+                validation: ""
+            }];
+            var check = formvalidation($scope.allvalidation);
+            if (check) {
+                MyServices.submitsuggestion($scope.contact, contactcallback);
+
+            } else {
+                var myPopup = $ionicPopup.show({
+                    title: 'Please Enter Mandatory Fields!!',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
+            }
         }
 
     })
@@ -2749,35 +2796,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.hide();
         $scope.hotel = {};
         var getHotelCallback = function(data, status) {
-                console.log(data);
-                if (data.value == true) {
-                    $scope.hotel = {};
-                    var myPopup = $ionicPopup.show({
-                        template: '<p class="text-center">Thankyou for Submission</p>',
-                        title: '<b>Submitted!<b>',
-                        scope: $scope,
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 3000);
-                    $location.url("/app/home");
-                }
+            console.log(data);
+            if (data.value == true) {
+                $scope.hotel = {};
+                var myPopup = $ionicPopup.show({
+                    template: '<p class="text-center">Thank you for Submission</p>',
+                    title: '<b>Submitted!<b>',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 3000);
+                $location.url("/app/home");
             }
-            // $scope.submitHotel = function() {
-            //     $scope.hotel.checkout = new Date($scope.hotel.checkout)
-            //     $scope.hotel.checkin = new Date($scope.hotel.checkin)
-            //     $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
-            //     $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
-            //     console.log($scope.hotel.checkout);
-            //     console.log($scope.hotel.checkin);
-            //
-            //     MyServices.submitHotel($scope.hotel, getHotelCallback);
-            //     $scope.openform1 = function(productid) {
-            //         $location.url("/app/checkout/" + productid);
-            //     }
-            // }
-
-
+        }
         $scope.submitHotel = function() {
 
             $scope.allvalidation = [{
