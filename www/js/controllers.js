@@ -2843,7 +2843,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.hotel.checkin = new Date($scope.hotel.checkin)
                 $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
                 $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
-                MyServices.submitHotel($scope.hotel, getHotelCallback);
+                if($scope.hotel.checkin <= $scope.hotel.checkout){
+                    MyServices.submitHotel($scope.hotel, getHotelCallback);
+                }
+              else{
+                var myPopup = $ionicPopup.show({
+                    title: 'Enter Proper Date!!',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 2000);
+              }
 
             } else {
                 var myPopup = $ionicPopup.show({

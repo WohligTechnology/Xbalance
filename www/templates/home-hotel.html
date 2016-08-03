@@ -20,16 +20,17 @@
 
                     </select>
                 </label>
-                <label class="item item-input item-select">
+                <label class="item item-input hotel-city">
                     <div class="input-label">
                         City
                     </div>
-                    <select ng-model="hotel.city" ng-class="allvalidation[1].validation">
+                    <!-- <select ng-model="hotel.city" ng-class="allvalidation[1].validation">
                         <option value="">Select</option>
                         <option value="Mumbai">Mumbai</option>
                         <option value="NaviMumbai">NaviMumbai</option>
                         <option value="Thane">Thane</option>
-                    </select>
+                    </select> -->
+                    <input type="text" ng-model="hotel.city" ng-class="allvalidation[1].validation">
                 </label>
                 <label class="item item-input item-select">
                     <div class="input-label">
