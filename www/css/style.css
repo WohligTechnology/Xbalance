@@ -1145,3 +1145,10 @@ a.tab-item.active-tab {
     border-top: 2px solid;
     margin-top: -2px;
 }
+.ans p {
+    padding-bottom: 0px;
+    margin: 0px;
+}
+.pad-more{
+  padding: 5px 0px !important;
+}
