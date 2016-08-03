@@ -1088,8 +1088,8 @@ ion-item.item.item-complex.actives {
 
 }
 .btn-set{
-  height: 20px;
-width: 20px;
+  height: 10px;
+width: 10px;
 text-align: center;
 padding: 2px 6px;
 }
@@ -1103,8 +1103,8 @@ padding: 2px 6px;
 }
 .span-abs{
   position: absolute;
-right: -4px;
-top: 14px;
+  right: 4px;
+  top: 17px;
 }
 .input-label{
   font-weight: 700;
