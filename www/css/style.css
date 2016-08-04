@@ -1152,6 +1152,8 @@ a.tab-item.active-tab {
 .pad-more{
   padding: 5px 0px !important;
 }
+.pane, .view {
 
-/*hotels page*/
-.brdr-select .hotel-city input { padding: 0px 15px; }
+    background-color: #ffffff;
+
+}
