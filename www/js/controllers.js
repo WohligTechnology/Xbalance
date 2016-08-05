@@ -1207,6 +1207,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.showloading();
         MyServices.login(user1, logincallback);
     };
+    $scope.showSuccessmy = function() {
+        var alertPopup = $ionicPopup.alert({
+            scope: $scope,
+            templateUrl: 'templates/forget-password.html',
+        });
+
+        alertPopup.then(function(res) {
+            console.log('Thanks');
+        });
+
+        $scope.closPop = function() {
+            console.log("Close called");
+            alertPopup.close();
+        };
+    };
 
 })
 
