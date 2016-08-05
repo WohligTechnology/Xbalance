@@ -6,8 +6,12 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$state) {
     $ionicPlatform.ready(function() {
+
+      $ionicPlatform.onHardwareBackButton(function() {
+        $state.go("app.home");
+      });
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -54,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                 console.log(e);
             });
         } catch (e) {
-            console.log(e)
+            console.log(e);
         }
     });
 })
