@@ -25,6 +25,7 @@
                     <h3 class="leftnames">Price: <span>{{p.price}}</span></h3>
                <h3 class="leftnames">Order ID: <span>{{p.id}}</span></h3>
                <h3 class="leftnames">Status: <span>{{p.orderstatusname}}</span></h3>
+               <h3 class="leftnames">Status: <span>{{p}}</span></h3>
             </div>
          </div>
          <div class="list" ng-if="mypurchase.length==0 && tabvalue == 1">
@@ -42,6 +43,7 @@
                <h3 class="leftnames">Price: <span>{{o.price}}</span></h3>
                <h3 class="leftnames">Order ID: <span>{{o.id}}</span></h3>
                <h3 class="leftnames">Status: <span>{{o.orderstatusname}}</span></h3>
+               <h3 class="leftnames">Status: <span>{{o.timestamp}}</span></h3>
             </div>
          </div>
          <div class="list" ng-if="ordr.length==0 && tabvalue == 2">

@@ -99,7 +99,7 @@ button.btn-small {
       font-weight: 700;
 }
 .prod-info p {
-  text-align: justify;
+  /*text-align: justify;*/
       font-weight: 700;
 }
 h1.title {
@@ -896,9 +896,7 @@ p.addb-p {
   font-size: 16px;
 }
 .form-addrs {
-  margin-left: 15px;
-  font-size: 13px;
-  margin-top: 15px;
+  margin-right: 20px;
 }
 .buy-form input {
   color: #9F9F9F;
@@ -1000,7 +998,7 @@ button.button.button-icon.button-clear.ion-navicon.hide {
 .item-input textarea {
   width: 100%;
   border: 1px solid #d2d2d2;
-  padding: 3px 2px 0px 4px;
+  padding: 10px;
 }
 textarea {
   width: 100%;

@@ -81,8 +81,10 @@
                 <span ng-click="getproduct(s.productid)">
 <!--                    <a href="#/app/productdetail">-->
                         <img ng-src={{s.image|serverimage}}  class="full-image">
+
                         <h5 class="bold">{{s.name}}</h5>
                         <h5 class="mt">{{s.price}}</h5>
+                        <h5 class="quantity">Qty: {{s.quantity}}</h5>
                         </span>
 <!--                    </a>-->
                 </div>

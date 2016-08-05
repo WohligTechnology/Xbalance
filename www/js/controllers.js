@@ -320,27 +320,27 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.memfunc = function(home) {
 
-            purchasebalance = parseFloat(user.purchasebalance);
-            if (purchasebalance > 0) {
-                if (home.membershipno !== "") {
-                    MyServices.getshopidmebership(home.membershipno, onmembershipid);
-                } else {
-                    var area = 0;
-                    var category = 0;
-
-                    if (home.area !== "") {
-                        area = home.area;
-                    }
-                    if (category !== "") {
-                        category = home.category;
-                    }
-                    $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline);
-                }
+        purchasebalance = parseFloat(user.purchasebalance);
+        if (purchasebalance > 0) {
+            if (home.membershipno !== "") {
+                MyServices.getshopidmebership(home.membershipno, onmembershipid);
             } else {
-                $scope.showPopupNoBalance();
+                var area = 0;
+                var category = 0;
+
+                if (home.area !== "") {
+                    area = home.area;
+                }
+                if (category !== "") {
+                    category = home.category;
+                }
+                $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline);
             }
-        };
-        //search product
+        } else {
+            $scope.showPopupNoBalance();
+        }
+    };
+    //search product
 
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
         scope: $scope,
@@ -624,7 +624,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         ref = window.open("http://wohlig.co.in/osb/payumoney/paymentgateway.php?orderid=909&firstname=jagrytu&amount=98&email=jagruti@wohlig.com&phone=0987654345&productinfo=xbalance&surl=htttp://wohlig.co.in/osb/index.php/json/payumoneysuccess?orderid=909&furl=wohlig.com", '_blank', 'location=no');
 
         //        stopinterval = $interval(callAtInterval, 2000);
-    }
+    };
 
 
 
@@ -666,7 +666,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.getsort = function(content) {
             $scope.modal1.hide();
             console.log($scope.sprfull);
-            if (content == 0) {
+            if (content === 0) {
 
                 fulldatasorted = _.sortBy($scope.sprfull, function(n) {
                     return parseFloat(n.price);
@@ -682,17 +682,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 console.log(fulldatasorted);
                 $scope.spr = partitionarray(fulldatasorted, 3);
             }
-        }
+        };
         //product detail
     var getsingleproductcallback = function(data, status) {
         $scope.getpro = data;
         //          console.log($scope.getsinglepro);
-    }
+    };
     $scope.getproduct = function(id) {
         console.log(id);
         MyServices.getsingleproduct(id, getsingleproductcallback);
         $location.url("/app/productdetail/" + id);
-    }
+    };
     $scope.showPopupw = function() {
 
         var myPopup = $ionicPopup.show({
@@ -1210,16 +1210,16 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('FaqCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices,$location) {
+.controller('FaqCtrl', function($scope, $stateParams, $ionicPopup, $timeout, MyServices, $location) {
         $scope.contact = {};
         $scope.tabs = 'faq';
         $scope.classp = 'active-tab';
         $scope.classv = '';
         $scope.question = 1;
 
-        $scope.getDropDownValue=function(question){
-          $scope.question=question;
-          console.log($scope.question);
+        $scope.getDropDownValue = function(question) {
+            $scope.question = question;
+            console.log($scope.question);
         }
 
 
@@ -1240,7 +1240,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         var contactcallback = function(data, status) {
             console.log(data);
             if (data.value == true) {
-              $scope.contact = {};
+                $scope.contact = {};
                 var myPopup = $ionicPopup.show({
                     title: 'Successfully Submitted!!',
                     scope: $scope,
@@ -1250,15 +1250,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }, 1500);
                 $location.url("/app/home");
 
-            }
-            else{
-              var myPopup = $ionicPopup.show({
-                  title: 'Something went wrong!!',
-                  scope: $scope,
-              });
-              $timeout(function() {
-                  myPopup.close(); //close the popup after 3 seconds for some reason
-              }, 1500);
+            } else {
+                var myPopup = $ionicPopup.show({
+                    title: 'Something went wrong!!',
+                    scope: $scope,
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 1500);
             }
         }
         $scope.submitContact = function() {
@@ -1301,6 +1300,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 1000);
     };
+    $scope.userDet = $.jStorage.get("user");
     $scope.showloading();
     $scope.prodid = $stateParams.prodid;
     console.log($scope.prodid);
@@ -1308,7 +1308,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.detailid = $.jStorage.get("user1");
     console.log($scope.detailid);
     var getuserdetailscallback = function(data, status) {
+        console.log(data[0]);
         $scope.form = data[0];
+
+        $scope.form.email = $scope.form.shopemail;
+        $scope.form.personalcontact = $scope.form.shopcontact1;
         //      console.log($scope.form);
         //buying details
         var buyproductcallback = function(data, status) {
@@ -1324,7 +1328,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.modal1.hide();
                 $location.url("/app/home");
             }
-        }
+        };
         $scope.buyproduct = function(form) {
             $scope.allvalidation = [{
                 field: $scope.form.name,
@@ -1378,8 +1382,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 });
                 myPopup.then(function(res) {
                     console.log('Tapped!', res);
-                    myPopup.close()
-                    if (res == true) {
+                    myPopup.close();
+                    if (res === true) {
                         $scope.isDisabled = 1;
                         MyServices.buyproduct($scope.detailid, $scope.prodid, $scope.form, buyproductcallback);
                     }
@@ -1393,7 +1397,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     myPopup.close(); //close the popup after 3 seconds for some reason
                 }, 3000);
             }
-        }
+        };
         $scope.showPopuppurchase = function() {
 
             var myPopup = $ionicPopup.show({
@@ -1448,12 +1452,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.diffadd = false;
         $scope.showdiffaddress = function() {
             $scope.diffadd = true;
-        }
+        };
 
         $scope.hidediffaddress = function() {
             $scope.diffadd = false;
-        }
-    }
+        };
+    };
     MyServices.getuserdetails($scope.detailid, getuserdetailscallback);
 })
 
@@ -2791,6 +2795,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     })
     .controller('HotelCtrl', function($scope, $filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
         $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
+        $scope.currentDate = moment().format('YYYY-MM-DD');
         // console.log($scope.today);
         $ionicLoading.hide();
         $scope.hotel = {};
@@ -2838,22 +2843,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }];
             var check = formvalidation($scope.allvalidation);
             if (check) {
-                $scope.hotel.checkout = new Date($scope.hotel.checkout)
-                $scope.hotel.checkin = new Date($scope.hotel.checkin)
+
+                $scope.hotel.checkout = new Date($scope.hotel.checkout);
+                $scope.hotel.checkin = new Date($scope.hotel.checkin);
                 $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
                 $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
-                if($scope.hotel.checkin <= $scope.hotel.checkout){
+                if ($scope.hotel.checkin <= $scope.hotel.checkout) {
                     MyServices.submitHotel($scope.hotel, getHotelCallback);
+                } else {
+                    var myPopup = $ionicPopup.show({
+                        title: 'Enter Proper Date!!',
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 2000);
                 }
-              else{
-                var myPopup = $ionicPopup.show({
-                    title: 'Enter Proper Date!!',
-                    scope: $scope,
-                });
-                $timeout(function() {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 2000);
-              }
 
             } else {
                 var myPopup = $ionicPopup.show({
