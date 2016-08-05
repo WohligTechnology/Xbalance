@@ -10,16 +10,16 @@
             <form ng-submit="doreset()">
                 <div class="list">
                     <div class="item item-input">
-                        <input type="password" placeholder="Current Password*" ng-model="pass.oldpassword" ng-class="allvalidation[0].validation" required>
+                        <input type="password" placeholder="Current Password*" ng-model="pass.oldpassword" min=6 ng-class="allvalidation[0].validation" required>
                     </div>
                     <div class="item item-input">
-                        <input type="password" placeholder="New Password*" ng-model="pass.newpassword" ng-class="allvalidation[1].validation" required>
+                        <input type="password" placeholder="New Password*" ng-model="pass.newpassword" min=6 ng-class="allvalidation[1].validation" required>
                     </div>
                     <div class="item item-input">
-                        <input type="password" placeholder="Confirm Password*" ng-model="pass.confirmpassword" ng-class="allvalidation[2].validation" required>
+                        <input type="password" placeholder="Confirm Password*" ng-model="pass.confirmpassword" min=6 ng-class="allvalidation[2].validation" required>
                     </div>
                     <div class="padding-horizontal btn-rest text-center p15">
-                        <button class="button pr-button button-balanced" ng-click="changepass();" type="submit">Submit</button>
+                        <button class="button pr-button button-balanced" ng-disabled="!(pass.newpassword && pass.newpassword.length>5 && pass.confirmpassword && pass.confirmpassword.length>5 && pass.oldpassword  && pass.oldpassword.length>5)" ng-click="changepass();" type="submit">Submit</button>
                     </div>
                 </div>
             </form>

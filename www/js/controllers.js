@@ -35,18 +35,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log($scope.p.productname);
         console.log($scope.p.membershipno);
         console.log($scope.p.category);
-        if ($scope.p.productname == undefined) {
+        if ($scope.p.productname === undefined) {
             $scope.p.productname = 0;
         }
-        if ($scope.p.membershipno == undefined) {
+        if ($scope.p.membershipno === undefined) {
             $scope.p.membershipno = 0;
         }
-        if ($scope.p.category == undefined) {
+        if ($scope.p.category === undefined) {
             $scope.p.category = 0;
         }
         $location.url("/app/products/" + $scope.p.productname + "/" + $scope.p.membershipno + "/" + $scope.p.category);
         //      MyServices.searchproduct($scope.p.productname, $scope.p.membershipno, $scope.p.category, searchproductcallback);
-    }
+    };
 
     //Loading Package
     $scope.showloading = function() {
@@ -61,12 +61,12 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     //log out
     var logoutcallback = function(data, status) {
         console.log("logged out");
-    }
+    };
     $scope.logoutfunction = function() {
         $scope.loginid = $.jStorage.get("user1");
         console.log($scope.loginid);
         MyServices.logout($scope.loginid, logoutcallback);
-    }
+    };
 
     //your balance
     $scope.approvalcount = 0;
@@ -75,7 +75,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.approvalcount = data.sellingapproval.length;
         //    $scope.approvalcount = 1;
         console.log(data.sellingapproval.length);
-    }
+    };
 
     if ($.jStorage.get("user1")) {
         $scope.sell = $.jStorage.get("user1");
@@ -121,8 +121,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             myPopup.then(function(res) {
                 console.log('Tapped!', res);
-                myPopup.close()
-                if (res == true) {
+                myPopup.close();
+                if (res === true) {
                     navigator.app.exitApp();
                 }
             });
@@ -144,7 +144,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.acceptTerms = function() {
         console.log($scope.accept);
-        if ($scope.accept.terms == true) {
+        if ($scope.accept.terms === true) {
             MyServices.acceptTerms($.jStorage.get("user1"), function(data) {
                 console.log(data);
                 if (data != "false") {
@@ -162,7 +162,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         }
-    }
+    };
 
     $scope.openmodals = function() {
         $scope.modalterms.show();
@@ -192,13 +192,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
             console.log(data);
             $scope.pb = data;
-            if ($scope.pb.purchasebalance == "")
+            if ($scope.pb.purchasebalance === "")
                 $scope.pb.purchasebalance = 0;
-            if ($scope.pb.salesbalance == "")
+            if ($scope.pb.salesbalance === "")
                 $scope.pb.salesbalance = 0;
         }
 
-    }
+    };
 
 
     console.log("Your Balance Exec");
@@ -266,7 +266,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 myPopup.close(); //close the popup after 3 seconds for some reason
             }, 3000);
         }
-    };
+    }
 
 
     $scope.showPopup = function() {
@@ -298,7 +298,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.onlineclass = "";
     $scope.offlineclass = "";
     $scope.online = function() {
-        if ($scope.varonline == 0) {
+        if ($scope.varonline === 0) {
             $scope.varonline = 1;
             $scope.onlineclass = "button-activates";
         } else {
@@ -306,9 +306,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.onlineclass = "";
         }
         console.log($scope.varonline);
-    }
+    };
     $scope.offline = function() {
-        if ($scope.varoffline == 0) {
+        if ($scope.varoffline === 0) {
             $scope.varoffline = 1;
             $scope.offlineclass = "button-activates";
         } else {
@@ -316,22 +316,22 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.offlineclass = "";
         }
         console.log($scope.varoffline);
-    }
+    };
 
     $scope.memfunc = function(home) {
 
             purchasebalance = parseFloat(user.purchasebalance);
             if (purchasebalance > 0) {
-                if (home.membershipno != "") {
+                if (home.membershipno !== "") {
                     MyServices.getshopidmebership(home.membershipno, onmembershipid);
                 } else {
                     var area = 0;
                     var category = 0;
 
-                    if (home.area != "") {
+                    if (home.area !== "") {
                         area = home.area;
                     }
-                    if (category != "") {
+                    if (category !== "") {
                         category = home.category;
                     }
                     $location.url("/app/search/" + home.area + "/" + home.category + "/" + $scope.varonline + "/" + $scope.varoffline);
@@ -339,7 +339,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             } else {
                 $scope.showPopupNoBalance();
             }
-        }
+        };
         //search product
 
     $ionicModal.fromTemplateUrl('templates/popsearch.html', {
@@ -364,9 +364,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log(data);
         $scope.profileuser = data;
         $scope.percent = parseFloat($scope.profileuser.percentpayment);
-    }
+    };
     MyServices.profile($scope.pro, shopprofilecallback);
-
     MyServices.profile($scope.pro, function(data) {
         if (data.termsaccept == "0") {
             $scope.openmodals();
