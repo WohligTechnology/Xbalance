@@ -326,6 +326,12 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.forgotPassword = function(email, callback) {
             $http.get(adminurl + "forgotpassword?email=" + email, {}).success(callback);
+        },
+        returnval.notificationCount = function(userid, callback) {
+            $http.get(adminurl + "getNotificationUnreadCount?user=" + userid, {}).success(callback);
+        },
+        returnval.allNotificationRead = function() {
+            $http.get(adminurl + "makeAllNotificationread?user=" + userid, {}).success(callback);
         };
     return returnval;
 });
