@@ -282,6 +282,9 @@ myservices.factory('MyServices', function($http) {
         returnval.getnotification = function(pageno, getnotificationcallback) {
             $http.get(adminurl + "getnotification?userid=" + $.jStorage.get("user1") + "&pageno=" + pageno, {}).success(getnotificationcallback);
         },
+        returnval.readNotification = function(id, getnotificationcallback) {
+            $http.get(adminurl + "makeNotificationread?id=" + id, {}).success(getnotificationcallback);
+        },
         returnval.yourbalance = function(u, yourbalancecallback) {
             $http.get(adminurl + "yourbalance?user=" + JSON.parse(u), {}).success(yourbalancecallback);
         },

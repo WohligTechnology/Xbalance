@@ -9,7 +9,7 @@
     <ion-content class="padding">
        <p class="royal padding text-center" ng-if="notification.length==0">No Notifications yet.</p>
         <div class="incard notification" ng-repeat="n in notification">
-          <div class="close-btn">
+          <div class="close-btn" ng-click="readNotification($index, n.id)">
             <i class="ln-cross"></i>
           </div>
             <div class="header-cards">Business

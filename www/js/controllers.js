@@ -2820,6 +2820,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
       };
       //  NOTIFICATION LOAD MORE ENDS
 
+      //  READ NOTIFICATION STARTS
+      $scope.readNotification = function(index, id){
+        $scope.notification.splice(index,1);
+        MyServices.readNotification(id, function(data){
+          console.log(data);
+        });
+      }
+      //  READ NOTIFICATION ENDS
+
 })
 
 
