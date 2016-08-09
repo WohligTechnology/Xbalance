@@ -1179,3 +1179,11 @@ a.tab-item.active-tab {
 .margin-top10{
   margin-top: 10px;
 }
+.down-paragraph{
+    white-space: normal !important;
+    overflow: inherit !important;
+    text-overflow: inherit !important;
+}
+.font-bold{
+  font-weight: 700 !important;
+}
