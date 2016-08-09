@@ -1848,8 +1848,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     var getallcategory1callback = function(data, status) {
+
         $scope.cat = data;
-        console.log($scope.cat);
+        console.log($scope.cat,"$scope.cat");
     };
     var updatecatcallback = function(data, status) {
 
@@ -1874,6 +1875,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     var shopprofilecallback = function(data, status) {
             $scope.profile = data;
+            $scope.profile.categoryid = $scope.profile.categoryid.split(",");
+
             console.log(data);
             MyServices.getallcategory1(getallcategory1callback);
             MyServices.getarea(getareacallback);
@@ -1952,7 +1955,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.pass = {};
             $scope.oModal2.hide();
         }
-    }
+    };
 
     $scope.pass = {};
 
@@ -1990,7 +1993,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 console.log("not valid");
                 $scope.showPopup8();
             }
-        }
+        };
         //  $scope.changepass = function (pass) {
         //      $scope.passwrd = pass;
         //      $scope.id = $.jStorage.get("user1");
