@@ -1,9 +1,12 @@
 <ion-view view-title="Profile">
 
    <ion-nav-buttons side="right">
-     <div class="dh-relative">
-       <button class="button button-icon ln-bell small-icon btn-view" ng-click="pullrefresh();"></button>
-       <span class="badge badge-assertive btn-set span-abs"></span>
+     <div class="buttons button-right">
+       <div class="dh-relative" ng-controller="YourBalCtrl">
+         <button class="button button-icon ln-bell small-icon btn-view" ng-click="pullrefresh();"></button>
+         <span class="badge badge-assertive btn-set span-abs" ng-hide="notificationCount==0"></span>
+       </div>
+         
      </div>
 
       <a class="button button-icon ion-edit small-icon" ng-click="editpro(profile);" href="#/app/profile/edit"></a>

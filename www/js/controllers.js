@@ -129,9 +129,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     }, 100);
 
-    if ($.jStorage.get("user1"))
-    {
-      globalfunctionapproval();
+    if ($.jStorage.get("user1")) {
+        globalfunctionapproval();
     }
 
 
@@ -1220,10 +1219,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             MyServices.forgotPassword(email, function(data) {
                 if (data == "true") {
                     $scope.closPop();
-                    $scope.showAlert("Forgot Password Email Sent","An Email has been sent to with your password");
+                    $scope.showAlert("Forgot Password Email Sent", "An Email has been sent to with your password");
                 } else {
                     $scope.closPop();
-                    $scope.showAlert("No Such Membership ID","The Membership number "+email+" is not registered with us.");
+                    $scope.showAlert("No Such Membership ID", "The Membership number " + email + " is not registered with us.");
                 }
             });
         }
@@ -1231,10 +1230,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
 
 
-    $scope.showAlert = function(title,text) {
+    $scope.showAlert = function(title, text) {
         var alertPopup = $ionicPopup.alert({
             title: title,
-             template: text
+            template: text
         });
     };
 
@@ -1539,7 +1538,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
         $scope.showloading();
-         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+        MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
         console.log('Refresh Called');
         //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
@@ -1641,7 +1640,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.totalPurcahse += parseInt(mybal.yourbalance.purchasebalance);
             _.each($scope.t.sales, function(n) {
 
-                    $scope.totalPurcahse += parseInt(n.amount);
+                $scope.totalPurcahse += parseInt(n.amount);
 
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
@@ -1872,7 +1871,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var getallcategory1callback = function(data, status) {
 
         $scope.cat = data;
-        console.log($scope.cat,"$scope.cat");
+        console.log($scope.cat, "$scope.cat");
     };
     var updatecatcallback = function(data, status) {
 
@@ -1896,36 +1895,34 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
     };
     var shopprofilecallback = function(data, status) {
-            $scope.profile = data;
-            if($scope.profile.categoryid || $scope.profile.categoryid === "")
-            {
-              $scope.profile.categoryid = $scope.profile.categoryid.split(",");
-            }
-            else {
-              $scope.profile.categoryid=[];
-            }
+        $scope.profile = data;
+        if ($scope.profile.categoryid || $scope.profile.categoryid === "") {
+            $scope.profile.categoryid = $scope.profile.categoryid.split(",");
+        } else {
+            $scope.profile.categoryid = [];
+        }
 
 
-            console.log(data);
-            MyServices.getallcategory1(getallcategory1callback);
-            MyServices.getarea(getareacallback);
+        console.log(data);
+        MyServices.getallcategory1(getallcategory1callback);
+        MyServices.getarea(getareacallback);
 
-        };
-        //    $scope.profile.categoryid=$scope.profile.category;
-        //      $scope.profile.areaid=$scope.profile.area;
+    };
+    //    $scope.profile.categoryid=$scope.profile.category;
+    //      $scope.profile.areaid=$scope.profile.area;
     MyServices.profile($scope.pro, shopprofilecallback);
     MyServices.shopphoto($scope.pro, shopphotocallback);
     MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
     //edit profile
 
     $scope.editpro = function(profile) {
-            $scope.epro = profile;
-            console.log($scope.epro);
-        };
-        //    $scope.sp=$.jStorage.get("sp");
-        //  console.log("In profile");
-        ////    console.log($scope.sp);
-        ////
+        $scope.epro = profile;
+        console.log($scope.epro);
+    };
+    //    $scope.sp=$.jStorage.get("sp");
+    //  console.log("In profile");
+    ////    console.log($scope.sp);
+    ////
     var updateprofilecallback = function(data, status) {
         if (data == "false") {
 
@@ -1989,46 +1986,46 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.pass = {};
 
     $scope.changepass = function() {
-            //      $scope.passwrd = pass;
-            $scope.id = $.jStorage.get("user1");
-            //      $scope.passwrd = pass;
-            $scope.allvalidation = [{
-                field: $scope.pass.oldpassword,
-                validation: ""
-            }, {
-                field: $scope.pass.newpassword,
-                validation: ""
-            }, {
-                field: $scope.pass.confirmpassword,
-                validation: ""
-            }];
-            var check = formvalidation($scope.allvalidation);
-            if (check) {
-                if ($scope.pass.oldpassword != $scope.pass.newpassword) {
-                    console.log("valid");
-                    MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
-                } else {
-                    var myPopup = $ionicPopup.show({
-                        template: '<p class="text-center">Old password and new password cannot be same</p>',
-                        title: "Sorry Cannot Proceed!!",
-                        scope: $scope,
-
-                    });
-                    $timeout(function() {
-                        myPopup.close(); //close the popup after 3 seconds for some reason
-                    }, 4000);
-                }
+        //      $scope.passwrd = pass;
+        $scope.id = $.jStorage.get("user1");
+        //      $scope.passwrd = pass;
+        $scope.allvalidation = [{
+            field: $scope.pass.oldpassword,
+            validation: ""
+        }, {
+            field: $scope.pass.newpassword,
+            validation: ""
+        }, {
+            field: $scope.pass.confirmpassword,
+            validation: ""
+        }];
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            if ($scope.pass.oldpassword != $scope.pass.newpassword) {
+                console.log("valid");
+                MyServices.changepassword($scope.id, $scope.pass, changepasswordcallback);
             } else {
-                console.log("not valid");
-                $scope.showPopup8();
+                var myPopup = $ionicPopup.show({
+                    template: '<p class="text-center">Old password and new password cannot be same</p>',
+                    title: "Sorry Cannot Proceed!!",
+                    scope: $scope,
+
+                });
+                $timeout(function() {
+                    myPopup.close(); //close the popup after 3 seconds for some reason
+                }, 4000);
             }
-        };
-        //  $scope.changepass = function (pass) {
-        //      $scope.passwrd = pass;
-        //      $scope.id = $.jStorage.get("user1");
-        //      $scope.passwrd = pass;
-        //      MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
-        //  }
+        } else {
+            console.log("not valid");
+            $scope.showPopup8();
+        }
+    };
+    //  $scope.changepass = function (pass) {
+    //      $scope.passwrd = pass;
+    //      $scope.id = $.jStorage.get("user1");
+    //      $scope.passwrd = pass;
+    //      MyServices.changepassword($scope.id, $scope.passwrd, changepasswordcallback)
+    //  }
     $scope.showPopup8 = function() {
 
         var myPopup = $ionicPopup.show({
@@ -2108,8 +2105,26 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('YourBalCtrl', function($scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
+.controller('YourBalCtrl', function($rootScope,$scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
 
+
+
+    $scope.notificationCount = 0;
+
+    $rootScope.$on('$stateChangeStart',
+        function(event, toState, toParams, fromState, fromParams) {
+            check();
+        });
+
+
+
+    function check() {
+      MyServices.notificationCount(function(data) {
+          $scope.notificationCount = data.notificationCount;
+      });
+    }
+
+    check();
 
 
     //    //GET USER PROFILE
@@ -2585,20 +2600,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-    var changeproductstatuscallback = function(data, status) {
-        console.log("change status:" + data);
-    }
-    $scope.editstatus = function(id, status) {
-        console.log(id);
-        if (status == true) {
-            status = 1;
-        }
-        if (status == false) {
-            status = 0;
-        }
-        console.log(status);
-        MyServices.changeproductstatus(id, status, changeproductstatuscallback);
-    }
+    // var changeproductstatuscallback = function(data, status) {
+    //     console.log("change status:" + data);
+    // }
+    // $scope.editstatus = function(id, status) {
+    //     console.log(id);
+    //     if (status == true) {
+    //         status = 1;
+    //     }
+    //     if (status == false) {
+    //         status = 0;
+    //     }
+    //     console.log(status);
+    //     MyServices.changeproductstatus(id, status, changeproductstatuscallback);
+    // }
     var deleteproductcallback = function(data, status) {
         console.log(data);
         $scope.modal2.hide();
@@ -2848,57 +2863,61 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //  NOTIFICATION LOAD MORE STARTS
     $scope.pageno = 1;
-    //MyServices.allNotificationRead();
-      $scope.loadnotification = function(pageno){
-        MyServices.getnotification(pageno, function(data){
+    console.log("Make is called");
+    MyServices.allNotificationRead(function() {
+      console.log("All notification Read");
+    });
 
-          $ionicLoading.hide();
-          _.each(data.queryresult, function(n){
-            if (n.date) {
-                n.date = new Date(n.date);
+    $scope.loadnotification = function(pageno) {
+        MyServices.getnotification(pageno, function(data) {
+
+            $ionicLoading.hide();
+            _.each(data.queryresult, function(n) {
+                if (n.date) {
+                    n.date = new Date(n.date);
+                }
+                $scope.notification.push(n);
+            })
+
+            if (data.queryresult == "") {
+                $scope.keepscrolling = false;
             }
-            $scope.notification.push(n);
-          })
-
-          if (data.queryresult == "") {
-            $scope.keepscrolling = false;
-          }
-          if ($scope.notification.length == 0) {
-            $scope.msg = "No Notifications yet.";
-          }else {
-            $scope.msg = "";
-          }
+            if ($scope.notification.length == 0) {
+                $scope.msg = "No Notifications yet.";
+            } else {
+                $scope.msg = "";
+            }
         });
 
         $scope.$broadcast('scroll.infiniteScrollComplete');
         $scope.$broadcast('scroll.refreshComplete');
-      }
+    }
 
-      $scope.loadnotification(1);
-      $scope.pullrefresh = function() {
-          console.log("Do Refresh");
-          $scope.pageno = 1;
-          $scope.loadnotification(1);
-          $scope.showloading();
-          console.log('Refresh Called');
-          //Stop the ion-refresher from spinning
-          $scope.$broadcast('scroll.refreshComplete');
-      };
+    $scope.loadnotification(1);
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        $scope.pageno = 1;
+        $scope.loadnotification(1);
+        $scope.showloading();
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
 
-      $scope.loadMoreNotification = function() {
+    $scope.loadMoreNotification = function() {
         console.log("in notification");
         $scope.loadnotification(++$scope.pageno);
-      };
-      //  NOTIFICATION LOAD MORE ENDS
+    };
+    //  NOTIFICATION LOAD MORE ENDS
 
-      //  READ NOTIFICATION STARTS
-      $scope.readNotification = function(index, id){
-        $scope.notification.splice(index,1);
-        MyServices.readNotification(id, function(data){
-          console.log(data);
-        });
-      }
-      //  READ NOTIFICATION ENDS
+    //  READ NOTIFICATION STARTS
+    $scope.readNotification = function(index, id) {
+            $scope.notification.splice(index, 1);
+            MyServices.readNotification(id, function(data) {
+                console.log(data);
+            });
+        }
+        //  READ NOTIFICATION ENDS
 
 })
 
@@ -3020,4 +3039,4 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }
         }
     })
-    .controller('EventCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {});
+    .controller('EventCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {})
