@@ -9,9 +9,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 .run(function($ionicPlatform,$state) {
     $ionicPlatform.ready(function() {
 
+
       $ionicPlatform.onHardwareBackButton(function() {
         $state.go("app.home");
       });
+
+
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -360,7 +363,7 @@ function partitionarray(myarray, number) {
     var newarray = [];
     var j = -1;
     for (var i = 0; i < arrlength; i++) {
-        if (i % number == 0) {
+        if (i % number === 0) {
             j++;
             newarray[j] = [];
         }

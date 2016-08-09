@@ -130,7 +130,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     }, 100);
 
     if ($.jStorage.get("user1"))
-        globalfunctionapproval();
+    {
+      globalfunctionapproval();
+    }
+
 
     $ionicModal.fromTemplateUrl('templates/terms.html', {
         scope: $scope,
@@ -1875,7 +1878,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     var shopprofilecallback = function(data, status) {
             $scope.profile = data;
-            $scope.profile.categoryid = $scope.profile.categoryid.split(",");
+            if($scope.profile.categoryid || $scope.profile.categoryid === "")
+            {
+              $scope.profile.categoryid = $scope.profile.categoryid.split(",");
+            }
+            else {
+              $scope.profile.categoryid=[];
+            }
+
 
             console.log(data);
             MyServices.getallcategory1(getallcategory1callback);
