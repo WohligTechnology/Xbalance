@@ -664,26 +664,26 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.sorting = 0;
     var fulldatasorted = [];
     $scope.getsort = function(content) {
-            $scope.modal1.hide();
-            console.log($scope.sprfull);
-            if (content === 0) {
+        $scope.modal1.hide();
+        console.log($scope.sprfull);
+        if (content === 0) {
 
-                fulldatasorted = _.sortBy($scope.sprfull, function(n) {
-                    return parseFloat(n.price);
-                });
-                console.log(fulldatasorted);
-                $scope.spr = partitionarray(fulldatasorted, 3);
+            fulldatasorted = _.sortBy($scope.sprfull, function(n) {
+                return parseFloat(n.price);
+            });
+            console.log(fulldatasorted);
+            $scope.spr = partitionarray(fulldatasorted, 3);
 
 
-            } else if (content == 1) {
-                fulldatasorted = _.sortBy($scope.sprfull, function(n) {
-                    return -1 * parseFloat(n.price);
-                });
-                console.log(fulldatasorted);
-                $scope.spr = partitionarray(fulldatasorted, 3);
-            }
-        };
-        //product detail
+        } else if (content == 1) {
+            fulldatasorted = _.sortBy($scope.sprfull, function(n) {
+                return -1 * parseFloat(n.price);
+            });
+            console.log(fulldatasorted);
+            $scope.spr = partitionarray(fulldatasorted, 3);
+        }
+    };
+    //product detail
     var getsingleproductcallback = function(data, status) {
         $scope.getpro = data;
         //          console.log($scope.getsinglepro);
@@ -1207,6 +1207,35 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.showloading();
         MyServices.login(user1, logincallback);
     };
+
+    $scope.forgot = {
+        email: ""
+    };
+
+    $scope.forgotPassword = function(email) {
+        if (email) {
+            MyServices.forgotPassword(email, function(data) {
+                if (data == "true") {
+                    $scope.closPop();
+                    $scope.showAlert("Forgot Password Email Sent","An Email has been sent to with your password");
+                } else {
+                    $scope.closPop();
+                    $scope.showAlert("No Such Membership ID","The Membership number "+email+" is not registered with us.");
+                }
+            });
+        }
+
+    };
+
+
+    $scope.showAlert = function(title,text) {
+        var alertPopup = $ionicPopup.alert({
+            title: title,
+             template: text
+        });
+    };
+
+
     $scope.showSuccessmy = function() {
         var alertPopup = $ionicPopup.alert({
             scope: $scope,
@@ -1235,7 +1264,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.getDropDownValue = function(question) {
             $scope.question = question;
             console.log($scope.question);
-        }
+        };
 
 
         $scope.tabchanges = function(tabs, a) {

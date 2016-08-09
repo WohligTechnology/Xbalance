@@ -1,5 +1,5 @@
 var adminbase = "http://swaap.in/admin/";
-// var adminbase = "http://localhost/osb/";
+var adminbase = "http://192.168.0.101/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -296,18 +296,18 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "changepassword?id=" + id + "&oldpassword=" + pass.oldpassword + "&newpassword=" + pass.newpassword + "&confirmpassword=" + pass.confirmpassword, {}).success(changepasswordcallback);
         },
         returnval.submitsuggestion = function(contact, suggestioncallback) {
-          // console.log(contact);
-          //   $http.get(adminurl + "submitsuggestion?user=" + contact.user + "&suggestion=" + contact.message + "&userid=" + $.jStorage.get("user").id, {}).success(suggestioncallback);
-          $http({
-              url: adminurl + "submitsuggestion",
-              method: "POST",
-              data: {
-                  'userid': $.jStorage.get("user").id,
-                  'user':  contact.user,
-                  'suggestion':  contact.message
+            // console.log(contact);
+            //   $http.get(adminurl + "submitsuggestion?user=" + contact.user + "&suggestion=" + contact.message + "&userid=" + $.jStorage.get("user").id, {}).success(suggestioncallback);
+            $http({
+                url: adminurl + "submitsuggestion",
+                method: "POST",
+                data: {
+                    'userid': $.jStorage.get("user").id,
+                    'user': contact.user,
+                    'suggestion': contact.message
 
-              }
-          }).success(suggestioncallback);
+                }
+            }).success(suggestioncallback);
         },
         returnval.logout = function(loginid, logoutcallback) {
             $http.get(adminurl + "logout?loginid=" + loginid, {}).success(logoutcallback);
@@ -320,6 +320,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.acceptTerms = function(id, callback) {
             $http.get(adminurl + "updateterms?id=" + id + "&termsaccept=1", {}).success(callback);
+        },
+        returnval.forgotPassword = function(email, callback) {
+            $http.get(adminurl + "forgotpassword?email=" + email, {}).success(callback);
         };
     return returnval;
 });
