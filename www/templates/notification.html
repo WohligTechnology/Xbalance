@@ -7,6 +7,10 @@
 
   </ion-nav-buttons>
     <ion-content class="padding">
+      <ion-refresher
+     pulling-text="Pull to refresh..."
+     on-refresh="pullrefresh()">
+   </ion-refresher>
        <p class="royal padding text-center" ng-if="notification.length==0">{{msg}}</p>
         <div class="incard notification" ng-repeat="n in notification">
           <div class="close-btn" ng-click="readNotification($index, n.id)">

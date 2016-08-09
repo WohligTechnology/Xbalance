@@ -1535,6 +1535,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.sell = $.jStorage.get("user1");
     console.log($scope.sell);
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        $scope.showloading();
+         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
     $scope.showPopup = function() {
         $scope.data = {}
 
@@ -1633,7 +1642,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             _.each($scope.t.sales, function(n) {
 
                     $scope.totalPurcahse += parseInt(n.amount);
-                
+
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);
@@ -1653,6 +1662,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.trans = $.jStorage.get("user1");
     MyServices.transaction($.jStorage.get("user1"), transactioncallback);
 
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        $scope.showloading();
+        MyServices.transaction($.jStorage.get("user1"), transactioncallback);
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
 
     //  DECLARATION
     $scope.returnsactive = "active";
@@ -1692,8 +1709,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
-        MyServices.yourbalance($scope.bal, yourbalancecallback);
         $scope.showloading();
+        MyServices.profile($scope.pro, shopprofilecallback);
+        MyServices.shopphoto($scope.pro, shopphotocallback);
+        MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
         console.log('Refresh Called');
         //Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
@@ -2303,6 +2322,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.showloading();
 
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        $scope.showloading();
+        MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
+
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
+
+
     if ($.jStorage.get("user1"))
         globalfunctionapproval();
 
@@ -2710,6 +2740,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 1000);
     };
+    $scope.uid = $.jStorage.get("user1");
+
+    $scope.pullrefresh = function() {
+        console.log("Do Refresh");
+        $scope.showloading();
+        MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
+        MyServices.viewallorders($scope.uid, viewallorderscallback);
+
+        console.log('Refresh Called');
+        //Stop the ion-refresher from spinning
+        $scope.$broadcast('scroll.refreshComplete');
+    };
 
     if ($.jStorage.get("user1"))
         globalfunctionapproval();
@@ -2720,7 +2762,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.ordr = data.queryresult;
         console.log($scope.ordr);
     }
-    $scope.uid = $.jStorage.get("user1");
     MyServices.viewmyproductorders($scope.uid, viewmyproductorderscallback);
     var viewallorderscallback = function(data, status) {
         $ionicLoading.hide();
@@ -2796,6 +2837,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 15000);
     };
+
     $scope.keepscrolling = true;
     $scope.showloading();
     $scope.notification = [];
@@ -2828,6 +2870,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
       }
 
       $scope.loadnotification(1);
+      $scope.pullrefresh = function() {
+          console.log("Do Refresh");
+          $scope.pageno = 1;
+          $scope.loadnotification(1);
+          $scope.showloading();
+          console.log('Refresh Called');
+          //Stop the ion-refresher from spinning
+          $scope.$broadcast('scroll.refreshComplete');
+      };
 
       $scope.loadMoreNotification = function() {
         console.log("in notification");

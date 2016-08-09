@@ -17,6 +17,10 @@
       </div>
    </div>
    <ion-content class="padding">
+     <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="pullrefresh()">
+  </ion-refresher>
       <div class="incard">
          <div class="list" ng-if="tabvalue == 1" ng-if="mypurchase.length>0">
             <div class="item item-thumbnail-left" ng-click="openpurchase(p);" ng-repeat="p in mypurchase">

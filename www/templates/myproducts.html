@@ -9,6 +9,10 @@
 
 
     <ion-content class="padding">
+      <ion-refresher
+     pulling-text="Pull to refresh..."
+     on-refresh="pullrefresh()">
+   </ion-refresher>
         <div class="incard" ng-if="products!=0">
             <div class="list">
                 <!--                <div class="item item-thumbnail-left bod-bottom" ng-repeat="pro in products" ng-click="productdetails(pro.id);openprdtdetails();">-->
