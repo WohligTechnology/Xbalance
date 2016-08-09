@@ -2786,20 +2786,39 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $ionicLoading.hide();
         }, 15000);
     };
+    $scope.keepscrolling = true;
     $scope.showloading();
-    var getnotificationcallback = function(data, status) {
-        $ionicLoading.hide();
-        $scope.notification = data;
-        _.each(data, function(n) {
+    $scope.notification = [];
+
+    //  NOTIFICATION LOAD MORE STARTS
+    $scope.pageno = 1;
+      $scope.loadnotification = function(pageno){
+        MyServices.getnotification(pageno, function(data){
+          $ionicLoading.hide();
+          _.each(data.queryresult, function(n){
             if (n.date) {
                 n.date = new Date(n.date);
             }
-        })
-        console.log($scope.notification);
-    }
+            $scope.notification.push(n);
+          })
 
-    $scope.notificationid = $.jStorage.get("user1");
-    MyServices.getnotification($scope.notificationid, getnotificationcallback);
+          if (data.queryresult == "") {
+            $scope.keepscrolling = false;
+
+          }
+        });
+
+        $scope.$broadcast('scroll.infiniteScrollComplete');
+        $scope.$broadcast('scroll.refreshComplete');
+      }
+
+      $scope.loadnotification(1);
+
+      $scope.loadMoreNotification = function() {
+        console.log("in notification");
+        $scope.loadnotification(++$scope.pageno);
+      };
+      //  NOTIFICATION LOAD MORE ENDS
 
 })
 

@@ -17,6 +17,8 @@
             </div>
             <p>{{n.message}}</p>
         </div>
+        <ion-infinite-scroll on-infinite="loadMoreNotification()" ng-if="keepscrolling" distance="25%">
+        </ion-infinite-scroll>
 <!--
         <div class="incard notification">
             <div class="header-cards">Business
