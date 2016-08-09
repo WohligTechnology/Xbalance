@@ -38,7 +38,7 @@
                      <span class="item-note">{{totalPurcahse}}</span>
                      <h2 class="bold">Total</h2>
                   </ion-item>
-                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-if="!tr.orderdate">
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-if="!tr.product">
                      <div class="row">
                         <div class="col-25">
                            <div class="">
@@ -53,6 +53,25 @@
                               <p>Date: {{tr.date | date:'longDate'}}</p>
                               <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
                               <p>Transaction Id: {{tr.id}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </ion-item>
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.sales" ng-if="tr.product">
+                     <div class="row">
+                        <div class="col-25">
+                           <div class="">
+                              <!--                                        <img src="{{tr.shoplogo|serverimage}}">-->
+                              <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
+                           </div>
+                        </div>
+                        <div class="col-75">
+                           <div class="sell-cont trans">
+                              <span class="item-note">-{{tr.amount}}</span>
+                              <h2>Product Purchased</h2>
+                              <p>Date: {{tr.date | date:'longDate'}}</p>
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
+                              <p ng-bind="tr.reason"></p>
                            </div>
                         </div>
                      </div>
@@ -81,7 +100,7 @@
                      <span class="item-note">{{finalsales}}</span>
                      <h2 class="bold">Total</h2>
                   </ion-item> -->
-                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased" ng-if="!tr.orderdate">
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased" ng-if="!tr.product">
                      <div class="row">
                         <div class="col-25">
                            <div class="">
@@ -96,6 +115,25 @@
                               <p>Date: {{tr.date | date:'longDate'}}</p>
                               <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
                               <p>Transaction Id: {{tr.id}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </ion-item>
+                  <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased" ng-if="tr.product">
+                     <div class="row">
+                        <div class="col-25">
+                           <div class="">
+                              <!--                                        <img src="">-->
+                              <div class="img-hlodss" ng-style="{'background-image':'url({{tr.shoplogo|serverimage}})'}"></div>
+                           </div>
+                        </div>
+                        <div class="col-75">
+                           <div class="sell-cont trans">
+                              <span class="item-note">{{tr.amount}}</span>
+                              <h2>Product Sold</h2>
+                              <p>Date: {{tr.date | date:'longDate'}}</p>
+                              <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
+                              <p ng-bind="tr.reason"></p>
                            </div>
                         </div>
                      </div>

@@ -1631,9 +1631,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.saleRemaining = mybal.yourbalance.salesbalance;
             $scope.totalPurcahse += parseInt(mybal.yourbalance.purchasebalance);
             _.each($scope.t.sales, function(n) {
-                if (!n.orderdate) {
+
                     $scope.totalPurcahse += parseInt(n.amount);
-                }
+                
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);

@@ -1,5 +1,5 @@
-var adminbase = "http://swaap.in/admin/";
-// var adminbase = "http://192.168.0.101/osb/";
+// var adminbase = "http://swaap.in/admin/";
+var adminbase = "http://192.168.0.101/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
