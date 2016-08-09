@@ -2838,6 +2838,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 15000);
     };
 
+
+
+
     $scope.keepscrolling = true;
     $scope.showloading();
     $scope.notification = [];
@@ -2845,8 +2848,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     //  NOTIFICATION LOAD MORE STARTS
     $scope.pageno = 1;
+    //MyServices.allNotificationRead();
       $scope.loadnotification = function(pageno){
         MyServices.getnotification(pageno, function(data){
+
           $ionicLoading.hide();
           _.each(data.queryresult, function(n){
             if (n.date) {
