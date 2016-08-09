@@ -2789,6 +2789,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.keepscrolling = true;
     $scope.showloading();
     $scope.notification = [];
+    $scope.msg = "";
 
     //  NOTIFICATION LOAD MORE STARTS
     $scope.pageno = 1;
@@ -2804,7 +2805,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
           if (data.queryresult == "") {
             $scope.keepscrolling = false;
-
+          }
+          if ($scope.notification.length == 0) {
+            $scope.msg = "No Notifications yet.";
+          }else {
+            $scope.msg = "";
           }
         });
 
