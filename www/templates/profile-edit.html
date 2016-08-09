@@ -13,7 +13,7 @@
                <div class="list">
                   <div class="profile-img">
                      <img src="{{profile.shoplogo|serverimage}}">
-                     <!--                            <div class="holder">Edit</div>-->
+                     
                      <div class="padding-horizontal text-center">
                         <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button>
                         <button class="button button-balanced pr-button" ng-click="removeProfileImage()">Delete</button>
@@ -25,8 +25,8 @@
                   <!--Select-->
                   <div class="item item-input item-select text-capitalize">
                      <div class="input-label different">Category</div>
-                     <select ng-model="profile.categoryid" required>
-                        <option value="">All</option>
+                     <select ng-model="profile.categoryid" required multiple>
+                        <!-- <option value="">All</option> -->
                         <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                      </select>
                   </div>

@@ -1672,7 +1672,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.purchased = "";
         $scope.sale = "";
         $scope.admin = "bold";
-    }
+    };
 
 
     //  GET USER DETAILS
@@ -1733,7 +1733,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
-        $scope.profile.shoplogo = $scope.xyz.value
+        $scope.profile.shoplogo = $scope.xyz.value;
     };
 
     var changeshopphoto = function(result) {
@@ -1761,7 +1761,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.removeProfileImage = function() {
         $scope.profile.shoplogo = "";
-    }
+    };
 
     $scope.changeshopimage = function(id) {
         console.log("take picture");
@@ -1831,53 +1831,54 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log($scope.pic);
         $ionicLoading.hide();
 
-    }
+    };
 
     $scope.deleteShopPhoto = function(index) {
         $scope.pic.splice(index, 1);
-    }
+    };
 
     var shopproductphotocallback = function(data, status) {
         $scope.image = data;
 
-    }
+    };
 
     $scope.deleteProductsPhoto = function(index) {
         $scope.image.splice(index, 1);
-    }
+    };
 
 
     var getallcategory1callback = function(data, status) {
         $scope.cat = data;
         console.log($scope.cat);
-    }
+    };
     var updatecatcallback = function(data, status) {
-        console.log(data);
-    }
+
+    };
     $scope.updatecat = function(c) {
         $scope.cats = c;
+        console.log(c);
         console.log('Category Id: ' + $scope.cats);
         MyServices.updatecat(user.id, $scope.cats, updatecatcallback);
-    }
+    };
     var getareacallback = function(data, status) {
         console.log(data);
         $scope.areas = data;
-    }
+    };
     var updateareacallback = function(data, status) {
-        console.log(data);
-    }
+
+    };
     $scope.updatearea = function(a) {
         $scope.ar = a;
         console.log('Area Id: ' + $scope.ar);
         MyServices.updatearea(user.id, $scope.ar, updateareacallback);
-    }
+    };
     var shopprofilecallback = function(data, status) {
             $scope.profile = data;
             console.log(data);
             MyServices.getallcategory1(getallcategory1callback);
             MyServices.getarea(getareacallback);
 
-        }
+        };
         //    $scope.profile.categoryid=$scope.profile.category;
         //      $scope.profile.areaid=$scope.profile.area;
     MyServices.profile($scope.pro, shopprofilecallback);
@@ -1888,7 +1889,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.editpro = function(profile) {
             $scope.epro = profile;
             console.log($scope.epro);
-        }
+        };
         //    $scope.sp=$.jStorage.get("sp");
         //  console.log("In profile");
         ////    console.log($scope.sp);
@@ -1904,14 +1905,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             $location.url("/app/profile");
         }
-    }
+    };
     $scope.profileupdate = function(profile) {
         $scope.updatedata = profile;
         console.log($scope.updatedata);
         $scope.id = $.jStorage.get("user1");
         console.log($scope.id);
         MyServices.updateprofile($scope.id, $scope.updatedata, updateprofilecallback);
-    }
+    };
 
     $scope.showeditPopup = function() {
 
