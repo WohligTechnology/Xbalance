@@ -328,11 +328,11 @@ myservices.factory('MyServices', function($http) {
             $http.get(adminurl + "forgotpassword?email=" + email, {}).success(callback);
         },
         returnval.notificationCount = function(callback) {
-          var user= $.jStorage.get("user");
+            var user = $.jStorage.get("user");
             $http.get(adminurl + "getNotificationUnreadCount?user=" + user.id, {}).success(callback);
         },
         returnval.allNotificationRead = function(callback) {
-          var user= $.jStorage.get("user");
+            var user = $.jStorage.get("user");
             $http.get(adminurl + "makeAllNotificationread?user=" + user.id, {}).success(callback);
         };
     return returnval;
