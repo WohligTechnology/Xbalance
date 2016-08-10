@@ -11,6 +11,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
 
       $ionicPlatform.onHardwareBackButton(function() {
+        // $state.
         $state.go("app.home");
       });
 
@@ -310,6 +311,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 })
 
 .filter('serverimage', function() {
+  console.log(imgpath + image);
     return function(image) {
         if (image) {
             return imgpath + image;
