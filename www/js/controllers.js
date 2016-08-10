@@ -2908,6 +2908,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.loadnotification(1);
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
+        $scope.notification = [];
         $scope.pageno = 1;
         $scope.loadnotification(1);
         $scope.showloading();
