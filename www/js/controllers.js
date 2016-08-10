@@ -1161,8 +1161,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             console.log(data);
             user1 = data;
             $.jStorage.set("user1", data);
+
+            var homecallback = function(data, status) {
+                $scope.user = data;
+
+                $.jStorage.set("user", data.userdetails);
+                user = data.userdetails;
+                $location.url("/app/home");
+                //      $location.url("/app/search");
+            };
+            $scope.user = $.jStorage.get("user1");
+            MyServices.home($scope.user, homecallback);
+
             user = data;
-            $location.url("/app/home");
+
         }
 
     };
