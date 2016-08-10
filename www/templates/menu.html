@@ -1,11 +1,9 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-balanced">
-            <ion-nav-back-button>
-            </ion-nav-back-button>
+            <ion-nav-back-button></ion-nav-back-button>
             <ion-nav-buttons side="left">
-                <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="getNotificationCount();">
-                </button>
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="getNotificationCount();"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
         <ion-nav-view name="menuContent"></ion-nav-view>
@@ -16,64 +14,64 @@
         </ion-header-bar>
         <ion-content>
             <ion-list class="menus">
-                <ion-item nav-clear menu-close  ui-sref-active="actives" ui-sref="app.home" ng-click="homecall();">
-                      <i class="icon ln-home3 side-menu-i"></i>
-                  Home
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.home" ng-click="homecall();">
+                    <i class="icon ln-home3 side-menu-i"></i>
+                    Home
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.profile" >
-                      <i class="icon ln-user side-menu-i"></i>
-                  My Profile
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.profile">
+                    <i class="icon ln-user side-menu-i"></i>
+                    My Profile
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.myproducts" >
-                      <i class="icon ln-cube side-menu-i"></i>
-                   My Products
-                     <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.myproducts">
+                    <i class="icon ln-cube side-menu-i"></i>
+                    My Products
+                    <!-- <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span> -->
                 </ion-item>
 
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.orders" >
-                      <i class="icon ln-cart-full side-menu-i"></i>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.orders">
+                    <i class="icon ln-cart-full side-menu-i"></i>
                     Orders
-                      <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
+                    <!-- <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span> -->
                 </ion-item>
 
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.selling" >
-                      <i class="icon ln-tags side-menu-i"></i>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.selling">
+                    <i class="icon ln-tags side-menu-i"></i>
                     Selling Approvals
-                    <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
+                    <!-- <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span> -->
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.transaction">
-                      <i class="icon ln-cash side-menu-i"></i>
-                   Transaction History
-                     <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
+                    <i class="icon ln-cash side-menu-i"></i>
+                    Transaction History
+                    <!-- <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span> -->
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.events" >
-                      <i class="icon ln-calendar2 side-menu-i"></i>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.events">
+                    <i class="icon ln-calendar2 side-menu-i"></i>
                     <span>Events</span>
-                      <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span>
+                    <!-- <span ng-hide="approvalcount==0" class="badge badge-balanced">{{approvalcount}}</span> -->
                 </ion-item>
-                   <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.notification" >
-                         <i class="icon ln-bell side-menu-i"></i>
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.notification">
+                    <i class="icon ln-bell side-menu-i"></i>
                     Notification
-  <span ng-hide="notificationCount==0" class="badge badge-balanced"  ng-controller="YourBalCtrl" >{{notificationCount}}</span>
+                    <span ng-hide="notificationCount==0" class="badge badge-balanced" ng-controller="YourBalCtrl">{{notificationCount}}</span>
                 </ion-item>
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.about">
-                      <i class="icon ln-clipboard side-menu-i"></i>
+                    <i class="icon ln-clipboard side-menu-i"></i>
                     About Us
                 </ion-item>
-                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.faq" >
-                      <i class="icon ln-question side-menu-i"></i>
-                   FAQ & Help
+                <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.faq">
+                    <i class="icon ln-question side-menu-i"></i>
+                    FAQ & Help
                 </ion-item>
                 <!-- <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="app.contactus" >
                       <i class="icon ln-contacts side-menu-i"></i>
                    Contact Us
                 </ion-item> -->
                 <ion-item nav-clear menu-close ui-sref-active="actives" ui-sref="login" ng-click="logoutfunction();">
-                      <i class="icon ln-arrow-right side-menu-i"></i>
+                    <i class="icon ln-arrow-right side-menu-i"></i>
                     Logout
                 </ion-item>
-                </div>
-            </ion-list>
-        </ion-content>
-    </ion-side-menu>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-side-menu>
 </ion-side-menus>
