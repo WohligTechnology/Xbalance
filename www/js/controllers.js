@@ -2132,9 +2132,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     function check() {
+      if ($.jStorage.get("user")) {
       MyServices.notificationCount(function(data) {
           $scope.notificationCount = data.notificationCount;
       });
+    }
     }
 
     check();
