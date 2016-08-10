@@ -313,8 +313,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 })
 
 .filter('serverimage', function() {
-    console.log(imgpath + image);
     return function(image) {
+      console.log(imgpath + image);
+
         if (image) {
             return imgpath + image;
         } else {
