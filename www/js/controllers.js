@@ -1013,7 +1013,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function($scope, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
+.controller('LoginCtrl', function($scope,$state, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
+
 
     $ionicPlatform.registerBackButtonAction(function(event) {
         console.log("back pressed");

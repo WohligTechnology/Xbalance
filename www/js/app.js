@@ -6,14 +6,16 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
-.run(function($ionicPlatform,$state) {
+.run(function($ionicPlatform, $state) {
     $ionicPlatform.ready(function() {
 
 
-      $ionicPlatform.onHardwareBackButton(function() {
-        // $state.
-        $state.go("app.home");
-      });
+        $ionicPlatform.onHardwareBackButton(function() {
+            if ($state.current.name != "login") {
+                $state.go("app.home");
+            }
+
+        });
 
 
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -311,7 +313,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 })
 
 .filter('serverimage', function() {
-  console.log(imgpath + image);
+    console.log(imgpath + image);
     return function(image) {
         if (image) {
             return imgpath + image;
@@ -322,33 +324,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 })
 
 .filter('ampmtime', function() {
-    return function(value) {
-        if (!value) {
-            return '';
-        }
-        var split = value.split(':');
-        var minutes = parseInt(split[1]) + 30;
-        var hours = parseInt(split[0]) + 5;
-        if (minutes >= 60) {
-            hours += 1;
-            minutes = minutes - 60;
-        }
-        var ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        minutes = minutes < 10 ? '0' + minutes : minutes;
-        if (hours < 10) {
-            hours = "0" + hours;
-        }
-        var strTime = hours + ':' + minutes + ' ' + ampm;
-        return strTime;
-    };
-})
-.filter('moment', function() {
-    return function(dateString, format) {
-        return moment(dateString).format(format);
-    };
-});
+        return function(value) {
+            if (!value) {
+                return '';
+            }
+            var split = value.split(':');
+            var minutes = parseInt(split[1]) + 30;
+            var hours = parseInt(split[0]) + 5;
+            if (minutes >= 60) {
+                hours += 1;
+                minutes = minutes - 60;
+            }
+            var ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            var strTime = hours + ':' + minutes + ' ' + ampm;
+            return strTime;
+        };
+    })
+    .filter('moment', function() {
+        return function(dateString, format) {
+            return moment(dateString).format(format);
+        };
+    });
 
 //.filter('serverimage', function () {
 //    return function (image) {
