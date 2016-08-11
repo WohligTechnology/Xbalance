@@ -11,21 +11,31 @@
   font-weight: 700;
 }
 @font-face {
-  font-family: 'lato';
-  src: url('../fonts/Lato-Regular.ttf');
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Regular.ttf');
 }
 @font-face {
+  font-family: 'PT Sans';
+  src: url('../fonts/PT_Sans-Caption-Web-Regular.ttf');
+}
+/*@font-face {
   font-family: 'lato';
   src: url('../fonts/Lato-Light.ttf');
   font-weight: 300;
+}*/
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/Lora-Bold.ttf');
+  font-weight: 700;
 }
 @font-face {
-  font-family: 'lato';
-  src: url('../fonts/Lato-Bold.ttf');
+  font-family: 'PT Sans';
+  src: url('../fonts/PT_Sans-Caption-Web-Bold.ttf');
   font-weight: 700;
 }
 body{
       font-weight: 700;
+
 }
 .bg-xb {
   background-image: url('../img/login-bg.png');
@@ -1194,4 +1204,12 @@ a.tab-item.active-tab {
 }
 .my-custom-popup .popup{
   height: 390px;
+}
+.font-lora-r{
+  font-family: "lora";
+  font-weight: 400;
+}
+.font-lora-b{
+  /*font-family: 'PT Sans';
+  font-weight: 700;*/
 }

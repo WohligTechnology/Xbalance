@@ -17,14 +17,14 @@ $dark: #444 !default;
 $icon: #8e8e8e !default;
 $icon-font: #888 !default;
 $font-family-sans-serif: "quicksand",
-"lato",
-"Helvetica Neue",
+"lora",
+"PT Sans",
 "Roboto",
 "Segoe UI",
 sans-serif !default;
 $font-family-light-sans-serif: "quicksand",
-"lato",
-"HelveticaNeue-Light",
+"lora",
+"PT Sans",
 "Roboto-Light",
 "Segoe UI-Light",
 sans-serif-light !default;
@@ -34,6 +34,7 @@ $base-color: #363435 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+@import "www/css/style.css";
 .ionic-body,
 body {
     font-size: 14px;
