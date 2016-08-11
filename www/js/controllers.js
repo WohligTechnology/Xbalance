@@ -2426,7 +2426,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.showloading();
     $scope.insertproduct = function(ap) {
-        $scope.addProductButtonDisable = true;
+
             $scope.allvalidation = [{
                 field: $scope.ap.name,
                 validation: ""
@@ -2446,6 +2446,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
+              $scope.addProductButtonDisable = true;
                 $scope.ap = ap;
                 if ($scope.ap.status === true) {
                     $scope.ap.status = 1;
