@@ -1544,12 +1544,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.req = data.sellingapproval;
         console.log($scope.req);
         $ionicLoading.hide();
-    }
+    };
     $scope.sell = $.jStorage.get("user1");
     console.log($scope.sell);
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
 
     $scope.pullrefresh = function() {
+      $scope.hideAccept = false;
         console.log("Do Refresh");
         $scope.showloading();
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
@@ -1558,7 +1559,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.$broadcast('scroll.refreshComplete');
     };
     $scope.showPopup = function() {
-        $scope.data = {}
+        $scope.data = {};
 
         // An elaborate, custom popup
 
@@ -1570,7 +1571,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
         globalfunctionapproval();
 
-    }
+    };
     $scope.reason = "";
     $scope.accept = function(r, reason) {
         $scope.hideAccept = true;
@@ -1602,7 +1603,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 }
             });
         }
-    }
+    };
 
     $scope.showPopup4 = function() {
         var myPopup = $ionicPopup.show({
@@ -1620,7 +1621,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.hideAccept = true;
         MyServices.accepted(r.id, reason, 2, acceptstatuscallback);
         $scope.showloading();
-    }
+    };
 
 
 })
