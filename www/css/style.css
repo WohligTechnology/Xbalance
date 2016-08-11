@@ -1213,3 +1213,21 @@ a.tab-item.active-tab {
   /*font-family: 'PT Sans';
   font-weight: 700;*/
 }
+.brdr-select2 .item-select select {
+    width: 47%;
+    border: 1px solid #F78330;
+    border-radius: 0;
+    margin: 3px;
+
+    right: 10px;
+}
+.brdr-select2 .item-input input {
+    border: 1px solid #F78330;
+    text-align: right;
+    padding: 0;
+    border-radius: 0;
+    position: absolute;
+    top: 5px;
+    right: 13px;
+    width: 47%;
+}
