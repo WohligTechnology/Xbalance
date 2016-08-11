@@ -63,7 +63,7 @@
                   <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
                </div>
                <div class="padding text-center">
-                  <button class="button pr-button button-balanced" ng-click="insertproduct(ap);">Save</button>
+                  <button class="button pr-button button-balanced" ng-disabled="addProductButtonDisable" ng-click="insertproduct(ap);">Save</button>
                </div>
             </div>
          </form>

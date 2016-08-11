@@ -8,16 +8,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
 .run(function($ionicPlatform, $state) {
     $ionicPlatform.ready(function() {
-
-
         $ionicPlatform.onHardwareBackButton(function() {
             if ($state.current.name != "login") {
                 $state.go("app.home");
             }
-
         });
-
-
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -42,7 +37,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                 },
                 "windows": {}
             });
-
             push.on('registration', function(data) {
                 console.log(data);
                 $.jStorage.set("device", data.registrationId);
@@ -54,7 +48,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
                     $.jStorage.set("os", "Android");
                 }
             });
-
             push.on('notification', function(data) {
                 console.log(data);
             });
@@ -314,7 +307,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
 
 .filter('serverimage', function() {
     return function(image) {
-      console.log(imgpath + image);
+        console.log(imgpath + image);
 
         if (image) {
             return imgpath + image;

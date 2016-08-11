@@ -2351,6 +2351,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 15000);
     };
 
+
+
     $scope.showloading();
 
     $scope.pullrefresh = function() {
@@ -2388,7 +2390,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.hide();
         console.log(data);
         $scope.products = data;
-    }
+    };
     $scope.myid = $.jStorage.get("user1");
 
     MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
@@ -2416,7 +2418,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.ap = {};
             $scope.modal.hide();
         }
-    }
+    };
     $scope.prodimg = '';
 
     //insert product wit validation
@@ -2424,6 +2426,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.showloading();
     $scope.insertproduct = function(ap) {
+        $scope.addProductButtonDisable = true;
             $scope.allvalidation = [{
                 field: $scope.ap.name,
                 validation: ""
@@ -2444,11 +2447,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             var check = formvalidation($scope.allvalidation);
             if (check) {
                 $scope.ap = ap;
-                if ($scope.ap.status == true) {
+                if ($scope.ap.status === true) {
                     $scope.ap.status = 1;
                     console.log($scope.ap.status);
                 }
-                if ($scope.ap.status == false) {
+                if ($scope.ap.status === false) {
                     $scope.ap.status = 0;
                     console.log($scope.ap.status);
                 }
@@ -2460,7 +2463,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.showPopup10();
             }
 
-        }
+        };
         //add products end
         //addproductimage
     $scope.showPopup10 = function() {
@@ -2479,7 +2482,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
         $scope.prodimg = $scope.xyz.value;
-    }
+    };
 
     $scope.addproductimage = function() {
         console.log("take picture");
@@ -2518,20 +2521,20 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             //          $scope.prodetails.status = "Available";
             $scope.prodetails.status = true;
         }
-        if ($scope.prodetails.status == 0) {
+        if ($scope.prodetails.status === 0) {
             //          $scope.prodetails.status = "Not Available";
             $scope.prodetails.status = false;
         }
-    }
+    };
     $scope.productdetails = function(id) {
             MyServices.getsingleproduct(id, getsingleproductcallback);
-        }
+        };
         //product details end
         //categories
     var homecallback = function(data, status) {
         console.log(data.category);
         $scope.cat = data.category;
-    }
+    };
     MyServices.home($scope.insertid, homecallback);
     //edit products and status start
     var editproductcallback = function(data, status) {
@@ -2544,7 +2547,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.modal2.hide();
         }
 
-    }
+    };
     $scope.showPopup15 = function() {
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Low Sales Balance</p>',
@@ -2590,10 +2593,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         var check = formvalidation($scope.allvalidation);
         if (check) {
             console.log($scope.editpro);
-            if ($scope.editpro.status == true) {
+            if ($scope.editpro.status === true) {
                 $scope.editpro.status = 1;
             }
-            if ($scope.editpro.status == false) {
+            if ($scope.editpro.status === false) {
                 $scope.editpro.status = 0;
             }
             console.log("in edit product:" + $scope.prodetails.image);
@@ -2603,7 +2606,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.showPopupenteredit();
         }
 
-    }
+    };
     $scope.showPopupenteredit = function() {
 
         var myPopup = $ionicPopup.show({
@@ -2634,10 +2637,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log(data);
         $scope.modal2.hide();
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
-    }
+    };
     $scope.deleteproduct = function(prodid, user) {
             MyServices.deleteproduct(prodid, user, deleteproductcallback);
-        }
+        };
         //edit products and status end
 
 
@@ -2651,7 +2654,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         //      $scope.xyz = JSON.parse(result.response);
         //      console.log($scope.xyz);
         //      $scope.prodimg = $scope.xyz.value;
-    }
+    };
     $scope.editproductimage = function() {
         //      console.log(id);
         console.log("take picture");
@@ -2724,6 +2727,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.openedit = function() {
         $scope.modal.show();
+
+        $scope.addProductButtonDisable = false;
+
     };
 
     $scope.closeModal = function() {
