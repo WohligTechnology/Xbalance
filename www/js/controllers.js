@@ -1422,8 +1422,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             if (check) {
                 $scope.form = form;
                 var myPopup = $ionicPopup.show({
-                    template: "<p>Delivery Charges of Rs 99 is applicable on this purchase.<p>Delivery charges has to be paid to our delivery guy when the product is delivered.</p></p><p>If you fail to do so your <b>purchase balance won't be refunded</b>.</p><p>Minimum delivery time is <b>3 days</b>.</p>",
+                    template: "<p>Once the Order is Placed. it won't be Cancelled.</p><p>Delivery Charges of Rs 99 is applicable on this purchase.<p>Delivery charges has to be paid to our delivery guy when the product is delivered.</p></p><p>If you fail to do so your <b>purchase balance won't be refunded</b>.</p><p>Minimum delivery time is <b>3 days</b>.</p>",
                     title: 'Terms & Conditions',
+                    cssClass: 'my-custom-popup',
                     scope: $scope,
                     buttons: [{
                         text: '<b>Accept<b>',

@@ -92,7 +92,7 @@ button.btn-small {
 }
 .profile-img img {
   width: auto;
-  height: 80px;
+  height: 100px;
 }
 .prod-info h4 {
   text-align: center;
@@ -546,7 +546,7 @@ ion-item.item-left.numbers.item {
   margin-top: -6px;
 }
 ion-item.item-left.item {
-  padding: 7px 10px;
+  padding: 12px 10px;
 }
 .btn-rest button {
   padding: 0 15px;
@@ -1186,4 +1186,12 @@ a.tab-item.active-tab {
 }
 .font-bold{
   font-weight: 700 !important;
+}
+.image-hold {
+    height: 80px;
+    width: 80px;
+    background-size: cover;
+}
+.my-custom-popup .popup{
+  height: 390px;
 }
