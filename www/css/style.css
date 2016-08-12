@@ -1,41 +1,12 @@
 /* Empty. Add your own CSS if you like */
-
-@font-face {
-  font-family: 'quicksand';
-  src: url('../fonts/Quicksand-Regular.ttf');
-  font-weight: 400;
-}
-@font-face {
-  font-family: 'quicksand';
-  src: url('../fonts/Quicksand-Bold.ttf');
-  font-weight: 700;
-}
 @font-face {
   font-family: 'Lora';
   src: url('../fonts/Lora-Regular.ttf');
 }
 @font-face {
-  font-family: 'PT Sans';
-  src: url('../fonts/PT_Sans-Caption-Web-Regular.ttf');
-}
-/*@font-face {
-  font-family: 'lato';
-  src: url('../fonts/Lato-Light.ttf');
-  font-weight: 300;
-}*/
-@font-face {
   font-family: 'Lora';
   src: url('../fonts/Lora-Bold.ttf');
-  font-weight: 700;
-}
-@font-face {
-  font-family: 'PT Sans';
-  src: url('../fonts/PT_Sans-Caption-Web-Bold.ttf');
-  font-weight: 700;
-}
-body{
-      font-weight: 700;
-
+  font-weight: bold;
 }
 .bg-xb {
   background-image: url('../img/login-bg.png');
@@ -228,7 +199,7 @@ div.ps-caption {
   border-bottom: 1px solid #42403f;
   color: #ffffff;
   font-size: 13px;
-  font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Lora", Helvetica, Arial, Verdana, sans-serif;
   text-align: center;
 }
 div.ps-caption-bottom {
@@ -248,7 +219,7 @@ div.ps-toolbar {
   border-top: 1px solid #42403f;
   color: #ffffff;
   font-size: 13px;
-  font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Lora", Helvetica, Arial, Verdana, sans-serif;
   text-align: center;
   height: 44px;
   display: table;
@@ -535,7 +506,7 @@ ion-footer-bar.footer-shop h4 {
   font-weight: bold;
   margin-top: 8px;
   color: #888;
-  font-family: 'quicksand';
+  font-family: 'Lora';
 }
 .sell-cont.trans h2 {
   padding: 0px;
@@ -1206,7 +1177,7 @@ a.tab-item.active-tab {
   height: 390px;
 }
 .font-lora-r{
-  font-family: "lora";
+  font-family: "Lora";
   font-weight: 400;
 }
 .font-lora-b{
