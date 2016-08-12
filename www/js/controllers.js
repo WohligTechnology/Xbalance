@@ -253,6 +253,17 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.user = $.jStorage.get("user1");
     MyServices.home($scope.user, homecallback);
 
+
+
+    var slidercallback = function(data, status) {
+        $scope.sliderImage = data;
+        console.log($scope.sliderImage);
+    };
+    $scope.user = $.jStorage.get("user1");
+    MyServices.getAllSlider( slidercallback);
+
+
+
     function onmembershipid(shopid) {
         console.log(shopid);
         if (shopid.id) {
@@ -3015,9 +3026,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
             $scope.allvalidation = [{
                 field: $scope.hotel.country,
-                validation: ""
-            }, {
-                field: $scope.hotel.city,
                 validation: ""
             }, {
                 field: $scope.hotel.hotelname,

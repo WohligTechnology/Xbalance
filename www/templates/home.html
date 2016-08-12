@@ -17,13 +17,17 @@
     <ion-content class="padding has-tabs">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
 
-        <ion-slide-box>
-            <ion-slide>
+        <ion-slide-box ng-if="sliderImage">
+            <ion-slide ng-repeat="img in sliderImage">
+                <img ng-src="{{img.image | serverimage}}" class="full-image"/>
+            </ion-slide>
+
+            <!-- <ion-slide>
                 <img src="http://onestopbarter.com/lib/img/2.jpg" class="full-image"/>
             </ion-slide>
             <ion-slide>
                 <img src="http://onestopbarter.com/lib/img/2.jpg" class="full-image"/>
-            </ion-slide>
+            </ion-slide> -->
         </ion-slide-box>
 
         <div class="incard">
