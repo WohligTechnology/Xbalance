@@ -50,7 +50,7 @@
                 </div> -->
                 <div class="item item-input text-capitalize">
                     <span class="input-label">Quantity*</span>
-                    <input class="text-right" type="tel" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>
+                    <input class="text-right" type="text" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[7].validation" required>
 <!--
                     <span>Quantity*</span>
                       <input type="number" name="quantity" min="1" class="text-right" placeholder="Quantity" ng-model="form.quantity" ng-class="allvalidation[8].validation" required>
@@ -129,9 +129,9 @@
                     </div>
                     <div class="item item-input text-capitalize">
                         <span class="input-label">State</span>
-                        <input ng-model="form.shippingstate" class="text-right" type="text" placeholder="State">
+                        <input ng-model="form.shippingstate" class="text-right" readonly="true" type="text" placeholder="State" ng-init="form.shippingstate='Maharashtra'">
                     </div>
-                    <div class="item item-input text-capitalize">
+                    <div class="item item-input text-capitalize hide">
                         <span class="input-label">Country</span>
                         <input class="text-right" type="text" placeholder="Country" ng-model="form.shippingcountry">
                     </div>

@@ -28,8 +28,8 @@
                   <!--Select-->
                   <div class="item item-input item-select text-capitalize" ng-if="cat.length">
                      <div class="input-label different">Category</div>
-                     {{profile.categoryid}}
-                     {{cat}}
+                     <!-- {{profile.categoryid}} -->
+                     <!-- {{cat}} -->
                      <select ng-model="profile.categoryid" required multiple>
                         <!-- <option value="">All</option> -->
                         <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>

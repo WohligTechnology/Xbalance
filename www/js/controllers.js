@@ -1013,7 +1013,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function($scope,$state, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
+.controller('LoginCtrl', function($scope, $state, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
 
 
     $ionicPlatform.registerBackButtonAction(function(event) {
@@ -1232,7 +1232,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             MyServices.forgotPassword(email, function(data) {
                 if (data == "true") {
                     $scope.closPop();
-                    $scope.showAlert("Forgot Password Email Sent", "An Email has been sent to with your password");
+                    $scope.showAlert("Forgot Password Email Sent", "An Email has been sent to your official email with new password");
                 } else {
                     $scope.closPop();
                     $scope.showAlert("No Such Membership ID", "The Membership number " + email + " is not registered with us.");
@@ -1366,6 +1366,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.isDisabled = 0;
     $scope.detailid = $.jStorage.get("user1");
     console.log($scope.detailid);
+    $scope.form = {};
     var getuserdetailscallback = function(data, status) {
         console.log(data[0]);
         $scope.form = data[0];
@@ -1388,7 +1389,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $location.url("/app/home");
             }
         };
+        $scope.allvalidation = [];
         $scope.buyproduct = function(form) {
+          console.log(form);
             $scope.allvalidation = [{
                 field: $scope.form.name,
                 validation: ""
@@ -1410,16 +1413,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }, {
                 field: $scope.form.billingstate,
                 validation: ""
-            }, {
-                field: $scope.form.billingcountry,
-                validation: ""
-            }, {
+            },  {
                 field: $scope.form.quantity,
                 validation: ""
             }];
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
+              console.log(check);
                 $scope.form = form;
                 var myPopup = $ionicPopup.show({
                     template: "<p>Once the Order is Placed. it won't be Cancelled.</p><p>Delivery Charges of Rs 99 is applicable on this purchase.<p>Delivery charges has to be paid to our delivery guy when the product is delivered.</p></p><p>If you fail to do so your <b>purchase balance won't be refunded</b>.</p><p>Minimum delivery time is <b>3 days</b>.</p>",
@@ -1550,7 +1551,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
 
     $scope.pullrefresh = function() {
-      $scope.hideAccept = false;
+        $scope.hideAccept = false;
         console.log("Do Refresh");
         $scope.showloading();
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
@@ -1645,7 +1646,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.totalsr = 0;
     var transactioncallback = function(data, status) {
         $scope.t = data;
+        console.log(data);
         $scope.totalPurcahse = 0;
+        $scope.totalsales = 0;
         MyServices.yourbalance($.jStorage.get("user1"), function(mybal) {
             $ionicLoading.hide();
             console.log(mybal);
@@ -1653,6 +1656,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.purchaseRemaining = mybal.yourbalance.purchasebalance;
             $scope.saleRemaining = mybal.yourbalance.salesbalance;
             $scope.totalPurcahse += parseInt(mybal.yourbalance.purchasebalance);
+            $scope.totalsales += parseInt(mybal.yourbalance.salesbalance);
             _.each($scope.t.sales, function(n) {
 
                 $scope.totalPurcahse += parseInt(n.amount);
@@ -1660,19 +1664,21 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);
-            })
+            });
             _.each($scope.t.purchased, function(n) {
+              console.log(n);
+                $scope.totalsales += parseInt(n.amount);
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
                 // console.log($scope.totalPurcahse);
-            })
+            });
             _.each($scope.t.admin, function(n) {
                 n.timestamp = new Date(n.timestamp);
-            })
+            });
             console.log($scope.t);
         });
 
-    }
+    };
     $scope.trans = $.jStorage.get("user1");
     MyServices.transaction($.jStorage.get("user1"), transactioncallback);
 
@@ -2120,7 +2126,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('YourBalCtrl', function($rootScope,$scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
+.controller('YourBalCtrl', function($rootScope, $scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
 
 
 
@@ -2134,11 +2140,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     function check() {
-      if ($.jStorage.get("user")) {
-      MyServices.notificationCount(function(data) {
-          $scope.notificationCount = data.notificationCount;
-      });
-    }
+        if ($.jStorage.get("user")) {
+            MyServices.notificationCount(function(data) {
+                $scope.notificationCount = data.notificationCount;
+            });
+        }
     }
 
     check();
@@ -2427,47 +2433,47 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     $scope.showloading();
     $scope.insertproduct = function(ap) {
+        $scope.ap.status = true;
+        $scope.allvalidation = [{
+            field: $scope.ap.name,
+            validation: ""
+        }, {
+            field: $scope.ap.price,
+            validation: ""
+        }, {
+            field: $scope.ap.quantity,
+            validation: ""
+        }, {
+            field: $scope.ap.category,
+            validation: ""
+        }, {
+            field: $scope.ap.description,
+            validation: ""
+        }];
 
-            $scope.allvalidation = [{
-                field: $scope.ap.name,
-                validation: ""
-            }, {
-                field: $scope.ap.price,
-                validation: ""
-            }, {
-                field: $scope.ap.quantity,
-                validation: ""
-            }, {
-                field: $scope.ap.category,
-                validation: ""
-            }, {
-                field: $scope.ap.description,
-                validation: ""
-            }];
-
-            var check = formvalidation($scope.allvalidation);
-            if (check) {
-              $scope.addProductButtonDisable = true;
-                $scope.ap = ap;
-                if ($scope.ap.status === true) {
-                    $scope.ap.status = 1;
-                    console.log($scope.ap.status);
-                }
-                if ($scope.ap.status === false) {
-                    $scope.ap.status = 0;
-                    console.log($scope.ap.status);
-                }
-                console.log($scope.ap);
-                console.log("before:" + $scope.prodimg);
-                $scope.insertid = $.jStorage.get("user1");
-                MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
-            } else {
-                $scope.showPopup10();
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            $scope.addProductButtonDisable = true;
+            $scope.ap = ap;
+            if ($scope.ap.status === true) {
+                $scope.ap.status = 1;
+                console.log($scope.ap.status);
             }
+            if ($scope.ap.status === false) {
+                $scope.ap.status = 0;
+                console.log($scope.ap.status);
+            }
+            console.log($scope.ap);
+            console.log("before:" + $scope.prodimg);
+            $scope.insertid = $.jStorage.get("user1");
+            MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
+        } else {
+            $scope.showPopup10();
+        }
 
-        };
-        //add products end
-        //addproductimage
+    };
+    //add products end
+    //addproductimage
     $scope.showPopup10 = function() {
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Please Enter Mandatory Fields!!</p>',
@@ -2529,10 +2535,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     };
     $scope.productdetails = function(id) {
-            MyServices.getsingleproduct(id, getsingleproductcallback);
-        };
-        //product details end
-        //categories
+        MyServices.getsingleproduct(id, getsingleproductcallback);
+    };
+    //product details end
+    //categories
     var homecallback = function(data, status) {
         console.log(data.category);
         $scope.cat = data.category;
@@ -2641,9 +2647,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
     };
     $scope.deleteproduct = function(prodid, user) {
-            MyServices.deleteproduct(prodid, user, deleteproductcallback);
-        };
-        //edit products and status end
+        MyServices.deleteproduct(prodid, user, deleteproductcallback);
+    };
+    //edit products and status end
 
 
     //upload editproductimage start
@@ -2889,7 +2895,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.pageno = 1;
     console.log("Make is called");
     MyServices.allNotificationRead(function() {
-      console.log("All notification Read");
+        console.log("All notification Read");
     });
 
     $scope.loadnotification = function(pageno) {
@@ -3027,9 +3033,6 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 validation: ""
             }, {
                 field: $scope.hotel.adult,
-                validation: ""
-            }, {
-                field: $scope.hotel.children,
                 validation: ""
             }];
             var check = formvalidation($scope.allvalidation);

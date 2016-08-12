@@ -103,10 +103,10 @@
             </div>
             <div class="incard transcard" ng-if="t.purchased.length>0">
                <div class="list">
-                  <!-- <ion-item class="item item-thumbnail-left listmk">
-                     <span class="item-note">{{finalsales}}</span>
+                  <ion-item class="item item-thumbnail-left listmk">
+                     <span class="item-note">{{totalsales}}</span>
                      <h2 class="bold">Total</h2>
-                  </ion-item> -->
+                  </ion-item>
                   <ion-item class="item item-thumbnail-left" ng-repeat="tr in t.purchased" ng-if="!tr.product">
                      <div class="row">
                         <div class="col-25">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="col-75">
                            <div class="sell-cont trans">
-                              <span class="item-note">{{tr.amount}}</span>
+                              <span class="item-note">-{{tr.amount}}</span>
                               <h2>{{tr.shopname}}</h2>
                               <p>Date: {{tr.date | date:'longDate'}}</p>
                               <p>Time: {{tr.timestamp | date:'shortTime':'+1100'}}</p>
@@ -145,10 +145,10 @@
                         </div>
                      </div>
                   </ion-item>
-                  <!-- <ion-item class="item item-thumbnail-left listmk">
+                  <ion-item class="item item-thumbnail-left listmk">
                      <span class="item-note">{{t.totalsales.salesbalance}}</span>
                      <h2 class="bold">Remaining</h2>
-                  </ion-item> -->
+                  </ion-item>
                </div>
             </div>
          </div>
