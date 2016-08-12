@@ -259,7 +259,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log($scope.sliderImage);
     };
     $scope.user = $.jStorage.get("user1");
-    MyServices.getAllSlider( slidercallback);
+    MyServices.getAllSlider(slidercallback);
 
 
 
@@ -1401,7 +1401,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         };
         $scope.allvalidation = [];
         $scope.buyproduct = function(form) {
-          console.log(form);
+            console.log(form);
             $scope.allvalidation = [{
                 field: $scope.form.name,
                 validation: ""
@@ -1423,14 +1423,14 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             }, {
                 field: $scope.form.billingstate,
                 validation: ""
-            },  {
+            }, {
                 field: $scope.form.quantity,
                 validation: ""
             }];
 
             var check = formvalidation($scope.allvalidation);
             if (check) {
-              console.log(check);
+                console.log(check);
                 $scope.form = form;
                 var myPopup = $ionicPopup.show({
                     template: "<p>Once the Order is Placed. it won't be Cancelled.</p><p>Delivery Charges of Rs 99 is applicable on this purchase.<p>Delivery charges has to be paid to our delivery guy when the product is delivered.</p></p><p>If you fail to do so your <b>purchase balance won't be refunded</b>.</p><p>Minimum delivery time is <b>3 days</b>.</p>",
@@ -1676,7 +1676,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 // console.log($scope.totalPurcahse);
             });
             _.each($scope.t.purchased, function(n) {
-              console.log(n);
+                console.log(n);
                 $scope.totalsales += parseInt(n.amount);
                 n.timestamp = new Date(n.timestamp);
                 // console.log(n.timestamp)
@@ -2462,26 +2462,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             validation: ""
         }];
 
-<<<<<<< HEAD
-        $scope.allvalidation = [{
-            field: $scope.ap.name,
-            validation: ""
-        }, {
-            field: $scope.ap.price,
-            validation: ""
-        }, {
-            field: $scope.ap.quantity,
-            validation: ""
-        }, {
-            field: $scope.ap.category,
-            validation: ""
-        }, {
-            field: $scope.ap.description,
-            validation: ""
-        }];
 
-=======
->>>>>>> origin/cordova-build
         var check = formvalidation($scope.allvalidation);
         if (check) {
             $scope.addProductButtonDisable = true;
@@ -2489,19 +2470,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             if ($scope.ap.status === true) {
                 $scope.ap.status = 1;
                 console.log($scope.ap.status);
-<<<<<<< HEAD
             }
-            if ($scope.ap.status === false) {
-                $scope.ap.status = 0;
-                console.log($scope.ap.status);
-            }
-=======
-            }
-            if ($scope.ap.status === false) {
-                $scope.ap.status = 0;
-                console.log($scope.ap.status);
-            }
->>>>>>> origin/cordova-build
+
             console.log($scope.ap);
             console.log("before:" + $scope.prodimg);
             $scope.insertid = $.jStorage.get("user1");
