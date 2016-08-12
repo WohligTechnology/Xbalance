@@ -16,18 +16,8 @@ $royal: #363435 !default;
 $dark: #444 !default;
 $icon: #8e8e8e !default;
 $icon-font: #888 !default;
-$font-family-sans-serif: "quicksand",
-"lato",
-"Helvetica Neue",
-"Roboto",
-"Segoe UI",
-sans-serif !default;
-$font-family-light-sans-serif: "quicksand",
-"lato",
-"HelveticaNeue-Light",
-"Roboto-Light",
-"Segoe UI-Light",
-sans-serif-light !default;
+$font-family-sans-serif: "Lora" !default;
+$font-family-light-sans-serif: "Lora" !default;
 $base-background-color: #D2D2D2 !default;
 $base-color: #363435 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -45,7 +35,7 @@ body {
             font-weight: 600;
             padding: 13px 2px 13px 14px !important;
             color: $icon-font;
-            font-family: 'quicksand';
+            font-family: $font-family-sans-serif;
             text-transform: uppercase;
             i {
                 font-size: 18px;

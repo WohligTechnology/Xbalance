@@ -1,5 +1,5 @@
 var adminbase = "http://swaap.in/admin/";
-// var adminbase = "http://192.168.0.101/osb/";
+// var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
 var imgpath = adminbase + "uploads/";
@@ -52,6 +52,9 @@ myservices.factory('MyServices', function($http) {
         },
         returnval.checkstatus = function(orderid, statuscallback) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
+        },
+        returnval.getAllSlider = function( slidercallback) {
+            $http.get(adminurl + "getAllSlider", {}).success(slidercallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {
             console.log(id);

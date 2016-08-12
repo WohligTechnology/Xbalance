@@ -37,10 +37,11 @@
       "locator": "phonegap-plugin-push"
     },
     "phonegap-plugin-push",
-    "cordova-plugin-image-picker"
+    "cordova-plugin-image-picker",
+    "cordova-plugin-crosswalk-webview"
   ],
   "cordovaPlatforms": [
-    "android",
-    "ios"
+    "ios",
+    "android"
   ]
 }

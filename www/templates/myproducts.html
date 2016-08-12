@@ -24,7 +24,7 @@
                     <h3 class="leftname">Name: <span>{{pro.name}}</span></h3>
                     <h3 class="leftname">Price: <span>{{pro.price}}</span></h3>
                     <h3 class="leftname">Quantity: <span>{{pro.quantity}}</span></h3>
-                    <h3 class="leftname" ng-if="pro.status==1 && pro.moderated==1">Status: <span>Available</span></h3>
+                    <h3  class="leftname" ng-if="pro.status==1 && pro.moderated==1">Status: <span>Available</span></h3>
                     <h3 class="leftname" ng-if="pro.status==0 && pro.moderated==1">Status: <span>Disabled</span></h3>
                     <h3 class="leftname" ng-if="pro.moderated==0"><span style="color:red">Waiting for approval</span></h3>
                     <h3 class="leftname" ng-if="pro.moderated==2">Status: <span style="color:red">Rejected</span></h3>
