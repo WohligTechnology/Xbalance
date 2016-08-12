@@ -1787,6 +1787,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
         $scope.profile.shoplogo = $scope.xyz.value;
+        $scope.$apply();
     };
 
     var changeshopphoto = function(result) {
