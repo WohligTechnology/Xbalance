@@ -98,8 +98,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $ionicPlatform.registerBackButtonAction(function(event) {
         console.log("back pressed = " + $state.current.name);
         if ($state.current.name != "app.home") {
-            exitCount = 0;
-            navigator.app.backHistory();
+            $state.go("app.home");
         } else {
             var myPopup = $ionicPopup.show({
                 template: "<b><p>Are you sure you want to exit?</p></b>",
@@ -1013,7 +1012,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('LoginCtrl', function($scope,$state, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
+.controller('LoginCtrl', function($scope, $state, $stateParams, MyServices, $location, $ionicPopup, $timeout, $ionicModal, $ionicLoading, $ionicPlatform, $state) {
 
 
     $ionicPlatform.registerBackButtonAction(function(event) {
@@ -1040,8 +1039,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             });
             myPopup.then(function(res) {
                 console.log('Tapped!', res);
-                myPopup.close()
-                if (res == true) {
+                myPopup.close();
+                if (res === true) {
                     navigator.app.exitApp();
                 }
             });
@@ -1550,7 +1549,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
 
     $scope.pullrefresh = function() {
-      $scope.hideAccept = false;
+        $scope.hideAccept = false;
         console.log("Do Refresh");
         $scope.showloading();
         MyServices.sellingapproval($scope.sell, sellingapprovalcallback);
@@ -2120,7 +2119,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('YourBalCtrl', function($rootScope,$scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
+.controller('YourBalCtrl', function($rootScope, $scope, $stateParams, $ionicModal, $ionicLoading, $interval, $ionicPopup, $timeout, MyServices) {
 
 
 
@@ -2134,11 +2133,11 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 
     function check() {
-      if ($.jStorage.get("user")) {
-      MyServices.notificationCount(function(data) {
-          $scope.notificationCount = data.notificationCount;
-      });
-    }
+        if ($.jStorage.get("user")) {
+            MyServices.notificationCount(function(data) {
+                $scope.notificationCount = data.notificationCount;
+            });
+        }
     }
 
     check();
@@ -2428,46 +2427,46 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.showloading();
     $scope.insertproduct = function(ap) {
 
-            $scope.allvalidation = [{
-                field: $scope.ap.name,
-                validation: ""
-            }, {
-                field: $scope.ap.price,
-                validation: ""
-            }, {
-                field: $scope.ap.quantity,
-                validation: ""
-            }, {
-                field: $scope.ap.category,
-                validation: ""
-            }, {
-                field: $scope.ap.description,
-                validation: ""
-            }];
+        $scope.allvalidation = [{
+            field: $scope.ap.name,
+            validation: ""
+        }, {
+            field: $scope.ap.price,
+            validation: ""
+        }, {
+            field: $scope.ap.quantity,
+            validation: ""
+        }, {
+            field: $scope.ap.category,
+            validation: ""
+        }, {
+            field: $scope.ap.description,
+            validation: ""
+        }];
 
-            var check = formvalidation($scope.allvalidation);
-            if (check) {
-              $scope.addProductButtonDisable = true;
-                $scope.ap = ap;
-                if ($scope.ap.status === true) {
-                    $scope.ap.status = 1;
-                    console.log($scope.ap.status);
-                }
-                if ($scope.ap.status === false) {
-                    $scope.ap.status = 0;
-                    console.log($scope.ap.status);
-                }
-                console.log($scope.ap);
-                console.log("before:" + $scope.prodimg);
-                $scope.insertid = $.jStorage.get("user1");
-                MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
-            } else {
-                $scope.showPopup10();
+        var check = formvalidation($scope.allvalidation);
+        if (check) {
+            $scope.addProductButtonDisable = true;
+            $scope.ap = ap;
+            if ($scope.ap.status === true) {
+                $scope.ap.status = 1;
+                console.log($scope.ap.status);
             }
+            if ($scope.ap.status === false) {
+                $scope.ap.status = 0;
+                console.log($scope.ap.status);
+            }
+            console.log($scope.ap);
+            console.log("before:" + $scope.prodimg);
+            $scope.insertid = $.jStorage.get("user1");
+            MyServices.createproduct($scope.insertid, $scope.ap, $scope.prodimg, createproductcallback);
+        } else {
+            $scope.showPopup10();
+        }
 
-        };
-        //add products end
-        //addproductimage
+    };
+    //add products end
+    //addproductimage
     $scope.showPopup10 = function() {
         var myPopup = $ionicPopup.show({
             template: '<p class="text-center">Please Enter Mandatory Fields!!</p>',
@@ -2529,10 +2528,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }
     };
     $scope.productdetails = function(id) {
-            MyServices.getsingleproduct(id, getsingleproductcallback);
-        };
-        //product details end
-        //categories
+        MyServices.getsingleproduct(id, getsingleproductcallback);
+    };
+    //product details end
+    //categories
     var homecallback = function(data, status) {
         console.log(data.category);
         $scope.cat = data.category;
@@ -2641,9 +2640,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         MyServices.viewmyproducts($scope.myid, viewmyproductscallback);
     };
     $scope.deleteproduct = function(prodid, user) {
-            MyServices.deleteproduct(prodid, user, deleteproductcallback);
-        };
-        //edit products and status end
+        MyServices.deleteproduct(prodid, user, deleteproductcallback);
+    };
+    //edit products and status end
 
 
     //upload editproductimage start
@@ -2889,7 +2888,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.pageno = 1;
     console.log("Make is called");
     MyServices.allNotificationRead(function() {
-      console.log("All notification Read");
+        console.log("All notification Read");
     });
 
     $scope.loadnotification = function(pageno) {
