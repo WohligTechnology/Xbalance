@@ -1811,9 +1811,50 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
 
     };
+var deleteShopPhotocallback=function(data,status){  console.log(data);
+  if(data=='true'){
+    console.log("In success");
+  }
+    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
 
+
+};
+var removeProfileImagecallback=function(data,status){
+  console.log(data);
+  if(data=='true'){
+    console.log("In success");
+  }
+    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
+
+};
+var deleteProductsPhotocallback=function(data,status){
+  console.log(data);
+  if(data=='true'){
+    console.log("In success");
+  }
+    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
+
+};
     $scope.removeProfileImage = function() {
-        $scope.profile.shoplogo = "";
+      // delete profile image
+        MyServices.removeProfileImage(removeProfileImagecallback);
+    };
+
+    $scope.deleteShopPhoto = function(id) {
+      $scope.shopphotoid=id;
+      // delete profile image
+        MyServices.deleteShopPhoto($scope.shopphotoid,deleteShopPhotocallback);
+    };
+    $scope.deleteProductsPhoto = function(id) {
+      $scope.shopproductid=id;
+      // delete profile image
+        MyServices.deleteProductsPhoto($scope.shopproductid,deleteProductsPhotocallback);
     };
 
     $scope.changeshopimage = function(id) {
@@ -1886,18 +1927,18 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
     };
 
-    $scope.deleteShopPhoto = function(index) {
-        $scope.pic.splice(index, 1);
-    };
+    // $scope.deleteShopPhoto = function(index) {
+    //     $scope.pic.splice(index, 1);
+    // };
 
     var shopproductphotocallback = function(data, status) {
         $scope.image = data;
 
     };
 
-    $scope.deleteProductsPhoto = function(index) {
-        $scope.image.splice(index, 1);
-    };
+    // $scope.deleteProductsPhoto = function(index) {
+    //     $scope.image.splice(index, 1);
+    // };
 
 
     var getallcategory1callback = function(data, status) {

@@ -50,6 +50,15 @@ myservices.factory('MyServices', function($http) {
         returnval.shopphoto = function(id, shopphotocallback) {
             $http.get(adminurl + "shopphoto?id=" + id, {}).success(shopphotocallback);
         },
+        returnval.removeProfileImage = function( removeProfileImagecallback) {
+            $http.get(adminurl + "removeProfileImage?id=" + $.jStorage.get("user1"), {}).success(removeProfileImagecallback);
+        },
+        returnval.deleteShopPhoto = function( id,deleteShopPhotocallback) {
+            $http.get(adminurl + "deleteShopPhoto?id=" + id, {}).success(deleteShopPhotocallback);
+        },
+        returnval.deleteProductsPhoto = function( id,deleteProductsPhotocallback) {
+            $http.get(adminurl + "deleteProductsPhoto?id=" + id, {}).success(deleteProductsPhotocallback);
+        },
         returnval.checkstatus = function(orderid, statuscallback) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },

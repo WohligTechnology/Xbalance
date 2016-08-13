@@ -81,7 +81,7 @@
                      <div class="row text-center">
                         <div class="col input-div" ng-repeat="i in pic">
                            <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}" ng-click="changeshopimage(i.id);"></div>
-                           <p style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteShopPhoto($index)">Delete</p>
+                           <p style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteShopPhoto(i.id)">Delete</p>
                         </div>
                         <div class="col-33 input-div" ng-if="pic.length==0" ng-click="changeshopimage('');">
                            <div class="img-profile">
@@ -110,7 +110,7 @@
                      <div class="row">
                         <div class="col input-div" ng-repeat="i in image">
                            <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}"  ng-click="changeproductimage(i.id);"></div>
-                           <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsPhoto($index)">Delete</p>
+                           <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsPhoto(i.id)">Delete</p>
                         </div>
                         <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
                            <div class="img-profile">
