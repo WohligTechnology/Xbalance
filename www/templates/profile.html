@@ -1,133 +1,151 @@
 <ion-view view-title="Profile">
 
-   <ion-nav-buttons side="right">
-     <div class="buttons button-right">
-       <div class="dh-relative" ng-controller="YourBalCtrl">
-         <button class="button button-icon ln-bell small-icon btn-view" ui-sref="app.notification"></button>
-         <span class="badge badge-assertive btn-set span-abs" ng-hide="notificationCount==0"></span>
-       </div>
-
-     </div>
-
-      <a class="button button-icon ion-edit small-icon" ng-click="editpro(profile);" href="#/app/profile/edit"></a>
-   </ion-nav-buttons>
-
-   <ion-content class="padding">
-     <ion-refresher
-    pulling-text="Pull to refresh..."
-    on-refresh="pullrefresh()">
-  </ion-refresher>
-           <!-- <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher> -->
-      <div class="incard">
-         <div class="profile-img">
-            <img ng-src="{{profile.shoplogo|serverimage}}">
-            <h3>{{profile.shopname}}</h3>
-         </div>
-         <div class="list profile-cont padtop5 font-lora-b">
-            <ion-item class="">
-               <h2 class="font-bold font-lora-b">Category</h2>
-
-                <!-- <p>  </p> -->
-                <p class="down-paragraph">{{profile.category}}</p>
-
-            </ion-item>
-            <div class="item item-text-wrap header font-lora-b">
-               <h2 class="font-lora-b"> Address</h2>
+    <ion-nav-buttons side="right">
+        <div class="buttons button-right">
+            <div class="dh-relative" ng-controller="YourBalCtrl">
+                <button class="button button-icon ln-bell small-icon btn-view" ui-sref="app.notification"></button>
+                <span class="badge badge-assertive btn-set span-abs" ng-hide="notificationCount==0"></span>
             </div>
-            <div class="item item-text-wrap">
-               <div class="input itemproducts">
-                  <p> {{profile.billingaddress}}</p>
-               </div>
+
+        </div>
+
+        <a class="button button-icon ion-edit small-icon" ng-click="editpro(profile);" href="#/app/profile/edit"></a>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh..." on-refresh="pullrefresh()"></ion-refresher>
+        <!-- <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher> -->
+        <div class="incard">
+            <div class="profile-img">
+                <img ng-src="{{profile.shoplogo|serverimage}}">
+                <h3>{{profile.shopname}}</h3>
             </div>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">City</h2>
-               <div class="pull-right item-right text-capitalize">
-                  {{profile.billingcity}}
-               </div>
-            </ion-item>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Area</h2>
-               <div class="pull-right item-right text-capitalize">
-                  {{profile.area}}
-               </div>
-            </ion-item>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">State</h2>
-               <div class="pull-right item-right text-capitalize">
-                  {{profile.billingstate}}
-               </div>
-            </ion-item>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Pincode</h2>
-               <div class="pull-right item-right text-capitalize">
-                  {{profile.billingpincode}}
-               </div>
-            </ion-item>
-            <div class="item item-text-wrap header">
-               <h2 class="font-lora-b">Description</h2>
-            </div>
-            <div class="item item-text-wrap">
-               <div class="input itemproducts">
-                  <p>{{profile.description}}</p>
-               </div>
-            </div>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Cell Number</h2>
-               <div class="pull-right item-right">
-                  {{profile.shopcontact1}}
-               </div>
-            </ion-item>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Landline No.</h2>
-               <div class="pull-right item-right">
-                  {{profile.shopcontact2}}
-               </div>
-            </ion-item>
-            <!--
+            <div class="list profile-cont font-lora-b">
+                <div class="bod-btm">
+                    <ion-item class="item item-text-wrap header">
+                        <h2 class="font-bold font-lora-b">Category</h2>
+                    </ion-item>
+                    <ion-item class="item item-text-wrap">
+                        <p class="down-paragraph no-pad-for">{{profile.category}}</p>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <div class="item item-text-wrap header font-lora-b">
+                        <h2 class="font-lora-b">
+                            Address</h2>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <div class="input itemproducts">
+                            <p class="no-pad-for">
+                                {{profile.billingaddress}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">City</h2>
+                        <div class="pull-right item-right text-capitalize">
+                            {{profile.billingcity}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Area</h2>
+                        <div class="pull-right item-right text-capitalize">
+                            {{profile.area}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">State</h2>
+                        <div class="pull-right item-right text-capitalize">
+                            {{profile.billingstate}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Pincode</h2>
+                        <div class="pull-right item-right text-capitalize">
+                            {{profile.billingpincode}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <div class="item item-text-wrap header">
+                        <h2 class="font-lora-b">Description</h2>
+                    </div>
+                    <div class="item item-text-wrap">
+                        <div class="input itemproducts">
+                            <p class="no-pad-for">{{profile.description}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Cell Number</h2>
+                        <div class="pull-right item-right">
+                            {{profile.shopcontact1}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Landline No.</h2>
+                        <div class="pull-right item-right">
+                            {{profile.shopcontact2}}
+                        </div>
+                    </ion-item>
+                </div>
+                <!--
                 <ion-item class="item-left numbers">
                     <div class="pull-right item-right">
                         022 25454565
                     </div>
                 </ion-item>
 -->
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Email Id</h2>
-               <div class="pull-right item-right">
-                  {{profile.shopemail}}
-               </div>
-            </ion-item>
-            <ion-item class="item-left">
-               <h2 class="font-lora-b">Website</h2>
-               <div class="pull-right item-right">
-                  {{profile.website}}
-               </div>
-            </ion-item>
-            <div class="mt20">
-               <div class="item item-text-wrap header" ng-if="pic.length>0">
-                  <h2 class="font-lora-b">Shops Photos</h2>
-               </div>
-               <div class="row">
-                  <div class="col input-div" ng-repeat="p in pic" ng-click="openshop($index);">
-                     <div class="image-hold" ng-style="{'background-image':'url({{p.photo|serverimage}})'}">
-                     </div>
-                  </div>
-               </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Email Id</h2>
+                        <div class="pull-right item-right">
+                            {{profile.shopemail}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm">
+                    <ion-item class="item-left">
+                        <h2 class="font-lora-b">Website</h2>
+                        <div class="pull-right item-right">
+                            {{profile.website}}
+                        </div>
+                    </ion-item>
+                </div>
+                <div class="bod-btm pb10">
+                    <div class="item item-text-wrap header" ng-if="pic.length>0">
+                        <h2 class="font-lora-b">Shops Photos</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col input-div" ng-repeat="p in pic" ng-click="openshop($index);">
+                            <div class="image-hold" ng-style="{'background-image':'url({{p.photo|serverimage}})'}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bod-btm pb10">
+                    <div class="item item-text-wrap header" ng-if="image.length>0">
+                        <h2 class="font-lora-b">Products Photos</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col input-div" ng-repeat="i in image" ng-click="openpswds($index);">
+                            <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="padding text-center p20">
+                    <button class="button pr-button button-balanced font-lora-b" ng-click="openPassword();">Reset Password</button>
+                </div>
             </div>
-            <div class="mt20">
-               <div class="item item-text-wrap header" ng-if="image.length>0">
-                  <h2 class="font-lora-b">Products Photos</h2>
-               </div>
-               <div class="row">
-                  <div class="col input-div" ng-repeat="i in image" ng-click="openpswds($index);">
-                     <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}">
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="padding text-center p20">
-               <button class="button pr-button button-balanced font-lora-b" ng-click="openPassword();">Reset Password</button>
-            </div>
-         </div>
-      </div>
-   </ion-content>
+        </div>
+    </ion-content>
 </ion-view>

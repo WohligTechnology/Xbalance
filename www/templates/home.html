@@ -16,8 +16,7 @@
 
     <ion-content class="padding has-tabs">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
-
-        <ion-slide-box ng-if="sliderImage">
+                <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" ng-if="sliderImage">
             <ion-slide ng-repeat="img in sliderImage">
                 <img ng-src="{{img.image | serverimage}}" class="full-image"/>
             </ion-slide>
@@ -35,8 +34,8 @@
             <div class="item item-avatar div-img" ng-controller="ProfileCtrl">
                 <div class="imgy" style="background-image: url({{profile.shoplogo|serverimage}});"></div>
                 <h2>{{profile.shopname}}</h2>
-                <p>Membership Id:
-                    {{profile.membershipno}}</p>
+                <div class="less-pad-home">Vendor Id:
+                    {{profile.membershipno}}</div>
             </div>
 
             <div class="padtop5">

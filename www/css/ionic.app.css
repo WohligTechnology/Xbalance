@@ -16,7 +16,6 @@ For example, you might change some of the default colors:
   used under CC BY http://creativecommons.org/licenses/by/4.0/
   Modified icons to fit ionicon’s grid from original.
 */
-@import url(www/css/style.css);
 @font-face {
   font-family: "Ionicons";
   src: url("../lib/ionic/fonts/ionicons.eot?v=2.0.1");
@@ -9133,7 +9132,7 @@ ul, .my-balcont ul {
   margin-top: 4px; }
 
 .mb {
-  margin-bottom: 0px; }
+  margin-bottom: 0; }
 
 .image-hold {
   position: relative;
@@ -9147,6 +9146,10 @@ ul, .my-balcont ul {
 
 .mt20 {
   margin-top: 20px; }
+
+.incard h2 {
+  text-transform: capitalize;
+  font-weight: 700; }
 
 .incard p {
   padding: 13px 0 6px;
@@ -9177,8 +9180,7 @@ ul, .my-balcont ul {
     text-transform: uppercase; }
 
 .div-img {
-  padding: 15px 15px 6px !important;
-  padding-left: 72px !important;
+  padding: 15px 15px 6px 72px !important;
   border-bottom: 1px solid #eaeaea !important; }
   .div-img p {
     padding: 0; }
@@ -9212,3 +9214,15 @@ ul, .my-balcont ul {
   margin: 3px;
   padding-right: 15px;
   right: 10px; }
+
+.incard .no-pad-for {
+  padding: 0; }
+
+.bod-btm {
+  border-bottom: 1px solid #ddd; }
+
+.pb10 {
+  padding-bottom: 10px; }
+
+.less-pad-home {
+  padding: 5px 0 6px; }
