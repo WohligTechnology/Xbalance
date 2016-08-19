@@ -16,18 +16,13 @@
 
     <ion-content class="padding has-tabs">
         <ion-refresher pulling-text="Pull To Refresh" on-refresh="pullrefresh();" refreshing-text="Refreshing.."></ion-refresher>
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" ng-if="sliderImage" does-continue="true">
+      <div class="max-width">
+          <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" ng-if="sliderImage" does-continue="true">
             <ion-slide ng-repeat="img in sliderImage">
                 <img ng-src="{{img.image | serverimage}}" class="full-image"/>
             </ion-slide>
-
-            <!-- <ion-slide>
-                <img src="http://onestopbarter.com/lib/img/2.jpg" class="full-image"/>
-            </ion-slide>
-            <ion-slide>
-                <img src="http://onestopbarter.com/lib/img/2.jpg" class="full-image"/>
-            </ion-slide> -->
         </ion-slide-box>
+      </div>
 
         <div class="incard">
 

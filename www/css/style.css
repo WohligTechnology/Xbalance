@@ -1202,3 +1202,7 @@ a.tab-item.active-tab {
     right: 13px;
     width: 47%;
 }
+.max-width {
+  width: 670px;
+  margin: 0 auto;
+}
