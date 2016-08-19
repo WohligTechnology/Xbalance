@@ -83,8 +83,9 @@
                 <div class="col col-33 text-center" ng-repeat="s in sp">
                 <span ng-click="getproduct(s.productid)">
 <!--                    <a href="#/app/productdetail">-->
-                        <img ng-src={{s.image|serverimage}}  class="full-image">
-
+                        <div class="auto-image">
+                          <img ng-src={{s.image|serverimage}}>
+                          </div>
                         <h5 class="bold">{{s.name}}</h5>
                         <h5 class="mt">{{s.price}}</h5>
                         <h5 class="quantity">Qty: {{s.quantity}}</h5>
