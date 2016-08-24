@@ -22,29 +22,29 @@
                         <button class="button button-balanced pr-button" ng-click="removeProfileImage()">Delete</button>
                      </div>
                   </div>
-                  <div class="item item-input text-capitalize">
-                     <input type="text" placeholder="Name" ng-model="profile.shopname" required>
+                  <div class="item item-input text-capitalize" >
+                     <input type="text" placeholder="Name" readonly  ng-model="profile.shopname" required>
                   </div>
                   <!--Select-->
-                  <div class="item item-input item-select text-capitalize" ng-if="cat.length">
+                  <div class="item item-input item-select text-capitalize" ng-if="cat.length" >
                      <div class="input-label different">Category</div>
                      <!-- {{profile.categoryid}} -->
                      <!-- {{cat}} -->
-                     <select ng-model="profile.categoryid" required multiple>
+                     <select ng-model="profile.categoryid" required multiple readonly>
                         <!-- <option value="">All</option> -->
                         <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                      </select>
                   </div>
                   <!--Select-->
                   <div class="item item-input text-capitalize">
-                     <textarea placeholder="Address" ng-model="profile.billingaddress" required></textarea>
+                     <textarea placeholder="Address" ng-model="profile.billingaddress" readonly required></textarea>
                   </div>
                   <div class="item item-input">
-                     <input type="text" placeholder="City" ng-model="profile.billingcity" required>
+                     <input type="text" placeholder="City" ng-model="profile.billingcity" readonly required>
                   </div>
                   <div class="item item-input item-select text-capitalize">
                      <div class="input-label different">Area</div>
-                     <select ng-options="a.id as a.name for a in areas" ng-model="profile.areaid" required>
+                     <select ng-options="a.id as a.name for a in areas" ng-model="profile.areaid" disabled="disabled" required>
 
                      </select>
                      <!-- <select ng-model="profile.areaid">
@@ -54,10 +54,10 @@
                   </div>
                   <div class="item item-input item-select  text-capitalize">
                     <div class="input-label different">State</div>
-                    <select id="stateId" class="states" name="state" ng-model="profile.billingstate" required="required"><option value="">Select State</option><option value="Andaman and Nicobar Islands" stateid="1">Andaman and Nicobar Islands</option><option value="Andhra Pradesh" stateid="2">Andhra Pradesh</option><option value="Arunachal Pradesh" stateid="3">Arunachal Pradesh</option><option value="Assam" stateid="4">Assam</option><option value="Bihar" stateid="5">Bihar</option><option value="Chandigarh" stateid="6">Chandigarh</option><option value="Chhattisgarh" stateid="7">Chhattisgarh</option><option value="Dadra and Nagar Haveli" stateid="8">Dadra and Nagar Haveli</option><option value="Daman and Diu" stateid="9">Daman and Diu</option><option value="Delhi" stateid="10">Delhi</option><option value="Goa" stateid="11">Goa</option><option value="Gujarat" stateid="12">Gujarat</option><option value="Haryana" stateid="13">Haryana</option><option value="Himachal Pradesh" stateid="14">Himachal Pradesh</option><option value="Jammu and Kashmir" stateid="15">Jammu and Kashmir</option><option value="Jharkhand" stateid="16">Jharkhand</option><option value="Karnataka" stateid="17">Karnataka</option><option value="Kenmore" stateid="18">Kenmore</option><option value="Kerala" stateid="19">Kerala</option><option value="Lakshadweep" stateid="20">Lakshadweep</option><option value="Madhya Pradesh" stateid="21">Madhya Pradesh</option><option value="Maharashtra" stateid="22">Maharashtra</option><option value="Manipur" stateid="23">Manipur</option><option value="Meghalaya" stateid="24">Meghalaya</option><option value="Mizoram" stateid="25">Mizoram</option><option value="Nagaland" stateid="26">Nagaland</option><option value="Narora" stateid="27">Narora</option><option value="Natwar" stateid="28">Natwar</option><option value="Odisha" stateid="29">Odisha</option><option value="Paschim Medinipur" stateid="30">Paschim Medinipur</option><option value="Pondicherry" stateid="31">Pondicherry</option><option value="Punjab" stateid="32">Punjab</option><option value="Rajasthan" stateid="33">Rajasthan</option><option value="Sikkim" stateid="34">Sikkim</option><option value="Tamil Nadu" stateid="35">Tamil Nadu</option><option value="Telangana" stateid="36">Telangana</option><option value="Tripura" stateid="37">Tripura</option><option value="Uttar Pradesh" stateid="38">Uttar Pradesh</option><option value="Uttarakhand" stateid="39">Uttarakhand</option><option value="Vaishali" stateid="40">Vaishali</option><option value="West Bengal" stateid="41">West Bengal</option></select>
+                    <select id="stateId" class="states" disabled="disabled  name="state" ng-model="profile.billingstate" required="required"><option value="">Select State</option><option value="Andaman and Nicobar Islands" stateid="1">Andaman and Nicobar Islands</option><option value="Andhra Pradesh" stateid="2">Andhra Pradesh</option><option value="Arunachal Pradesh" stateid="3">Arunachal Pradesh</option><option value="Assam" stateid="4">Assam</option><option value="Bihar" stateid="5">Bihar</option><option value="Chandigarh" stateid="6">Chandigarh</option><option value="Chhattisgarh" stateid="7">Chhattisgarh</option><option value="Dadra and Nagar Haveli" stateid="8">Dadra and Nagar Haveli</option><option value="Daman and Diu" stateid="9">Daman and Diu</option><option value="Delhi" stateid="10">Delhi</option><option value="Goa" stateid="11">Goa</option><option value="Gujarat" stateid="12">Gujarat</option><option value="Haryana" stateid="13">Haryana</option><option value="Himachal Pradesh" stateid="14">Himachal Pradesh</option><option value="Jammu and Kashmir" stateid="15">Jammu and Kashmir</option><option value="Jharkhand" stateid="16">Jharkhand</option><option value="Karnataka" stateid="17">Karnataka</option><option value="Kenmore" stateid="18">Kenmore</option><option value="Kerala" stateid="19">Kerala</option><option value="Lakshadweep" stateid="20">Lakshadweep</option><option value="Madhya Pradesh" stateid="21">Madhya Pradesh</option><option value="Maharashtra" stateid="22">Maharashtra</option><option value="Manipur" stateid="23">Manipur</option><option value="Meghalaya" stateid="24">Meghalaya</option><option value="Mizoram" stateid="25">Mizoram</option><option value="Nagaland" stateid="26">Nagaland</option><option value="Narora" stateid="27">Narora</option><option value="Natwar" stateid="28">Natwar</option><option value="Odisha" stateid="29">Odisha</option><option value="Paschim Medinipur" stateid="30">Paschim Medinipur</option><option value="Pondicherry" stateid="31">Pondicherry</option><option value="Punjab" stateid="32">Punjab</option><option value="Rajasthan" stateid="33">Rajasthan</option><option value="Sikkim" stateid="34">Sikkim</option><option value="Tamil Nadu" stateid="35">Tamil Nadu</option><option value="Telangana" stateid="36">Telangana</option><option value="Tripura" stateid="37">Tripura</option><option value="Uttar Pradesh" stateid="38">Uttar Pradesh</option><option value="Uttarakhand" stateid="39">Uttarakhand</option><option value="Vaishali" stateid="40">Vaishali</option><option value="West Bengal" stateid="41">West Bengal</option></select>
                   </div>
                   <div class="item item-input">
-                     <input type="tel" ng-minlength="6" ng-maxlength="6" placeholder="Pincode" ng-model="profile.billingpincode" required>
+                     <input type="tel" ng-minlength="6" ng-maxlength="6" placeholder="Pincode" readonly ng-model="profile.billingpincode" required>
                   </div>
                   <div class="item text-capitalize">
                      <textarea placeholder="Description" ng-model="profile.description"></textarea>
@@ -133,7 +133,8 @@
                      </div>
                   </div>
                   <div class="padding-horizontal btn-rest text-center p20 p15">
-                     <button class="button pr-button button-balanced" type="submit" ng-disabled="shopp.$invalid">Update</button>
+                     <!-- <button class="button pr-button button-balanced" type="submit" ng-disabled="shopp.$invalid">Update</button> -->
+                     <button class="button pr-button button-balanced" type="submit">Update</button>
                   </div>
                </div>
             </form>
