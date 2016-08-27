@@ -3040,7 +3040,7 @@ var deleteProductsPhotocallback=function(data,status){
         }
 
     })
-    .controller('HotelCtrl', function($scope, $filter, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
+    .controller('HotelCtrl', function($scope, $filter, MyServices, $state, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
         $scope.today = $filter('date')(new Date(), 'dd/MM/yyyy');
         $scope.currentDate = moment().format('YYYY-MM-DD');
         // console.log($scope.today);
@@ -3084,13 +3084,21 @@ var deleteProductsPhotocallback=function(data,status){
             }];
             var check = formvalidation($scope.allvalidation);
             if (check) {
-
                 $scope.hotel.checkout = new Date($scope.hotel.checkout);
                 $scope.hotel.checkin = new Date($scope.hotel.checkin);
                 $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
                 $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
                 if ($scope.hotel.checkin <= $scope.hotel.checkout) {
                     MyServices.submitHotel($scope.hotel, getHotelCallback);
+                    var myPopup = $ionicPopup.show({
+                        template: '<p class="text-center">Thank you for your booking enquiry!</p>',
+                        title: '<b>Team Swaap will contact you soon.!<b>',
+                        scope: $scope,
+                    });
+                    $timeout(function() {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 2000);
+                    $state.go("app.home");
                 } else {
                     var myPopup = $ionicPopup.show({
                         title: 'Enter Proper Date!!',
