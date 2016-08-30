@@ -3,6 +3,7 @@ var ref = 0;
 var sorts = {};
 var chintansglobal = {};
 var count = 0;
+var isWeb = true;
 angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MyServices, $location, $ionicLoading, $ionicPopup, $cordovaNetwork) {
@@ -1737,6 +1738,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 .controller('ProfileCtrl', function($scope, $stateParams, $ionicModal, $ionicPopup, $timeout, $ionicSlideBoxDelegate, MyServices, $http, $location, $ionicLoading, $cordovaCamera, $cordovaFileTransfer, $cordovaImagePicker) {
 
 
+    console.log(isWeb);
+    $scope.isWeb = isWeb;
     $scope.pullrefresh = function() {
         console.log("Do Refresh");
         $scope.showloading();
@@ -1792,6 +1795,10 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     var changeshopphoto = function(result) {
         MyServices.shopphoto($scope.pro, shopphotocallback);
         MyServices.shopproductphoto($scope.pro, shopproductphotocallback);
+    };
+
+    $scope.changeprofileimageweb = function() {
+        uploadurl = adminurl + "imageuploadprofile?user=" + user.id;
     };
 
     $scope.changeprofileimage = function() {

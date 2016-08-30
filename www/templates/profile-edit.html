@@ -14,11 +14,16 @@
          <div class="incard">
             <form name="shopp" ng-submit="profileupdate(profile);updatecat(profile.categoryid);updatearea(profile.areaid);">
                <div class="list">
-                  <div class="profile-img">{{isWeb}}fasd
+                  <div class="profile-img">
                      <img ng-src="{{profile.shoplogo|serverimage}}">
 
                      <div class="padding-horizontal text-center">
-                        <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button>
+                        <!-- <button class="button button-balanced pr-button" ng-click="changeprofileimage()">Edit</button> -->
+                     </div>
+                     <div class="padding-horizontal text-center">
+                       <upload-image no-view ng-click="changeprofileimageweb()" ng-callback="changeprofilephoto" ng-show="isWeb">upload</upload-image>
+
+                        <button class="button button-balanced pr-button" ng-click="changeprofileimage()" ng-show="!isWeb">Edit</button>
                         <button class="button button-balanced pr-button" ng-click="removeProfileImage()">Delete</button>
                      </div>
                   </div>

@@ -15,15 +15,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         });
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
+        // isWeb = ionic.Platform.isWebView();
 
         if (window.cordova && window.cordova.plugins.Keyboard) {
           isWeb = false;
-          console.log(isWeb);
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }else {
-          console.log(isWeb);
           isWeb = true;
         }
+
+        console.log(isWeb);
+
         if (window.StatusBar) {
             // org.apache.cordova.statusbar required
             StatusBar.overlaysWebView(true);
@@ -321,7 +323,61 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         }
     };
 })
-
+.directive('uploadImage', function($http) {
+    return {
+        templateUrl: 'templates/directive/uploadFile.html',
+        scope: {
+            model: '=ngModel',
+            callback: "=ngCallback"
+        },
+        link: function($scope, element, attrs) {
+            $scope.isMultiple = false;
+            $scope.inObject = false;
+            if (attrs.multiple || attrs.multiple === "") {
+                $scope.isMultiple = true;
+                $("#inputImage").attr("multiple", "ADD");
+            }
+            if (attrs.noView || attrs.noView === "") {
+                $scope.noShow = true;
+            }
+            if (attrs.inobj || attrs.inobj === "") {
+                $scope.inObject = true;
+            }
+            $scope.clearOld = function() {
+                $scope.model = [];
+            };
+            $scope.upload = function(image) {
+                var Template = this;
+                image.hide = true;
+                var formData = new FormData();
+                formData.append('file', image.file, image.name);
+                $http.post(uploadurl, formData, {
+                    headers: {
+                        'Content-Type': undefined
+                    },
+                    transformRequest: angular.identity
+                }).success(function(data) {
+                  //console.log(data);
+                    if ($scope.callback) {
+                        $scope.callback(data);
+                    } else {
+                        if ($scope.isMultiple) {
+                            if ($scope.inObject) {
+                                $scope.model.push({
+                                    "image": data.data[0]
+                                });
+                            } else {
+                                $scope.model.push(data.data[0]);
+                            }
+                        } else {
+                            $scope.model = data.data[0];
+                        }
+                    }
+                });
+            };
+        }
+    };
+})
 .filter('ampmtime', function() {
         return function(value) {
             if (!value) {
