@@ -3005,6 +3005,33 @@ var deleteProductsPhotocallback=function(data,status){
 
 .controller('ProductdetailCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading) {
         //all products
+        $ionicModal.fromTemplateUrl('templates/pop-image.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modalss = modal;
+        });
+
+        $scope.openshops = function(num) {
+            console.log(num);
+            $scope.modalss.show();
+            setTimeout(function() {
+                $ionicSlideBoxDelegate.slide(num);
+            }, 200);
+        };
+
+        $scope.closeModals = function() {
+            $scope.modalss.hide();
+        };
+
+            var slidercallback = function(data, status) {
+                $scope.sliderImage = data;
+                console.log($scope.sliderImage);
+            };
+            $scope.user = $.jStorage.get("user1");
+            MyServices.getAllSlider(slidercallback);
+
+
         $scope.showloading = function() {
             $ionicLoading.show({
                 template: '<ion-spinner class="spinner-royal"></ion-spinner>'

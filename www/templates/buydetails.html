@@ -4,6 +4,11 @@
             <div class="profile-img">
                 <img ng-src={{getsinglepro.image|serverimage}}>
                 <h3>{{getsinglepro.name}}</h3>
+                <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="false" auto-play="true" ng-if="sliderImage" does-continue="true">
+                  <ion-slide ng-repeat="img in sliderImage">
+                      <img ng-src="{{img.image | serverimage}}" class="full-image" ng-click="openshops($index);"/>
+                  </ion-slide>
+              </ion-slide-box> -->
             </div>
             <div class="list padtop5">
 
