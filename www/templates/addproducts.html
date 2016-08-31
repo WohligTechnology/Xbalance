@@ -11,35 +11,35 @@
             <div class="list">
                <div class="profile-img">
                  <!-- new code here -->
-                 <!-- <div class="row">
-                    <div class="col input-div" ng-repeat="i in image">
+                 <div class="row">
+                    <!-- <div class="col input-div">
                        <div class="image-hold" ng-style="{'background-image':'url({{i.photo|serverimage}})'}"  ng-click="changeproductimage(i.id);"></div>
                        <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsPhoto(i.id)">Delete</p>
-                    </div>
-                    <div class="col input-div" ng-if="image.length==0" ng-click="changeproductimage('');">
+                    </div> -->
+                    <div class="col input-div">
                        <div class="img-profile">
                           <img src="img/add.png">
                           <div class="holder2">Edit</div>
                        </div>
                     </div>
-                    <div class="col input-div" ng-if="image.length==0 || image.length==1" ng-click="changeproductimage('');">
+                    <div class="col input-div">
                        <div class="img-profile">
                           <img src="img/add.png">
                           <div class="holder2">Edit</div>
                        </div>
                     </div>
-                    <div class="col input-div" ng-if="image.length==0 || image.length==1 ||  image.length==2" ng-click="changeproductimage('');">
+                    <div class="col input-div" >
                        <div class="img-profile">
                           <img src="img/add.png">
                           <div class="holder2">Edit</div>
                        </div>
                     </div>
-                 </div> -->
-                  <img ng-src={{prodimg|serverimage}}>
+                 </div>
+
                   <!--                        <div class="holder">Add Image</div>-->
-                  <div class="padding-horizontal text-center">
+                  <!-- <div class="padding-horizontal text-center">
                      <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
-                  </div>
+                  </div> -->
                </div>
                <div class="item item-input">
                   <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
