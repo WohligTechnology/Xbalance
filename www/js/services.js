@@ -59,6 +59,9 @@ myservices.factory('MyServices', function($http) {
         returnval.deleteProductsPhoto = function( id,deleteProductsPhotocallback) {
             $http.get(adminurl + "deleteProductsPhoto?id=" + id, {}).success(deleteProductsPhotocallback);
         },
+        returnval.deleteProductsImage = function( id,deleteProductsImagecallback) {
+            $http.get(adminurl + "deleteProductsImage?id=" + id, {}).success(deleteProductsImagecallback);
+        },
         returnval.checkstatus = function(orderid, statuscallback) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },

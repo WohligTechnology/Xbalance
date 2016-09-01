@@ -1848,6 +1848,7 @@ var deleteProductsPhotocallback=function(data,status){
     MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
 
 };
+
     $scope.removeProfileImage = function() {
       // delete profile image
         MyServices.removeProfileImage(removeProfileImagecallback);
@@ -1863,6 +1864,7 @@ var deleteProductsPhotocallback=function(data,status){
       // delete profile image
         MyServices.deleteProductsPhoto($scope.shopproductid,deleteProductsPhotocallback);
     };
+
 
     $scope.changeshopimage = function(id) {
         console.log("take picture");
@@ -2491,6 +2493,32 @@ var deleteProductsPhotocallback=function(data,status){
     //  $scope.ap="";
 
     $scope.showloading();
+    $scope.uploadedProductImages=[];
+    var addproductimage = function(result) {
+        console.log(result);
+        console.log(result.response);
+        $scope.xyz = JSON.parse(result.response);
+        console.log($scope.xyz);
+        $scope.prodimg = $scope.xyz.value;
+        console.log($scope.prodimg);
+        $scope.uploadedProductImages.push($scope.prodimg);
+        console.log($scope.uploadedProductImages);
+    };
+
+    $scope.addproductimage = function() {
+        console.log("take picture");
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            console.log("here in upload image");
+
+            console.log(resultImage);
+
+            $scope.cameraimage = resultImage[0];
+            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
+
+        }, function(err) {
+        });
+    };
     $scope.insertproduct = function(ap) {
         $scope.ap.status = true;
         $scope.allvalidation = [{
@@ -2541,29 +2569,17 @@ var deleteProductsPhotocallback=function(data,status){
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-    var addproductimage = function(result) {
-        console.log(result);
-        // console.log(result.response);
-        // $scope.xyz = JSON.parse(result.response);
-        // console.log($scope.xyz);
-        // $scope.prodimg = $scope.xyz.value;
-    };
-
-    $scope.addproductimage = function() {
-        console.log("take picture");
-        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-            // Success! Image data is here
-            console.log("here in upload image");
-
-            console.log(resultImage);
-
-            $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-
-        }, function(err) {
-            // An error occured. Show a message to the user
+    $scope.notSuccessImgDelete = function() {
+        var myPopup = $ionicPopup.show({
+            template: '<p class="text-center">Could not delete Image</p>',
+            title: 'Sorry!!',
+            scope: $scope,
         });
+        $timeout(function() {
+            myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
     };
+
     //product details start
     var getsingleproductcallback = function(data, status) {
         $scope.prodetails = data;
@@ -2580,6 +2596,23 @@ var deleteProductsPhotocallback=function(data,status){
     $scope.productdetails = function(id) {
         MyServices.getsingleproduct(id, getsingleproductcallback);
     };
+    var deleteProductsImagecallback=function(data,status){
+      console.log(data);
+      $scope.productid=Number(data);
+      if(data!==0){
+          MyServices.getsingleproduct($scope.productid, getsingleproductcallback);
+      }
+      else{
+  $scope.notSuccessImgDelete();
+      }
+
+    };
+        $scope.deleteProductsImage = function(id) {
+          console.log("In function");
+          $scope.imgid=id;
+          // delete profile image
+            MyServices.deleteProductsImage($scope.imgid,deleteProductsImagecallback);
+        };
     //product details end
     //categories
     var homecallback = function(data, status) {

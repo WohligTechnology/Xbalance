@@ -9,15 +9,33 @@
       <div class="incard">
          <form ng-submit="">
             <div class="list prd-form">
-               <div class="profile-img">
+               <!-- <div class="profile-img">
                   <img ng-src="{{prodetails.image|serverimage}}">
+               </div> -->
+               <div class="row">
+                  <div class="col input-div" ng-repeat="img in prodetails.images">
+                     <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
+                     <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>
+                  </div>
+                  <div class="col input-div" ng-if="img.image.length==0" ng-click="addproductimage('');">
+                     <div class="img-profile">
+                        <img src="img/add.png">
+                        <div class="holder2">Edit</div>
+                     </div>
+                  </div>
+                  <div class="col input-div" ng-if="img.image.length==0" ng-if="img.image.length==1" ng-click="addproductimage('');">
+                     <div class="img-profile">
+                        <img src="img/add.png">
+                        <div class="holder2">Edit</div>
+                     </div>
+                  </div>
+                  <div class="col input-div" ng-if="img.image.length==0" ng-if="img.image.length==1" ng-if="img.image.length==2" ng-click="addproductimage('');">
+                     <div class="img-profile">
+                        <img src="img/add.png">
+                        <div class="holder2">Edit</div>
+                     </div>
+                  </div>
                </div>
-               <!--
-                    <div class="profile-img" ng-click="changeprofileimage()">
-                            <img src="{{profile.shoplogo|serverimage}}">
-                            <div class="holder">Edit</div>
-                        </div>
--->
                <div class="item item-input">
                   <span class="input-label">Name</span>
                   <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" readonly>
