@@ -2419,7 +2419,20 @@ var deleteProductsPhotocallback=function(data,status){
         }, 15000);
     };
 
+    $ionicModal.fromTemplateUrl('templates/new-pop.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal1 = modal;
+    });
 
+    $scope.openPop = function() {
+        $scope.modal1.show();
+    };
+
+    $scope.closeModal = function() {
+        $scope.modal1.hide();
+    };
 
     $scope.showloading();
 
