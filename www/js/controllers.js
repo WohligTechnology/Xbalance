@@ -2532,6 +2532,33 @@ var deleteProductsPhotocallback=function(data,status){
         }, function(err) {
         });
     };
+    var editProductImageCallback = function(result) {
+        console.log(result);
+        console.log(result.response);
+        $scope.xyz = JSON.parse(result.response);
+        console.log($scope.xyz);
+        $scope.prodimg = $scope.xyz.value;
+        console.log($scope.prodimg);
+        $scope.uploadedProductImages.push($scope.prodimg);
+        console.log($scope.uploadedProductImages);
+    };
+    $scope.editProductImage=function(editProductImageId){
+      $scope.Imageid=editProductImageId;
+      console.log($scope.Imageid);
+      console.log("take picture");
+      $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+          // Success! Image data is here
+          console.log("here in upload image");
+
+          console.log(resultImage);
+
+          $scope.cameraimage = resultImage[0];
+          $scope.uploadPhoto(adminurl + "editProductImage?id="+$scope.Imageid, editProductImageCallback);
+
+      }, function(err) {
+      });
+
+    };
     $scope.insertproduct = function(ap) {
         $scope.ap.status = true;
         $scope.allvalidation = [{
