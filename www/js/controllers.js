@@ -733,15 +733,15 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 //      console.log($scope.spr);
 
                 $scope.product.productname = $stateParams.name;
-                if ($scope.product.productname == 0)
+                if ($scope.product.productname === 0)
                     $scope.product.productname = "";
                 $scope.product.category = $stateParams.cat;
 
                 $scope.product.membershipno = $stateParams.mem;
-                if ($scope.product.membershipno == 0)
+                if ($scope.product.membershipno === 0)
                     $scope.product.membershipno = "";
             }
-        }
+        };
         //  MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
     MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
     $scope.i = $.jStorage.get("user1");
@@ -2543,28 +2543,14 @@ var deleteProductsPhotocallback=function(data,status){
     };
     var addproductimage = function(result) {
         console.log(result);
-        console.log(result.response);
-        $scope.xyz = JSON.parse(result.response);
-        console.log($scope.xyz);
-        $scope.prodimg = $scope.xyz.value;
+        // console.log(result.response);
+        // $scope.xyz = JSON.parse(result.response);
+        // console.log($scope.xyz);
+        // $scope.prodimg = $scope.xyz.value;
     };
 
     $scope.addproductimage = function() {
         console.log("take picture");
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
-
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
             console.log("here in upload image");
