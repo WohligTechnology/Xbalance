@@ -2597,8 +2597,7 @@ var deleteProductsPhotocallback=function(data,status){
         MyServices.getsingleproduct(id, getsingleproductcallback);
     };
     var deleteProductsImagecallback=function(data,status){
-      console.log(data);
-      $scope.productid=Number(data);
+      $scope.productid=parseInt(data);
       if(data!==0){
           MyServices.getsingleproduct($scope.productid, getsingleproductcallback);
       }
