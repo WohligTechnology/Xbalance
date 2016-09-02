@@ -2506,7 +2506,7 @@ var deleteProductsPhotocallback=function(data,status){
     //  $scope.ap="";
 
     $scope.showloading();
-    $scope.uploadedProductImages=[];
+    // $scope.uploadedProductImages=[];
     var addproductimage = function(result) {
         console.log(result);
         console.log(result.response);
@@ -2514,11 +2514,12 @@ var deleteProductsPhotocallback=function(data,status){
         console.log($scope.xyz);
         $scope.prodimg = $scope.xyz.value;
         console.log($scope.prodimg);
-        $scope.uploadedProductImages.push($scope.prodimg);
-        console.log($scope.uploadedProductImages);
+        // $scope.uploadedProductImages.push($scope.prodimg);
+        // console.log($scope.uploadedProductImages);
     };
 
     $scope.addproductimage = function() {
+      $scope.userid=parseInt($.jStorage.get("user").id);
         console.log("take picture");
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
@@ -2527,7 +2528,7 @@ var deleteProductsPhotocallback=function(data,status){
             console.log(resultImage);
 
             $scope.cameraimage = resultImage[0];
-            $scope.uploadPhoto(adminurl + "addproductimage", addproductimage);
+            $scope.uploadPhoto(adminurl + "addproductimage?user=" + $scope.userid, addproductimage);
 
         }, function(err) {
         });
