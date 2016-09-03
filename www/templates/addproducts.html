@@ -12,29 +12,12 @@
                <div class="profile-img">
                  <!-- new code here -->
                  <div class="row">
-                    <div class="col input-div">
+                    <div class="col input-div">{{prodimg}}
                        <div class="image-hold" ng-style="{'background-image':'url({{prodimg|serverimage}})'}"  ng-click="changeproductimage(i.id);"></div>
                        <!-- <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsPhoto(i.id)">Delete</p> -->
                     </div>
-                    <!-- <div class="col input-div"  ng-click="addproductimage('');">
-                       <div class="img-profile">
-                          <img src="img/add.png">
-                          <div class="holder2">Edit</div>
-                       </div>
-                    </div>
-                    <div class="col input-div" ng-click="addproductimage('');">
-                       <div class="img-profile">
-                          <img src="img/add.png">
-                          <div class="holder2">Edit</div>
-                       </div>
-                    </div>
-                    <div class="col input-div" ng-click="addproductimage('');">
-                       <div class="img-profile">
-                          <img src="img/add.png">
-                          <div class="holder2">Edit</div>
-                       </div>
-                    </div> -->
                  </div>
+               </div>
 
                                         <!-- <div class="holder">Add Image</div> -->
              <div class="padding-horizontal text-center">
@@ -50,11 +33,6 @@
                <div class="item  item-input">
                   <input type="tel" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
                </div>
-               <!--
-                    <div class="item  item-input text-capitalize">
-                        <input type="text" placeholder="SKU" ng-model="ap.sku">
-                    </div>
--->
                <label class="item item-input item-select area">
                   <div class="input-label">
                      Category
@@ -64,17 +42,6 @@
                      <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                   </select>
                </label>
-               <!--
-                   <label class="item item-input item-select area">
-                        <div class="input-label">
-                            <span style="font-weight:bold;">Category</span>
-                        </div>
-                        <select ng-model="prodetails.category">
-                            <option value="">All</option>
-                            <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
-                        </select>
-                    </label>
--->
                <div class="item item-toggle hide">
                   Status
                   <label class="toggle toggle-balanced">
