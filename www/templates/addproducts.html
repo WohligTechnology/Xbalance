@@ -12,7 +12,8 @@
                <div class="profile-img">
                  <!-- new code here -->
                  <div class="row">
-                    <div class="col input-div">{{prodimg}}
+                    <div class="col input-div">
+                      <img ng-src="{{prodimg|serverimage}}" alt="">
                        <div class="image-hold" ng-style="{'background-image':'url({{prodimg|serverimage}})'}"  ng-click="changeproductimage(i.id);"></div>
                        <!-- <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsPhoto(i.id)">Delete</p> -->
                     </div>
@@ -20,7 +21,7 @@
                </div>
 
                                         <!-- <div class="holder">Add Image</div> -->
-             <div class="padding-horizontal text-center">
+                   <div class="padding-horizontal text-center">
                      <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
                   </div>
                </div>
