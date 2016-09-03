@@ -5,7 +5,8 @@
     <author email="info@wohlig.com" href="http://www.wohlig.com">Wohlig</author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-navigation href="*" />
+    <!-- <allow-navigation href="*" /> -->
+  <allow-navigation href="http://*/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
