@@ -33,6 +33,7 @@
     "cordova-plugin-image-picker",
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-file-transfer",
+    "pushwoosh-cordova-plugin",
     {
       "variables": {
         "SENDER_ID": "694450719069"

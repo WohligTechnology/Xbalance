@@ -67,6 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
         } catch (e) {
             console.log(e);
         }
+        initPushwoosh();
     });
 })
 
