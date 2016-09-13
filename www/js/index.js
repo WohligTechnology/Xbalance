@@ -80,7 +80,7 @@ function initPushwoosh() {
 
     //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
     pushNotification.onDeviceReady({
-        projectid: "694450719069",
+        projectid: "107315348214",
         appid: "7104C-045B1",
         serviceName: ""
     });
@@ -92,7 +92,7 @@ function initPushwoosh() {
             onPushwooshInitialized(pushNotification);
         },
         function(status) {
-            alert("failed to register: " + status);
+            console.log("failed to register: " + status);
             console.log(JSON.stringify(['failed to register ', status]));
         }
     );
