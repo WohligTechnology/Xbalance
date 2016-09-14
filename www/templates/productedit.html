@@ -10,7 +10,10 @@
          <form ng-submit="">
             <div class="list prd-form">
                <div class="profile-img">
+
+                   <div ng-click="openshops();closeprdtedit()">
                   <img ng-src="{{prodetails.image|serverimage}}">
+                </div>
                </div>
                <!-- <div class="row">
                   <div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">

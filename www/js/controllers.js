@@ -2409,6 +2409,25 @@ var deleteProductsPhotocallback=function(data,status){
 })
 
 .controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
+
+  $ionicModal.fromTemplateUrl('templates/pop-image.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+  }).then(function(modal) {
+      $scope.modalss = modal;
+  });
+
+  $scope.openshops = function(num) {
+      console.log(num);
+      $scope.modalss.show();
+      setTimeout(function() {
+          $ionicSlideBoxDelegate.slide(num);
+      }, 200);
+  };
+
+  $scope.closeModals = function() {
+      $scope.modalss.hide();
+  };
     //view products start
     $scope.showloading = function() {
         $ionicLoading.show({
