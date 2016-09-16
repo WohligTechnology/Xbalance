@@ -24,7 +24,6 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "pushwoosh-cordova-plugin",
     "cordova-plugin-x-socialsharing",
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
