@@ -1,76 +1,79 @@
 <ion-modal-view>
-   <ion-header-bar class="bar-royal" align-title="center">
-      <h1 class="title">Edit Product</h1>
-      <div class="buttons">
-         <button class="button button-clear" ng-click="closeprdtedit()">Close</button>
-      </div>
-   </ion-header-bar>
-   <ion-content class="padding">
-      <div class="incard">
-         <form ng-submit="">
-            <div class="list prd-form">
-               <div class="profile-img">
+    <ion-header-bar class="bar-royal" align-title="center">
+        <h1 class="title">Edit Product</h1>
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeprdtedit()">Close</button>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="incard">
+            <form ng-submit="">
+                <div class="list prd-form">
+                    <!--<div class="profile-img">
 
                    <div ng-click="openshops();closeprdtedit()">
                   <img ng-src="{{prodetails.image|serverimage}}">
                 </div>
-               </div>
-               <!-- <div class="row">
-                  <div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">
-                  <div class="col input-div" ng-repeat="img in prodetails.images">
-                     <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
-                     <p  class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>
-                  </div>
-                  <div class="col input-div" ng-if="prodetails.images.length==0" ng-click="editProductImage(prodetails.id);">
-                     <div class="img-profile">
-                        <img src="img/add.png">
-                        <div class="holder2">Edit</div>
-                     </div>
-                  </div>
-                  <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1"  ng-click="editProductImage(prodetails.id);">
-                     <div class="img-profile">
-                        <img src="img/add.png">
-                        <div class="holder2">Edit</div>
-                     </div>
-                  </div>
-                  <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1 || prodetails.images.length==2" ng-click="editProductImage(prodetails.id);">
-                     <div class="img-profile">
-                        <img src="img/add.png">
-                        <div class="holder2">Edit</div>
-                     </div>
-                  </div>
-               </div> -->
+               </div>-->
+
+
+                    <div class="row">
+                        <!--<div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">-->
+                        <div class="col input-div" ng-repeat="img in prodetails.images">
+                            <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
+                            <p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>
+                        </div>
+                        <div class="col input-div" ng-if="prodetails.images.length==0" ng-click="editProductImage(prodetails.id);">
+                            <div class="img-profile">
+                                <img src="img/add.png">
+                                <div class="holder2">Edit</div>
+                            </div>
+                        </div>
+                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1" ng-click="editProductImage(prodetails.id);">
+                            <div class="img-profile">
+                                <img src="img/add.png">
+                                <div class="holder2">Edit</div>
+                            </div>
+                        </div>
+                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1 || prodetails.images.length==2" ng-click="editProductImage(prodetails.id);">
+                            <div class="img-profile">
+                                <img src="img/add.png">
+                                <div class="holder2">Edit</div>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </div>
 
 
 
-               <div class="item item-input">
-                  <span class="input-label">Name</span>
-                  <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" readonly>
-               </div>
-               <div class="item  item-input">
-                  <span class="input-label">Price</span>
-                  <input type="tel" placeholder="Price" ng-model="prodetails.price" class="text-right" ng-class="allvalidation[1].validation" required>
-               </div>
-               <div class="item  item-input">
-                  <span class="input-label">Quantity</span>
-                  <input type="tel" placeholder="Quantity" ng-model="prodetails.quantity" class="text-right" ng-class="allvalidation[2].validation" required>
-               </div>
-               <!--
+                    <div class="item item-input">
+                        <span class="input-label">Name</span>
+                        <input type="text" placeholder="Name" ng-model="prodetails.name" class="text-right" ng-class="allvalidation[0].validation" readonly>
+                    </div>
+                    <div class="item  item-input">
+                        <span class="input-label">Price</span>
+                        <input type="tel" placeholder="Price" ng-model="prodetails.price" class="text-right" ng-class="allvalidation[1].validation" required>
+                    </div>
+                    <div class="item  item-input">
+                        <span class="input-label">Quantity</span>
+                        <input type="tel" placeholder="Quantity" ng-model="prodetails.quantity" class="text-right" ng-class="allvalidation[2].validation" required>
+                    </div>
+                    <!--
                     <div class="item  item-input text-capitalize">
                         <span class="input-label">SKU</span>
                         <input type="text" placeholder="SKU" ng-model="prodetails.sku" class="text-right">
                     </div>
 -->
-               <div class="item item-toggle hide">
-                  <span style="font-weight:bold;">Status</span>
-                  <label class="toggle toggle-balanced">
+                    <div class="item item-toggle hide">
+                        <span style="font-weight:bold;">Status</span>
+                        <label class="toggle toggle-balanced">
                      <input type="checkbox" ng-model="prodetails.status">
                      <div class="track">
                         <div class="handle"></div>
                      </div>
                   </label>
-               </div>
-               <label class="item item-input item-select area">
+                    </div>
+                    <label class="item item-input item-select area">
                   <div class="input-label">
                      <span style="font-weight:bold;">Category</span>
                   </div>
@@ -79,19 +82,19 @@
                      <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                   </select>
                </label>
-               <div class="item item-input item-text-wrap header">
-                  <h2>Description</h2>
-               </div>
-               <div class="item  item-input">
-                  <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required disabled></textarea>
-               </div>
+                    <div class="item item-input item-text-wrap header">
+                        <h2>Description</h2>
+                    </div>
+                    <div class="item  item-input">
+                        <textarea placeholder="Description" ng-model="prodetails.description" ng-class="allvalidation[4].validation" required disabled></textarea>
+                    </div>
+                </div>
+            </form>
+            <div class="padding">
+                <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>
+                <button class="button button-block button-balanced" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
             </div>
-         </form>
-         <div class="padding">
-            <button class="button button-block button-balanced" ng-click="editproducts(prodetails);editstatus(prodetails.id,prodetails.status);">Update</button>
-            <button class="button button-block button-balanced" ng-click="deleteproduct(prodetails.id,prodetails.user);">Delete</button>
-         </div>
-      </div>
-      </div>
-   </ion-content>
+        </div>
+        </div>
+    </ion-content>
 </ion-modal-view>

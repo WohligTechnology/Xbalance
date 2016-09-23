@@ -1,4 +1,4 @@
-var adminbase = "http://swaap.in/admin/";
+var adminbase = "http://swaap.in/admintest/";
 // var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
@@ -50,22 +50,22 @@ myservices.factory('MyServices', function($http) {
         returnval.shopphoto = function(id, shopphotocallback) {
             $http.get(adminurl + "shopphoto?id=" + id, {}).success(shopphotocallback);
         },
-        returnval.removeProfileImage = function( removeProfileImagecallback) {
+        returnval.removeProfileImage = function(removeProfileImagecallback) {
             $http.get(adminurl + "removeProfileImage?id=" + $.jStorage.get("user1"), {}).success(removeProfileImagecallback);
         },
-        returnval.deleteShopPhoto = function( id,deleteShopPhotocallback) {
+        returnval.deleteShopPhoto = function(id, deleteShopPhotocallback) {
             $http.get(adminurl + "deleteShopPhoto?id=" + id, {}).success(deleteShopPhotocallback);
         },
-        returnval.deleteProductsPhoto = function( id,deleteProductsPhotocallback) {
+        returnval.deleteProductsPhoto = function(id, deleteProductsPhotocallback) {
             $http.get(adminurl + "deleteProductsPhoto?id=" + id, {}).success(deleteProductsPhotocallback);
         },
-        returnval.deleteProductsImage = function( id,deleteProductsImagecallback) {
+        returnval.deleteProductsImage = function(id, deleteProductsImagecallback) {
             $http.get(adminurl + "deleteProductsImage?id=" + id, {}).success(deleteProductsImagecallback);
         },
         returnval.checkstatus = function(orderid, statuscallback) {
             $http.get(adminurl + "checkorderstatus?orderid=" + orderid, {}).success(statuscallback);
         },
-        returnval.getAllSlider = function( slidercallback) {
+        returnval.getAllSlider = function(slidercallback) {
             $http.get(adminurl + "getAllSlider", {}).success(slidercallback);
         },
         returnval.shopproductphoto = function(id, shopproductphotocallback) {

@@ -644,7 +644,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('ProductCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup, $timeout) {
+.controller('ProductCtrl', function($scope, MyServices, $ionicModal, $timeout, $location, $stateParams, $ionicLoading, $ionicPopup) {
     //    $scope.productname1 = $stateParams.name;
     //    $scope.membershipno1 = $stateParams.mem;
     //    $scope.category1 = $stateParams.cat;
@@ -719,30 +719,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, 2000);
     };
     var searchproductcallback = function(data, status) {
-            //      console.log(data);
-            $scope.spr = data;
-            $scope.sprfull = data;
+        //      console.log(data);
+        $scope.spr = data;
+        $scope.sprfull = data;
+        console.log($scope.spr);
+        if ($scope.spr == "-1") {
+            $scope.showPopupw();
+            $location.url("/app/home");
+        } else {
+            $scope.spr = partitionarray($scope.spr, 3);
+            console.log("partition data");
             console.log($scope.spr);
-            if ($scope.spr == "-1") {
-                $scope.showPopupw();
-                $location.url("/app/home");
-            } else {
-                $scope.spr = partitionarray($scope.spr, 3);
-                console.log("partition data");
-                console.log($scope.spr);
-                //      console.log($scope.spr);
+            //      console.log($scope.spr);
 
-                $scope.product.productname = $stateParams.name;
-                if ($scope.product.productname === 0)
-                    $scope.product.productname = "";
-                $scope.product.category = $stateParams.cat;
+            $scope.product.productname = $stateParams.name;
+            if ($scope.product.productname === 0)
+                $scope.product.productname = "";
+            $scope.product.category = $stateParams.cat;
 
-                $scope.product.membershipno = $stateParams.mem;
-                if ($scope.product.membershipno === 0)
-                    $scope.product.membershipno = "";
-            }
-        };
-        //  MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
+            $scope.product.membershipno = $stateParams.mem;
+            if ($scope.product.membershipno === 0)
+                $scope.product.membershipno = "";
+        }
+    };
+    //  MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
     MyServices.searchproduct($stateParams.name, $stateParams.mem, $stateParams.cat, searchproductcallback);
     $scope.i = $.jStorage.get("user1");
 
@@ -1818,51 +1818,52 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         });
 
     };
-var deleteShopPhotocallback=function(data,status){  console.log(data);
-  if(data=='true'){
-    console.log("In success");
-  }
-    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
-    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
-    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
+    var deleteShopPhotocallback = function(data, status) {
+        console.log(data);
+        if (data == 'true') {
+            console.log("In success");
+        }
+        MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+        MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+        MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
 
 
-};
-var removeProfileImagecallback=function(data,status){
-  console.log(data);
-  if(data=='true'){
-    console.log("In success");
-  }
-    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
-    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
-    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
+    };
+    var removeProfileImagecallback = function(data, status) {
+        console.log(data);
+        if (data == 'true') {
+            console.log("In success");
+        }
+        MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+        MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+        MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
 
-};
-var deleteProductsPhotocallback=function(data,status){
-  console.log(data);
-  if(data=='true'){
-    console.log("In success");
-  }
-    MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
-    MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
-    MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
+    };
+    var deleteProductsPhotocallback = function(data, status) {
+        console.log(data);
+        if (data == 'true') {
+            console.log("In success");
+        }
+        MyServices.profile($.jStorage.get("user1"), shopprofilecallback);
+        MyServices.shopphoto($.jStorage.get("user1"), shopphotocallback);
+        MyServices.shopproductphoto($.jStorage.get("user1"), shopproductphotocallback);
 
-};
+    };
 
     $scope.removeProfileImage = function() {
-      // delete profile image
+        // delete profile image
         MyServices.removeProfileImage(removeProfileImagecallback);
     };
 
     $scope.deleteShopPhoto = function(id) {
-      $scope.shopphotoid=id;
-      // delete profile image
-        MyServices.deleteShopPhoto($scope.shopphotoid,deleteShopPhotocallback);
+        $scope.shopphotoid = id;
+        // delete profile image
+        MyServices.deleteShopPhoto($scope.shopphotoid, deleteShopPhotocallback);
     };
     $scope.deleteProductsPhoto = function(id) {
-      $scope.shopproductid=id;
-      // delete profile image
-        MyServices.deleteProductsPhoto($scope.shopproductid,deleteProductsPhotocallback);
+        $scope.shopproductid = id;
+        // delete profile image
+        MyServices.deleteProductsPhoto($scope.shopproductid, deleteProductsPhotocallback);
     };
 
 
@@ -2410,24 +2411,24 @@ var deleteProductsPhotocallback=function(data,status){
 
 .controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
 
-  $ionicModal.fromTemplateUrl('templates/pop-image.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-  }).then(function(modal) {
-      $scope.modalss = modal;
-  });
+    $ionicModal.fromTemplateUrl('templates/pop-image.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modalss = modal;
+    });
 
-  $scope.openshops = function(num) {
-      console.log(num);
-      $scope.modalss.show();
-      setTimeout(function() {
-          $ionicSlideBoxDelegate.slide(num);
-      }, 200);
-  };
+    $scope.openshops = function(num) {
+        console.log(num);
+        $scope.modalss.show();
+        setTimeout(function() {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+    };
 
-  $scope.closeModals = function() {
-      $scope.modalss.hide();
-  };
+    $scope.closeModals = function() {
+        $scope.modalss.hide();
+    };
     //view products start
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -2538,7 +2539,7 @@ var deleteProductsPhotocallback=function(data,status){
     };
 
     $scope.addproductimage = function() {
-      $scope.userid=parseInt($.jStorage.get("user").id);
+        $scope.userid = parseInt($.jStorage.get("user").id);
         console.log("take picture");
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
@@ -2549,8 +2550,7 @@ var deleteProductsPhotocallback=function(data,status){
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "addproductimage?user=" + $scope.userid, addproductimage);
 
-        }, function(err) {
-        });
+        }, function(err) {});
     };
     var editProductImageCallback = function(result) {
         console.log(result);
@@ -2562,21 +2562,20 @@ var deleteProductsPhotocallback=function(data,status){
         $scope.uploadedProductImages.push($scope.prodimg);
         console.log($scope.uploadedProductImages);
     };
-    $scope.editProductImage=function(editProductImageId){
-      $scope.Imageid=editProductImageId;
-      console.log($scope.Imageid);
-      console.log("take picture");
-      $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-          // Success! Image data is here
-          console.log("here in upload image");
+    $scope.editProductImage = function(editProductImageId) {
+        $scope.productid = editProductImageId;
+        console.log($scope.productid);
+        console.log("take picture");
+        $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+            // Success! Image data is here
+            console.log("here in upload image");
 
-          console.log(resultImage);
+            console.log(resultImage);
 
-          $scope.cameraimage = resultImage[0];
-          $scope.uploadPhoto(adminurl + "editProductImage?id="+$scope.Imageid, editProductImageCallback);
+            $scope.cameraimage = resultImage[0];
+            $scope.uploadPhoto(adminurl + "editProductImages?id=" + $scope.productid, editProductImageCallback);
 
-      }, function(err) {
-      });
+        }, function(err) {});
 
     };
     $scope.insertproduct = function(ap) {
@@ -2656,22 +2655,21 @@ var deleteProductsPhotocallback=function(data,status){
     $scope.productdetails = function(id) {
         MyServices.getsingleproduct(id, getsingleproductcallback);
     };
-    var deleteProductsImagecallback=function(data,status){
-      $scope.productid=parseInt(data);
-      if(data!==0){
-          MyServices.getsingleproduct($scope.productid, getsingleproductcallback);
-      }
-      else{
-  $scope.notSuccessImgDelete();
-      }
+    var deleteProductsImagecallback = function(data, status) {
+        $scope.productid = parseInt(data);
+        if (data !== 0) {
+            MyServices.getsingleproduct($scope.productid, getsingleproductcallback);
+        } else {
+            $scope.notSuccessImgDelete();
+        }
 
     };
-        $scope.deleteProductsImage = function(id) {
-          console.log("In function");
-          $scope.imgid=id;
-          // delete profile image
-            MyServices.deleteProductsImage($scope.imgid,deleteProductsImagecallback);
-        };
+    $scope.deleteProductsImage = function(id) {
+        console.log("In function");
+        $scope.imgid = id;
+        // delete profile image
+        MyServices.deleteProductsImage($scope.imgid, deleteProductsImagecallback);
+    };
     //product details end
     //categories
     var homecallback = function(data, status) {
@@ -2799,21 +2797,7 @@ var deleteProductsPhotocallback=function(data,status){
         //      $scope.prodimg = $scope.xyz.value;
     };
     $scope.editproductimage = function() {
-        //      console.log(id);
         console.log("take picture");
-        //        $cordovaCamera.getPicture(options).then(function (imageData) {
-        //            // Success! Image data is here
-        //            console.log("here in upload image");
-        //            console.log(imageData);
-        //            if (imageData.substring(0, 21) == "content://com.android") {
-        //                var photo_split = imageData.split("%3A");
-        //                imageData = "content://media/external/images/media/" + photo_split[1];
-        //            }
-        //            $scope.cameraimage = imageData;
-        //            $scope.uploadPhoto(adminurl + "editproductimage", editproductimage);
-        //        }, function (err) {
-        //            // An error occured. Show a message to the user
-        //        });
 
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
@@ -3109,12 +3093,12 @@ var deleteProductsPhotocallback=function(data,status){
             $scope.modalss.hide();
         };
 
-            var slidercallback = function(data, status) {
-                $scope.sliderImage = data;
-                console.log($scope.sliderImage);
-            };
-            $scope.user = $.jStorage.get("user1");
-            MyServices.getAllSlider(slidercallback);
+        var slidercallback = function(data, status) {
+            $scope.sliderImage = data;
+            console.log($scope.sliderImage);
+        };
+        $scope.user = $.jStorage.get("user1");
+        MyServices.getAllSlider(slidercallback);
 
 
         $scope.showloading = function() {

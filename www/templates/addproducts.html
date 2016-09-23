@@ -1,61 +1,65 @@
 <ion-modal-view view-title="Add Balance">
-   <ion-header-bar class="bar-balanced">
-      <h1 class="title">Add Product</h1>
-      <div class="buttons">
-         <button class="button button-clear" ng-click="closeModal()">Close</button>
-      </div>
-   </ion-header-bar>
-   <ion-content class="padding">
-      <div class="incard">
-         <form ng-submit="">
-            <div class="list">
-               <div class="profile-img">
-                 <!-- new code here -->
-               <div class="row">
+  <ion-header-bar class="bar-balanced">
+    <h1 class="title">Add Product</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding">
+    <div class="incard">
+      <form ng-submit="">
+        <div class="list">
+          <div class="profile-img">
+            <!-- new code here -->
+            <div class="row">
 
-                   <div class="col input-div" >
-                      <div class="img-profile">
-                         <img src="img/add.png">
-                         <div class="holder2">Edit</div>
-                      </div>
-                   </div>
-                   <div class="col input-div" >
-                      <div class="img-profile">
-                         <img src="img/add.png">
-                         <div class="holder2">Edit</div>
-                      </div>
-                   </div>
-                   <div class="col input-div">
-                      <div class="img-profile">
-                         <img src="img/add.png">
-                         <div class="holder2">Edit</div>
-                      </div>
-                   </div>
-
+              <div class="col input-div">
+                <div class="img-profile">
+                  <img src="img/add.png">
+                  <div class="holder2">Edit</div>
                 </div>
-                 <!-- <div class="row">
+              </div>
+              <div class="col input-div">
+                <div class="img-profile">
+                  <img src="img/add.png">
+                  <div class="holder2">Edit</div>
+                </div>
+              </div>
+              <div class="col input-div">
+                <div class="img-profile">
+                  <img src="img/add.png">
+                  <div class="holder2">Edit</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!--// row ends here-->
+
+
+            <!-- <div class="row">
                     <div class="col input-div">
                       <img ng-src="{{prodimg|serverimage}}">
 
                     </div>
-                 </div> -->
-               </div>
+                              </div> -->
+          </div>
 
-                                        <!-- <div class="holder">Add Image</div> -->
-                   <div class="padding-horizontal text-center">
-                     <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
-                  </div>
-               </div>
-               <div class="item item-input">
-                  <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
-               </div>
-               <div class="item  item-input">
-                  <input type="tel" placeholder="Price" ng-model="ap.price" ng-class="allvalidation[1].validation" required>
-               </div>
-               <div class="item  item-input">
-                  <input type="tel" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
-               </div>
-               <label class="item item-input item-select area">
+          <!-- <div class="holder">Add Image</div> -->
+          <div class="padding-horizontal text-center">
+            <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
+          </div>
+        </div>
+        <div class="item item-input">
+          <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
+        </div>
+        <div class="item  item-input">
+          <input type="tel" placeholder="Price" ng-model="ap.price" ng-class="allvalidation[1].validation" required>
+        </div>
+        <div class="item  item-input">
+          <input type="tel" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
+        </div>
+        <label class="item item-input item-select area">
                   <div class="input-label">
                      Category
                   </div>
@@ -64,23 +68,23 @@
                      <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
                   </select>
                </label>
-               <div class="item item-toggle hide">
-                  Status
-                  <label class="toggle toggle-balanced">
+        <div class="item item-toggle hide">
+          Status
+          <label class="toggle toggle-balanced">
                      <input type="checkbox" ng-model="ap.status">
                      <div class="track">
                         <div class="handle"></div>
                      </div>
                   </label>
-               </div>
-               <div class="item  item-input">
-                  <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
-               </div>
-               <div class="padding text-center">
-                  <button class="button pr-button button-balanced" ng-disabled="addProductButtonDisable" ng-click="insertproduct(ap);">Save</button>
-               </div>
-            </div>
-         </form>
-      </div>
-   </ion-content>
+        </div>
+        <div class="item  item-input">
+          <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
+        </div>
+        <div class="padding text-center">
+          <button class="button pr-button button-balanced" ng-disabled="addProductButtonDisable" ng-click="insertproduct(ap);">Save</button>
+        </div>
+    </div>
+    </form>
+    </div>
+  </ion-content>
 </ion-modal-view>
