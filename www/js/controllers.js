@@ -2557,7 +2557,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
-        // $scope.$apply();
+        $scope.$apply();
     };
     $scope.editProductImage = function(editProductImageId) {
         console.log(editProductImageId);
@@ -2666,7 +2666,9 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.prodetails.status = false;
         }
     };
+    var lastid;
     $scope.productdetails = function(id) {
+        lastid = id;
         MyServices.getsingleproduct(id, getsingleproductcallback);
     };
     var deleteProductsImagecallback = function(data, status) {
@@ -2855,6 +2857,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                     maxWidth: 200,
                     showDelay: '0'
                 });
+                MyServices.getsingleproduct(lastid, getsingleproductcallback);
                 console.log("progress");
             });
 
