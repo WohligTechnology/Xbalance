@@ -28,12 +28,10 @@
     "cordova-plugin-network-information",
     "cordova-plugin-statusbar",
     "cordova-plugin-inappbrowser",
-    "phonegap-plugin-push",
     "cordova-plugin-image-picker",
     "cordova-plugin-crosswalk-webview",
     "cordova-plugin-file-transfer",
-    "pushwoosh-cordova-plugin",
-    {
+    "pushwoosh-cordova-plugin", {
       "variables": {
         "SENDER_ID": "694450719069"
       },
