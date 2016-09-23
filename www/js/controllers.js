@@ -2409,7 +2409,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function($scope, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
+.controller('MyproductsCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
 
     $ionicModal.fromTemplateUrl('templates/pop-image.html', {
         scope: $scope,
@@ -2553,7 +2553,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         }, function(err) {});
     };
     var editProductImageCallback = function(result) {
-           console.log(result);
+        console.log(result);
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
@@ -2561,8 +2561,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     };
     $scope.editProductImage = function(editProductImageId) {
         console.log(editProductImageId);
-  $scope.productid = editProductImageId;
- console.log("take picture");
+        $scope.productid = editProductImageId;
+        console.log("take picture");
 
         $cordovaImagePicker.getPictures(options).then(function(resultImage) {
             // Success! Image data is here
@@ -2573,23 +2573,23 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "editProductImages?id=" + $scope.productid, editProductImageCallback);
 
-     }, function(err) {});
-            
+        }, function(err) {});
 
 
-    //     $scope.productid = editProductImageId;
-    //     console.log($scope.productid);
-    //     console.log("take picture");
-    //     $cordovaImagePicker.getPictures(options).then(function(resultImage) {
-    //         // Success! Image data is here
-    //         console.log("here in upload image");
 
-    //         console.log(resultImage);
+        //     $scope.productid = editProductImageId;
+        //     console.log($scope.productid);
+        //     console.log("take picture");
+        //     $cordovaImagePicker.getPictures(options).then(function(resultImage) {
+        //         // Success! Image data is here
+        //         console.log("here in upload image");
 
-    //         $scope.cameraimage = resultImage[0];
-    //         $scope.uploadPhoto(adminurl + "editProductImages?id=" + $scope.productid, editProductImageCallback);
+        //         console.log(resultImage);
 
-    //     }, function(err) {});
+        //         $scope.cameraimage = resultImage[0];
+        //         $scope.uploadPhoto(adminurl + "editProductImages?id=" + $scope.productid, editProductImageCallback);
+
+        //     }, function(err) {});
 
     };
     $scope.insertproduct = function(ap) {
