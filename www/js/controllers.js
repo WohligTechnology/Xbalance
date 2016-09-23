@@ -2552,23 +2552,13 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
         }, function(err) {});
     };
-    // var editProductImageCallback = function(result) {
+    var editProductImageCallback = function(result) {
            console.log(result);
         console.log(result.response);
         $scope.xyz = JSON.parse(result.response);
         console.log($scope.xyz);
-        $scope.$apply();
-
-
-        // console.log(result);
-        // console.log(result.response);
-        // $scope.xyz = JSON.parse(result.response);
-        // console.log($scope.xyz);
-        // $scope.prodimg = $scope.xyz.value;
-        // console.log($scope.prodimg);
-        // $scope.uploadedProductImages.push($scope.prodimg);
-        // console.log($scope.uploadedProductImages);
-    // };
+        // $scope.$apply();
+    };
     $scope.editProductImage = function(editProductImageId) {
         console.log(editProductImageId);
   $scope.productid = editProductImageId;
@@ -2583,7 +2573,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             $scope.cameraimage = resultImage[0];
             $scope.uploadPhoto(adminurl + "editProductImages?id=" + $scope.productid, editProductImageCallback);
 
-        }, function(err) {
+     }, function(err) {});
             
 
 
