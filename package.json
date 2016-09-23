@@ -30,7 +30,8 @@
     "cordova-plugin-inappbrowser",
     "cordova-plugin-image-picker",
     "cordova-plugin-crosswalk-webview",
-    "cordova-plugin-file-transfer" {
+    "cordova-plugin-file-transfer",
+    {
       "variables": {
         "SENDER_ID": "694450719069"
       },
