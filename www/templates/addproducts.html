@@ -14,54 +14,55 @@
 
             <div class="row">
               <!--<div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">-->
-              <!--<div class="col input-div" ng-repeat="img in prodetails.images">
-                <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
-                <p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>
-              </div>-->
+              <div class="col input-div" ng-repeat="img in uploadedProductImages">
+                <div class="image-hold" ng-style="{'background-image':'url({{img|serverimage}})'}"></div>
+                <!--<p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteAddProductsImage($index)">Delete</p>-->
+              </div>
               <!--<div class="col input-div" ng-if="prodetails.images.length==0" ng-click="addproductimage();">
                 <div class="img-profile">
                   <img src="img/add.png">
                   <div class="holder2">Edit</div>
                 </div>
               </div>-->
-              <div class="col input-div" ng-click="addproductimage();">
+              <div class="col input-div" ng-if="uploadedProductImages.length==0" ng-click="addproductimage();">
                 <div class="img-profile">
                   <img src="img/add.png">
                   <div class="holder2">Edit</div>
                 </div>
               </div>
-              <div class="col input-div" ng-click="addproductimage();">
-                <div class="img-profile">
-                  <img src="img/add.png">
-                  <div class="holder2">Edit</div>
+              <div class="col input-div" ng-if="uploadedProductImages.length==0 || uploadedProductImages.length==1" ng-click=" addproductimage(); ">
+                <div class="img-profile ">
+                  <img src="img/add.png ">
+                  <div class="holder2 ">Edit</div>
                 </div>
               </div>
-              <div class="col input-div" ng-click="addproductimage();">
-                <div class="img-profile">
-                  <img src="img/add.png">
-                  <div class="holder2">Edit</div>
+              <div class="col input-div " ng-if="uploadedProductImages.length==0 || uploadedProductImages.length==1 ||
+                uploadedProductImages.length==2 " ng-click="addproductimage(); ">
+                <div class="img-profile ">
+                  <img src="img/add.png ">
+                  <div class="holder2 ">Edit</div>
                 </div>
               </div>
               <!--</div>-->
             </div>
-            <!--<div class="row">
+            <!--<div class="row ">
 
-              <div class="col input-div">
-                <div class="img-profile">
-                  <img src="img/add.png">
-                  <div class="holder2">Edit</div>
+              <div class="col input-div ">
+                <div class="img-profile ">
+                  <img src="img/add.png ">
+                  <div class="holder2 ">Edit</div>
                 </div>
               </div>
-              <div class="col input-div">
-                <div class="img-profile">
-                  <img src="img/add.png">
-                  <div class="holder2">Edit</div>
+              <div class="col input-div ">
+                <div class="img-profile ">
+                  <img src="img/add.png ">
+                  <div class="holder2 ">Edit</div>
                 </div>
               </div>
-              <div class="col input-div">
-                <div class="img-profile">
-                  <img src="img/add.png">
-                  <div class="holder2">Edit</div>
+              <div class="col input-div ">
+                <div class="img-profile ">
+                  <img src="img/add.png ">
+                  <div class="holder2 ">Edit</div>
                 </div>
               </div>
 
@@ -70,51 +71,51 @@
             <!--// row ends here-->
 
 
-            <!-- <div class="row">
-                    <div class="col input-div">
-                      <img ng-src="{{prodimg|serverimage}}">
+            <!-- <div class="row ">
+                    <div class="col input-div ">
+                      <img ng-src="{{prodimg|serverimage}} ">
 
                     </div>
                               </div> -->
           </div>
 
-          <!-- <div class="holder">Add Image</div> -->
-          <div class="padding-horizontal text-center">
-            <button class="button button-balanced pr-button ion-plus-round" ng-click="addproductimage();"></button>
-          </div>
+          <!-- <div class="holder ">Add Image</div> -->
+          <!--<div class="padding-horizontal text-center ">
+            <button class="button button-balanced pr-button ion-plus-round " ng-click="addproductimage(); "></button>
+          </div>-->
         </div>
-        <div class="item item-input">
-          <input type="text" placeholder="Name" ng-model="ap.name" ng-class="allvalidation[0].validation" required>
+        <div class="item item-input ">
+          <input type="text " placeholder="Name " ng-model="ap.name " ng-class="allvalidation[0].validation " required>
         </div>
-        <div class="item  item-input">
-          <input type="tel" placeholder="Price" ng-model="ap.price" ng-class="allvalidation[1].validation" required>
+        <div class="item item-input ">
+          <input type="tel " placeholder="Price " ng-model="ap.price " ng-class="allvalidation[1].validation " required>
         </div>
-        <div class="item  item-input">
-          <input type="tel" min="1" placeholder="Quantity" ng-model="ap.quantity" ng-class="allvalidation[2].validation" required>
+        <div class="item item-input ">
+          <input type="tel " min="1 " placeholder="Quantity " ng-model="ap.quantity " ng-class="allvalidation[2].validation " required>
         </div>
-        <label class="item item-input item-select area">
-                  <div class="input-label">
+        <label class="item item-input item-select area ">
+                  <div class="input-label ">
                      Category
                   </div>
-                  <select ng-model="ap.category" ng-class="allvalidation[3].validation" required>
-                     <option value="">All</option>
-                     <option ng-repeat="c in cat" value="{{c.id}}">{{c.name}}</option>
+                  <select ng-model="ap.category " ng-class="allvalidation[3].validation " required>
+                     <option value=" ">All</option>
+                     <option ng-repeat="c in cat " value="{{c.id}} ">{{c.name}}</option>
                   </select>
                </label>
-        <div class="item item-toggle hide">
+        <div class="item item-toggle hide ">
           Status
-          <label class="toggle toggle-balanced">
-                     <input type="checkbox" ng-model="ap.status">
-                     <div class="track">
-                        <div class="handle"></div>
+          <label class="toggle toggle-balanced ">
+                     <input type="checkbox " ng-model="ap.status ">
+                     <div class="track ">
+                        <div class="handle "></div>
                      </div>
                   </label>
         </div>
-        <div class="item  item-input">
-          <textarea placeholder="Description" ng-model="ap.description" ng-class="allvalidation[4].validation" required></textarea>
+        <div class="item item-input ">
+          <textarea placeholder="Description " ng-model="ap.description " ng-class="allvalidation[4].validation " required></textarea>
         </div>
-        <div class="padding text-center">
-          <button class="button pr-button button-balanced" ng-disabled="addProductButtonDisable" ng-click="insertproduct(ap);">Save</button>
+        <div class="padding text-center ">
+          <button class="button pr-button button-balanced " ng-disabled="addProductButtonDisable " ng-click="insertproduct(ap); ">Save</button>
         </div>
     </div>
     </form>
