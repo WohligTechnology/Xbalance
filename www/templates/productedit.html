@@ -21,21 +21,21 @@
                         <!--<div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">-->
                         <div class="col input-div" ng-repeat="img in prodetails.images">
                             <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
-                            <p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>
+                            <!--<p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>-->
                         </div>
-                        <div class="col input-div" ng-if="prodetails.images.length==0" ng-click="editProductImage(prodetails.id);">
+                        <div class="col input-div" ng-if="prodetails.images.length==0">
                             <div class="img-profile">
                                 <img src="img/add.png">
                                 <div class="holder2">Edit</div>
                             </div>
                         </div>
-                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1" ng-click="editProductImage(prodetails.id);">
+                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1">
                             <div class="img-profile">
                                 <img src="img/add.png">
                                 <div class="holder2">Edit</div>
                             </div>
                         </div>
-                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1 || prodetails.images.length==2" ng-click="editProductImage(prodetails.id);">
+                        <div class="col input-div" ng-if="prodetails.images.length==0 || prodetails.images.length==1 || prodetails.images.length==2">
                             <div class="img-profile">
                                 <img src="img/add.png">
                                 <div class="holder2">Edit</div>
