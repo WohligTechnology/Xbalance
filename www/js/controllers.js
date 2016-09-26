@@ -2409,26 +2409,27 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 
 })
 
-.controller('MyproductsCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker) {
-
+.controller('MyproductsCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $ionicSlideBoxDelegate) {
+    // modal to open image
     $ionicModal.fromTemplateUrl('templates/pop-image.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
-        $scope.modalss = modal;
+        $scope.modals = modal;
     });
 
     $scope.openshops = function(num) {
         console.log(num);
-        $scope.modalss.show();
+        $scope.modals.show();
         setTimeout(function() {
             $ionicSlideBoxDelegate.slide(num);
         }, 200);
     };
 
     $scope.closeModals = function() {
-        $scope.modalss.hide();
+        $scope.modals.hide();
     };
+    // modal to close image
     //view products start
     $scope.showloading = function() {
         $ionicLoading.show({

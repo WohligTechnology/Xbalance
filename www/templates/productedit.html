@@ -20,7 +20,7 @@
                     <div class="row">
                         <!--<div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">-->
                         <div class="col input-div" ng-repeat="img in prodetails.images">
-                            <div class="image-hold" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
+                            <div class="image-hold" ng-click="openshops($index)" ng-style="{'background-image':'url({{img.image|serverimage}})'}"></div>
                             <!--<p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteProductsImage(img.id)">Delete</p>-->
                         </div>
                         <div class="col input-div" ng-if="prodetails.images.length==0">
