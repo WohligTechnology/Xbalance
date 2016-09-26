@@ -2410,26 +2410,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
 })
 
 .controller('MyproductsCtrl', function($scope, $state, $stateParams, $ionicPopup, $ionicModal, $location, MyServices, $cordovaCamera, $timeout, $cordovaFileTransfer, $ionicLoading, $cordovaImagePicker, $ionicSlideBoxDelegate) {
-    // modal to open image
-    $ionicModal.fromTemplateUrl('templates/pop-image.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modals = modal;
-    });
-
-    $scope.openshops = function(num) {
-        console.log(num);
-        $scope.modals.show();
-        setTimeout(function() {
-            $ionicSlideBoxDelegate.slide(num);
-        }, 200);
-    };
-
-    $scope.closeModals = function() {
-        $scope.modals.hide();
-    };
-    // modal to close image
+    console.log("again in dtrl");
     //view products start
     $scope.showloading = function() {
         $ionicLoading.show({
@@ -2657,7 +2638,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
             myPopup.close(); //close the popup after 3 seconds for some reason
         }, 2000);
     };
-
+    $scope.prodetails = {};
     //product details start
     var getsingleproductcallback = function(data, status) {
         $scope.prodetails = data;
@@ -2915,6 +2896,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
     $scope.closeprdtedit = function() {
         $scope.modal2.hide();
     };
+
+
+    // modal to open image
+    $ionicModal.fromTemplateUrl('templates/editprodimg.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modalsss = modal;
+    });
+
+    $scope.openshops = function(num) {
+        $scope.modalImages = $scope.prodetails.images;
+        console.log($scope.prodetails.images);
+        console.log(num);
+        $scope.modalsss.show();
+        setTimeout(function() {
+            $ionicSlideBoxDelegate.slide(num);
+        }, 200);
+    };
+
+    $scope.closeModalsss = function() {
+        $scope.modalsss.hide();
+    };
+    // modal to close image
 
 })
 
