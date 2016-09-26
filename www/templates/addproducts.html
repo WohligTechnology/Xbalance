@@ -16,7 +16,7 @@
               <!--<div class="col input-div" ng-repeat="img in prodetails.images" ng-click="openPop()">-->
               <div class="col input-div" ng-repeat="img in uploadedProductImages">
                 <div class="image-hold" ng-style="{'background-image':'url({{img|serverimage}})'}"></div>
-                <div class="holder2">Edit</div>
+                <!--<div class="holder2">Edit</div>-->
                 <p class="text-center" style="background-color: #f78330;color: white;padding: 5px 0 4px;" ng-click="deleteAddProductsImage($index)">Delete</p>
               </div>
               <div class="col input-div" ng-if="uploadedProductImages.length==0" ng-click="addproductimage();">
