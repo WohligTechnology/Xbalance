@@ -4,7 +4,7 @@
             <div class="profile-img">
                 <div class="row">
                     <div class="col" ng-repeat="imgarr in getsinglepro.images">
-                        <img ng-src={{imgarr.image|serverimage}} class="full-image">
+                        <img ng-src={{imgarr.image|serverimage}} class="full-image" ng-click="openshops($index)">
                     </div>
                     <!--<div class="col">
                         <img ng-src={{getsinglepro.image|serverimage}} class="full-image">
