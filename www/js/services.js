@@ -1,4 +1,4 @@
-var adminbase = "http://swaap.in/admin/";
+var adminbase = "http://swaap.in/admintest/";
 // var adminbase = "http://localhost/osb/";
 var adminurl = adminbase + "index.php/json/";
 var myservices = angular.module('myservices', []);
