@@ -3248,7 +3248,7 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
                 if ($scope.hotel.checkin <= $scope.hotel.checkout) {
                     console.log($scope.hotel);
-                    // MyServices.submitHotel($scope.hotel, getHotelCallback);
+                    MyServices.submitHotel($scope.hotel, getHotelCallback);
                     var myPopup = $ionicPopup.show({
                         template: '<p class="text-center">Thank you for your booking enquiry!</p>',
                         title: '<b>Team Swaap will contact you soon.!<b>',
