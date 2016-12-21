@@ -32,6 +32,10 @@ myservices.factory('MyServices', function ($http) {
             $http.get(adminurl + "getarea", {}).success(getareacallback);
 
         },
+        returnval.getAllHotels = function (gethotelcallback) {
+            $http.get(adminurl + "getAllHotels", {}).success(gethotelcallback);
+
+        },
         returnval.searchresult = function (area, category, online, offline, searchcallback) {
             console.log("searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline);
             $http.get(adminurl + "searchresult?area=" + area + "&category=" + category + "&online=" + online + "&offline=" + offline, {}).success(searchcallback);

@@ -3195,20 +3195,30 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
         $ionicLoading.hide();
         $scope.hotel = {};
         var getHotelCallback = function (data, status) {
-            console.log(data);
-            if (data.value == true) {
-                $scope.hotel = {};
-                var myPopup = $ionicPopup.show({
-                    template: '<p class="text-center">Thank you for Submission</p>',
-                    title: '<b>Submitted!<b>',
-                    scope: $scope,
-                });
-                $timeout(function () {
-                    myPopup.close(); //close the popup after 3 seconds for some reason
-                }, 3000);
-                $location.url("/app/home");
+                console.log(data);
+                if (data.value == true) {
+                    $scope.hotel = {};
+                    var myPopup = $ionicPopup.show({
+                        template: '<p class="text-center">Thank you for Submission</p>',
+                        title: '<b>Submitted!<b>',
+                        scope: $scope,
+                    });
+                    $timeout(function () {
+                        myPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 3000);
+                    $location.url("/app/home");
+                }
             }
-        }
+            //get all hotel lists
+            // var getareacategorycallback = function (data, status) {
+            //     $scope.recall = data;
+            //     $ionicLoading.hide();
+            //     console.log(data);
+            // }
+        MyServices.getAllHotels(function (data, status) {
+            console.log(data);
+            $scope.hotelLists = data;
+        });
         $scope.submitHotel = function () {
 
             $scope.allvalidation = [{
@@ -3237,7 +3247,8 @@ angular.module('starter.controllers', ['myservices', 'ngCordova'])
                 $scope.hotel.checkout = moment($scope.hotel.checkout).format('YYYY-MM-DD');
                 $scope.hotel.checkin = moment($scope.hotel.checkin).format('YYYY-MM-DD');
                 if ($scope.hotel.checkin <= $scope.hotel.checkout) {
-                    MyServices.submitHotel($scope.hotel, getHotelCallback);
+                    console.log($scope.hotel);
+                    // MyServices.submitHotel($scope.hotel, getHotelCallback);
                     var myPopup = $ionicPopup.show({
                         template: '<p class="text-center">Thank you for your booking enquiry!</p>',
                         title: '<b>Team Swaap will contact you soon.!<b>',

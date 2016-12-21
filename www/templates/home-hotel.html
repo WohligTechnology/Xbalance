@@ -4,9 +4,7 @@
     <ion-content class="padding">
         <div class="incard brdr-select2">
             <div class="header-card">Find Hotels</div>
-
             <div class="list">
-
                 <label class="item item-input item-select">
                     <div class="input-label">
                         Country *
@@ -34,7 +32,10 @@
                     <div class="input-label">
                         Prefered Hotels *
                     </div>
-                    <select ng-model="hotel.hotelname" ng-class="allvalidation[1].validation">
+                      <select ng-model="hotel.hotelname" ng-options="hotels.name as hotels.name for hotels in hotelLists" ng-class="allvalidation[1].validation">
+                             <option value="">Select Hotel</option>
+                      </select>
+                    <!--<select ng-model="hotel.hotelname" ng-class="allvalidation[1].validation">
                         <option value="">Select</option>
                         <option value="Indus valley resort:- (Lonavala)">Indus valley resort:- (Lonavala)</option>
                         <option value="Mid way Park:- (Shahpur)">Mid way Park:- (Shahpur)</option>
@@ -78,7 +79,7 @@
 <option value="Tavisha (Delhi)
 ">Tavisha (Delhi)
 </option>
-                    </select>
+                    </select>-->
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Check in date *</span>
@@ -366,6 +367,5 @@
             </div>
         </div>
         <button class="button button-balanced button-block" ng-click="submitHotel();">Submit</button>
-
     </ion-content>
 </ion-view>
